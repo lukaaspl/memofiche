@@ -1,0 +1,2 @@
+export const FLASHCARDS = "FLASHCARDS";
+export const ACTIVE_FLASHCARD_ID = "ACTIVE_FLASHCARD_ID";
