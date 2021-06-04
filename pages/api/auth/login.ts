@@ -40,7 +40,7 @@ loginRouter.post(async (req, res) => {
     return;
   }
 
-  const token = signToken(requestedUser.id.toString());
+  const token = signToken(requestedUser.id);
 
   res.status(200).json({ token });
 });
