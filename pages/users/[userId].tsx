@@ -55,8 +55,6 @@ const UserPage: NextPage<UserPageProps> = ({ user }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const usersIds = await prisma.user.findMany({ select: { id: true } });
 
-  console.log(usersIds);
-
   return {
     paths: usersIds.map((user) => ({
       params: { userId: user.id.toString() },

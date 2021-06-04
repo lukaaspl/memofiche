@@ -69,7 +69,6 @@ export default function StudyingView({
         obverse={currentCard.obverse}
         reverse={currentCard.reverse}
         isFlipped={state.isCardFlipped}
-        onTransitionEnd={() => console.log("transition end")}
       />
       <Button onClick={flipCard}>Flip the card</Button>
       <div

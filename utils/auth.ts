@@ -11,14 +11,11 @@ const DEFAULT_SALT_ROUNDS = 10;
 const TOKEN_EXPIRES_IN = "7d";
 const TOKEN_USER_ID_NAME = "user_id";
 
-export async function hashPassword(plainPassword: string): Promise<string> {
+export function hashPassword(plainPassword: string): Promise<string> {
   return bcrypt.hash(plainPassword, DEFAULT_SALT_ROUNDS);
 }
 
-export async function comparePasswords(
-  p1: string,
-  p2: string
-): Promise<boolean> {
+export function comparePasswords(p1: string, p2: string): Promise<boolean> {
   return bcrypt.compare(p1, p2);
 }
 
@@ -26,9 +23,7 @@ export function signToken(userId: string): string {
   return jwt.sign(
     { [TOKEN_USER_ID_NAME]: userId },
     process.env.ACCESS_TOKEN_SECRET as string,
-    {
-      expiresIn: TOKEN_EXPIRES_IN,
-    }
+    { expiresIn: TOKEN_EXPIRES_IN }
   );
 }
 
@@ -37,26 +32,21 @@ export function verifyToken(token: string): string | object {
   return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET as string);
 }
 
+const tokenSchema = z.object({
+  [TOKEN_USER_ID_NAME]: stringNumberSchema,
+});
+
 export function extractTokenUserId(req: NextApiRequest): Nullable<number> {
   try {
     if (!req.headers.authorization) {
       throw new Error("Authorization header was not passed");
     }
 
-    const decoded = verifyToken(req.headers.authorization) as Record<
-      string,
-      unknown
-    >;
-
-    const parsedUserId = stringNumberSchema.safeParse(
-      decoded[TOKEN_USER_ID_NAME]
+    const parsedToken = tokenSchema.parse(
+      verifyToken(req.headers.authorization)
     );
 
-    if (!parsedUserId.success) {
-      throw new Error("Invalid token payload");
-    }
-
-    return parsedUserId.data;
+    return parsedToken[TOKEN_USER_ID_NAME];
   } catch {
     return null;
   }
