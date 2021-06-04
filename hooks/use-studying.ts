@@ -110,8 +110,6 @@ function studyingReducer(
   }
 }
 
-// type UseStudying =
-
 export function useStudying() {
   const [state, dispatch] = useReducer(studyingReducer, initialStudyingState);
 

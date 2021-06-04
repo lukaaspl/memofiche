@@ -9,7 +9,6 @@ import { stringNumberSchema } from "./validation";
 
 const DEFAULT_SALT_ROUNDS = 10;
 const TOKEN_EXPIRES_IN = "7d";
-// const TOKEN_EXPIRES_IN = "30s";
 const TOKEN_USER_ID_NAME = "user_id";
 
 export async function hashPassword(plainPassword: string): Promise<string> {
@@ -26,7 +25,7 @@ export async function comparePasswords(
 export function signToken(userId: string): string {
   return jwt.sign(
     { [TOKEN_USER_ID_NAME]: userId },
-    process.env.JWT_SECRET as string,
+    process.env.ACCESS_TOKEN_SECRET as string,
     {
       expiresIn: TOKEN_EXPIRES_IN,
     }
@@ -35,7 +34,7 @@ export function signToken(userId: string): string {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function verifyToken(token: string): string | object {
-  return jwt.verify(token, process.env.JWT_SECRET as string);
+  return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET as string);
 }
 
 export function extractTokenUserId(req: NextApiRequest): Nullable<number> {
