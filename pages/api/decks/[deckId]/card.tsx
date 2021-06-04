@@ -54,7 +54,7 @@ cardRouter.post(async (req, res) => {
     return;
   }
 
-  if (requestedDeck.userId !== Number(userId)) {
+  if (requestedDeck.userId !== userId) {
     sendError(new Forbidden("Deck does not belong to the user"));
     return;
   }

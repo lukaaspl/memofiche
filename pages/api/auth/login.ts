@@ -3,20 +3,26 @@ import prisma from "lib/prisma";
 import { createApiRouter } from "utils/api-router";
 import { comparePasswords, signToken } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
+import { z } from "zod";
 
 const loginRouter = createApiRouter();
 
+const bodySchema = z.object({
+  email: z.string().email(),
+  password: z.string(),
+});
+
 loginRouter.post(async (req, res) => {
   const sendError = httpErrorSender(res);
-  const { email, password } = req.body;
+  const parsedBody = bodySchema.safeParse(req.body);
 
-  if (!email || !password) {
-    sendError(new BadRequest("Email and password are required fields"));
+  if (!parsedBody.success) {
+    sendError(new BadRequest("Invalid request body"));
     return;
   }
 
   const requestedUser = await prisma.user.findUnique({
-    where: { email: req.body.email },
+    where: { email: parsedBody.data.email },
   });
 
   if (!requestedUser) {
@@ -25,7 +31,7 @@ loginRouter.post(async (req, res) => {
   }
 
   const passwordsMatch = await comparePasswords(
-    password,
+    parsedBody.data.password,
     requestedUser.password
   );
 

@@ -19,7 +19,7 @@ export function comparePasswords(p1: string, p2: string): Promise<boolean> {
   return bcrypt.compare(p1, p2);
 }
 
-export function signToken(userId: string): string {
+export function signToken(userId: number): string {
   return jwt.sign(
     { [TOKEN_USER_ID_NAME]: userId },
     process.env.ACCESS_TOKEN_SECRET as string,

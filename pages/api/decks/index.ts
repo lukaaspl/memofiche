@@ -62,7 +62,7 @@ decksRouter.post(async (req, res) => {
   const createdDeck = await prisma.deck.create({
     data: {
       name: req.body.name,
-      userId: Number(userId),
+      userId,
       tags: {
         create: parsedBody.data.tags.map((tag) => ({
           tag: {

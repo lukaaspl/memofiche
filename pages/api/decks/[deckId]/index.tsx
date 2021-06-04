@@ -44,7 +44,7 @@ deckRouter.get(async (req, res) => {
     return;
   }
 
-  if (detailedDeck.userId !== Number(userId)) {
+  if (detailedDeck.userId !== userId) {
     sendError(new Forbidden("Deck does not belong to the user"));
     return;
   }
