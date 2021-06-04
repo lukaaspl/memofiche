@@ -1,6 +1,6 @@
 import { Card } from "domains";
 import { nanoid } from "nanoid";
-import { getSMDefaults } from "utils/super-memo";
+import { getDefaultMemoDetails } from "utils/super-memo";
 
 export function createCard(obverse: string, reverse: string): Card {
   return {
@@ -8,7 +8,7 @@ export function createCard(obverse: string, reverse: string): Card {
     reverse,
     id: nanoid(),
     nextPractice: Date.now(),
-    smDetails: getSMDefaults(),
+    memoDetails: getDefaultMemoDetails(),
   };
 }
 

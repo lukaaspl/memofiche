@@ -1,0 +1,106 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Tag {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  deckTags DeckTags[]
+  cardTags CardTags[]
+}
+
+model DeckTags {
+  id     Int   @id @default(autoincrement())
+  deck   Deck? @relation(fields: [deckId], references: [id])
+  tag    Tag?  @relation(fields: [tagId], references: [id])
+  deckId Int?
+  tagId  Int?
+}
+
+model CardTags {
+  id     Int   @id @default(autoincrement())
+  card   Card? @relation(fields: [cardId], references: [id])
+  tag    Tag?  @relation(fields: [tagId], references: [id])
+  cardId Int?
+  tagId  Int?
+}
+
+enum CardType {
+  Normal
+  Reverse
+}
+
+model Card {
+  id          Int              @id @default(autoincrement())
+  deckId      Int
+  deck        Deck             @relation(fields: [deckId], references: [id])
+  obverse     String
+  reverse     String
+  type        CardType         @default(Normal)
+  tags        CardTags[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  memoDetails CardMemoDetails?
+}
+
+model CardMemoDetails {
+  cardId      Int   @unique
+  card        Card  @relation(fields: [cardId], references: [id])
+  repetitions Int
+  easiness    Float
+  interval    Int
+}
+
+model Deck {
+  id        Int        @id @default(autoincrement())
+  name      String
+  cards     Card[]
+  tags      DeckTags[]
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@unique([userId, name])
+}
+
+enum UserRole {
+  User
+  Admin
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      UserRole @default(User)
+  decks     Deck[]
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int?     @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Profile {
+  id        Int      @id @default(autoincrement())
+  firstName String?
+  lastName  String?
+  bio       String?
+  user      User?
+  avatar    Avatar?  @relation(fields: [avatarId], references: [id])
+  avatarId  Int?     @unique
+  updatedAt DateTime @updatedAt
+}
+
+model Avatar {
+  id        Int      @id @default(autoincrement())
+  avatar    String
+  profile   Profile?
+  updatedAt DateTime @updatedAt
+}

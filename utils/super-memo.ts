@@ -1,15 +1,15 @@
-import { SMDetails, SMQuality } from "domains";
+import { MemoDetails, MemoQuality } from "domains";
 
 const MAX_EF = 1.3;
 const MAX_QUALITY = 5;
 
-export const getSMDefaults = (): SMDetails => ({
+export const getDefaultMemoDetails = (): MemoDetails => ({
   repetitions: 0,
-  easinessFactor: 2.5,
+  easiness: 2.5,
   interval: 1,
 });
 
-function getEasinessFactor(prevEF: number, quality: SMQuality): number {
+function getEasinessFactor(prevEF: number, quality: MemoQuality): number {
   const qualityDiff = MAX_QUALITY - quality;
 
   return Math.max(
@@ -18,7 +18,7 @@ function getEasinessFactor(prevEF: number, quality: SMQuality): number {
   );
 }
 
-function getRepetitions(prevRepetitions: number, quality: SMQuality): number {
+function getRepetitions(prevRepetitions: number, quality: MemoQuality): number {
   if (quality < 3) {
     return 0;
   }
@@ -42,17 +42,17 @@ function getInterval(
   return Math.round(prevInterval * easinessFactor);
 }
 
-export function superMemo<TItem extends SMDetails>(
+export function superMemo<TItem extends MemoDetails>(
   item: TItem,
-  quality: SMQuality
+  quality: MemoQuality
 ): TItem {
-  const easinessFactor = getEasinessFactor(item.easinessFactor, quality);
+  const easinessFactor = getEasinessFactor(item.easiness, quality);
   const repetitions = getRepetitions(item.repetitions, quality);
   const interval = getInterval(item.interval, repetitions, easinessFactor);
 
   return {
     ...item,
-    easinessFactor,
+    easiness: easinessFactor,
     repetitions,
     interval,
   };

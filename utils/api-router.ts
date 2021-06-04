@@ -8,6 +8,7 @@ type ApiRouteHandlerCallback = <T>(
 
 type ApiRouter = {
   mount: () => (req: NextApiRequest, res: NextApiResponse) => void;
+  use: (middlewareHandler: ApiMiddleware) => void;
   get: ApiRouteHandlerCallback;
   post: ApiRouteHandlerCallback;
   put: ApiRouteHandlerCallback;
@@ -15,7 +16,13 @@ type ApiRouter = {
   delete: ApiRouteHandlerCallback;
 };
 
+export type ApiMiddleware = (
+  handler: NextApiHandler
+) => (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>;
+
 export const createApiRouter = (): ApiRouter => {
+  const middlewares: ApiMiddleware[] = [];
+
   const handlers: Record<HttpMethod, NextApiHandler | null> = {
     GET: null,
     POST: null,
@@ -24,36 +31,26 @@ export const createApiRouter = (): ApiRouter => {
     DELETE: null,
   };
 
+  const passThroughMiddlewares = (handler: NextApiHandler): NextApiHandler =>
+    middlewares.reduceRight((handler, middleware) => {
+      return middleware(handler);
+    }, handler);
+
   return {
     get: <T>(handler: NextApiHandler<T>) => (handlers.GET = handler),
     post: <T>(handler: NextApiHandler<T>) => (handlers.POST = handler),
     put: <T>(handler: NextApiHandler<T>) => (handlers.PUT = handler),
     patch: <T>(handler: NextApiHandler<T>) => (handlers.PATCH = handler),
     delete: <T>(handler: NextApiHandler<T>) => (handlers.DELETE = handler),
-    mount: () => {
-      return (req: NextApiRequest, res: NextApiResponse) => {
-        const notAllowed = (): void => res.status(405).end();
+    use: (handler: ApiMiddleware) => {
+      middlewares.push(handler);
+    },
+    mount: () => (req: NextApiRequest, res: NextApiResponse) => {
+      const handler = handlers[req.method as HttpMethod];
 
-        switch (req.method as HttpMethod) {
-          case "GET":
-            return handlers.GET?.(req, res) || notAllowed();
-
-          case "POST":
-            return handlers.POST?.(req, res) || notAllowed();
-
-          case "PUT":
-            return handlers.PUT?.(req, res) || notAllowed();
-
-          case "PATCH":
-            return handlers.PATCH?.(req, res) || notAllowed();
-
-          case "DELETE":
-            return handlers.DELETE?.(req, res) || notAllowed();
-
-          default:
-            return notAllowed();
-        }
-      };
+      return handler
+        ? passThroughMiddlewares(handler)(req, res)
+        : res.status(405).end();
     },
   };
 };

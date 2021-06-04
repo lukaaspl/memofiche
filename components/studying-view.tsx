@@ -1,7 +1,7 @@
 import Flashcard from "components/flashcard";
 import GradeButton, { GradeButtonDescription } from "components/grade-button";
 import Button from "components/ui/button";
-import { Card, SMQuality } from "domains";
+import { Card, MemoQuality } from "domains";
 import useStudying from "hooks/use-studying";
 import { createUseStyles } from "react-jss";
 import { isCardReadyToStudy } from "utils/cards";
@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
 
 interface StudyingViewProps {
   cards: Card[];
-  onGrade: (cardId: string, quality: SMQuality) => void;
+  onGrade: (cardId: string, quality: MemoQuality) => void;
 }
 
 const gradeDescriptions: Record<number, GradeButtonDescription> = {
@@ -37,7 +37,7 @@ export default function StudyingView({
   const readyToStudyCardsCount = readyToStudyCards.length;
 
   function handleGradeButtonClick(card: Card, index: number): void {
-    onGrade(card.id, index as SMQuality);
+    onGrade(card.id, index as MemoQuality);
 
     if (state.hasNextCard) {
       nextCard();

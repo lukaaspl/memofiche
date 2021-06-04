@@ -3,11 +3,11 @@ import FlashcardPreview from "components/flashcard-preview";
 import NewFlashcardForm from "components/new-flashcard-form";
 import StudyingView from "components/studying-view";
 import Button from "components/ui/button";
-import { Card, SMQuality } from "domains";
+import { Card, MemoQuality } from "domains";
 import { NextPage } from "next";
 import React, { useState } from "react";
 import { createCard, getNextPractice } from "utils/cards";
-import { getSMDefaults, superMemo } from "utils/super-memo";
+import { getDefaultMemoDetails, superMemo } from "utils/super-memo";
 
 const IndexPage: NextPage = () => {
   const [cards, setCards] = useState<Card[]>([
@@ -16,16 +16,16 @@ const IndexPage: NextPage = () => {
     createCard("Do I think much?", "No"),
   ]);
 
-  function handleGrade(cardId: string, quality: SMQuality): void {
+  function handleGrade(cardId: string, quality: MemoQuality): void {
     setCards((cards) =>
       cards.map((card) => {
         if (card.id === cardId) {
-          const updatedSmDetails = superMemo(card.smDetails, quality);
+          const updatedMemoDetails = superMemo(card.memoDetails, quality);
 
           const updatedCard: Card = {
             ...card,
-            nextPractice: getNextPractice(updatedSmDetails.interval),
-            smDetails: updatedSmDetails,
+            nextPractice: getNextPractice(updatedMemoDetails.interval),
+            memoDetails: updatedMemoDetails,
           };
 
           return updatedCard;
@@ -53,7 +53,7 @@ const IndexPage: NextPage = () => {
         return {
           ...card,
           nextPractice: Date.now(),
-          smDetails: getSMDefaults(),
+          memoDetails: getDefaultMemoDetails(),
         };
       })
     );
