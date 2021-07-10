@@ -14,8 +14,6 @@ export interface MemoDetails {
   interval: number; // int (in days)
 }
 
-export type MemoQuality = 0 | 1 | 2 | 3 | 4 | 5;
-
 export interface Card {
   id: string;
   obverse: string;

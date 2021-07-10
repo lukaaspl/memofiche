@@ -8,3 +8,5 @@ export const stringNumberSchema = z
   .string()
   .refine((value) => !Number.isNaN(Number(value)))
   .transform((value) => Number(value));
+
+export const superMemoQualitySchema = z.number().min(0).max(5);

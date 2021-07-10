@@ -33,7 +33,7 @@ export function verifyToken(token: string): string | object {
 }
 
 const tokenSchema = z.object({
-  [TOKEN_USER_ID_NAME]: stringNumberSchema,
+  [TOKEN_USER_ID_NAME]: z.number(),
 });
 
 export function extractTokenUserId(req: NextApiRequest): Nullable<number> {
@@ -41,7 +41,7 @@ export function extractTokenUserId(req: NextApiRequest): Nullable<number> {
     if (!req.headers.authorization) {
       throw new Error("Authorization header was not passed");
     }
-
+    console.log(typeof (verifyToken(req.headers.authorization) as any).user_id);
     const parsedToken = tokenSchema.parse(
       verifyToken(req.headers.authorization)
     );

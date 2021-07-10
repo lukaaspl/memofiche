@@ -3,7 +3,7 @@ import FlashcardPreview from "components/flashcard-preview";
 import NewFlashcardForm from "components/new-flashcard-form";
 import StudyingView from "components/studying-view";
 import Button from "components/ui/button";
-import { Card, MemoQuality } from "domains";
+import { Card } from "domains";
 import { NextPage } from "next";
 import React, { useState } from "react";
 import { createCard, getNextPractice } from "utils/cards";
@@ -16,7 +16,7 @@ const IndexPage: NextPage = () => {
     createCard("Do I think much?", "No"),
   ]);
 
-  function handleGrade(cardId: string, quality: MemoQuality): void {
+  function handleGrade(cardId: string, quality: number): void {
     setCards((cards) =>
       cards.map((card) => {
         if (card.id === cardId) {

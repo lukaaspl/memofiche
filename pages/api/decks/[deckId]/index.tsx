@@ -1,9 +1,4 @@
-import {
-  BadRequest,
-  Forbidden,
-  InternalServerError,
-  NotFound,
-} from "http-errors";
+import { BadRequest, InternalServerError, NotFound } from "http-errors";
 import prisma from "lib/prisma";
 import { createApiRouter } from "utils/api-router";
 import { authenticated, extractTokenUserId } from "utils/auth";
@@ -19,6 +14,8 @@ const querySchema = z.object({
   deckId: stringNumberSchema,
 });
 
+// Get current user pointed deck with cards
+// GET api/decks/:deckId
 deckRouter.get(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
@@ -34,18 +31,13 @@ deckRouter.get(async (req, res) => {
     return;
   }
 
-  const detailedDeck = await prisma.deck.findUnique({
-    where: { id: parsedQuery.data.deckId },
+  const detailedDeck = await prisma.deck.findFirst({
+    where: { id: parsedQuery.data.deckId, userId },
     include: { cards: true },
   });
 
   if (!detailedDeck) {
     sendError(new NotFound("Deck does not exist"));
-    return;
-  }
-
-  if (detailedDeck.userId !== userId) {
-    sendError(new Forbidden("Deck does not belong to the user"));
     return;
   }
 

@@ -1,10 +1,5 @@
 import { CardType } from "@prisma/client";
-import {
-  BadRequest,
-  Forbidden,
-  InternalServerError,
-  NotFound,
-} from "http-errors";
+import { BadRequest, InternalServerError, NotFound } from "http-errors";
 import prisma from "lib/prisma";
 import { createApiRouter } from "utils/api-router";
 import { authenticated, extractTokenUserId } from "utils/auth";
@@ -28,6 +23,7 @@ const bodySchema = z.object({
   tags: z.array(z.string()).default([]),
 });
 
+// Add new card to the pointed deck
 // POST api/decks/:deckId/card
 cardRouter.post(async (req, res) => {
   const sendError = httpErrorSender(res);
@@ -45,17 +41,12 @@ cardRouter.post(async (req, res) => {
     return;
   }
 
-  const requestedDeck = await prisma.deck.findUnique({
-    where: { id: parsedQuery.data.deckId },
+  const requestedDeck = await prisma.deck.findFirst({
+    where: { id: parsedQuery.data.deckId, userId },
   });
 
   if (!requestedDeck) {
     sendError(new NotFound("Deck does not exist"));
-    return;
-  }
-
-  if (requestedDeck.userId !== userId) {
-    sendError(new Forbidden("Deck does not belong to the user"));
     return;
   }
 
