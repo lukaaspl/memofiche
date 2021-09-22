@@ -3,8 +3,7 @@ import { Nullable } from "domains";
 import { Unauthorized } from "http-errors";
 import jwt from "jsonwebtoken";
 import { NextApiMiddleware } from "lib/nc";
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-import { Middleware } from "next-connect";
+import { NextApiRequest } from "next";
 import { z } from "zod";
 import { httpErrorSender } from "./errors";
 
