@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default function createApiHandler(): NextConnect<
   NextApiRequest,
-  NextApiResponse<any>
+  NextApiResponse<unknown>
 > {
   return nc<NextApiRequest, NextApiResponse>();
 }

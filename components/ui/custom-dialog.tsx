@@ -10,11 +10,8 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalProps,
-  Theme,
-  useTheme,
 } from "@chakra-ui/react";
 import React from "react";
-import tinyColor from "tinycolor2";
 
 type ModalPropsWithoutChildren = Omit<ModalProps, "children">;
 

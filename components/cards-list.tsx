@@ -1,4 +1,3 @@
-import { CardType, Card } from "@prisma/client";
 import {
   IconButton,
   Menu,
@@ -19,9 +18,10 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { CardType } from "@prisma/client";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
-import { authApiClient } from "lib/axios";
+import { truncate } from "lodash";
 import React, { useState } from "react";
 import { BsCardText } from "react-icons/bs";
 import {
@@ -31,13 +31,9 @@ import {
   MdMoreHoriz,
   MdRepeat,
 } from "react-icons/md";
-import { useMutation, useQueryClient } from "react-query";
 import CardDetailsDialog from "./card-details-dialog";
-import ManageCardDialog from "./manage-card-dialog";
-import CustomAlertDialog from "./ui/custom-alert-dialog";
-import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
-import { truncate } from "lodash";
+import ManageCardDialog from "./manage-card-dialog";
 
 interface CardsListProps {
   cards: DetailedCard[];
