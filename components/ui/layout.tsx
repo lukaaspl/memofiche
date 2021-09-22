@@ -77,6 +77,8 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+const SIDEBAR_WIDTH = "64px";
+
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const { userData, isLogged } = useAuth();
 
@@ -88,7 +90,16 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
 
   return (
     <Flex h="100vh" justify="flex-start" align="flex-start">
-      <VStack spacing="4" backgroundColor="purple.500" h="100%" px="3" py="5">
+      <VStack
+        position="fixed"
+        spacing="4"
+        backgroundColor="purple.500"
+        h="100%"
+        px="3"
+        py="5"
+        maxWidth={SIDEBAR_WIDTH}
+        zIndex="1"
+      >
         <Heading
           color="white"
           fontFamily="Poppins"
@@ -106,7 +117,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           <MenuTile key={index} tile={tile} />
         ))}
       </VStack>
-      <Box position="relative" w="100%" h="100%" px="10" py="16">
+      <Box position="relative" w="100%" h="100%" py="16" pl={SIDEBAR_WIDTH}>
         <Box position="absolute" right={3} top={3}>
           <AnimatedSkeleton isLoaded={isLogged}>
             <Text>

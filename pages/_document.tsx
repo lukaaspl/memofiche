@@ -1,14 +1,22 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { SheetsRegistry, JssProvider, createGenerateId } from "react-jss";
+// eslint-disable-next-line @next/next/no-document-import-in-page
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import { createGenerateId, JssProvider, SheetsRegistry } from "react-jss";
 
 class CustomDocument extends Document {
   render(): JSX.Element {
     return (
       <Html>
         <Head>
-          {/* TODO */}
-          {/* <link rel="icon" href="link to favicon" /> */}
-          {/* <link href="link to font" rel="stylesheet" /> */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />
