@@ -6,8 +6,9 @@ class CustomDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="link to favicon" />
-          <link href="link to font" rel="stylesheet" />
+          {/* TODO */}
+          {/* <link rel="icon" href="link to favicon" /> */}
+          {/* <link href="link to font" rel="stylesheet" /> */}
         </Head>
         <body>
           <Main />

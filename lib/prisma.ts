@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+export { Prisma } from "@prisma/client";
 
 let prisma: PrismaClient;
 

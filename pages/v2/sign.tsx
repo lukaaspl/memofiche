@@ -3,7 +3,6 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
-  AlertTitle,
   Box,
   Button,
   Center,
@@ -56,13 +55,13 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
       try {
         await signUp(values);
       } catch {
-        setRequestError("An error occurred while signing up the new user");
+        setRequestError("An error occurred while signing up");
       }
     } else {
       try {
         await signIn(values);
       } catch {
-        setRequestError("An error occurred while signing in the new user");
+        setRequestError("An error occurred while signing in");
       }
     }
 
@@ -103,6 +102,8 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               type="email"
               isInvalid={!!errors.email}
               placeholder="E-mail address"
+              // TODO: Remove
+              defaultValue="admin@memofiche.pl"
               size="lg"
               focusBorderColor="purple.500"
               {...register("email", { required: true })}
@@ -116,6 +117,8 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               type="password"
               isInvalid={!!errors.password}
               placeholder="Password"
+              // TODO: Remove
+              defaultValue="admin"
               size="lg"
               focusBorderColor="purple.500"
               {...register("password", { required: true })}

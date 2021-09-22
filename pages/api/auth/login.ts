@@ -1,18 +1,18 @@
 import { BadRequest, Unauthorized } from "http-errors";
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
 import { comparePasswords, signToken } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { z } from "zod";
 
-const loginRouter = createApiRouter();
+const loginHandler = createApiHandler();
 
 const bodySchema = z.object({
   email: z.string().email(),
   password: z.string(),
 });
 
-loginRouter.post(async (req, res) => {
+loginHandler.post(async (req, res) => {
   const sendError = httpErrorSender(res);
   const parsedBody = bodySchema.safeParse(req.body);
 
@@ -45,4 +45,4 @@ loginRouter.post(async (req, res) => {
   res.status(200).json({ token });
 });
 
-export default loginRouter.mount();
+export default loginHandler;

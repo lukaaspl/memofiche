@@ -16,7 +16,7 @@ model Tag {
 
 model DeckTags {
   id     Int   @id @default(autoincrement())
-  deck   Deck? @relation(fields: [deckId], references: [id])
+  deck   Deck? @relation(fields: [deckId], references: [id], onDelete: Cascade)
   tag    Tag?  @relation(fields: [tagId], references: [id])
   deckId Int?
   tagId  Int?
@@ -24,7 +24,7 @@ model DeckTags {
 
 model CardTags {
   id     Int   @id @default(autoincrement())
-  card   Card? @relation(fields: [cardId], references: [id])
+  card   Card? @relation(fields: [cardId], references: [id], onDelete: Cascade)
   tag    Tag?  @relation(fields: [tagId], references: [id])
   cardId Int?
   tagId  Int?
@@ -38,7 +38,7 @@ enum CardType {
 model Card {
   id          Int              @id @default(autoincrement())
   deckId      Int
-  deck        Deck             @relation(fields: [deckId], references: [id])
+  deck        Deck             @relation(fields: [deckId], references: [id], onDelete: Cascade)
   obverse     String
   reverse     String
   type        CardType         @default(Normal)
@@ -50,7 +50,7 @@ model Card {
 
 model CardMemoDetails {
   cardId      Int   @unique
-  card        Card  @relation(fields: [cardId], references: [id])
+  card        Card  @relation(fields: [cardId], references: [id], onDelete: Cascade)
   repetitions Int
   easiness    Float
   interval    Int
@@ -62,7 +62,7 @@ model Deck {
   cards     Card[]
   tags      DeckTags[]
   userId    Int
-  user      User       @relation(fields: [userId], references: [id])
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 

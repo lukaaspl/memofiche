@@ -1,15 +1,15 @@
 import { BadRequest, InternalServerError, NotFound } from "http-errors";
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { superMemo } from "utils/super-memo";
 import { stringNumberSchema, superMemoQualitySchema } from "utils/validation";
 import { z } from "zod";
 
-const rateCardRouter = createApiRouter();
+const rateCardHandler = createApiHandler();
 
-rateCardRouter.use(authenticated);
+rateCardHandler.use(authenticated);
 
 const querySchema = z.object({
   deckId: stringNumberSchema,
@@ -22,7 +22,7 @@ const bodySchema = z.object({
 
 // Rate card in pointed deck
 // POST api/decks/:deckId/rate
-rateCardRouter.post(async (req, res) => {
+rateCardHandler.post(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
   const parsedQuery = querySchema.safeParse(req.query);
@@ -81,4 +81,4 @@ rateCardRouter.post(async (req, res) => {
   res.json(updatedCardWithMemoDetails);
 });
 
-export default rateCardRouter.mount();
+export default rateCardHandler;

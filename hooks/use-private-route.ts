@@ -1,15 +1,18 @@
-import { ACCESS_TOKEN } from "consts/storage-keys";
 import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
+import useAuth from "./use-auth";
 
 export default function usePrivateRoute(): void {
+  const { userData, isLogged } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+    if (userData.isLoading) {
+      return;
+    }
 
-    if (!accessToken) {
+    if (!isLogged) {
       router.push("/v2/sign");
     }
-  }, [router]);
+  }, [isLogged, router, userData.isLoading]);
 }

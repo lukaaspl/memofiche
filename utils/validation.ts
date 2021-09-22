@@ -1,3 +1,4 @@
+import { CardType } from "@prisma/client";
 import { z } from "zod";
 
 // Temporary, due to some weird bug:
@@ -10,3 +11,15 @@ export const stringNumberSchema = z
   .transform((value) => Number(value));
 
 export const superMemoQualitySchema = z.number().min(0).max(5);
+
+export const postDeckBodySchema = z.object({
+  name: z.string(),
+  tags: z.array(z.string()).default([]),
+});
+
+export const postCardBodySchema = z.object({
+  obverse: z.string(),
+  reverse: z.string(),
+  type: z.enum([CardType.Normal, CardType.Reverse]).default(CardType.Normal),
+  tags: z.array(z.string()).default([]),
+});

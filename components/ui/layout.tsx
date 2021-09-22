@@ -78,11 +78,16 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  const { userData } = useAuth();
-  console.log(userData);
+  const { userData, isLogged } = useAuth();
+
+  if (!isLogged) {
+    return (
+      <Text m={2}>Zaczekaj byczku, sprawdzam czy jestes zalogowany...</Text>
+    );
+  }
 
   return (
-    <Flex h="100vh" overflow="hidden" justify="flex-start" align="flex-start">
+    <Flex h="100vh" justify="flex-start" align="flex-start">
       <VStack spacing="4" backgroundColor="purple.500" h="100%" px="3" py="5">
         <Heading
           color="white"
@@ -103,7 +108,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       </VStack>
       <Box position="relative" w="100%" h="100%" px="10" py="16">
         <Box position="absolute" right={3} top={3}>
-          <AnimatedSkeleton isLoaded={!userData.loading}>
+          <AnimatedSkeleton isLoaded={isLogged}>
             <Text>
               Logged as{" "}
               <Box
@@ -112,7 +117,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 fontWeight="bold"
                 color="purple.500"
               >
-                {userData?.data?.name} ({userData?.data?.email})
+                {userData.data?.name} ({userData.data?.email})
               </Box>
             </Text>
           </AnimatedSkeleton>

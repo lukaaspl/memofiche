@@ -1,15 +1,15 @@
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
 import { authenticated } from "utils/auth";
 
-const tagsRouter = createApiRouter();
+const tagsHandler = createApiHandler();
 
-tagsRouter.use(authenticated);
+tagsHandler.use(authenticated);
 
-tagsRouter.get(async (req, res) => {
+tagsHandler.get(async (req, res) => {
   const tags = await prisma.tag.findMany();
 
   res.json(tags);
 });
 
-export default tagsRouter.mount();
+export default tagsHandler;

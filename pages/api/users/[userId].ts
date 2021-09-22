@@ -1,9 +1,9 @@
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
 
-const usersRouter = createApiRouter();
+const usersHandler = createApiHandler();
 
-usersRouter.get(async (req, res) => {
+usersHandler.get(async (req, res) => {
   const userId = req.query.userId as string;
 
   const user = await prisma.user.findUnique({
@@ -22,4 +22,4 @@ usersRouter.get(async (req, res) => {
   res.json(user);
 });
 
-export default usersRouter.mount();
+export default usersHandler;

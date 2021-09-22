@@ -1,11 +1,14 @@
-import { BadRequest, UnprocessableEntity } from "http-errors";
+import {
+  BadRequest,
+  Conflict,
+  InternalServerError,
+  UnprocessableEntity,
+} from "http-errors";
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
 import { hashPassword, signToken } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { z } from "zod";
-
-const registerRouter = createApiRouter();
 
 const bodySchema = z.object({
   email: z.string().email(),
@@ -13,12 +16,30 @@ const bodySchema = z.object({
   name: z.string(),
 });
 
-registerRouter.post(async (req, res) => {
+const registerHandler = createApiHandler();
+
+registerHandler.post(async (req, res) => {
   const sendError = httpErrorSender(res);
   const parsedBody = bodySchema.safeParse(req.body);
 
   if (!parsedBody.success) {
     sendError(new BadRequest("Invalid request body"));
+    return;
+  }
+
+  try {
+    const emailAlreadyExist = Boolean(
+      await prisma.user.findUnique({
+        where: { email: parsedBody.data.email },
+      })
+    );
+
+    if (emailAlreadyExist) {
+      sendError(new Conflict("E-mail already exists"));
+      return;
+    }
+  } catch {
+    sendError(new InternalServerError());
     return;
   }
 
@@ -37,9 +58,9 @@ registerRouter.post(async (req, res) => {
     const token = signToken(createdUser.id);
 
     res.status(200).json({ token });
-  } catch (e) {
-    sendError(new UnprocessableEntity(e.message));
+  } catch {
+    sendError(new UnprocessableEntity());
   }
 });
 
-export default registerRouter.mount();
+export default registerHandler;

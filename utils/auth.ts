@@ -2,10 +2,11 @@ import bcrypt from "bcrypt";
 import { Nullable } from "domains";
 import { Unauthorized } from "http-errors";
 import jwt from "jsonwebtoken";
+import { NextApiMiddleware } from "lib/nc";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import { Middleware } from "next-connect";
 import { z } from "zod";
 import { httpErrorSender } from "./errors";
-import { stringNumberSchema } from "./validation";
 
 const DEFAULT_SALT_ROUNDS = 10;
 const TOKEN_EXPIRES_IN = "7d";
@@ -41,7 +42,7 @@ export function extractTokenUserId(req: NextApiRequest): Nullable<number> {
     if (!req.headers.authorization) {
       throw new Error("Authorization header was not passed");
     }
-    console.log(typeof (verifyToken(req.headers.authorization) as any).user_id);
+
     const parsedToken = tokenSchema.parse(
       verifyToken(req.headers.authorization)
     );
@@ -52,16 +53,14 @@ export function extractTokenUserId(req: NextApiRequest): Nullable<number> {
   }
 }
 
-export function authenticated(handler: NextApiHandler) {
-  return (req: NextApiRequest, res: NextApiResponse): void | Promise<void> => {
-    const sendError = httpErrorSender(res);
+export const authenticated: NextApiMiddleware = (req, res, next) => {
+  const sendError = httpErrorSender(res);
 
-    try {
-      const token = z.string().parse(req.headers.authorization);
-      verifyToken(token);
-      return handler(req, res);
-    } catch {
-      sendError(new Unauthorized("User not authenticated"));
-    }
-  };
-}
+  try {
+    const token = z.string().parse(req.headers.authorization);
+    verifyToken(token);
+    next();
+  } catch {
+    sendError(new Unauthorized("User not authenticated"));
+  }
+};

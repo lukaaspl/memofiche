@@ -1,14 +1,14 @@
+import { InternalServerError } from "http-errors";
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
-import { InternalServerError } from "http-errors";
 
-const meRouter = createApiRouter();
+const meHandler = createApiHandler();
 
-meRouter.use(authenticated);
+meHandler.use(authenticated);
 
-meRouter.get(async (req, res) => {
+meHandler.get(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
 
@@ -17,21 +17,25 @@ meRouter.get(async (req, res) => {
     return;
   }
 
-  const requestedUser = await prisma.user.findUnique({
-    where: { id: userId },
-    select: {
-      name: true,
-      email: true,
-      role: true,
-    },
-  });
+  try {
+    const requestedUser = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        name: true,
+        email: true,
+        role: true,
+      },
+    });
 
-  if (!requestedUser) {
+    if (!requestedUser) {
+      sendError(new InternalServerError());
+      return;
+    }
+
+    res.json(requestedUser);
+  } catch {
     sendError(new InternalServerError());
-    return;
   }
-
-  res.json(requestedUser);
 });
 
-export default meRouter.mount();
+export default meHandler;

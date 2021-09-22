@@ -1,14 +1,14 @@
-import { createApiRouter } from "utils/api-router";
+import createApiHandler from "lib/nc";
 import { authenticated } from "utils/auth";
 
-const secretRouter = createApiRouter();
+const secretHandler = createApiHandler();
 
-secretRouter.use(authenticated);
+secretHandler.use(authenticated);
 
-secretRouter.get((_, res) => {
+secretHandler.get((_, res) => {
   res.send({
     secret: Math.random().toString().substr(2),
   });
 });
 
-export default secretRouter.mount();
+export default secretHandler;

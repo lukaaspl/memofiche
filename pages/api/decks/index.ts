@@ -1,15 +1,18 @@
 import { BadRequest, Conflict, InternalServerError } from "http-errors";
+import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { createApiRouter } from "utils/api-router";
+import { findUserDecks } from "repositories/deck";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
-import { z } from "zod";
+import { postDeckBodySchema } from "utils/validation";
 
-const decksRouter = createApiRouter();
+const decksHandler = createApiHandler();
 
-decksRouter.use(authenticated);
+decksHandler.use(authenticated);
 
-decksRouter.get(async (req, res) => {
+// Get user decks
+// GET /api/decks
+decksHandler.get(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
 
@@ -18,20 +21,20 @@ decksRouter.get(async (req, res) => {
     return;
   }
 
-  const userDecks = await prisma.deck.findMany({ where: { userId } });
-
-  res.send(userDecks);
+  try {
+    const userDecks = await findUserDecks(userId);
+    res.send(userDecks);
+  } catch {
+    sendError(new InternalServerError());
+  }
 });
 
-const bodySchema = z.object({
-  name: z.string(),
-  tags: z.array(z.string()).default([]),
-});
-
-decksRouter.post(async (req, res) => {
+// Add new deck
+// POST /api/decks
+decksHandler.post(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
-  const parsedBody = bodySchema.safeParse(req.body);
+  const parsedBody = postDeckBodySchema.safeParse(req.body);
 
   if (!userId) {
     sendError(new InternalServerError());
@@ -59,24 +62,28 @@ decksRouter.post(async (req, res) => {
     return;
   }
 
-  const createdDeck = await prisma.deck.create({
-    data: {
-      name: req.body.name,
-      userId,
-      tags: {
-        create: parsedBody.data.tags.map((tag) => ({
-          tag: {
-            connectOrCreate: {
-              create: { name: tag },
-              where: { name: tag },
+  try {
+    const createdDeck = await prisma.deck.create({
+      data: {
+        name: req.body.name,
+        userId,
+        tags: {
+          create: parsedBody.data.tags.map((tag) => ({
+            tag: {
+              connectOrCreate: {
+                create: { name: tag },
+                where: { name: tag },
+              },
             },
-          },
-        })),
+          })),
+        },
       },
-    },
-  });
+    });
 
-  res.status(201).json(createdDeck);
+    res.status(201).json(createdDeck);
+  } catch {
+    sendError(new InternalServerError("Couldn't create deck entity"));
+  }
 });
 
-export default decksRouter.mount();
+export default decksHandler;
