@@ -1,4 +1,3 @@
-import { Deck } from "@prisma/client";
 import {
   Box,
   Button,
@@ -7,10 +6,15 @@ import {
   Flex,
   Heading,
   IconButton,
+  Tag,
+  TagLabel,
   Text,
   useDisclosure,
   useToast,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
+import { Deck } from "@prisma/client";
 import PrimaryHeading from "components/ui/primary-heading";
 import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedDeck } from "domains/deck";
@@ -20,11 +24,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import CardsList from "./cards-list";
+import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
 import CustomAlertDialog from "./ui/custom-alert-dialog";
-import ManageCardDialog from "./manage-card-dialog";
-import { DetailedCard } from "domains/card";
-import CardsList from "./cards-list";
 
 async function fetchDeckById(deckId: number): Promise<DetailedDeck> {
   const { data: deck } = await authApiClient.get<DetailedDeck>(
@@ -152,6 +155,15 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
           />
         </Box>
       </Flex>
+      <Wrap spacing={2} mt={1} mb={3}>
+        {deck.tags.map((tagObj, index) => (
+          <WrapItem key={index}>
+            <Tag size="lg" variant="subtle" colorScheme="purple">
+              <TagLabel>{tagObj.tag?.name}</TagLabel>
+            </Tag>
+          </WrapItem>
+        ))}
+      </Wrap>
       <Link href="/v2/decks">
         <Button variant="link">&laquo; Back to decks</Button>
       </Link>

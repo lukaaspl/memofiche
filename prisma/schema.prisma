@@ -58,11 +58,11 @@ model CardMemoDetails {
 
 model Deck {
   id        Int        @id @default(autoincrement())
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   name      String
   cards     Card[]
   tags      DeckTags[]
-  userId    Int
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 
@@ -81,26 +81,26 @@ model User {
   name      String
   role      UserRole @default(User)
   decks     Deck[]
-  profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId Int?     @unique
+  profile   Profile?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Profile {
   id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   firstName String?
   lastName  String?
   bio       String?
-  user      User?
-  avatar    Avatar?  @relation(fields: [avatarId], references: [id])
-  avatarId  Int?     @unique
+  avatar    Avatar?
   updatedAt DateTime @updatedAt
 }
 
 model Avatar {
   id        Int      @id @default(autoincrement())
+  profileId Int
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
   avatar    String
-  profile   Profile?
   updatedAt DateTime @updatedAt
 }

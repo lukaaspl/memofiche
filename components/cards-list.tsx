@@ -1,4 +1,4 @@
-import { CardType } from ".prisma/client";
+import { CardType, Card } from "@prisma/client";
 import {
   IconButton,
   Menu,
@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
+import { authApiClient } from "lib/axios";
 import React, { useState } from "react";
 import { BsCardText } from "react-icons/bs";
 import {
@@ -30,14 +31,19 @@ import {
   MdMoreHoriz,
   MdRepeat,
 } from "react-icons/md";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import CardDetailsDialog from "./card-details-dialog";
 import ManageCardDialog from "./manage-card-dialog";
 import CustomAlertDialog from "./ui/custom-alert-dialog";
+import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
+import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
+import { truncate } from "lodash";
 
 interface CardsListProps {
   cards: DetailedCard[];
 }
+
+const TABLE_CELL_CHARS_LIMIT = 150;
 
 export default function CardsList({ cards }: CardsListProps): JSX.Element {
   const [bufferedCard, setBufferedCard] =
@@ -91,10 +97,14 @@ export default function CardsList({ cards }: CardsListProps): JSX.Element {
                 </Tag>
               </Td>
               <Td>
-                <Text>{card.obverse}</Text>
+                <Text>
+                  {truncate(card.obverse, { length: TABLE_CELL_CHARS_LIMIT })}
+                </Text>
               </Td>
               <Td>
-                <Text>{card.reverse}</Text>
+                <Text>
+                  {truncate(card.reverse, { length: TABLE_CELL_CHARS_LIMIT })}
+                </Text>
               </Td>
               <Td>
                 <Wrap>
@@ -130,7 +140,11 @@ export default function CardsList({ cards }: CardsListProps): JSX.Element {
                     >
                       Edit card
                     </MenuItem>
-                    <MenuItem color="red.500" icon={<MdDelete size={18} />}>
+                    <MenuItem
+                      color="red.500"
+                      icon={<MdDelete size={18} />}
+                      onClick={onDeleteCardConfirmationDialogOpen}
+                    >
                       Delete card
                     </MenuItem>
                   </MenuList>
@@ -152,40 +166,13 @@ export default function CardsList({ cards }: CardsListProps): JSX.Element {
             isOpen={isEditCardDialogOpen}
             onClose={onEditCardDialogClose}
           />
+          <DeleteCardConfirmationDialog
+            card={bufferedCard}
+            isOpen={isDeleteCardConfirmationDialogOpen}
+            onClose={onDeleteCardConfirmationDialogClose}
+          />
         </>
       )}
     </>
-  );
-}
-
-interface DeleteCardVariables {
-  deckId: number;
-  cardId: number;
-}
-
-// async function deleteCard(variables: DeleteCardVariables) {}
-
-interface DeleteCardConfirmationDialogProps {
-  card: DetailedCard;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-function DeleteCardConfirmationDialog({
-  card,
-  isOpen,
-  onClose,
-}: DeleteCardConfirmationDialogProps): JSX.Element {
-  const deleteCardMutation = useMutation();
-
-  return (
-    <CustomAlertDialog
-      title="Delete card?"
-      content="Are you sure?"
-      isLoading={false}
-      isOpen={isOpen}
-      onClose={onClose}
-      onConfirm={}
-    />
   );
 }

@@ -21,7 +21,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </ChakraProvider>
       </AuthProvider>
-      <ReactQueryDevtools position="bottom-right" />
+      {/* <ReactQueryDevtools position="bottom-right" /> */}
     </QueryClientProvider>
   );
 };

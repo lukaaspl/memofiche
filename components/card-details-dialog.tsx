@@ -36,26 +36,29 @@ export default function CardDetailsDialog({
   return (
     <CustomDialog
       title="Card details"
+      size="lg"
       isOpen={isOpen}
       onClose={onClose}
       render={({ Body, Footer }) => (
         <>
           <Body>
             <Stack direction="column" spacing={3}>
-              {cardDetailsSections.map((section, index) => (
-                <Box key={index}>
-                  <Tag colorScheme="purple">
-                    <TagLabel
-                      fontWeight="bold"
-                      fontFamily="Poppins"
-                      textTransform="uppercase"
-                    >
-                      {section.header}
-                    </TagLabel>
-                  </Tag>
-                  <Text my={2}>{section.content}</Text>
-                </Box>
-              ))}
+              {cardDetailsSections
+                .filter((section) => section.content.length > 0)
+                .map((section, index) => (
+                  <Box key={index}>
+                    <Tag colorScheme="purple">
+                      <TagLabel
+                        fontWeight="bold"
+                        fontFamily="Poppins"
+                        textTransform="uppercase"
+                      >
+                        {section.header}
+                      </TagLabel>
+                    </Tag>
+                    <Text my={2}>{section.content}</Text>
+                  </Box>
+                ))}
             </Stack>
           </Body>
           <Footer>

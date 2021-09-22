@@ -53,15 +53,12 @@ specifiedCardHandler.put(async (req, res) => {
     const [requestedCard] = requestedDeckWithSpecifiedCard.cards;
 
     try {
-      const updatedCard = await updateDeckCard(
-        parsedQuery.data.deckId,
-        requestedCard,
-        parsedBody.data
-      );
+      const updatedCard = await updateDeckCard(requestedCard, parsedBody.data);
 
       res.json(updatedCard);
-    } catch {
-      sendError(new InternalServerError("Couldn't create deck's card entity"));
+    } catch (e) {
+      console.log(e);
+      sendError(new InternalServerError("Couldn't update deck's card entity"));
     }
   } catch {
     sendError(
@@ -87,28 +84,39 @@ specifiedCardHandler.delete(async (req, res) => {
     return;
   }
 
-  // await prisma.card.delete
-  // try {
-  //   const requestedDeckWithSpecifiedCard = await findUserDeckWithSpecifiedCard(
-  //     userId,
-  //     parsedQuery.data.deckId,
-  //     parsedQuery.data.cardId
-  //   );
+  try {
+    const requestedDeckWithSpecifiedCard = await findUserDeckWithSpecifiedCard(
+      userId,
+      parsedQuery.data.deckId,
+      parsedQuery.data.cardId
+    );
 
-  //   if (
-  //     !requestedDeckWithSpecifiedCard ||
-  //     requestedDeckWithSpecifiedCard.cards.length === 0
-  //   ) {
-  //     sendError(new NotFound("Deck or specified card does not exist"));
-  //     return;
-  //   }
-  // } catch {
-  //   sendError(
-  //     new InternalServerError("Couldn't exec find operation on deck entity")
-  //   );
-  // }
+    if (
+      !requestedDeckWithSpecifiedCard ||
+      requestedDeckWithSpecifiedCard.cards.length === 0
+    ) {
+      sendError(new NotFound("Deck or specified card does not exist"));
+      return;
+    }
 
-  // const deletedCard = await
+    try {
+      const deletedCard = await prisma.card.delete({
+        where: { id: parsedQuery.data.cardId },
+      });
+
+      res.json(deletedCard);
+    } catch {
+      sendError(
+        new InternalServerError(
+          "Couldn't exec delete operation on a card entity"
+        )
+      );
+    }
+  } catch {
+    sendError(
+      new InternalServerError("Couldn't exec find operation on a deck entity")
+    );
+  }
 });
 
 export default specifiedCardHandler;

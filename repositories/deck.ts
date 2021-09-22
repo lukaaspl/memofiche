@@ -4,7 +4,9 @@ import prisma from "lib/prisma";
 
 export async function findUserDecks(userId: number) {
   const userDecks = await prisma.deck.findMany({
-    where: { userId },
+    where: {
+      userId,
+    },
     select: {
       id: true,
       name: true,
@@ -40,6 +42,9 @@ export async function findUserDeck(userId: number, deckId: number) {
               },
             },
           },
+        },
+        orderBy: {
+          id: "desc",
         },
       },
       tags: {

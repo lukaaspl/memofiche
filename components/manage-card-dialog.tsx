@@ -43,8 +43,8 @@ interface FormValues {
   tags: string;
 }
 
-async function createCard(requestData: PostCardRequestData): Promise<Card> {
-  const { deckId, ...body } = requestData;
+async function createCard(variables: PostCardRequestData): Promise<Card> {
+  const { deckId, ...body } = variables;
 
   const { data: createdCard } = await authApiClient.post<Card>(
     `/decks/${deckId}/card`,
@@ -54,11 +54,11 @@ async function createCard(requestData: PostCardRequestData): Promise<Card> {
   return createdCard;
 }
 
-async function updateCard(requestData: UpdateCardRequestData): Promise<Card> {
-  const { id, ...body } = requestData;
+async function updateCard(variables: UpdateCardRequestData): Promise<Card> {
+  const { id, deckId, ...body } = variables;
 
   const { data: updatedCard } = await authApiClient.put<Card>(
-    `/decks/${id}`,
+    `/decks/${deckId}/card/${id}`,
     body
   );
 

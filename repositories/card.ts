@@ -7,7 +7,6 @@ import prisma from "lib/prisma";
 import { getDefaultMemoDetails } from "utils/super-memo";
 
 export async function updateDeckCard(
-  cardId: number,
   oldCard: Card & { memoDetails: Nullable<CardMemoDetails> },
   updatedCard: UpdatedCardRequestBody
 ): Promise<Card> {
@@ -15,11 +14,13 @@ export async function updateDeckCard(
     updatedCard.obverse !== oldCard.obverse ||
     updatedCard.reverse !== oldCard.reverse;
 
+  // console.log({ cardId, oldCard, updatedCard });
+
   const MDdefaults = getDefaultMemoDetails();
 
   return await prisma.card.update({
     where: {
-      id: cardId,
+      id: oldCard.id,
     },
     data: {
       obverse: updatedCard.obverse,
