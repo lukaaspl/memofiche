@@ -1,4 +1,4 @@
-import { AnimatedSkeletonStack } from "components/ui/animated-skeleton";
+import ProfileDetails from "components/profile-details";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";
@@ -11,7 +11,7 @@ const ProfilePage: NextPage = () => {
   return (
     <Layout>
       <PrimaryHeading>Profile</PrimaryHeading>
-      <AnimatedSkeletonStack />
+      <ProfileDetails />
     </Layout>
   );
 };

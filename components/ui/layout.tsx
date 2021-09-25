@@ -1,14 +1,16 @@
 import {
   Box,
   Container,
+  Fade,
   Flex,
   Heading,
   IconButton,
   Spacer,
+  Text,
   Tooltip,
   VStack,
-  Text,
 } from "@chakra-ui/react";
+import InitializingView from "components/initializing-view";
 import AnimatedSkeleton from "components/ui/animated-skeleton";
 import NavLink from "components/ui/nav-link";
 import useAuth from "hooks/use-auth";
@@ -83,9 +85,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   const { userData, isLogged } = useAuth();
 
   if (!isLogged) {
-    return (
-      <Text m={2}>Zaczekaj byczku, sprawdzam czy jestes zalogowany...</Text>
-    );
+    return <InitializingView />;
   }
 
   return (
@@ -133,9 +133,11 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
             </Text>
           </AnimatedSkeleton>
         </Box>
-        <Container maxW="container.lg" mx="auto">
-          {children}
-        </Container>
+        <Fade in transition={{ enter: { duration: 0.15 } }}>
+          <Container maxW="container.lg" mx="auto">
+            {children}
+          </Container>
+        </Fade>
       </Box>
     </Flex>
   );

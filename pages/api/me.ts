@@ -8,6 +8,8 @@ const meHandler = createApiHandler();
 
 meHandler.use(authenticated);
 
+// Get user data
+// GET api/me
 meHandler.get(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);

@@ -8,7 +8,29 @@
 
 body {
   font-family: Poppins, sans-serif;
-  /* overflow: hidden; */
+}
+
+@keyframes breathing {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.65;
+    transform: scale(0.93);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animated-logo {
+  animation: breathing 5s ease-out infinite normal;
 }
 
 .container {

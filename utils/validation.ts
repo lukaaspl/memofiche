@@ -23,3 +23,10 @@ export const postCardBodySchema = z.object({
   type: z.enum([CardType.Normal, CardType.Reverse]).default(CardType.Normal),
   tags: z.array(z.string()).default([]),
 });
+
+export const updateProfileBodySchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  website: z.string(),
+  bio: z.string(),
+});

@@ -93,6 +93,7 @@ model Profile {
   firstName String?
   lastName  String?
   bio       String?
+  website   String?
   avatar    Avatar?
   updatedAt DateTime @updatedAt
 }
@@ -101,6 +102,6 @@ model Avatar {
   id        Int      @id @default(autoincrement())
   profileId Int
   profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  avatar    String
+  source    String?
   updatedAt DateTime @updatedAt
 }

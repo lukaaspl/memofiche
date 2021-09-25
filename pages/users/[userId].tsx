@@ -41,7 +41,7 @@ const UserPage: NextPage<UserPageProps> = ({ user }) => {
           borderRadius: 4,
           margin: 15,
         }}
-        src={`data:image/png;base64,${user.profile?.avatar?.avatar}`}
+        src={`data:image/png;base64,${user.profile?.avatar?.source}`}
         alt="Avatar"
       />
       <p>

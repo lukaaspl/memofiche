@@ -56,8 +56,7 @@ specifiedCardHandler.put(async (req, res) => {
       const updatedCard = await updateDeckCard(requestedCard, parsedBody.data);
 
       res.json(updatedCard);
-    } catch (e) {
-      console.log(e);
+    } catch {
       sendError(new InternalServerError("Couldn't update deck's card entity"));
     }
   } catch {

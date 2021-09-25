@@ -50,7 +50,11 @@ registerHandler.post(async (req, res) => {
         password: await hashPassword(parsedBody.data.password),
         name: parsedBody.data.name,
         profile: {
-          create: {},
+          create: {
+            avatar: {
+              create: {},
+            },
+          },
         },
       },
     });

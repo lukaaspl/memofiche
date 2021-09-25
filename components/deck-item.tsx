@@ -84,7 +84,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
     onSuccess: () => {
       toast({
         status: "success",
-        description: "Deck has been deleted successfully.",
+        description: "Deck has been deleted successfully",
       });
 
       queryClient.invalidateQueries(DECKS_QUERY_KEY);

@@ -3,6 +3,9 @@
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
+  images: {
+    domains: ["scontent.fpoz5-1.fna.fbcdn.net"],
+  },
   webpack(config, options) {
     const { dev, isServer } = options;
 

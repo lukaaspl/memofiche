@@ -14,8 +14,6 @@ export async function updateDeckCard(
     updatedCard.obverse !== oldCard.obverse ||
     updatedCard.reverse !== oldCard.reverse;
 
-  // console.log({ cardId, oldCard, updatedCard });
-
   const MDdefaults = getDefaultMemoDetails();
 
   return await prisma.card.update({
