@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { Card, CardMemoDetails } from "@prisma/client";
+import { Card, CardMemoParams } from "@prisma/client";
 import { Nullable } from "domains";
 import { UpdatedCardRequestBody } from "domains/card";
 import prisma from "lib/prisma";
-import { getDefaultMemoDetails } from "utils/super-memo";
+import { getInitialSMParams } from "utils/super-memo";
 
 export async function updateDeckCard(
-  oldCard: Card & { memoDetails: Nullable<CardMemoDetails> },
+  oldCard: Card & { memoParams: Nullable<CardMemoParams> },
   updatedCard: UpdatedCardRequestBody
 ): Promise<Card> {
-  const shouldResetMemoDetails =
+  const shouldResetMemoParams =
     updatedCard.obverse !== oldCard.obverse ||
     updatedCard.reverse !== oldCard.reverse;
 
-  const MDdefaults = getDefaultMemoDetails();
+  const MDdefaults = getInitialSMParams();
 
   return await prisma.card.update({
     where: {
@@ -35,22 +35,22 @@ export async function updateDeckCard(
           },
         })),
       },
-      memoDetails: {
+      memoParams: {
         update: {
           easiness: {
-            set: shouldResetMemoDetails
+            set: shouldResetMemoParams
               ? MDdefaults.easiness
-              : oldCard.memoDetails?.easiness,
+              : oldCard.memoParams?.easiness,
           },
           interval: {
-            set: shouldResetMemoDetails
+            set: shouldResetMemoParams
               ? MDdefaults.interval
-              : oldCard.memoDetails?.interval,
+              : oldCard.memoParams?.interval,
           },
           repetitions: {
-            set: shouldResetMemoDetails
+            set: shouldResetMemoParams
               ? MDdefaults.repetitions
-              : oldCard.memoDetails?.repetitions,
+              : oldCard.memoParams?.repetitions,
           },
         },
       },

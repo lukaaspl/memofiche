@@ -4,13 +4,14 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   root: {
-    position: "relative",
+    backgroundColor: "transparent",
     width: 400,
-    minHeight: 200,
+    height: 200,
     margin: "10px 0 20px",
+    perspective: "1000px",
   },
   card: {
-    position: "absolute",
+    position: "relative",
     width: "100%",
     height: "100%",
     boxShadow: "0 10px 5px -5px rgba(0, 0, 0, 0.2)",
@@ -21,10 +22,10 @@ const useStyles = createUseStyles({
     transform: "rotateY(180deg)",
   },
   front: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
+    // justifyContent: "center",
     position: "absolute",
     width: "100%",
     height: "100%",
@@ -34,10 +35,10 @@ const useStyles = createUseStyles({
     backfaceVisibility: "hidden",
   },
   back: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
+    // justifyContent: "center",
     position: "absolute",
     width: "100%",
     height: "100%",
@@ -48,6 +49,9 @@ const useStyles = createUseStyles({
     transform: "rotateY(180deg)",
   },
   subtitle: {
+    // position: "relative",
+    left: 5,
+    top: 5,
     fontSize: 18,
     color: "#bbb",
   },

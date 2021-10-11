@@ -8,11 +8,11 @@ import {
   ListItem,
   Stack,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { DetailedProfile } from "domains/user";
 import useAuth from "hooks/use-auth";
+import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { authApiClient } from "lib/axios";
 import React, { useMemo } from "react";
 import { MdEdit, MdEmail, MdInsertLink, MdPerson } from "react-icons/md";
@@ -31,11 +31,11 @@ async function fetchProfile(): Promise<DetailedProfile> {
 export default function ProfileDetails(): JSX.Element {
   const { userData } = useAuth();
 
-  const {
-    isOpen: isEditProfileDialogOpen,
-    onOpen: onEditProfileDialogOpen,
-    onClose: onEditProfileDialogClose,
-  } = useDisclosure();
+  const [
+    isEditProfileDialogOpen,
+    onEditProfileDialogOpen,
+    onEditProfileDialogClose,
+  ] = useSimpleDisclosure();
 
   const {
     data: profile,

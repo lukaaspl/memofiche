@@ -45,7 +45,7 @@ rateCardHandler.post(async (req, res) => {
       id: parsedBody.data.cardId,
     },
     include: {
-      memoDetails: true,
+      memoParams: true,
     },
   });
 
@@ -54,31 +54,31 @@ rateCardHandler.post(async (req, res) => {
     return;
   }
 
-  if (!requestedCard.memoDetails) {
+  if (!requestedCard.memoParams) {
     sendError(new InternalServerError());
     return;
   }
 
-  const updatedMemoDetails = superMemo(
-    requestedCard.memoDetails,
+  const updatedMemoParams = superMemo(
+    requestedCard.memoParams,
     parsedBody.data.grade
   );
 
-  const updatedCardWithMemoDetails = await prisma.card.update({
+  const updatedCardWithMemoParams = await prisma.card.update({
     where: {
       id: parsedBody.data.cardId,
     },
     data: {
-      memoDetails: {
-        update: updatedMemoDetails,
+      memoParams: {
+        update: updatedMemoParams,
       },
     },
     include: {
-      memoDetails: true,
+      memoParams: true,
     },
   });
 
-  res.json(updatedCardWithMemoDetails);
+  res.json(updatedCardWithMemoParams);
 });
 
 export default rateCardHandler;

@@ -3,7 +3,7 @@ import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
-import { getDefaultMemoDetails } from "utils/super-memo";
+import { getInitialSMParams } from "utils/super-memo";
 import { postCardBodySchema, stringNumberSchema } from "utils/validation";
 import { z } from "zod";
 
@@ -59,8 +59,8 @@ cardHandler.post(async (req, res) => {
             },
           })),
         },
-        memoDetails: {
-          create: getDefaultMemoDetails(),
+        memoParams: {
+          create: getInitialSMParams(),
         },
       },
     });

@@ -9,33 +9,25 @@ import {
   Tag,
   TagLabel,
   Text,
-  useDisclosure,
   useToast,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
 import { Deck } from "@prisma/client";
 import PrimaryHeading from "components/ui/primary-heading";
-import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
-import { DetailedDeck } from "domains/deck";
+import { DECKS_QUERY_KEY } from "consts/query-keys";
+import useDeckQuery from "hooks/use-deck-query";
+import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { authApiClient } from "lib/axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import CardsList from "./cards-list";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
 import CustomAlertDialog from "./ui/custom-alert-dialog";
-
-async function fetchDeckById(deckId: number): Promise<DetailedDeck> {
-  const { data: deck } = await authApiClient.get<DetailedDeck>(
-    `/decks/${deckId}`
-  );
-
-  return deck;
-}
 
 async function deleteDeckById(deckId: number): Promise<Deck> {
   const { data: deletedDeck } = await authApiClient.delete<Deck>(
@@ -50,35 +42,24 @@ interface DeckItemProps {
 }
 
 export default function DeckItem({ id }: DeckItemProps): JSX.Element {
+  const { data: deck, isLoading, error } = useDeckQuery(id);
   const queryClient = useQueryClient();
   const toast = useToast();
   const router = useRouter();
 
-  const {
-    isOpen: isEditDeckDialogOpen,
-    onClose: onEditDeckDialogClose,
-    onOpen: onEditDeckDialogOpen,
-  } = useDisclosure();
+  const [isEditDeckDialogOpen, onEditDeckDialogClose, onEditDeckDialogOpen] =
+    useSimpleDisclosure();
 
-  const {
-    isOpen: isDeleteDeckConfirmationDialogOpen,
-    onClose: onDeleteDeckConfirmationDialogClose,
-    onOpen: onDeleteDeckConfirmationDialogOpen,
-  } = useDisclosure();
+  const [
+    isDeleteDeckConfirmationDialogOpen,
+    onDeleteDeckConfirmationDialogClose,
+    onDeleteDeckConfirmationDialogOpen,
+  ] = useSimpleDisclosure();
 
-  const {
-    isOpen: isNewCardDialogOpen,
-    onClose: onNewCardDialogClose,
-    onOpen: onNewCardDialogOpen,
-  } = useDisclosure();
-
-  const {
-    data: deck,
-    isLoading,
-    error,
-  } = useQuery(SPECIFIED_DECK_QUERY_KEY(id), ({ queryKey: [, id] }) =>
-    fetchDeckById(id)
-  );
+  const [isNewCardDialogOpen, onNewCardDialogClose, onNewCardDialogOpen] =
+    useSimpleDisclosure({
+      defaultIsOpen: Boolean(router.query["add-card"]),
+    });
 
   const deleteDeckMutation = useMutation(deleteDeckById, {
     onSuccess: () => {
@@ -111,7 +92,12 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
   return (
     <>
       <Flex justify="space-between" align="center">
-        <PrimaryHeading>{deck.name}</PrimaryHeading>
+        <PrimaryHeading>
+          <Text as="span" color="purple.700">
+            {deck.name}
+          </Text>{" "}
+          deck
+        </PrimaryHeading>
         <Box>
           <IconButton
             aria-label="Edit deck"
@@ -164,7 +150,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
           </WrapItem>
         ))}
       </Wrap>
-      <Link href="/v2/decks">
+      <Link href="/v2/decks" passHref>
         <Button variant="link">&laquo; Back to decks</Button>
       </Link>
       <Flex mt={6} mb={2} justify="space-between" align="center">

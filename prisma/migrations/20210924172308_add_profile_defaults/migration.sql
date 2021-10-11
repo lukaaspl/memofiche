@@ -1,4 +1,0 @@
--- AlterTable
-ALTER TABLE "Profile" ALTER COLUMN "firstName" SET DEFAULT E'',
-ALTER COLUMN "lastName" SET DEFAULT E'',
-ALTER COLUMN "bio" SET DEFAULT E'';

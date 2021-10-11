@@ -31,13 +31,13 @@ export default function FlashcardPreview({
       </h2>
       <ul className="card__details">
         <li>
-          EF: <b>{card.memoDetails.easiness.toFixed(2)}</b>
+          EF: <b>{card.smParams.easiness.toFixed(2)}</b>
         </li>
         <li>
-          INT: <b>{card.memoDetails.interval}</b>
+          INT: <b>{card.smParams.interval}</b>
         </li>
         <li>
-          REP: <b>{card.memoDetails.repetitions}</b>
+          REP: <b>{card.smParams.repetitions}</b>
         </li>
       </ul>
     </div>

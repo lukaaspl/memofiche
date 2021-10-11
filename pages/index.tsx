@@ -7,7 +7,7 @@ import { Card } from "domains";
 import { NextPage } from "next";
 import React, { useState } from "react";
 import { createCard, getNextPractice } from "utils/cards";
-import { getDefaultMemoDetails, superMemo } from "utils/super-memo";
+import { getInitialSMParams, superMemo } from "utils/super-memo";
 
 const IndexPage: NextPage = () => {
   const [cards, setCards] = useState<Card[]>([
@@ -20,12 +20,12 @@ const IndexPage: NextPage = () => {
     setCards((cards) =>
       cards.map((card) => {
         if (card.id === cardId) {
-          const updatedMemoDetails = superMemo(card.memoDetails, quality);
+          const updatedMemoParams = superMemo(card.smParams, quality);
 
           const updatedCard: Card = {
             ...card,
-            nextPractice: getNextPractice(updatedMemoDetails.interval),
-            memoDetails: updatedMemoDetails,
+            nextPractice: getNextPractice(updatedMemoParams.interval),
+            smParams: updatedMemoParams,
           };
 
           return updatedCard;
@@ -53,7 +53,7 @@ const IndexPage: NextPage = () => {
         return {
           ...card,
           nextPractice: Date.now(),
-          memoDetails: getDefaultMemoDetails(),
+          smParams: getInitialSMParams(),
         };
       })
     );

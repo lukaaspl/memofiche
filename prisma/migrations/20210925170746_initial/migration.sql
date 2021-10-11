@@ -82,6 +82,7 @@ CREATE TABLE "Profile" (
     "firstName" TEXT,
     "lastName" TEXT,
     "bio" TEXT,
+    "website" TEXT,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
@@ -91,7 +92,7 @@ CREATE TABLE "Profile" (
 CREATE TABLE "Avatar" (
     "id" SERIAL NOT NULL,
     "profileId" INTEGER NOT NULL,
-    "avatar" TEXT NOT NULL,
+    "source" TEXT,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Avatar_pkey" PRIMARY KEY ("id")

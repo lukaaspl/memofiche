@@ -1,45 +1,23 @@
 import {
   Box,
   Button,
-  Center,
-  chakra,
   CircularProgress,
   Divider,
   Flex,
   Heading,
   List,
   ListItem,
-  Stack,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
-import { DECKS_QUERY_KEY } from "consts/query-keys";
-import { authApiClient } from "lib/axios";
-import { Prisma } from "lib/prisma";
-import { findUserDecks } from "repositories/deck";
+import useDecksQuery from "hooks/use-decks-query";
+import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import React from "react";
-import { MdFolder } from "react-icons/md";
-import { useQuery } from "react-query";
-import Link from "next/link";
 import ManageDeckDialog from "./manage-deck-dialog";
-
-type DetailedDecks = Prisma.PromiseReturnType<typeof findUserDecks>;
-
-const FolderIcon = chakra(MdFolder);
-
-async function fetchDecks(): Promise<DetailedDecks> {
-  const { data: decks } = await authApiClient.get<DetailedDecks>("/decks");
-  return decks;
-}
+import CustomList from "./ui/custom-list";
 
 export default function DecksList(): JSX.Element {
-  const { isOpen, onClose, onOpen } = useDisclosure();
-
-  const {
-    data: decks,
-    isLoading,
-    error,
-  } = useQuery(DECKS_QUERY_KEY, fetchDecks);
+  const [isOpen, onClose, onOpen] = useSimpleDisclosure();
+  const { data: decks, isLoading, error } = useDecksQuery();
 
   if (error) {
     return (
@@ -69,44 +47,30 @@ export default function DecksList(): JSX.Element {
         <ManageDeckDialog isOpen={isOpen} onClose={onClose} />
       </Flex>
       <Divider />
-      <List spacing={6} mt={5}>
-        {decks.map((deck) => (
-          <ListItem
-            key={deck.id}
-            _hover={{ backgroundColor: "purple.50" }}
-            cursor="pointer"
-          >
-            <Link href={`/v2/decks/${deck.id}`}>
-              <Stack direction="row">
-                <Center
-                  w="100px"
-                  h="100px"
-                  backgroundColor="purple.500"
-                  borderRadius="md"
-                >
-                  <FolderIcon size={30} color="white" />
-                </Center>
-                <Box p={2}>
-                  <Heading size="sm" color="purple.900">
-                    {deck.name}
-                  </Heading>
-                  <List my={1}>
-                    <ListItem fontSize="smaller">
-                      Created: {new Date(deck.createdAt).toLocaleString()}
-                    </ListItem>
-                    <ListItem fontSize="smaller">
-                      Last modified: {new Date(deck.updatedAt).toLocaleString()}
-                    </ListItem>
-                    <ListItem fontSize="smaller">
-                      Cards: <b>{deck._count?.cards}</b>
-                    </ListItem>
-                  </List>
-                </Box>
-              </Stack>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
+      <CustomList
+        mt={5}
+        items={decks}
+        selectId={(deck) => deck.id}
+        renderItem={(deck) => (
+          <>
+            <Heading size="sm" color="purple.900">
+              {deck.name}
+            </Heading>
+            <List my={1}>
+              <ListItem fontSize="smaller">
+                Created: {new Date(deck.createdAt).toLocaleString()}
+              </ListItem>
+              <ListItem fontSize="smaller">
+                Last modified: {new Date(deck.updatedAt).toLocaleString()}
+              </ListItem>
+              <ListItem fontSize="smaller">
+                Cards: <b>{deck.cards.length}</b>
+              </ListItem>
+            </List>
+          </>
+        )}
+        generateLinkHref={(deck) => `/v2/decks/${deck.id}`}
+      />
     </>
   );
 }

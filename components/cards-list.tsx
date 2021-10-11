@@ -14,13 +14,13 @@ import {
   Th,
   Thead,
   Tr,
-  useDisclosure,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
 import { CardType } from "@prisma/client";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
+import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { truncate } from "lodash";
 import React, { useState } from "react";
 import { BsCardText } from "react-icons/bs";
@@ -45,23 +45,20 @@ export default function CardsList({ cards }: CardsListProps): JSX.Element {
   const [bufferedCard, setBufferedCard] =
     useState<Nullable<DetailedCard>>(null);
 
-  const {
-    isOpen: isCardDetailsDialogOpen,
-    onOpen: onCardDetailsDialogOpen,
-    onClose: onCardDetailsDialogClose,
-  } = useDisclosure();
+  const [
+    isCardDetailsDialogOpen,
+    onCardDetailsDialogOpen,
+    onCardDetailsDialogClose,
+  ] = useSimpleDisclosure();
 
-  const {
-    isOpen: isEditCardDialogOpen,
-    onOpen: onEditCardDialogOpen,
-    onClose: onEditCardDialogClose,
-  } = useDisclosure();
+  const [isEditCardDialogOpen, onEditCardDialogOpen, onEditCardDialogClose] =
+    useSimpleDisclosure();
 
-  const {
-    isOpen: isDeleteCardConfirmationDialogOpen,
-    onOpen: onDeleteCardConfirmationDialogOpen,
-    onClose: onDeleteCardConfirmationDialogClose,
-  } = useDisclosure();
+  const [
+    isDeleteCardConfirmationDialogOpen,
+    onDeleteCardConfirmationDialogOpen,
+    onDeleteCardConfirmationDialogClose,
+  ] = useSimpleDisclosure();
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { BadRequest, Conflict, InternalServerError } from "http-errors";
 import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { findUserDecks } from "repositories/deck";
+import { findUserDecksWithCards } from "repositories/deck";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { postDeckBodySchema } from "utils/validation";
@@ -22,7 +22,7 @@ decksHandler.get(async (req, res) => {
   }
 
   try {
-    const userDecks = await findUserDecks(userId);
+    const userDecks = await findUserDecksWithCards(userId);
     res.send(userDecks);
   } catch {
     sendError(new InternalServerError());

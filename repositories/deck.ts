@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import prisma from "lib/prisma";
 
-export async function findUserDecks(userId: number) {
+export async function findUserDecksWithCards(userId: number) {
   const userDecks = await prisma.deck.findMany({
     where: {
       userId,
@@ -13,8 +13,14 @@ export async function findUserDecks(userId: number) {
       tags: true,
       createdAt: true,
       updatedAt: true,
-      _count: {
-        select: { cards: true },
+      cards: {
+        select: {
+          memoParams: {
+            select: {
+              dueDate: true,
+            },
+          },
+        },
       },
     },
   });
@@ -33,6 +39,7 @@ export async function findUserDeck(userId: number, deckId: number) {
       name: true,
       cards: {
         include: {
+          memoParams: true,
           tags: {
             select: {
               tag: {
@@ -79,7 +86,7 @@ export async function findUserDeckWithSpecifiedCard(
         where: {
           id: cardId,
         },
-        include: { memoDetails: true },
+        include: { memoParams: true },
       },
     },
   });
