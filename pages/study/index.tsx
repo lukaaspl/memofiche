@@ -1,19 +1,19 @@
-import { AnimatedSkeletonStack } from "components/ui/animated-skeleton";
+import StudyDecksList from "components/study/study-decks-list";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";
 import { NextPage } from "next";
 import React from "react";
 
-const DashboardPage: NextPage = () => {
+const StudyPage: NextPage = () => {
   usePrivateRoute();
 
   return (
     <Layout>
-      <PrimaryHeading>Dashboard</PrimaryHeading>
-      <AnimatedSkeletonStack />
+      <PrimaryHeading>Study</PrimaryHeading>
+      <StudyDecksList />
     </Layout>
   );
 };
 
-export default DashboardPage;
+export default StudyPage;

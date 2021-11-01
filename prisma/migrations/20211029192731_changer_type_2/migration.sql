@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "StudySession" ALTER COLUMN "avgTimePerCard" SET DATA TYPE DOUBLE PRECISION;

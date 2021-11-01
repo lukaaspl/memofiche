@@ -30,3 +30,27 @@ export const updateProfileBodySchema = z.object({
   website: z.string(),
   bio: z.string(),
 });
+
+export const postStudySessionBodySchema = z.object({
+  studyTime: z.number(),
+  avgTimePerCard: z.number(),
+  avgRate: z.number(),
+  studiedCards: z.number(),
+  positiveCards: z.number(),
+  negativeCards: z.number(),
+  cardGrades: z.record(superMemoQualitySchema),
+});
+
+export const resetCardsQuerySchema = z.object({
+  deckId: stringNumberSchema,
+  mode: z.enum(["shallow", "deep"]).optional().default("shallow"),
+});
+
+export function assert(
+  condition: unknown,
+  message?: string
+): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
+}

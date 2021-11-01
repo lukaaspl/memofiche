@@ -15,6 +15,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import CustomButton from "components/ui/custom-button";
 import RedirectAlert from "components/ui/redirect-alert";
 import { Nullable } from "domains";
 import useAuth from "hooks/use-auth";
@@ -70,7 +71,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
 
   useEffect(() => {
     if (isLogged) {
-      router.push("/v2/");
+      router.push("/");
     }
   }, [isLogged, router]);
 
@@ -139,7 +140,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               />
             </InputGroup>
           )}
-          <Button
+          <CustomButton
             isFullWidth
             type="submit"
             colorScheme="purple"
@@ -148,7 +149,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
             loadingText="Processing..."
           >
             {onRegisterView ? "Create account" : "Go to app"}
-          </Button>
+          </CustomButton>
           {requestError && (
             <Alert status="error">
               <AlertIcon />

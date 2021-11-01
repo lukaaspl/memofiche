@@ -29,6 +29,8 @@ export default function CustomList<TItem>({
   generateLinkHref,
   ...listProps
 }: CustomListProps<TItem>): JSX.Element {
+  const isSelectable = typeof generateLinkHref !== "undefined";
+
   const getListItemContent = (
     item: TItem,
     isDisabled: boolean
@@ -60,10 +62,10 @@ export default function CustomList<TItem>({
               ? {}
               : {
                   _hover: { backgroundColor: "purple.50" },
-                  cursor: "pointer",
+                  cursor: isSelectable ? "pointer" : "default",
                 })}
           >
-            {generateLinkHref && !isDisabled ? (
+            {isSelectable && !isDisabled ? (
               <Link href={generateLinkHref(item)}>
                 {getListItemContent(item, isDisabled)}
               </Link>

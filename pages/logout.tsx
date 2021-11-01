@@ -19,7 +19,7 @@ const LogoutPage: NextPage = () => {
     queryClient.removeQueries();
 
     // redirect to login page
-    router.push("/v2/sign");
+    router.push("/sign");
   }, [logOut, queryClient, router]);
 
   useEffect(logOutEffect, [logOutEffect]);

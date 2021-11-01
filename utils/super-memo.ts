@@ -1,13 +1,23 @@
 import { SMParams } from "domains";
+import { getMsFromDays } from "./date-time";
 
 const MIN_EF = 1.3;
 const MAX_QUALITY = 5;
+
+function getIntervalBasedDueDate(interval?: number): Date {
+  if (!interval) {
+    return new Date(Date.now());
+  }
+
+  return new Date(Date.now() + getMsFromDays(interval));
+}
 
 export function getInitialSMParams(): SMParams {
   return {
     repetitions: 0,
     easiness: 2.5,
     interval: 0,
+    dueDate: getIntervalBasedDueDate(),
   };
 }
 
@@ -38,10 +48,13 @@ export function superMemo(params: SMParams, rate: number): SMParams {
   const newEF = getEasinessFactor(params.easiness, rate);
 
   if (rate >= 3) {
+    const interval = getInterval(params);
+
     return {
       easiness: newEF,
       repetitions: params.repetitions + 1,
-      interval: getInterval(params),
+      interval,
+      dueDate: getIntervalBasedDueDate(interval),
     };
   }
 
@@ -49,5 +62,6 @@ export function superMemo(params: SMParams, rate: number): SMParams {
     easiness: newEF,
     repetitions: 0,
     interval: 1,
+    dueDate: getIntervalBasedDueDate(1),
   };
 }

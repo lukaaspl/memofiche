@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -17,6 +16,7 @@ import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
+import CustomButton from "./ui/custom-button";
 
 interface EditProfileDialogProps {
   profile: DetailedProfile;
@@ -139,15 +139,15 @@ export default function EditProfileDialog({
             </Stack>
           </Body>
           <Footer>
-            <Button
+            <CustomButton
               isLoading={updateProfileMutation.isLoading}
               type="submit"
               colorScheme="purple"
               mr={3}
             >
               Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            </CustomButton>
+            <CustomButton onClick={onClose}>Cancel</CustomButton>
           </Footer>
         </form>
       )}

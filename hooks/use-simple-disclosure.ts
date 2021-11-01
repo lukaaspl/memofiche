@@ -9,7 +9,7 @@ type UseSimpleDisclosure = [
 export default function useSimpleDisclosure(
   props?: UseDisclosureProps
 ): UseSimpleDisclosure {
-  const { isOpen, onClose, onOpen } = useDisclosure(props);
+  const { isOpen, onOpen, onClose } = useDisclosure(props);
 
-  return [isOpen, onClose, onOpen];
+  return [isOpen, onOpen, onClose];
 }

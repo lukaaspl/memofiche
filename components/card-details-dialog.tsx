@@ -1,8 +1,9 @@
-import { Box, Button, Stack, Tag, TagLabel, Text } from "@chakra-ui/react";
+import { Box, Stack, Tag, TagLabel, Text } from "@chakra-ui/react";
 import CustomDialog from "components/ui/custom-dialog";
 import { DetailedCard } from "domains/card";
 import React, { useMemo } from "react";
 import { TagsConverter } from "utils/tags";
+import CustomButton from "./ui/custom-button";
 
 interface CardDetailsDialogProps {
   card: DetailedCard;
@@ -62,9 +63,9 @@ export default function CardDetailsDialog({
             </Stack>
           </Body>
           <Footer>
-            <Button colorScheme="purple" onClick={onClose}>
+            <CustomButton colorScheme="purple" onClick={onClose}>
               Done
-            </Button>
+            </CustomButton>
           </Footer>
         </>
       )}

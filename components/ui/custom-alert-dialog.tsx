@@ -7,10 +7,10 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   AlertDialogProps,
-  Button,
 } from "@chakra-ui/react";
 import { Nullable } from "domains";
 import React, { useRef } from "react";
+import CustomButton from "./custom-button";
 
 type AlertDialogPropsWithoutChildren = Omit<
   AlertDialogProps,
@@ -55,17 +55,17 @@ export default function CustomAlertDialog({
           {hasCloseButton && <AlertDialogCloseButton />}
           <AlertDialogBody>{content}</AlertDialogBody>
           <AlertDialogFooter>
-            <Button ref={leastDestructiveRef} onClick={onClose}>
+            <CustomButton ref={leastDestructiveRef} onClick={onClose}>
               {cancelButtonLabel}
-            </Button>
-            <Button
+            </CustomButton>
+            <CustomButton
               isLoading={isLoading}
               colorScheme="red"
               onClick={onConfirm}
               ml={3}
             >
               {confirmButtonLabel}
-            </Button>
+            </CustomButton>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialogOverlay>

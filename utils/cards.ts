@@ -1,29 +1,8 @@
 import { Card } from "@prisma/client";
-import { Card as LegacyCard, Nullable } from "domains";
-import { CardWithMemoParams } from "domains/deck";
+import { Nullable } from "domains";
+import { CardWithMemoParams, DetailedCard } from "domains/card";
 import { isEqual, pick } from "lodash";
-import { nanoid } from "nanoid";
-import { getInitialSMParams } from "utils/super-memo";
-
-export function createCard(obverse: string, reverse: string): LegacyCard {
-  return {
-    obverse,
-    reverse,
-    id: nanoid(),
-    nextPractice: Date.now(),
-    smParams: getInitialSMParams(),
-  };
-}
-
-const DAY_IN_MS = 1000 * 60 * 60 * 24;
-
-export function getNextPractice(interval: number): number {
-  return Date.now() + interval * DAY_IN_MS;
-}
-
-export function isCardReadyToStudy(card: LegacyCard): boolean {
-  return card.nextPractice <= Date.now();
-}
+import { superMemo } from "utils/super-memo";
 
 export function shouldUpdateMemoParams(card1: Card, card2: Card): boolean {
   const consideredFields: (keyof Card)[] = ["obverse", "reverse"];
@@ -33,14 +12,18 @@ export function shouldUpdateMemoParams(card1: Card, card2: Card): boolean {
   return !isEqual(c1, c2);
 }
 
+export function getCardDueDate<T extends CardWithMemoParams>(card: T): Date {
+  if (!card.memoParams) {
+    throw new Error("Card has not memo params assigned");
+  }
+
+  return new Date(card.memoParams.dueDate);
+}
+
 export function getReadyToStudyCards<T extends CardWithMemoParams>(
   cards: T[]
 ): T[] {
-  return cards.filter(
-    (card) =>
-      !card.memoParams?.dueDate ||
-      new Date(card.memoParams.dueDate).getTime() <= Date.now()
-  );
+  return cards.filter((card) => getCardDueDate(card).getTime() <= Date.now());
 }
 
 export function revealCardNearestStudyTime(
@@ -51,14 +34,21 @@ export function revealCardNearestStudyTime(
   }
 
   return cards.reduce((nearestTimestamp, card) => {
-    if (card.memoParams?.dueDate) {
-      const cardTimestamp = new Date(card.memoParams.dueDate).getTime();
+    const cardTimestamp = getCardDueDate(card).getTime();
 
-      if (cardTimestamp < nearestTimestamp) {
-        return cardTimestamp;
-      }
-    }
-
-    return nearestTimestamp;
+    return Math.min(cardTimestamp, nearestTimestamp);
   }, Infinity);
+}
+
+export function getPredictedInterval(
+  card: DetailedCard,
+  rate: number
+): Nullable<string> {
+  if (!card?.memoParams) {
+    return null;
+  }
+
+  const intervalInDays = superMemo(card.memoParams, rate).interval;
+
+  return `(+${intervalInDays} ${intervalInDays === 1 ? "day" : "days"})`;
 }

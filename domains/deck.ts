@@ -1,6 +1,6 @@
 import { Prisma } from "lib/prisma";
 import { findUserDeck, findUserDecksWithCards } from "repositories/deck";
-import { postDeckBodySchema } from "utils/validation";
+import { postDeckBodySchema, resetCardsQuerySchema } from "utils/validation";
 import { z } from "zod";
 
 export type PostDeckRequestData = z.input<typeof postDeckBodySchema>;
@@ -15,4 +15,10 @@ export type DecksWithCards = Prisma.PromiseReturnType<
   typeof findUserDecksWithCards
 >;
 
-export type CardWithMemoParams = DecksWithCards[0]["cards"][0];
+export type DeckWithCards = DecksWithCards[0];
+
+export type BasicDeckDetails = Pick<DeckWithCards, "id" | "name"> & {
+  cardsCount: number;
+};
+
+export type ResetCardsMode = z.infer<typeof resetCardsQuerySchema>["mode"];

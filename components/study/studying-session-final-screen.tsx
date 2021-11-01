@@ -1,0 +1,93 @@
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@chakra-ui/react";
+import Feedback from "components/ui/feedback";
+import { DECKS_QUERY_KEY } from "consts/query-keys";
+import {
+  PostStudySessionRequestData,
+  StudySessionsWithDeviations,
+} from "domains/study";
+import { StudyingState } from "hooks/use-studying";
+import { authApiClient } from "lib/axios";
+import React, { useEffect, useMemo } from "react";
+import { useMutation, useQueryClient } from "react-query";
+import { getStudyingSessionSummary } from "utils/study";
+import StudyingSessionSummary from "./studying-session-summary";
+
+interface StudyingSessionSummaryProps {
+  deckId: number;
+  state: StudyingState;
+}
+
+async function createStudySession(
+  requestData: { deckId: number } & PostStudySessionRequestData
+): Promise<StudySessionsWithDeviations> {
+  const { deckId, ...data } = requestData;
+
+  const { data: studySession } =
+    await authApiClient.post<StudySessionsWithDeviations>(
+      `/decks/${deckId}/study`,
+      data
+    );
+
+  return studySession;
+}
+
+export default function StudyingSessionFinalScreen({
+  deckId,
+  state,
+}: StudyingSessionSummaryProps): JSX.Element {
+  const queryClient = useQueryClient();
+
+  const { mutate, data, isLoading, isError } = useMutation(createStudySession, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(DECKS_QUERY_KEY);
+    },
+  });
+
+  const summary = useMemo(() => getStudyingSessionSummary(state), [state]);
+
+  useEffect(() => {
+    mutate({ deckId, ...summary });
+  }, [deckId, mutate, summary]);
+
+  return (
+    <>
+      <Alert
+        mt={8}
+        status="success"
+        variant="top-accent"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        height="200px"
+      >
+        <AlertIcon boxSize="45px" mr={0} />
+        <AlertTitle
+          mt={4}
+          mb={2}
+          fontSize="2xl"
+          fontFamily="Poppins"
+          textTransform="uppercase"
+        >
+          Session finished
+        </AlertTitle>
+        <AlertDescription maxWidth="sm">
+          You have successfully completed your studying session. Grab a few
+          statistics to find out how you did.
+        </AlertDescription>
+      </Alert>
+      {isError ? (
+        <Feedback type="error" mt={8} />
+      ) : isLoading || !data ? (
+        <Feedback type="loading" delay={0.5} mt={8} />
+      ) : (
+        <StudyingSessionSummary data={data} />
+      )}
+    </>
+  );
+}

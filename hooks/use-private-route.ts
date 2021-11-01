@@ -12,7 +12,7 @@ export default function usePrivateRoute(): void {
     }
 
     if (!isLogged) {
-      router.push("/v2/sign");
+      router.push("/sign");
     }
   }, [isLogged, router, userData.isLoading]);
 }

@@ -1,6 +1,5 @@
 import {
   Box,
-  CircularProgress,
   Flex,
   Heading,
   IconButton,
@@ -19,6 +18,7 @@ import { MdEdit, MdEmail, MdInsertLink, MdPerson } from "react-icons/md";
 import { useQuery } from "react-query";
 import EditProfileDialog from "./edit-profile-dialog";
 import ProfileDetailsAvatar from "./profile-details-avatar";
+import Feedback from "./ui/feedback";
 
 async function fetchProfile(): Promise<DetailedProfile> {
   const { data: profile } = await authApiClient.get<DetailedProfile>(
@@ -54,19 +54,11 @@ export default function ProfileDetails(): JSX.Element {
   );
 
   if (error) {
-    return (
-      <Box my={5} textAlign="center">
-        <Text>An error occurred</Text>
-      </Box>
-    );
+    return <Feedback type="error" />;
   }
 
   if (!profile || isLoading) {
-    return (
-      <Box my={5} textAlign="center">
-        <CircularProgress isIndeterminate color="purple.500" />
-      </Box>
-    );
+    return <Feedback type="loading" />;
   }
 
   const fullName = [profile.firstName, profile.lastName]
@@ -78,7 +70,7 @@ export default function ProfileDetails(): JSX.Element {
       <ProfileDetailsAvatar avatar={profile.avatar} />
       <Box pl={8}>
         {fullName.length > 0 && (
-          <Heading fontFamily="Gilroy" size="2xl" letterSpacing="1px">
+          <Heading fontFamily="Poppins" size="2xl" letterSpacing="1px">
             {fullName}
           </Heading>
         )}
@@ -87,7 +79,7 @@ export default function ProfileDetails(): JSX.Element {
             <ListItem key={index}>
               <Heading
                 letterSpacing="0.5px"
-                fontFamily="Gilroy"
+                fontFamily="Poppins"
                 size="sm"
                 color="purple.500"
               >

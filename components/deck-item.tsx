@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  CircularProgress,
   Divider,
   Flex,
   Heading,
@@ -14,12 +13,14 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { Deck } from "@prisma/client";
+import CustomAlertDialog from "components/ui/custom-alert-dialog";
+import Feedback from "components/ui/feedback";
+import GoBackButton from "components/ui/go-back-button";
 import PrimaryHeading from "components/ui/primary-heading";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import useDeckQuery from "hooks/use-deck-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { authApiClient } from "lib/axios";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
@@ -27,7 +28,7 @@ import { useMutation, useQueryClient } from "react-query";
 import CardsList from "./cards-list";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
-import CustomAlertDialog from "./ui/custom-alert-dialog";
+import CustomButton from "./ui/custom-button";
 
 async function deleteDeckById(deckId: number): Promise<Deck> {
   const { data: deletedDeck } = await authApiClient.delete<Deck>(
@@ -47,16 +48,16 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
   const toast = useToast();
   const router = useRouter();
 
-  const [isEditDeckDialogOpen, onEditDeckDialogClose, onEditDeckDialogOpen] =
+  const [isEditDeckDialogOpen, onEditDeckDialogOpen, onEditDeckDialogClose] =
     useSimpleDisclosure();
 
   const [
     isDeleteDeckConfirmationDialogOpen,
-    onDeleteDeckConfirmationDialogClose,
     onDeleteDeckConfirmationDialogOpen,
+    onDeleteDeckConfirmationDialogClose,
   ] = useSimpleDisclosure();
 
-  const [isNewCardDialogOpen, onNewCardDialogClose, onNewCardDialogOpen] =
+  const [isNewCardDialogOpen, onNewCardDialogOpen, onNewCardDialogClose] =
     useSimpleDisclosure({
       defaultIsOpen: Boolean(router.query["add-card"]),
     });
@@ -69,24 +70,16 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
       });
 
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
-      router.push("/v2/decks");
+      router.push("/decks");
     },
   });
 
   if (error) {
-    return (
-      <Box my={5} textAlign="center">
-        <Text>An error occurred</Text>
-      </Box>
-    );
+    return <Feedback type="error" />;
   }
 
   if (!deck || isLoading) {
-    return (
-      <Box my={5} textAlign="center">
-        <CircularProgress isIndeterminate color="purple.500" />
-      </Box>
-    );
+    return <Feedback type="loading" />;
   }
 
   return (
@@ -150,19 +143,12 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
           </WrapItem>
         ))}
       </Wrap>
-      <Link href="/v2/decks" passHref>
-        <Button variant="link">&laquo; Back to decks</Button>
-      </Link>
+      <GoBackButton />
       <Flex mt={6} mb={2} justify="space-between" align="center">
         <Heading size="md">Cards ({deck.cards.length})</Heading>
-        <Button
-          fontFamily="Poppins"
-          colorScheme="purple"
-          variant="solid"
-          onClick={onNewCardDialogOpen}
-        >
+        <CustomButton colorScheme="purple" onClick={onNewCardDialogOpen}>
           New card
-        </Button>
+        </CustomButton>
         <ManageCardDialog
           deckId={deck.id}
           isOpen={isNewCardDialogOpen}

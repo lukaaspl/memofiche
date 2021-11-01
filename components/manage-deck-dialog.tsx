@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -18,6 +17,7 @@ import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
+import CustomButton from "./ui/custom-button";
 import CustomDialog from "./ui/custom-dialog";
 
 interface ManageDeckDialogProps {
@@ -142,7 +142,7 @@ export default function ManageDeckDialog({
             </FormControl>
           </Body>
           <Footer>
-            <Button
+            <CustomButton
               isLoading={
                 isEditMode
                   ? updateDeckMutation.isLoading
@@ -152,9 +152,9 @@ export default function ManageDeckDialog({
               colorScheme="purple"
               mr={3}
             >
-              {isEditMode ? "Update" : "Add"}
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
+              {isEditMode ? "Save" : "Add"}
+            </CustomButton>
+            <CustomButton onClick={onClose}>Cancel</CustomButton>
           </Footer>
         </form>
       )}

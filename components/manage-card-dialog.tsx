@@ -20,6 +20,7 @@ import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
+import CustomButton from "./ui/custom-button";
 import CustomDialog from "./ui/custom-dialog";
 
 type ManageCardDialogProps = {
@@ -187,7 +188,7 @@ export default function ManageCardDialog({
             </Stack>
           </Body>
           <Footer>
-            <Button
+            <CustomButton
               isLoading={
                 isEditMode
                   ? updateCardMutation.isLoading
@@ -197,9 +198,9 @@ export default function ManageCardDialog({
               colorScheme="purple"
               mr={3}
             >
-              {isEditMode ? "Update" : "Add"}
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
+              {isEditMode ? "Save" : "Add"}
+            </CustomButton>
+            <CustomButton onClick={onClose}>Cancel</CustomButton>
           </Footer>
         </form>
       )}

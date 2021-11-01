@@ -1,38 +1,22 @@
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Divider,
-  Flex,
-  Heading,
-  List,
-  ListItem,
-  Text,
-} from "@chakra-ui/react";
+import { Divider, Flex, Heading, List, ListItem } from "@chakra-ui/react";
+import CustomList from "components/ui/custom-list";
+import Feedback from "components/ui/feedback";
 import useDecksQuery from "hooks/use-decks-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import React from "react";
 import ManageDeckDialog from "./manage-deck-dialog";
-import CustomList from "./ui/custom-list";
+import CustomButton from "./ui/custom-button";
 
 export default function DecksList(): JSX.Element {
-  const [isOpen, onClose, onOpen] = useSimpleDisclosure();
+  const [isOpen, onOpen, onClose] = useSimpleDisclosure();
   const { data: decks, isLoading, error } = useDecksQuery();
 
   if (error) {
-    return (
-      <Box my={5} textAlign="center">
-        <Text>An error occurred</Text>
-      </Box>
-    );
+    return <Feedback type="error" />;
   }
 
   if (!decks || isLoading) {
-    return (
-      <Box my={5} textAlign="center">
-        <CircularProgress isIndeterminate color="purple.500" />
-      </Box>
-    );
+    return <Feedback type="loading" />;
   }
 
   return (
@@ -41,9 +25,9 @@ export default function DecksList(): JSX.Element {
         <Heading size="md" mt={5} mb={2}>
           Private decks ({decks.length})
         </Heading>
-        <Button colorScheme="purple" variant="solid" onClick={onOpen}>
+        <CustomButton colorScheme="purple" onClick={onOpen}>
           New deck
-        </Button>
+        </CustomButton>
         <ManageDeckDialog isOpen={isOpen} onClose={onClose} />
       </Flex>
       <Divider />
@@ -69,7 +53,7 @@ export default function DecksList(): JSX.Element {
             </List>
           </>
         )}
-        generateLinkHref={(deck) => `/v2/decks/${deck.id}`}
+        generateLinkHref={(deck) => `/decks/${deck.id}`}
       />
     </>
   );

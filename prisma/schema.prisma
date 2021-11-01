@@ -49,25 +49,40 @@ model Card {
 }
 
 model CardMemoParams {
-  cardId      Int       @unique
-  card        Card      @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  cardId      Int      @unique
+  card        Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
   repetitions Int
   easiness    Float
   interval    Int
-  dueDate     DateTime? @default(now())
+  dueDate     DateTime @default(now())
 }
 
 model Deck {
-  id        Int        @id @default(autoincrement())
-  userId    Int
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name      String
-  cards     Card[]
-  tags      DeckTags[]
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  id            Int            @id @default(autoincrement())
+  userId        Int
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name          String
+  cards         Card[]
+  studySessions StudySession[]
+  tags          DeckTags[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 
   @@unique([userId, name])
+}
+
+model StudySession {
+  id             Int      @id @default(autoincrement())
+  deckId         Int
+  deck           Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  studyTime      Int
+  avgTimePerCard Float
+  avgRate        Float
+  studiedCards   Int
+  positiveCards  Int
+  negativeCards  Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 enum UserRole {
@@ -89,7 +104,7 @@ model User {
 
 model Profile {
   id        Int      @id @default(autoincrement())
-  userId    Int
+  userId    Int      @unique
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   firstName String?
   lastName  String?
@@ -101,7 +116,7 @@ model Profile {
 
 model Avatar {
   id        Int      @id @default(autoincrement())
-  profileId Int
+  profileId Int      @unique
   profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
   source    String?
   updatedAt DateTime @updatedAt

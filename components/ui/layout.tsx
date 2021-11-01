@@ -23,7 +23,7 @@ import {
   MdSchool,
   MdSettings,
 } from "react-icons/md";
-import { RiStackFill } from "react-icons/ri";
+import { RiStackFill, RiTodoLine } from "react-icons/ri";
 
 interface MenuLinkTile {
   label: string;
@@ -34,14 +34,15 @@ interface MenuLinkTile {
 
 const menuTiles: Record<"features" | "account", MenuLinkTile[]> = {
   features: [
-    { label: "Dashboard", exact: true, icon: MdDashboard, href: "/v2" },
-    { label: "Decks", icon: RiStackFill, href: "/v2/decks" },
-    { label: "Study", icon: MdSchool, href: "/v2/study" },
+    { label: "Dashboard", exact: true, icon: MdDashboard, href: "/" },
+    { label: "Decks", icon: RiStackFill, href: "/decks" },
+    { label: "Study", icon: MdSchool, href: "/study" },
+    { label: "Todos", icon: RiTodoLine, href: "/todos" },
   ],
   account: [
-    { label: "Profile", icon: MdPerson, href: "/v2/profile" },
-    { label: "Settings", icon: MdSettings, href: "/v2/settings" },
-    { label: "Logout", icon: MdExitToApp, href: "/v2/logout" },
+    { label: "Profile", icon: MdPerson, href: "/profile" },
+    { label: "Settings", icon: MdSettings, href: "/settings" },
+    { label: "Logout", icon: MdExitToApp, href: "/logout" },
   ],
 };
 
@@ -116,8 +117,18 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         {menuTiles.account.map((tile, index) => (
           <MenuTile key={index} tile={tile} />
         ))}
+        <Text fontSize="x-small" color="white" fontFamily="Poppins">
+          v{process.env.NEXT_PUBLIC_APP_VERSION}
+        </Text>
       </VStack>
-      <Box position="relative" w="100%" h="100%" py="16" pl={SIDEBAR_WIDTH}>
+      <Box
+        position="relative"
+        w="100%"
+        h="100%"
+        py="16"
+        pl={SIDEBAR_WIDTH}
+        overflowX="hidden"
+      >
         <Box position="absolute" right={3} top={3}>
           <AnimatedSkeleton isLoaded={isLogged}>
             <Text>

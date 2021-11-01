@@ -1,10 +1,15 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { AppProps } from "next/app";
-import React, { FC } from "react";
-import "styles/globals.css";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import dynamic from "next/dynamic";
+import React, { FC } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import "styles/globals.scss";
+
+dayjs.extend(relativeTime);
+dayjs.extend(duration);
 
 const AuthProvider = dynamic(
   async () => (await import("contexts/auth")).AuthProvider,
@@ -21,7 +26,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </ChakraProvider>
       </AuthProvider>
-      <ReactQueryDevtools position="bottom-right" />
+      {/* <ReactQueryDevtools position="bottom-right" /> */}
     </QueryClientProvider>
   );
 };
