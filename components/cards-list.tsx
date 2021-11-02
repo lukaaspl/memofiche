@@ -32,6 +32,7 @@ import {
   MdMoreHoriz,
   MdRepeat,
 } from "react-icons/md";
+import { TagsConverter } from "utils/tags";
 import CardDetailsDialog from "./card-details-dialog";
 import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
 import ManageCardDialog from "./manage-card-dialog";
@@ -121,13 +122,15 @@ export default function CardsList({
               </Td>
               <Td>
                 <Wrap>
-                  {card.tags.map((tagObj, index) => (
-                    <WrapItem key={index}>
-                      <Tag variant="subtle" colorScheme="purple">
-                        <TagLabel>{tagObj.tag?.name}</TagLabel>
-                      </Tag>
-                    </WrapItem>
-                  ))}
+                  {TagsConverter.extractNames(card.tags).map(
+                    (tagName, index) => (
+                      <WrapItem key={index}>
+                        <Tag variant="subtle" colorScheme="purple">
+                          <TagLabel>{tagName}</TagLabel>
+                        </Tag>
+                      </WrapItem>
+                    )
+                  )}
                 </Wrap>
               </Td>
               <Td textAlign="right">

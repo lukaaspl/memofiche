@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useMutation, useQueryClient } from "react-query";
+import { TagsConverter } from "utils/tags";
 import CardsList from "./cards-list";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
@@ -130,10 +131,10 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
         </Box>
       </Flex>
       <Wrap spacing={2} mt={1} mb={3}>
-        {deck.tags.map((tagObj, index) => (
+        {TagsConverter.extractNames(deck.tags).map((tagName, index) => (
           <WrapItem key={index}>
             <Tag size="lg" variant="subtle" colorScheme="purple">
-              <TagLabel>{tagObj.tag?.name}</TagLabel>
+              <TagLabel>{tagName}</TagLabel>
             </Tag>
           </WrapItem>
         ))}
