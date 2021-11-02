@@ -4,7 +4,7 @@ import CustomDialog from "components/ui/custom-dialog";
 import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";
-import { useSuccessToast } from "hooks/use-success-toast";
+import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";

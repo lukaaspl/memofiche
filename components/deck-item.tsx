@@ -18,7 +18,7 @@ import PrimaryHeading from "components/ui/primary-heading";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import useDeckQuery from "hooks/use-deck-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
-import { useSuccessToast } from "hooks/use-success-toast";
+import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import { useRouter } from "next/router";
 import React from "react";

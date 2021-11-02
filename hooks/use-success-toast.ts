@@ -3,7 +3,7 @@ import { useCallback } from "react";
 
 type DisplayToastFn = (description: string) => void;
 
-export function useSuccessToast(): DisplayToastFn {
+export default function useSuccessToast(): DisplayToastFn {
   const toast = useToast();
 
   const displayToast = useCallback(

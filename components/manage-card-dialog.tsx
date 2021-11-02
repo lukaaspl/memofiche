@@ -14,7 +14,7 @@ import {
   PostCardRequestData,
   UpdateCardRequestData,
 } from "domains/card";
-import { useSuccessToast } from "hooks/use-success-toast";
+import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

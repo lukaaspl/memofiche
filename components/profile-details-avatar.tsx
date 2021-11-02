@@ -19,7 +19,7 @@ import { Avatar } from "@prisma/client";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import useStatus from "hooks/use-status";
-import { useSuccessToast } from "hooks/use-success-toast";
+import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import Image from "next/image";
 import React, { useRef } from "react";

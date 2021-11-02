@@ -11,7 +11,7 @@ import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { UpdateProfileRequestData } from "domains/profile";
 import { DetailedProfile } from "domains/user";
-import { useSuccessToast } from "hooks/use-success-toast";
+import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

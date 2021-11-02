@@ -1,7 +1,7 @@
 import { Card } from "@prisma/client";
 import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedCard } from "domains/card";
-import { useSuccessToast } from "hooks/use-success-toast";
+import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";

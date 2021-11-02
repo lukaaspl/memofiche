@@ -1,4 +1,4 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "cSpell.words": ["multithreaded", "preconnect"]
+  "cSpell.words": ["multithreaded", "preconnect", "scrollbars"]
 }
