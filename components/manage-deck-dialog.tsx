@@ -12,6 +12,7 @@ import {
   PostDeckRequestData,
   UpdateDeckRequestData,
 } from "domains/deck";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -59,6 +60,7 @@ export default function ManageDeckDialog({
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
   const { register, handleSubmit, reset, setValue } = useForm<FormValues>();
   const queryClient = useQueryClient();
+  const toast = useSuccessToast();
 
   const isEditMode = typeof editingDeck !== "undefined";
 
@@ -67,6 +69,7 @@ export default function ManageDeckDialog({
   const createDeckMutation = useMutation(createDeck, {
     onSuccess: () => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
+      toast("Deck has been created successfully");
       onClose();
     },
   });
@@ -74,6 +77,7 @@ export default function ManageDeckDialog({
   const updateDeckMutation = useMutation(updateDeck, {
     onSuccess: (deck) => {
       queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(deck.id));
+      toast("Deck has been updated successfully");
       onClose();
     },
   });

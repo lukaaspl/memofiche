@@ -34,14 +34,19 @@ import {
 import CardDetailsDialog from "./card-details-dialog";
 import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
 import ManageCardDialog from "./manage-card-dialog";
+import Feedback from "./ui/feedback";
 
 interface CardsListProps {
   cards: DetailedCard[];
+  onNewCardDialogOpen: () => void;
 }
 
 const TABLE_CELL_CHARS_LIMIT = 150;
 
-export default function CardsList({ cards }: CardsListProps): JSX.Element {
+export default function CardsList({
+  cards,
+  onNewCardDialogOpen,
+}: CardsListProps): JSX.Element {
   const [bufferedCard, setBufferedCard] =
     useState<Nullable<DetailedCard>>(null);
 
@@ -59,6 +64,18 @@ export default function CardsList({ cards }: CardsListProps): JSX.Element {
     onDeleteCardConfirmationDialogOpen,
     onDeleteCardConfirmationDialogClose,
   ] = useSimpleDisclosure();
+
+  if (cards.length === 0) {
+    return (
+      <Feedback
+        mt={3}
+        type="empty-state"
+        message="There was no card found"
+        actionButtonLabel="Add first"
+        onAction={onNewCardDialogOpen}
+      />
+    );
+  }
 
   return (
     <>

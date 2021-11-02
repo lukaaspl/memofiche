@@ -1,9 +1,10 @@
-import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { Card } from "@prisma/client";
+import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedCard } from "domains/card";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React from "react";
-import { useQueryClient, useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import CustomAlertDialog from "./ui/custom-alert-dialog";
 
 interface DeleteCardVariables {
@@ -33,11 +34,13 @@ export default function DeleteCardConfirmationDialog({
   onClose,
 }: DeleteCardConfirmationDialogProps): JSX.Element {
   const queryClient = useQueryClient();
+  const toast = useSuccessToast();
 
   const deleteCardMutation = useMutation(deleteCard, {
     onSuccess: (card) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(card.deckId));
+      toast("Card has been deleted successfully");
       onClose();
     },
   });

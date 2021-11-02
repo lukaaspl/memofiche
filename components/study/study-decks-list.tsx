@@ -78,6 +78,14 @@ export default function StudyDecksList(): JSX.Element {
         Choose a deck to study
       </Heading>
       <Divider />
+      {enhancedSortedDecks.length === 0 && (
+        <Feedback
+          type="empty-state"
+          message="The deck with cards is required to start studying"
+          actionButtonLabel="Create deck"
+          actionButtonHref="/decks?add-deck=true"
+        />
+      )}
       <CustomList
         mt={5}
         items={enhancedSortedDecks}

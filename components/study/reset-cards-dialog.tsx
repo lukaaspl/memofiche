@@ -1,9 +1,10 @@
-import { Box, Divider, Heading, Text, useToast } from "@chakra-ui/react";
+import { Box, Divider, Heading, Text } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
 import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
@@ -35,18 +36,13 @@ export default function ResetCardsDialog({
   onClose,
 }: ResetCardsDialog): JSX.Element {
   const queryClient = useQueryClient();
-  const toast = useToast();
+  const toast = useSuccessToast();
 
   const resetCardsMutation = useMutation(resetCards, {
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(variables.deckId));
-
-      toast({
-        status: "success",
-        description: "Cards have been reset successfully",
-      });
-
+      toast("Cards have been reset successfully");
       onClose();
     },
   });

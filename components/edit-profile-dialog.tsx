@@ -5,13 +5,13 @@ import {
   Input,
   Stack,
   Textarea,
-  useToast,
 } from "@chakra-ui/react";
 import CustomDialog from "components/ui/custom-dialog";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { UpdateProfileRequestData } from "domains/profile";
 import { DetailedProfile } from "domains/user";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -51,7 +51,7 @@ export default function EditProfileDialog({
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
   const { register, handleSubmit, setValue, watch } = useForm<FormValues>();
   const queryClient = useQueryClient();
-  const toast = useToast();
+  const toast = useSuccessToast();
 
   const bioInputValue = watch("bio");
 
@@ -59,12 +59,9 @@ export default function EditProfileDialog({
 
   const updateProfileMutation = useMutation(updateProfile, {
     onSuccess: () => {
-      toast({
-        status: "success",
-        description: "Profile has been updated successfully",
-      });
-      onClose();
       queryClient.invalidateQueries(PROFILE_QUERY_KEY);
+      toast("Profile has been updated successfully");
+      onClose();
     },
   });
 

@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -15,6 +14,7 @@ import {
   PostCardRequestData,
   UpdateCardRequestData,
 } from "domains/card";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -75,6 +75,7 @@ export default function ManageCardDialog({
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
   const { register, handleSubmit, reset, setValue } = useForm<FormValues>();
   const queryClient = useQueryClient();
+  const toast = useSuccessToast();
 
   const isEditMode = typeof editingCard !== "undefined";
 
@@ -84,6 +85,7 @@ export default function ManageCardDialog({
     onSuccess: (card) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(card.deckId));
+      toast("Card has been created successfully");
       onClose();
     },
   });
@@ -91,6 +93,7 @@ export default function ManageCardDialog({
   const updateCardMutation = useMutation(updateCard, {
     onSuccess: (card) => {
       queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(card.deckId));
+      toast("Card has been updated successfully");
       onClose();
     },
   });

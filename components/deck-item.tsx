@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Divider,
   Flex,
   Heading,
@@ -8,7 +7,6 @@ import {
   Tag,
   TagLabel,
   Text,
-  useToast,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -20,6 +18,7 @@ import PrimaryHeading from "components/ui/primary-heading";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import useDeckQuery from "hooks/use-deck-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import { useRouter } from "next/router";
 import React from "react";
@@ -45,7 +44,7 @@ interface DeckItemProps {
 export default function DeckItem({ id }: DeckItemProps): JSX.Element {
   const { data: deck, isLoading, error } = useDeckQuery(id);
   const queryClient = useQueryClient();
-  const toast = useToast();
+  const toast = useSuccessToast();
   const router = useRouter();
 
   const [isEditDeckDialogOpen, onEditDeckDialogOpen, onEditDeckDialogClose] =
@@ -64,11 +63,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
 
   const deleteDeckMutation = useMutation(deleteDeckById, {
     onSuccess: () => {
-      toast({
-        status: "success",
-        description: "Deck has been deleted successfully",
-      });
-
+      toast("Deck has been deleted successfully");
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       router.push("/decks");
     },
@@ -156,7 +151,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
         />
       </Flex>
       <Divider />
-      <CardsList cards={deck.cards} />
+      <CardsList cards={deck.cards} onNewCardDialogOpen={onNewCardDialogOpen} />
     </>
   );
 }

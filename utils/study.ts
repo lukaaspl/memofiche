@@ -5,7 +5,7 @@ import {
   StudySessionsDeviations,
 } from "domains/study";
 import { StudyingHistoryEntry, StudyingState } from "hooks/use-studying";
-import { assert } from "./validation";
+import { assert } from "utils/validation";
 
 export function calculateStudyingTotalTime(
   startedDate: number,
@@ -62,10 +62,10 @@ export function getStudyingSessionSummary(
   const avgTimePerCard = studyTime / studiedCardsCount;
 
   const avgRate =
-    state.history.reduce(
-      (sum, entry) => (entry.type === "card" ? sum + entry.rate : sum),
-      0
-    ) / studiedCardsCount;
+    studiedCards.reduce((sum, card) => {
+      assert(card.type === "card");
+      return sum + card.rate;
+    }, 0) / studiedCardsCount;
 
   return {
     studyTime,

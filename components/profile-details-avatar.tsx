@@ -19,6 +19,7 @@ import { Avatar } from "@prisma/client";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import useStatus from "hooks/use-status";
+import { useSuccessToast } from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import Image from "next/image";
 import React, { useRef } from "react";
@@ -46,14 +47,15 @@ export default function ProfileDetailsAvatar({
 }: ProfileDetailsAvatarProps): JSX.Element {
   const { colors } = useTheme<Theme>();
   const fileInputRef = useRef<Nullable<HTMLInputElement>>(null);
+  const queryClient = useQueryClient();
+  const toast = useSuccessToast();
   const { status: fileUploadStatus, setStatus: setFileUploadStatus } =
     useStatus();
-
-  const queryClient = useQueryClient();
 
   const updateAvatarSourceMutation = useMutation(updateAvatarSource, {
     onSuccess: () => {
       queryClient.invalidateQueries(PROFILE_QUERY_KEY);
+      toast("Avatar has been updated successfully");
     },
   });
 
