@@ -5,6 +5,7 @@ import { Nullable } from "domains";
 import { UpdatedCardRequestBody } from "domains/card";
 import prisma from "lib/prisma";
 import { getInitialSMParams } from "utils/super-memo";
+import { TagsConverter } from "utils/tags";
 
 export async function updateDeckCard(
   oldCard: Card & { memoParams: Nullable<CardMemoParams> },
@@ -16,6 +17,8 @@ export async function updateDeckCard(
 
   const MDdefaults = getInitialSMParams();
 
+  const normalizedTags = TagsConverter.normalize(updatedCard.tags);
+
   return await prisma.card.update({
     where: {
       id: oldCard.id,
@@ -26,7 +29,7 @@ export async function updateDeckCard(
       type: updatedCard.type,
       tags: {
         set: [],
-        create: updatedCard.tags.map((tag) => ({
+        create: normalizedTags.map((tag) => ({
           tag: {
             connectOrCreate: {
               create: { name: tag },

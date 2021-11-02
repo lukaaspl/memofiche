@@ -1,4 +1,5 @@
-import { DetailedDeck } from "domains/deck";
+import { DeckTag } from "domains/tags";
+import { toLower, uniqBy } from "lodash";
 
 export class TagsConverter {
   static toArray(input: string): string[] {
@@ -9,15 +10,25 @@ export class TagsConverter {
     return input.split(",").map((tag) => tag.trim());
   }
 
-  static toString(tagObjects: DetailedDeck["tags"]): string {
-    return tagObjects
-      .reduce<string[]>((tags, tagObj) => {
-        if (tagObj.tag) {
-          return [...tags, tagObj.tag.name];
-        }
+  static extractNames(tagObjects: DeckTag[]): string[] {
+    return tagObjects.reduce<string[]>((tags, tagObj) => {
+      if (tagObj.tag) {
+        return [...tags, tagObj.tag.name];
+      }
 
-        return tags;
-      }, [])
-      .join(", ");
+      return tags;
+    }, []);
+  }
+
+  static toString(tagObjects: DeckTag[]): string {
+    return this.extractNames(tagObjects).join(", ");
+  }
+
+  static joinWithTagObjects(tags: string[], tagObjects: DeckTag[]): string[] {
+    return tags.concat(this.extractNames(tagObjects));
+  }
+
+  static normalize(tags: string[]): string[] {
+    return uniqBy<string>(tags, toLower);
   }
 }

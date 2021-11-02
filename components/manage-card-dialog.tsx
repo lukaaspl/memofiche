@@ -1,4 +1,5 @@
 import {
+  Checkbox,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -14,6 +15,7 @@ import {
   PostCardRequestData,
   UpdateCardRequestData,
 } from "domains/card";
+import { DeckTag } from "domains/tags";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
@@ -25,6 +27,7 @@ import CustomDialog from "./ui/custom-dialog";
 
 type ManageCardDialogProps = {
   isOpen: boolean;
+  deckTags: DeckTag[];
   onClose: () => void;
 } & (
   | {
@@ -42,6 +45,7 @@ interface FormValues {
   reverse: string;
   type: CardType;
   tags: string;
+  areDeckTagsIncluded: boolean;
 }
 
 async function createCard(variables: PostCardRequestData): Promise<Card> {
@@ -68,6 +72,7 @@ async function updateCard(variables: UpdateCardRequestData): Promise<Card> {
 
 export default function ManageCardDialog({
   deckId,
+  deckTags,
   isOpen,
   onClose,
   editingCard,
@@ -99,7 +104,13 @@ export default function ManageCardDialog({
   });
 
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
-    const { obverse, reverse, type, tags } = formValues;
+    const { obverse, reverse, type, tags, areDeckTagsIncluded } = formValues;
+
+    const tagsArr = TagsConverter.toArray(tags);
+
+    const joinedTags = areDeckTagsIncluded
+      ? TagsConverter.joinWithTagObjects(tagsArr, deckTags)
+      : tagsArr;
 
     if (isEditMode) {
       updateCardMutation.mutate({
@@ -108,7 +119,7 @@ export default function ManageCardDialog({
         obverse,
         reverse,
         type,
-        tags: TagsConverter.toArray(tags),
+        tags: joinedTags,
       });
     } else {
       createCardMutation.mutate({
@@ -116,7 +127,7 @@ export default function ManageCardDialog({
         obverse,
         reverse,
         type,
-        tags: TagsConverter.toArray(tags),
+        tags: joinedTags,
       });
     }
   };
@@ -186,6 +197,14 @@ export default function ManageCardDialog({
                   placeholder="e.g. interview, business, technical"
                   {...register("tags")}
                 />
+                <Checkbox
+                  defaultChecked
+                  mt={2}
+                  colorScheme="purple"
+                  {...register("areDeckTagsIncluded")}
+                >
+                  Include deck&apos;s tags
+                </Checkbox>
                 <FormHelperText>Tags should be comma-separated</FormHelperText>
               </FormControl>
             </Stack>

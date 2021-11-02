@@ -146,12 +146,17 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
         </CustomButton>
         <ManageCardDialog
           deckId={deck.id}
+          deckTags={deck.tags}
           isOpen={isNewCardDialogOpen}
           onClose={onNewCardDialogClose}
         />
       </Flex>
       <Divider />
-      <CardsList cards={deck.cards} onNewCardDialogOpen={onNewCardDialogOpen} />
+      <CardsList
+        cards={deck.cards}
+        deckTags={deck.tags}
+        onNewCardDialogOpen={onNewCardDialogOpen}
+      />
     </>
   );
 }

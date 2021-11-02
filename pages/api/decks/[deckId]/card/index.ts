@@ -4,6 +4,7 @@ import prisma from "lib/prisma";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { getInitialSMParams } from "utils/super-memo";
+import { TagsConverter } from "utils/tags";
 import { postCardBodySchema, stringNumberSchema } from "utils/validation";
 import { z } from "zod";
 
@@ -43,6 +44,8 @@ cardHandler.post(async (req, res) => {
   }
 
   try {
+    const normalizedTags = TagsConverter.normalize(parsedBody.data.tags);
+
     const createdCard = await prisma.card.create({
       data: {
         deckId: parsedQuery.data.deckId,
@@ -50,7 +53,7 @@ cardHandler.post(async (req, res) => {
         reverse: parsedBody.data.reverse,
         type: parsedBody.data.type,
         tags: {
-          create: parsedBody.data.tags.map((tag) => ({
+          create: normalizedTags.map((tag) => ({
             tag: {
               connectOrCreate: {
                 create: { name: tag },

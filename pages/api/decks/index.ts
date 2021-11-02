@@ -4,6 +4,7 @@ import prisma from "lib/prisma";
 import { findUserDecksWithCards } from "repositories/deck";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
+import { TagsConverter } from "utils/tags";
 import { postDeckBodySchema } from "utils/validation";
 
 const decksHandler = createApiHandler();
@@ -63,12 +64,14 @@ decksHandler.post(async (req, res) => {
   }
 
   try {
+    const normalizedTags = TagsConverter.normalize(parsedBody.data.tags);
+
     const createdDeck = await prisma.deck.create({
       data: {
         name: req.body.name,
         userId,
         tags: {
-          create: parsedBody.data.tags.map((tag) => ({
+          create: normalizedTags.map((tag) => ({
             tag: {
               connectOrCreate: {
                 create: { name: tag },

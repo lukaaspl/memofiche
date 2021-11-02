@@ -1,11 +1,32 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Table, Tbody, Td, Th, Thead, Tr, Text } from "@chakra-ui/react";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
+import { Nullable } from "domains";
 import usePrivateRoute from "hooks/use-private-route";
 import { range } from "lodash";
 import { NextPage } from "next";
 import React from "react";
 import TODOS from "todos.json";
+
+const IS_DONE_MARK = "[x]";
+
+function displayTodo(todo?: string): Nullable<JSX.Element> {
+  if (!todo) {
+    return null;
+  }
+
+  const isDone = todo.startsWith(IS_DONE_MARK);
+
+  if (isDone) {
+    return (
+      <Text textDecoration="line-through" opacity={0.7}>
+        {todo.substring(IS_DONE_MARK.length)}
+      </Text>
+    );
+  }
+
+  return <Text>{todo}</Text>;
+}
 
 const rowsCount = Math.max(
   ...Object.keys(TODOS).map((key: keyof typeof TODOS) => TODOS[key].length)
@@ -38,10 +59,10 @@ const TodosPage: NextPage = () => {
         <Tbody fontSize="sm">
           {range(rowsCount).map((index) => (
             <Tr key={index}>
-              <Td>{TODOS.mustHave[index]}</Td>
-              <Td>{TODOS.shouldHave[index]}</Td>
-              <Td>{TODOS.couldHave[index]}</Td>
-              <Td>{TODOS.wontHave[index]}</Td>
+              <Td>{displayTodo(TODOS.mustHave[index])}</Td>
+              <Td>{displayTodo(TODOS.shouldHave[index])}</Td>
+              <Td>{displayTodo(TODOS.couldHave[index])}</Td>
+              <Td>{displayTodo(TODOS.wontHave[index])}</Td>
             </Tr>
           ))}
         </Tbody>

@@ -20,6 +20,7 @@ import {
 import { CardType } from "@prisma/client";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
+import { DeckTag } from "domains/tags";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { truncate } from "lodash";
 import React, { useState } from "react";
@@ -38,6 +39,7 @@ import Feedback from "./ui/feedback";
 
 interface CardsListProps {
   cards: DetailedCard[];
+  deckTags: DeckTag[];
   onNewCardDialogOpen: () => void;
 }
 
@@ -45,6 +47,7 @@ const TABLE_CELL_CHARS_LIMIT = 150;
 
 export default function CardsList({
   cards,
+  deckTags,
   onNewCardDialogOpen,
 }: CardsListProps): JSX.Element {
   const [bufferedCard, setBufferedCard] =
@@ -173,6 +176,7 @@ export default function CardsList({
           />
           <ManageCardDialog
             editingCard={bufferedCard}
+            deckTags={deckTags}
             isOpen={isEditCardDialogOpen}
             onClose={onEditCardDialogClose}
           />
