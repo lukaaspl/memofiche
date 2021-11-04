@@ -3,6 +3,7 @@ import {
   Divider,
   Flex,
   Heading,
+  HStack,
   IconButton,
   Tag,
   TagLabel,
@@ -12,12 +13,17 @@ import {
 } from "@chakra-ui/react";
 import { Deck } from "@prisma/client";
 import CustomAlertDialog from "components/ui/custom-alert-dialog";
+import CustomButton from "components/ui/custom-button";
 import Feedback from "components/ui/feedback";
 import GoBackButton from "components/ui/go-back-button";
 import PrimaryHeading from "components/ui/primary-heading";
+import SortingControls from "components/ui/sorting-controls";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
+import { CARDS_SORT } from "consts/storage-keys";
+import { CardSort } from "domains/card";
 import useDeckQuery from "hooks/use-deck-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
+import useSortState from "hooks/use-sort-state";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import { useRouter } from "next/router";
@@ -28,7 +34,7 @@ import { TagsConverter } from "utils/tags";
 import CardsList from "./cards-list";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
-import CustomButton from "./ui/custom-button";
+import SyncSpinner from "./ui/sync-spinner";
 
 async function deleteDeckById(deckId: number): Promise<Deck> {
   const { data: deletedDeck } = await authApiClient.delete<Deck>(
@@ -43,7 +49,16 @@ interface DeckItemProps {
 }
 
 export default function DeckItem({ id }: DeckItemProps): JSX.Element {
-  const { data: deck, isLoading, error } = useDeckQuery(id);
+  const { sortState, updateField, updateOrder } = useSortState<
+    CardSort["sortBy"]
+  >(CARDS_SORT, { sortBy: "createdAt", order: "desc" });
+
+  const {
+    data: deck,
+    isRefetching,
+    error,
+  } = useDeckQuery(id, sortState, { keepPreviousData: true });
+
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
   const router = useRouter();
@@ -74,7 +89,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
     return <Feedback type="error" />;
   }
 
-  if (!deck || isLoading) {
+  if (!deck) {
     return <Feedback type="loading" />;
   }
 
@@ -140,11 +155,26 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
         ))}
       </Wrap>
       <GoBackButton />
-      <Flex mt={6} mb={2} justify="space-between" align="center">
-        <Heading size="md">Cards ({deck.cards.length})</Heading>
-        <CustomButton colorScheme="purple" onClick={onNewCardDialogOpen}>
-          New card
-        </CustomButton>
+      <Flex mt={6} mb={3} justify="space-between" align="center">
+        <Heading size="md">
+          <span>Cards ({deck.cards.length})</span>
+          {isRefetching && <SyncSpinner />}
+        </Heading>
+        <HStack spacing={2}>
+          <SortingControls<CardSort["sortBy"]>
+            options={[
+              { label: "Type", value: "type" },
+              { label: "Creation date", value: "createdAt" },
+              { label: "Last modify", value: "updatedAt" },
+            ]}
+            state={sortState}
+            onChangeField={updateField}
+            onChangeOrder={updateOrder}
+          />
+          <CustomButton colorScheme="purple" onClick={onNewCardDialogOpen}>
+            New card
+          </CustomButton>
+        </HStack>
         <ManageCardDialog
           deckId={deck.id}
           deckTags={deck.tags}

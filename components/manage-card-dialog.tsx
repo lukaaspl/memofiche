@@ -8,14 +8,11 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
-import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
+import { SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
-import {
-  DetailedCard,
-  PostCardRequestData,
-  UpdateCardRequestData,
-} from "domains/card";
+import { DetailedCard, UpdateCardRequestData } from "domains/card";
 import { DeckTag } from "domains/tags";
+import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
@@ -43,20 +40,10 @@ type ManageCardDialogProps = {
 interface FormValues {
   obverse: string;
   reverse: string;
+  note: string;
   type: CardType;
   tags: string;
   areDeckTagsIncluded: boolean;
-}
-
-async function createCard(variables: PostCardRequestData): Promise<Card> {
-  const { deckId, ...body } = variables;
-
-  const { data: createdCard } = await authApiClient.post<Card>(
-    `/decks/${deckId}/card`,
-    body
-  );
-
-  return createdCard;
 }
 
 async function updateCard(variables: UpdateCardRequestData): Promise<Card> {
@@ -86,14 +73,7 @@ export default function ManageCardDialog({
 
   const { ref, ...rest } = register("obverse", { required: true });
 
-  const createCardMutation = useMutation(createCard, {
-    onSuccess: (card) => {
-      queryClient.invalidateQueries(DECKS_QUERY_KEY);
-      queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(card.deckId));
-      toast("Card has been created successfully");
-      onClose();
-    },
-  });
+  const createCardMutation = useCreateCardMutation({ onSuccess: onClose });
 
   const updateCardMutation = useMutation(updateCard, {
     onSuccess: (card) => {
@@ -104,7 +84,8 @@ export default function ManageCardDialog({
   });
 
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
-    const { obverse, reverse, type, tags, areDeckTagsIncluded } = formValues;
+    const { obverse, reverse, type, note, tags, areDeckTagsIncluded } =
+      formValues;
 
     const tagsArr = TagsConverter.toArray(tags);
 
@@ -119,6 +100,7 @@ export default function ManageCardDialog({
         obverse,
         reverse,
         type,
+        note,
         tags: joinedTags,
       });
     } else {
@@ -127,6 +109,7 @@ export default function ManageCardDialog({
         obverse,
         reverse,
         type,
+        note,
         tags: joinedTags,
       });
     }
@@ -138,11 +121,12 @@ export default function ManageCardDialog({
     }
 
     if (isEditMode) {
-      const { obverse, reverse, type, tags } = editingCard;
+      const { obverse, reverse, type, note, tags } = editingCard;
 
       setValue("obverse", obverse);
       setValue("reverse", reverse);
       setValue("type", type);
+      setValue("note", note || "");
       setValue("tags", TagsConverter.toString(tags));
     } else {
       reset();
@@ -190,6 +174,13 @@ export default function ManageCardDialog({
                   <option value={CardType.Normal}>Normal</option>
                   <option value={CardType.Reverse}>Reverse</option>
                 </Select>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Note</FormLabel>
+                <Input
+                  placeholder="e.g. What is this process about?"
+                  {...register("note")}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>Tags</FormLabel>

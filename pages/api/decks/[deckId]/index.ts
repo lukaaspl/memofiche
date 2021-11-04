@@ -5,14 +5,17 @@ import { findUserDeck } from "repositories/deck";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { TagsConverter } from "utils/tags";
-import { postDeckBodySchema, stringNumberSchema } from "utils/validation";
-import { z } from "zod";
+import {
+  postDeckBodySchema,
+  sortCardsQuerySchema,
+  stringNumberSchema,
+} from "utils/validation";
 
 const deckHandler = createApiHandler();
 
 deckHandler.use(authenticated);
 
-const querySchema = z.object({
+const querySchema = sortCardsQuerySchema.extend({
   deckId: stringNumberSchema,
 });
 
@@ -34,7 +37,9 @@ deckHandler.get(async (req, res) => {
   }
 
   try {
-    const detailedDeck = await findUserDeck(userId, parsedQuery.data.deckId);
+    const { deckId, ...sort } = parsedQuery.data;
+
+    const detailedDeck = await findUserDeck(userId, deckId, sort);
 
     if (!detailedDeck) {
       sendError(new NotFound("Deck does not exist"));
@@ -79,6 +84,7 @@ deckHandler.put(async (req, res) => {
       where: { id: parsedQuery.data.deckId },
       data: {
         name: parsedBody.data.name,
+        isFavorite: parsedBody.data.isFavorite,
         tags: {
           set: [],
           create: normalizedTags.map((tag) => ({

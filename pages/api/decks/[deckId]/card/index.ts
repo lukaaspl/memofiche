@@ -51,6 +51,7 @@ cardHandler.post(async (req, res) => {
         deckId: parsedQuery.data.deckId,
         obverse: parsedBody.data.obverse,
         reverse: parsedBody.data.reverse,
+        note: parsedBody.data.note,
         type: parsedBody.data.type,
         tags: {
           create: normalizedTags.map((tag) => ({

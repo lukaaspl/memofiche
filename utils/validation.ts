@@ -15,11 +15,13 @@ export const superMemoQualitySchema = z.number().min(0).max(5);
 export const postDeckBodySchema = z.object({
   name: z.string(),
   tags: z.array(z.string()).default([]),
+  isFavorite: z.boolean().optional().default(false),
 });
 
 export const postCardBodySchema = z.object({
   obverse: z.string(),
   reverse: z.string(),
+  note: z.string().nullable(),
   type: z.enum([CardType.Normal, CardType.Reverse]).default(CardType.Normal),
   tags: z.array(z.string()).default([]),
 });
@@ -44,6 +46,32 @@ export const postStudySessionBodySchema = z.object({
 export const resetCardsQuerySchema = z.object({
   deckId: stringNumberSchema,
   mode: z.enum(["shallow", "deep"]).optional().default("shallow"),
+});
+
+const sortOrderSchema = z.enum(["asc", "desc"]).optional().default("asc");
+
+export const sortDecksQuerySchema = z.object({
+  sortBy: z
+    .enum([
+      "name",
+      "cardsCount",
+      "studyingCardsCount",
+      "studyingCardsPercentage",
+      "isFavorite",
+      "createdAt",
+      "updatedAt",
+    ])
+    .optional()
+    .default("createdAt"),
+  order: sortOrderSchema,
+});
+
+export const sortCardsQuerySchema = z.object({
+  sortBy: z
+    .enum(["type", "createdAt", "updatedAt"])
+    .optional()
+    .default("createdAt"),
+  order: sortOrderSchema,
 });
 
 export function assert(

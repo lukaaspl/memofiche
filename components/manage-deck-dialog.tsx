@@ -1,4 +1,5 @@
 import {
+  Checkbox,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -30,6 +31,7 @@ interface ManageDeckDialogProps {
 interface FormValues {
   name: string;
   tags: string;
+  isFavorite: boolean;
 }
 
 async function createDeck(requestData: PostDeckRequestData): Promise<Deck> {
@@ -83,7 +85,7 @@ export default function ManageDeckDialog({
   });
 
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
-    const { name, tags } = formValues;
+    const { name, tags, isFavorite } = formValues;
     const normalizedName = name.trim();
 
     if (isEditMode) {
@@ -91,11 +93,13 @@ export default function ManageDeckDialog({
         id: editingDeck.id,
         name: normalizedName,
         tags: TagsConverter.toArray(tags),
+        isFavorite,
       });
     } else {
       createDeckMutation.mutate({
         name: normalizedName,
         tags: TagsConverter.toArray(tags),
+        isFavorite,
       });
     }
   };
@@ -108,6 +112,7 @@ export default function ManageDeckDialog({
     if (isEditMode) {
       setValue("name", editingDeck.name);
       setValue("tags", TagsConverter.toString(editingDeck.tags));
+      setValue("isFavorite", editingDeck.isFavorite);
     } else {
       reset();
     }
@@ -143,6 +148,11 @@ export default function ManageDeckDialog({
                 {...register("tags")}
               />
               <FormHelperText>Tags should be comma-separated</FormHelperText>
+            </FormControl>
+            <FormControl mt={4}>
+              <Checkbox colorScheme="purple" {...register("isFavorite")}>
+                Mark as favorite deck
+              </Checkbox>
             </FormControl>
           </Body>
           <Footer>

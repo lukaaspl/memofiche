@@ -1,8 +1,17 @@
-import { Box, BoxProps, Center, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  Center,
+  Heading,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
 import MotionBox from "components/ui/motion-box";
 import { DetailedCard } from "domains/card";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
+import { InfoIcon } from "@chakra-ui/icons";
+import { Nullable } from "domains";
 
 interface CardPauseCoverProps {
   isPaused: boolean;
@@ -65,6 +74,7 @@ function CardOrnament({ position, text }: CardOrnamentProps): JSX.Element {
 
 interface CardSideProps {
   content: string;
+  note: Nullable<string>;
   isPaused: boolean;
   reversed?: boolean;
 }
@@ -73,6 +83,7 @@ function CardSide({
   content,
   isPaused,
   reversed = false,
+  note,
 }: CardSideProps): JSX.Element {
   const isReversed = reversed;
 
@@ -96,6 +107,24 @@ function CardSide({
         position="bottom-right"
         text={isReversed ? "Reverse" : "Obverse"}
       />
+      {note && (
+        <Tooltip
+          hasArrow
+          label={note}
+          fontSize="md"
+          padding={2}
+          placement="top"
+        >
+          <InfoIcon
+            cursor="help"
+            position="absolute"
+            right={2}
+            top={2}
+            color="blue.500"
+            fontSize="xl"
+          />
+        </Tooltip>
+      )}
       <Center height="75%">
         <Text
           fontFamily="Poppins"
@@ -167,8 +196,17 @@ export default function Flashcard({
             }}
             sx={{ transformStyle: "preserve-3d" }}
           >
-            <CardSide content={card.obverse} isPaused={isPaused} />
-            <CardSide reversed content={card.reverse} isPaused={isPaused} />
+            <CardSide
+              content={card.obverse}
+              note={card.note}
+              isPaused={isPaused}
+            />
+            <CardSide
+              reversed
+              content={card.reverse}
+              note={card.note}
+              isPaused={isPaused}
+            />
           </MotionBox>
         </MotionBox>
       </AnimatePresence>

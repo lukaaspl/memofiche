@@ -41,6 +41,7 @@ model Card {
   deck       Deck            @relation(fields: [deckId], references: [id], onDelete: Cascade)
   obverse    String
   reverse    String
+  note       String?
   type       CardType        @default(Normal)
   tags       CardTags[]
   createdAt  DateTime        @default(now())
@@ -62,6 +63,7 @@ model Deck {
   userId        Int
   user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   name          String
+  isFavorite    Boolean        @default(false)
   cards         Card[]
   studySessions StudySession[]
   tags          DeckTags[]

@@ -6,6 +6,7 @@ import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
+import { stringifyUrl } from "query-string";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 
@@ -23,9 +24,12 @@ interface ResetCardsVariables {
 async function resetCards(variables: ResetCardsVariables): Promise<number> {
   const { deckId, mode } = variables;
 
-  const { status } = await authApiClient.put<void>(
-    `/decks/${deckId}/reset-cards?mode=${mode}`
-  );
+  const url = stringifyUrl({
+    url: `/decks/${deckId}/reset-cards`,
+    query: { mode },
+  });
+
+  const { status } = await authApiClient.put<void>(url);
 
   return status;
 }

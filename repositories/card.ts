@@ -26,6 +26,7 @@ export async function updateDeckCard(
     data: {
       obverse: updatedCard.obverse,
       reverse: updatedCard.reverse,
+      note: updatedCard.note,
       type: updatedCard.type,
       tags: {
         set: [],

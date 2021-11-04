@@ -6,13 +6,15 @@
   ],
   "shouldHave": [
     "[x]Option to auto-include deck's tags while creating a new card",
-    "Favorite decks",
-    "Handle decks sorting by: name, created, modified, cards count",
-    "Handle studying decks sorting by: name, ready to learn cards count",
+    "[x]Cards notes",
+    "[x]Favorite decks",
+    "[x]Sorting decks",
+    "[x]Sorting studying decks",
+    "[x]Sorting cards",
     "Responsive web design"
   ],
   "couldHave": [
-    "Cards cloning",
+    "[x]Cards cloning",
     "Grid/list views options",
     "Multi-select tables/batch operations",
     "Decks avatars",

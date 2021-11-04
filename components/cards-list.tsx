@@ -14,6 +14,7 @@ import {
   Th,
   Thead,
   Tr,
+  useToast,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -21,6 +22,7 @@ import { CardType } from "@prisma/client";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
 import { DeckTag } from "domains/tags";
+import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { truncate } from "lodash";
 import React, { useState } from "react";
@@ -31,6 +33,7 @@ import {
   MdInfoOutline,
   MdMoreHoriz,
   MdRepeat,
+  MdContentCopy,
 } from "react-icons/md";
 import { TagsConverter } from "utils/tags";
 import CardDetailsDialog from "./card-details-dialog";
@@ -45,6 +48,7 @@ interface CardsListProps {
 }
 
 const TABLE_CELL_CHARS_LIMIT = 150;
+const CLONE_CARD_TOAST_ID = "cloneCardToast";
 
 export default function CardsList({
   cards,
@@ -69,10 +73,34 @@ export default function CardsList({
     onDeleteCardConfirmationDialogClose,
   ] = useSimpleDisclosure();
 
+  const toast = useToast();
+
+  const cloneCardMutation = useCreateCardMutation({
+    onMutate: () => {
+      toast({
+        description: "Cloning the card...",
+        duration: null,
+        id: CLONE_CARD_TOAST_ID,
+        isClosable: false,
+        status: "info",
+      });
+    },
+    onSuccess: () => {
+      toast.close(CLONE_CARD_TOAST_ID);
+    },
+    onError: () => {
+      toast.update(CLONE_CARD_TOAST_ID, {
+        description: "Cloning card failed",
+        duration: 5000,
+        isClosable: true,
+        status: "error",
+      });
+    },
+  });
+
   if (cards.length === 0) {
     return (
       <Feedback
-        mt={3}
         type="empty-state"
         message="There was no card found"
         actionButtonLabel="Add first"
@@ -83,7 +111,7 @@ export default function CardsList({
 
   return (
     <>
-      <Table mt={3} variant="simple" colorScheme="purple">
+      <Table mt={5} variant="simple" colorScheme="purple">
         <Thead>
           <Tr>
             {["Type", "Obverse", "Reverse", "Tags", ""].map((heading) => (
@@ -149,6 +177,18 @@ export default function CardsList({
                       onClick={onCardDetailsDialogOpen}
                     >
                       Show details
+                    </MenuItem>
+                    <MenuItem
+                      icon={<MdContentCopy size={18} />}
+                      onClick={() =>
+                        cloneCardMutation.mutate({
+                          ...card,
+                          tags: TagsConverter.extractNames(card.tags),
+                        })
+                      }
+                      isDisabled={cloneCardMutation.isLoading}
+                    >
+                      Clone card
                     </MenuItem>
                     <MenuItem
                       icon={<MdEdit size={18} />}
