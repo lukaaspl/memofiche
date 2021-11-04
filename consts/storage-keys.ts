@@ -1,3 +1,6 @@
+// UI
+export const ARE_DECK_TAGS_INCLUDED = "ARE_DECK_TAGS_INCLUDED";
+
 // Auth
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
 

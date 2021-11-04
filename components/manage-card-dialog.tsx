@@ -8,7 +8,9 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
+import { useLocalStorage } from "beautiful-react-hooks";
 import { DECK_QUERY_KEY } from "consts/query-keys";
+import { ARE_DECK_TAGS_INCLUDED } from "consts/storage-keys";
 import { Nullable } from "domains";
 import { DetailedCard, UpdateCardRequestData } from "domains/card";
 import { DeckTag } from "domains/tags";
@@ -43,7 +45,6 @@ interface FormValues {
   note: string;
   type: CardType;
   tags: string;
-  areDeckTagsIncluded: boolean;
 }
 
 async function updateCard(variables: UpdateCardRequestData): Promise<Card> {
@@ -69,9 +70,8 @@ export default function ManageCardDialog({
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
 
-  const isEditMode = typeof editingCard !== "undefined";
-
-  const { ref, ...rest } = register("obverse", { required: true });
+  const [areDeckTagsIncluded, setAreDeckTagsIncluded] =
+    useLocalStorage<boolean>(ARE_DECK_TAGS_INCLUDED, false);
 
   const createCardMutation = useCreateCardMutation({ onSuccess: onClose });
 
@@ -83,9 +83,12 @@ export default function ManageCardDialog({
     },
   });
 
+  const isEditMode = typeof editingCard !== "undefined";
+
+  const { ref, ...rest } = register("obverse", { required: true });
+
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
-    const { obverse, reverse, type, note, tags, areDeckTagsIncluded } =
-      formValues;
+    const { obverse, reverse, type, note, tags } = formValues;
 
     const tagsArr = TagsConverter.toArray(tags);
 
@@ -192,7 +195,10 @@ export default function ManageCardDialog({
                   defaultChecked
                   mt={2}
                   colorScheme="purple"
-                  {...register("areDeckTagsIncluded")}
+                  isChecked={areDeckTagsIncluded}
+                  onChange={(event) =>
+                    setAreDeckTagsIncluded(() => event.target.checked)
+                  }
                 >
                   Include deck&apos;s tags
                 </Checkbox>
