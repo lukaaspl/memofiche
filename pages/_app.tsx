@@ -6,7 +6,6 @@ import { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import React, { FC } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import "styles/globals.scss";
 
 dayjs.extend(relativeTime);
@@ -27,7 +26,6 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </ChakraProvider>
       </AuthProvider>
-      <ReactQueryDevtools position="bottom-right" />
     </QueryClientProvider>
   );
 };

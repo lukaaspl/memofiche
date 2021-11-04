@@ -46,9 +46,7 @@ export default function CardDetailsDialog({
           <Body>
             <Stack direction="column" spacing={3}>
               {cardDetailsSections
-                .filter(
-                  (section) => section.content && section.content.length > 0
-                )
+                .filter((section) => section.content?.length)
                 .map((section, index) => (
                   <Box key={index}>
                     <Tag colorScheme="purple">
