@@ -14,3 +14,10 @@ export interface SMParams {
   interval: number; // int (in days)
   dueDate: Date;
 }
+
+export type SortOrder = "asc" | "desc";
+
+export interface BaseSort<TFields extends string> {
+  sortBy: TFields;
+  order: SortOrder;
+}

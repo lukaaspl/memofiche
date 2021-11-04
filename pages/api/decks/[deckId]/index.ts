@@ -4,14 +4,18 @@ import prisma from "lib/prisma";
 import { findUserDeck } from "repositories/deck";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
-import { postDeckBodySchema, stringNumberSchema } from "utils/validation";
-import { z } from "zod";
+import { TagsConverter } from "utils/tags";
+import {
+  postDeckBodySchema,
+  sortCardsQuerySchema,
+  stringNumberSchema,
+} from "utils/validation";
 
 const deckHandler = createApiHandler();
 
 deckHandler.use(authenticated);
 
-const querySchema = z.object({
+const querySchema = sortCardsQuerySchema.extend({
   deckId: stringNumberSchema,
 });
 
@@ -33,7 +37,9 @@ deckHandler.get(async (req, res) => {
   }
 
   try {
-    const detailedDeck = await findUserDeck(userId, parsedQuery.data.deckId);
+    const { deckId, ...sort } = parsedQuery.data;
+
+    const detailedDeck = await findUserDeck(userId, deckId, sort);
 
     if (!detailedDeck) {
       sendError(new NotFound("Deck does not exist"));
@@ -72,13 +78,16 @@ deckHandler.put(async (req, res) => {
   }
 
   try {
+    const normalizedTags = TagsConverter.normalize(parsedBody.data.tags);
+
     const updatedDeck = await prisma.deck.update({
       where: { id: parsedQuery.data.deckId },
       data: {
         name: parsedBody.data.name,
+        isFavorite: parsedBody.data.isFavorite,
         tags: {
           set: [],
-          create: parsedBody.data.tags.map((tag) => ({
+          create: normalizedTags.map((tag) => ({
             tag: {
               connectOrCreate: {
                 create: { name: tag },

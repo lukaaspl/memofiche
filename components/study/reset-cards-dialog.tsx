@@ -1,11 +1,12 @@
 import { Box, Divider, Heading, Text } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
-import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
+import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
+import { stringifyUrl } from "query-string";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 
@@ -23,9 +24,12 @@ interface ResetCardsVariables {
 async function resetCards(variables: ResetCardsVariables): Promise<number> {
   const { deckId, mode } = variables;
 
-  const { status } = await authApiClient.put<void>(
-    `/decks/${deckId}/reset-cards?mode=${mode}`
-  );
+  const url = stringifyUrl({
+    url: `/decks/${deckId}/reset-cards`,
+    query: { mode },
+  });
+
+  const { status } = await authApiClient.put<void>(url);
 
   return status;
 }
@@ -41,7 +45,7 @@ export default function ResetCardsDialog({
   const resetCardsMutation = useMutation(resetCards, {
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
-      queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(variables.deckId));
+      queryClient.invalidateQueries([DECK_QUERY_KEY, variables.deckId]);
       toast("Cards have been reset successfully");
       onClose();
     },

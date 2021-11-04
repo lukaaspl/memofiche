@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import React from "react";
 import { MdFolder } from "react-icons/md";
+import { StarIcon } from "@chakra-ui/icons";
 
 const FolderIcon = chakra(MdFolder);
 
@@ -18,6 +19,7 @@ interface CustomListProps<TItem> extends ListProps {
   selectId: (item: TItem) => React.Key;
   renderItem: (item: TItem) => JSX.Element;
   disableItem?: (item: TItem) => boolean;
+  isFavorite?: (item: TItem) => boolean;
   generateLinkHref?: (item: TItem) => string;
 }
 
@@ -26,6 +28,7 @@ export default function CustomList<TItem>({
   selectId,
   renderItem,
   disableItem,
+  isFavorite,
   generateLinkHref,
   ...listProps
 }: CustomListProps<TItem>): JSX.Element {
@@ -37,11 +40,22 @@ export default function CustomList<TItem>({
   ): JSX.Element => (
     <Stack direction="row">
       <Center
+        position="relative"
         w="100px"
         h="100px"
         backgroundColor={isDisabled ? "gray.200" : "purple.500"}
         borderRadius="md"
       >
+        {isFavorite?.(item) && (
+          <StarIcon
+            position="absolute"
+            left={0}
+            top={0}
+            transform="translate(-40%, -40%)"
+            fontSize="xl"
+            color="yellow.500"
+          />
+        )}
         <FolderIcon size={30} color={isDisabled ? "blackAlpha.800" : "white"} />
       </Center>
       <Box flexGrow={1} p={2}>

@@ -22,7 +22,7 @@ export default function StudyDeckItem({
     isLoading,
     isFetchedAfterMount,
     error: requestError,
-  } = useDeckQuery(deckId, {
+  } = useDeckQuery(deckId, undefined, {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
   });

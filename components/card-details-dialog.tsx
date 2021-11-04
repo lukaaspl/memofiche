@@ -21,6 +21,7 @@ export default function CardDetailsDialog({
       { header: "Obverse", content: card.obverse },
       { header: "Reverse", content: card.reverse },
       { header: "Type", content: card.type },
+      { header: "Note", content: card.note },
       { header: "Tags", content: TagsConverter.toString(card.tags) },
       {
         header: "Creation date",
@@ -45,7 +46,7 @@ export default function CardDetailsDialog({
           <Body>
             <Stack direction="column" spacing={3}>
               {cardDetailsSections
-                .filter((section) => section.content.length > 0)
+                .filter((section) => section.content?.length)
                 .map((section, index) => (
                   <Box key={index}>
                     <Tag colorScheme="purple">
