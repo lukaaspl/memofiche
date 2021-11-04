@@ -8,7 +8,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
-import { SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
+import { DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { DetailedCard, UpdateCardRequestData } from "domains/card";
 import { DeckTag } from "domains/tags";
@@ -77,7 +77,7 @@ export default function ManageCardDialog({
 
   const updateCardMutation = useMutation(updateCard, {
     onSuccess: (card) => {
-      queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(card.deckId));
+      queryClient.invalidateQueries([DECK_QUERY_KEY, card.deckId]);
       toast("Card has been updated successfully");
       onClose();
     },

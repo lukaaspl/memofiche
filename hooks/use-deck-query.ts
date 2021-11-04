@@ -1,4 +1,4 @@
-import { SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
+import { DECK_QUERY_KEY } from "consts/query-keys";
 import { CardSort } from "domains/card";
 import { DetailedDeck } from "domains/deck";
 import { authApiClient } from "lib/axios";
@@ -25,7 +25,7 @@ export default function useDeckQuery(
   options?: UseQueryOptions<DetailedDeck>
 ): UseQueryResult<DetailedDeck> {
   return useQuery(
-    [SPECIFIED_DECK_QUERY_KEY(deckId), sort],
+    [DECK_QUERY_KEY, deckId, sort],
     () => fetchDeckById(deckId, sort),
     options
   );

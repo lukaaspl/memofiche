@@ -1,7 +1,3 @@
 export const DECKS_QUERY_KEY = "DECKS";
-
-export function SPECIFIED_DECK_QUERY_KEY(deckId: number): ["DECK", number] {
-  return ["DECK", deckId];
-}
-
+export const DECK_QUERY_KEY = "DECK";
 export const PROFILE_QUERY_KEY = "PROFILE";

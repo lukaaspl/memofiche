@@ -1,5 +1,5 @@
 import { Card } from "@prisma/client";
-import { DECKS_QUERY_KEY, SPECIFIED_DECK_QUERY_KEY } from "consts/query-keys";
+import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedCard } from "domains/card";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
@@ -39,7 +39,7 @@ export default function DeleteCardConfirmationDialog({
   const deleteCardMutation = useMutation(deleteCard, {
     onSuccess: (card) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
-      queryClient.invalidateQueries(SPECIFIED_DECK_QUERY_KEY(card.deckId));
+      queryClient.invalidateQueries([DECK_QUERY_KEY, card.deckId]);
       toast("Card has been deleted successfully");
       onClose();
     },
