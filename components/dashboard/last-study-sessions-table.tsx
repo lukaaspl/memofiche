@@ -15,6 +15,7 @@ import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { StudySessionWithDeck } from "domains/study";
 import React from "react";
+import { arrayPadEnd } from "utils/array";
 import { prettyDuration } from "utils/date-time";
 
 const TABLE_HEADINGS: ({ label: string } & TableColumnHeaderProps)[] = [
@@ -26,11 +27,13 @@ const TABLE_HEADINGS: ({ label: string } & TableColumnHeaderProps)[] = [
 
 interface LastStudySessionsTableProps {
   sessions: StudySessionWithDeck[];
+  limit: number;
   isRefetching: boolean;
 }
 
 export default function LastStudySessionsTable({
   sessions,
+  limit,
   isRefetching,
 }: LastStudySessionsTableProps): JSX.Element {
   return (
@@ -65,14 +68,27 @@ export default function LastStudySessionsTable({
           </Tr>
         </Thead>
         <Tbody>
-          {sessions.map((session) => {
+          {arrayPadEnd(sessions, limit).map((item) => {
+            if (!item.hasValue) {
+              return (
+                <Tr key={item.index}>
+                  <Td height="57px">-</Td>
+                  <Td>-</Td>
+                  <Td>-</Td>
+                  <Td>-</Td>
+                </Tr>
+              );
+            }
+
+            const session = item.value;
+
             const date =
               dayjs().diff(session.createdAt, "day") >= 1
                 ? dayjs(session.createdAt).format("DD/MM/YYYY")
                 : dayjs(session.createdAt).fromNow();
 
             return (
-              <Tr key={session.id}>
+              <Tr key={item.index}>
                 <Td height="57px">{date}</Td>
                 <Td>{session.deck.name}</Td>
                 <Td>

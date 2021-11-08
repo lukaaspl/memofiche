@@ -17,6 +17,7 @@ import { EnhancedDeckWithCards } from "domains/deck";
 import Link from "next/link";
 import React from "react";
 import { MdPlayCircleFilled } from "react-icons/md";
+import { arrayPadEnd } from "utils/array";
 import { prettyRound } from "utils/string";
 
 const TABLE_HEADINGS: ({ label: string } & TableColumnHeaderProps)[] = [
@@ -28,11 +29,13 @@ const TABLE_HEADINGS: ({ label: string } & TableColumnHeaderProps)[] = [
 
 interface MostRelevantDecksTableProps {
   decks: EnhancedDeckWithCards[];
+  limit: number;
   isRefetching: boolean;
 }
 
 export default function MostRelevantDecksTable({
   decks,
+  limit,
   isRefetching,
 }: MostRelevantDecksTableProps): JSX.Element {
   return (
@@ -67,7 +70,22 @@ export default function MostRelevantDecksTable({
           </Tr>
         </Thead>
         <Tbody>
-          {decks.map((deck) => {
+          {arrayPadEnd(decks, limit).map((item) => {
+            if (!item.hasValue) {
+              return (
+                <Tr key={item.index} opacity={0.75}>
+                  <Td height="57px" p={1}>
+                    -
+                  </Td>
+                  <Td>-</Td>
+                  <Td>-</Td>
+                  <Td textAlign="center">-</Td>
+                </Tr>
+              );
+            }
+
+            const deck = item.value;
+
             const percentageRatio = prettyRound(
               (deck.studyingCardsCount / deck.cardsCount) * 100 || 0
             ).concat("%");
@@ -75,7 +93,7 @@ export default function MostRelevantDecksTable({
             const isStudyingDisabled = deck.studyingCardsCount === 0;
 
             return (
-              <Tr key={deck.id} opacity={isStudyingDisabled ? 0.75 : 1}>
+              <Tr key={item.index} opacity={isStudyingDisabled ? 0.75 : 1}>
                 <Td p={1}>{deck.name}</Td>
                 <Td>
                   {deck.studyingCardsCount}/{deck.cardsCount} ({percentageRatio}

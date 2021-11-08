@@ -30,18 +30,17 @@ async function fetchStudyingOverview(
 }
 
 const SUMMARY_PERIOD_IN_DAYS = 14;
-const LAST_SESSIONS_LIMIT = 5;
-const MOST_RELEVANT_DECKS_LIMIT = 5;
+const TABLE_ITEMS_LIMIT = 5;
 
 export default function DashboardContent(): JSX.Element {
   const overviewQuery = useQuery(STUDYING_OVERVIEW, () =>
-    fetchStudyingOverview(SUMMARY_PERIOD_IN_DAYS, LAST_SESSIONS_LIMIT)
+    fetchStudyingOverview(SUMMARY_PERIOD_IN_DAYS, TABLE_ITEMS_LIMIT)
   );
 
   const decksQuery = useDecksQuery({
     sortBy: "studyingCardsPercentage",
     order: "desc",
-    limit: MOST_RELEVANT_DECKS_LIMIT,
+    limit: TABLE_ITEMS_LIMIT,
   });
 
   const handleRefetchOnError = (): void => {
@@ -81,10 +80,12 @@ export default function DashboardContent(): JSX.Element {
       />
       <MostRelevantDecksTable
         decks={decks}
+        limit={TABLE_ITEMS_LIMIT}
         isRefetching={decksQuery.isRefetching}
       />
       <LastStudySessionsTable
         sessions={overview.lastSessions}
+        limit={TABLE_ITEMS_LIMIT}
         isRefetching={overviewQuery.isRefetching}
       />
     </SimpleGrid>
