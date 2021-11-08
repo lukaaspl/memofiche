@@ -11,6 +11,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import MotionTr from "components/ui/motion-tr";
 import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { EnhancedDeckWithCards } from "domains/deck";
@@ -73,14 +74,20 @@ export default function MostRelevantDecksTable({
           {arrayPadEnd(decks, limit).map((item) => {
             if (!item.hasValue) {
               return (
-                <Tr key={item.index} opacity={0.75}>
+                <MotionTr
+                  key={item.index}
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 0.75, x: 0 }}
+                  // @ts-ignore
+                  transition={{ type: "tween", delay: item.index * 0.1 }}
+                >
                   <Td height="57px" p={1}>
                     -
                   </Td>
                   <Td>-</Td>
                   <Td>-</Td>
                   <Td textAlign="center">-</Td>
-                </Tr>
+                </MotionTr>
               );
             }
 
@@ -93,7 +100,13 @@ export default function MostRelevantDecksTable({
             const isStudyingDisabled = deck.studyingCardsCount === 0;
 
             return (
-              <Tr key={item.index} opacity={isStudyingDisabled ? 0.75 : 1}>
+              <MotionTr
+                key={item.index}
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: isStudyingDisabled ? 0.75 : 1, x: 0 }}
+                // @ts-ignore
+                transition={{ type: "tween", delay: item.index * 0.1 }}
+              >
                 <Td p={1}>{deck.name}</Td>
                 <Td>
                   {deck.studyingCardsCount}/{deck.cardsCount} ({percentageRatio}
@@ -116,7 +129,7 @@ export default function MostRelevantDecksTable({
                     />
                   </Link>
                 </Td>
-              </Tr>
+              </MotionTr>
             );
           })}
         </Tbody>
