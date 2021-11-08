@@ -9,7 +9,7 @@ import {
   StudySummarySample,
 } from "domains/study";
 import { StudyingHistoryEntry, StudyingState } from "hooks/use-studying";
-import { groupBy, maxBy, meanBy, minBy, range, sumBy, take } from "lodash";
+import { groupBy, maxBy, meanBy, orderBy, range, sumBy, take } from "lodash";
 import { assert } from "utils/validation";
 
 export function calculateStudyingTotalTime(
@@ -183,10 +183,7 @@ export function getLastXStudySessions(
   count: number
 ): StudySessionWithDeck[] {
   return take(
-    [...sessions].sort(
-      (sessionA, sessionB) =>
-        sessionB.createdAt.getTime() - sessionA.createdAt.getTime()
-    ),
+    orderBy(sessions, (session) => session.createdAt.getTime(), "desc"),
     count
   );
 }

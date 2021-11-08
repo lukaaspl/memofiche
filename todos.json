@@ -2,7 +2,7 @@
   "mustHave": [
     "Cards handle reverse type",
     "Cards handle markdown",
-    "Dashboard charts & statistics",
+    "[x]Dashboard charts & statistics",
     "User settings"
   ],
   "shouldHave": [
