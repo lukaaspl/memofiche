@@ -1,23 +1,39 @@
+import { DeckSort, EnhancedDeckWithCards } from "domains/deck";
 import { BadRequest, Conflict, InternalServerError } from "http-errors";
 import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
+import { inRange, orderBy, sortBy } from "lodash";
 import { findUserDecksWithCards } from "repositories/deck";
+import { findStudySessionsByUserId } from "repositories/study";
 import { authenticated, extractTokenUserId } from "utils/auth";
-import { enhanceDecksWithStudyParams } from "utils/decks";
+import { enhanceDecksWithStudyParams, sortDecksAdvanced } from "utils/decks";
 import { httpErrorSender } from "utils/errors";
 import { TagsConverter } from "utils/tags";
-import { postDeckBodySchema, sortDecksQuerySchema } from "utils/validation";
+import {
+  postDeckBodySchema,
+  sortDecksQuerySchema,
+  stringNumberSchema,
+} from "utils/validation";
 
 const decksHandler = createApiHandler();
 
 decksHandler.use(authenticated);
+
+const DECKS_LIMIT = 1_000;
+
+const querySchema = sortDecksQuerySchema.extend({
+  limit: stringNumberSchema
+    .refine((value) => inRange(value, 1, DECKS_LIMIT + 1))
+    .optional()
+    .default(DECKS_LIMIT.toString()),
+});
 
 // Get user decks
 // GET /api/decks
 decksHandler.get(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
-  const parsedQuery = sortDecksQuerySchema.safeParse(req.query);
+  const parsedQuery = querySchema.safeParse(req.query);
 
   if (!userId) {
     sendError(new InternalServerError());
@@ -30,27 +46,18 @@ decksHandler.get(async (req, res) => {
   }
 
   try {
-    const sort = parsedQuery.data;
+    const { limit, ...sort } = parsedQuery.data;
+
+    const userSessions = await findStudySessionsByUserId(userId);
 
     const decks = enhanceDecksWithStudyParams(
-      await findUserDecksWithCards(userId, sort)
+      await findUserDecksWithCards(userId, sort, limit),
+      userSessions
     );
 
-    if (sort && sort.sortBy === "studyingCardsCount") {
-      decks.sort((deckA, deckB) => {
-        const a = deckA.studyingCardsCount;
-        const b = deckB.studyingCardsCount;
-        return sort.order === "asc" ? a - b : b - a;
-      });
-    } else if (sort && sort.sortBy === "studyingCardsPercentage") {
-      decks.sort((deckA, deckB) => {
-        const a = deckA.studyingCardsCount / deckA.cardsCount || 0;
-        const b = deckB.studyingCardsCount / deckB.cardsCount || 0;
-        return sort.order === "asc" ? a - b : b - a;
-      });
-    }
+    const sortedDecks = sortDecksAdvanced(decks, sort);
 
-    res.send(decks);
+    res.send(sortedDecks);
   } catch {
     sendError(new InternalServerError());
   }

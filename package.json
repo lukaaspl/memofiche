@@ -49,6 +49,7 @@
     "react-icons": "^4.2.0",
     "react-jss": "^10.6.0",
     "react-query": "^3.24.3",
+    "recharts": "^2.1.6",
     "superjson": "^1.7.4",
     "tinycolor2": "^1.4.2",
     "use-immer": "^0.6.0",

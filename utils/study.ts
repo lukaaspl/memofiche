@@ -1,10 +1,15 @@
+import { StudySession } from "@prisma/client";
+import dayjs from "dayjs";
 import { Nullable } from "domains";
 import {
   PostStudySessionRequestData,
   StudySessionsAverages,
   StudySessionsDeviations,
+  StudySessionWithDeck,
+  StudySummarySample,
 } from "domains/study";
 import { StudyingHistoryEntry, StudyingState } from "hooks/use-studying";
+import { groupBy, maxBy, meanBy, minBy, range, sumBy, take } from "lodash";
 import { assert } from "utils/validation";
 
 export function calculateStudyingTotalTime(
@@ -130,4 +135,68 @@ export function getStudySessionsDeviations(
   };
 
   return { relativeToCurrentDeck, relativeToAllDecks };
+}
+
+const BINDING_DATE_FORMAT = "DD-MM-YYYY";
+
+export function generateStudyingSummaryForLastXDays(
+  sessions: StudySession[],
+  days: number
+): StudySummarySample[] {
+  const groupedSessionsByDate = groupBy(sessions, (session) =>
+    dayjs(session.createdAt).format(BINDING_DATE_FORMAT)
+  );
+
+  const now = dayjs();
+
+  return range(days).map((index) => {
+    const date = now.subtract(days - index - 1, "day");
+    const formattedDate = date.format(BINDING_DATE_FORMAT);
+    const sessions = groupedSessionsByDate[formattedDate];
+
+    return {
+      date: date.valueOf(),
+      value: {
+        studiedCards: {
+          mean: meanBy(sessions, (session) => session.studiedCards) || 0,
+          sum: sumBy(sessions, (session) => session.studiedCards),
+        },
+        positiveCards: {
+          mean: meanBy(sessions, (session) => session.positiveCards) || 0,
+          sum: sumBy(sessions, (session) => session.positiveCards),
+        },
+        negativeCards: {
+          mean: meanBy(sessions, (session) => session.negativeCards) || 0,
+          sum: sumBy(sessions, (session) => session.negativeCards),
+        },
+        studyTime: {
+          mean: meanBy(sessions, (session) => session.studyTime) || 0,
+          sum: sumBy(sessions, (session) => session.studyTime),
+        },
+      },
+    };
+  });
+}
+
+export function getLastXStudySessions(
+  sessions: StudySessionWithDeck[],
+  count: number
+): StudySessionWithDeck[] {
+  return take(
+    [...sessions].sort(
+      (sessionA, sessionB) =>
+        sessionB.createdAt.getTime() - sessionA.createdAt.getTime()
+    ),
+    count
+  );
+}
+
+export function getSessionLastStudiedDate(
+  sessions?: StudySession[]
+): Nullable<number> {
+  return (
+    maxBy(sessions, (session) =>
+      session.createdAt.getTime()
+    )?.createdAt.getTime() || null
+  );
 }

@@ -1,13 +1,18 @@
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import { DeckSort, EnhancedDeckWithCards } from "domains/deck";
 import { authApiClient } from "lib/axios";
+import { omit } from "lodash";
 import { stringifyUrl } from "query-string";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
 
-async function fetchDecks(sort?: DeckSort): Promise<EnhancedDeckWithCards[]> {
+interface DecksQuery extends DeckSort {
+  limit?: number;
+}
+
+async function fetchDecks(query: DecksQuery): Promise<EnhancedDeckWithCards[]> {
   const url = stringifyUrl({
     url: "/decks",
-    query: sort,
+    query: { ...query },
   });
 
   const { data: decks } = await authApiClient.get<EnhancedDeckWithCards[]>(url);
@@ -16,8 +21,12 @@ async function fetchDecks(sort?: DeckSort): Promise<EnhancedDeckWithCards[]> {
 }
 
 export default function useDecksQuery(
-  sort?: DeckSort,
+  query: DecksQuery,
   options?: UseQueryOptions<EnhancedDeckWithCards[]>
 ): UseQueryResult<EnhancedDeckWithCards[]> {
-  return useQuery([DECKS_QUERY_KEY, sort], () => fetchDecks(sort), options);
+  return useQuery(
+    [DECKS_QUERY_KEY, omit(query, "limit")],
+    () => fetchDecks(query),
+    options
+  );
 }

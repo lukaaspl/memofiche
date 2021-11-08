@@ -1,5 +1,6 @@
 {
   "mustHave": [
+    "Cards handle reverse type",
     "Cards handle markdown",
     "Dashboard charts & statistics",
     "User settings"

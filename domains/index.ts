@@ -21,3 +21,8 @@ export interface BaseSort<TFields extends string> {
   sortBy: TFields;
   order: SortOrder;
 }
+
+export interface DateMetricSample<TData> {
+  date: number;
+  value: TData;
+}

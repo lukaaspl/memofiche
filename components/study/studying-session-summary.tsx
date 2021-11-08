@@ -20,6 +20,7 @@ import { motion, TargetAndTransition, useAnimation } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { prettyDuration } from "utils/date-time";
+import { prettyRound } from "utils/string";
 
 interface SessionStudyStatRecord {
   label: string;
@@ -57,9 +58,9 @@ function SessionStudyStatContent({
                   type={stat.currentDeckAvg > 0 ? "increase" : "decrease"}
                 />
                 <Text as="span" fontWeight="bold">
-                  {Math.abs(stat.currentDeckAvg * 100)
-                    .toFixed(2)
-                    .concat("%")}
+                  {prettyRound(Math.abs(stat.currentDeckAvg * 100), 2).concat(
+                    "%"
+                  )}
                 </Text>
               </>
             ) : (
@@ -85,9 +86,7 @@ function SessionStudyStatContent({
                 <StatArrow
                   type={stat.allDecksAvg > 0 ? "increase" : "decrease"}
                 />
-                {Math.abs(stat.allDecksAvg * 100)
-                  .toFixed(2)
-                  .concat("%")}
+                {prettyRound(Math.abs(stat.allDecksAvg * 100), 2).concat("%")}
               </>
             ) : (
               "no deviation"
@@ -146,13 +145,16 @@ export default function StudyingSessionSummary({
     },
     {
       label: "Avg. time per card",
-      value: prettyDuration(data.avgTimePerCard),
+      value: prettyDuration(data.avgTimePerCard, {
+        milliseconds: true,
+        decimals: true,
+      }),
       currentDeckAvg: relativeToCurrentDeck.avgTimePerCard,
       allDecksAvg: relativeToAllDecks.avgTimePerCard,
     },
     {
       label: "Avg. rate",
-      value: data.avgRate.toFixed(2),
+      value: prettyRound(data.avgRate, 2),
       currentDeckAvg: relativeToCurrentDeck.avgRate,
       allDecksAvg: relativeToAllDecks.avgRate,
     },

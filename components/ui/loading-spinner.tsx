@@ -17,7 +17,7 @@ export default function LoadingSpinner({
     <Fade
       in
       transition={delay ? { enter: { delay } } : undefined}
-      style={{ display: "inline-block" }}
+      style={{ display: "inline-block", lineHeight: "1" }}
     >
       <CircularProgress
         capIsRound

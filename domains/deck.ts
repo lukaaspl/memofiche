@@ -24,6 +24,7 @@ export interface EnhancedDeckWithCards extends DeckWithCards {
   cardsCount: number;
   studyingCardsCount: number;
   nearestStudyTime: Nullable<number>;
+  lastStudied: Nullable<number>;
 }
 
 export type BasicDeckDetails = Pick<

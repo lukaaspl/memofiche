@@ -5,7 +5,11 @@ import { CardSort } from "domains/card";
 import { DeckSort } from "domains/deck";
 import prisma from "lib/prisma";
 
-export async function findUserDecksWithCards(userId: number, sort: DeckSort) {
+export async function findUserDecksWithCards(
+  userId: number,
+  sort: DeckSort,
+  limit: number
+) {
   const mappedSortField = (() => {
     const order: SortOrder = sort.order;
 
@@ -45,6 +49,7 @@ export async function findUserDecksWithCards(userId: number, sort: DeckSort) {
         },
       },
     },
+    take: limit,
   });
 
   return userDecks;
@@ -88,6 +93,7 @@ export async function findUserDeck(
                 },
               },
             },
+            orderBy: { tag: { name: "asc" } },
           },
         },
         orderBy: mappedCardSortField,
@@ -100,6 +106,7 @@ export async function findUserDeck(
             },
           },
         },
+        orderBy: { tag: { name: "asc" } },
       },
       createdAt: true,
       updatedAt: true,

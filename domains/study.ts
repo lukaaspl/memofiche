@@ -1,6 +1,10 @@
 import { StudySession } from ".prisma/client";
+import { DateMetricSample } from "domains";
 import { Prisma } from "lib/prisma";
-import { getStudySessionsAvgsRelativeToUserDeck } from "repositories/study";
+import {
+  findStudySessionsByUserId,
+  getStudySessionsAvgsRelativeToUserDeck,
+} from "repositories/study";
 import { postStudySessionBodySchema } from "utils/validation";
 import { z } from "zod";
 
@@ -20,3 +24,22 @@ export interface StudySessionsDeviations {
 export type StudySessionsWithDeviations = StudySession & {
   deviations: StudySessionsDeviations;
 };
+
+export type StudySummarySample = DateMetricSample<
+  Record<
+    keyof Pick<
+      StudySession,
+      "studiedCards" | "positiveCards" | "negativeCards" | "studyTime"
+    >,
+    { sum: number; mean: number }
+  >
+>;
+
+export type StudySessionWithDeck = NonNullable<
+  Prisma.PromiseReturnType<typeof findStudySessionsByUserId>
+>[0];
+
+export interface StudyingOverview {
+  studyingSummary: StudySummarySample[];
+  lastSessions: StudySessionWithDeck[];
+}

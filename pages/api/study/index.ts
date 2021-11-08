@@ -30,8 +30,7 @@ const querySchema = z.object({
 });
 
 // Add study session and rate cards in pointed deck
-// Replacement endpoint for api/decks/:deckId/rate
-// POST api/decks/:deckId/study
+// POST api/study?deckId={deckId}
 studyDeckHandler.post(async (req, res) => {
   const sendError = httpErrorSender(res);
   const userId = extractTokenUserId(req);
