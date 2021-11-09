@@ -76,7 +76,6 @@ export default function LastStudySessionsTable({
                   key={item.index}
                   initial={{ opacity: 0, x: 15 }}
                   animate={{ opacity: 0.75, x: 0 }}
-                  // @ts-ignore
                   transition={{ type: "tween", delay: item.index * 0.1 }}
                 >
                   <Td height="57px">-</Td>
@@ -99,7 +98,6 @@ export default function LastStudySessionsTable({
                 key={item.index}
                 initial={{ opacity: 0, x: 15 }}
                 animate={{ opacity: 1, x: 0 }}
-                // @ts-ignore
                 transition={{ type: "tween", delay: item.index * 0.1 }}
               >
                 <Td height="57px">{date}</Td>

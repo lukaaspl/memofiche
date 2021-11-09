@@ -1,9 +1,11 @@
 import { ButtonProps } from "@chakra-ui/react";
 import MotionButton from "components/ui/motion-button";
+import { OmitMotionCollidedProps } from "domains/framer-motion";
 import useKeyUpEvent from "hooks/use-key-up-event";
 import React, { useCallback, useState } from "react";
 
-interface KeyAccessedButtonProps extends Omit<ButtonProps, "onClick"> {
+interface KeyAccessedButtonProps
+  extends Omit<OmitMotionCollidedProps<ButtonProps>, "onClick"> {
   keyCode: string;
   animationScale?: number;
   animationTime?: number;
@@ -47,7 +49,6 @@ export default function KeyAccessedButton({
       animate={{ scale: isActive ? animationScale : 1 }}
       isDisabled={isDisabled}
       pointerEvents={isDisabled ? "none" : "all"}
-      // @ts-ignore
       transition={{ type: "spring", duration: animationTime }}
     />
   );

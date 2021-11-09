@@ -78,7 +78,6 @@ export default function MostRelevantDecksTable({
                   key={item.index}
                   initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 0.75, x: 0 }}
-                  // @ts-ignore
                   transition={{ type: "tween", delay: item.index * 0.1 }}
                 >
                   <Td height="57px" p={1}>
@@ -104,7 +103,6 @@ export default function MostRelevantDecksTable({
                 key={item.index}
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: isStudyingDisabled ? 0.75 : 1, x: 0 }}
-                // @ts-ignore
                 transition={{ type: "tween", delay: item.index * 0.1 }}
               >
                 <Td p={1}>{deck.name}</Td>
