@@ -13,6 +13,7 @@ import {
 import InitializingView from "components/initializing-view";
 import AnimatedSkeleton from "components/ui/animated-skeleton";
 import NavLink from "components/ui/nav-link";
+import { AnimatePresence } from "framer-motion";
 import useAuth from "hooks/use-auth";
 import React from "react";
 import { IconType } from "react-icons";
@@ -24,6 +25,7 @@ import {
   MdSettings,
 } from "react-icons/md";
 import { RiStackFill, RiTodoLine } from "react-icons/ri";
+import Span from "./span";
 
 interface MenuLinkTile {
   label: string;
@@ -85,71 +87,68 @@ const SIDEBAR_WIDTH = "64px";
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const { userData, isLogged } = useAuth();
 
-  if (!isLogged) {
-    return <InitializingView />;
-  }
-
   return (
-    <Flex h="100vh" justify="flex-start" align="flex-start">
-      <VStack
-        position="fixed"
-        spacing="4"
-        backgroundColor="purple.500"
-        h="100%"
-        px="3"
-        py="5"
-        maxWidth={SIDEBAR_WIDTH}
-        zIndex="1"
-      >
-        <Heading
-          color="white"
-          fontFamily="Poppins"
-          fontSize="2xl"
-          mb="4"
-          textAlign="center"
-        >
-          MF
-        </Heading>
-        {menuTiles.features.map((tile, index) => (
-          <MenuTile key={index} tile={tile} />
-        ))}
-        <Spacer />
-        {menuTiles.account.map((tile, index) => (
-          <MenuTile key={index} tile={tile} />
-        ))}
-        <Text fontSize="x-small" color="white" fontFamily="Poppins">
-          v{process.env.NEXT_PUBLIC_APP_VERSION}
-        </Text>
-      </VStack>
-      <Box
-        position="relative"
-        w="100%"
-        h="100%"
-        py="16"
-        pl={SIDEBAR_WIDTH}
-        overflowX="hidden"
-      >
-        <Box position="absolute" right={3} top={3}>
-          <AnimatedSkeleton isLoaded={isLogged}>
-            <Text>
-              Logged as{" "}
-              <Box
-                as="span"
-                display="inline"
-                fontWeight="bold"
-                color="purple.500"
-              >
-                {userData.data?.name} ({userData.data?.email})
-              </Box>
+    <AnimatePresence>
+      {isLogged ? (
+        <Flex key="content" h="100vh" justify="flex-start" align="flex-start">
+          <VStack
+            position="fixed"
+            spacing="4"
+            backgroundColor="purple.500"
+            h="100%"
+            px="3"
+            py="5"
+            maxWidth={SIDEBAR_WIDTH}
+            zIndex="1"
+          >
+            <Heading
+              color="white"
+              fontFamily="Poppins"
+              fontSize="2xl"
+              mb="4"
+              textAlign="center"
+            >
+              MF
+            </Heading>
+            {menuTiles.features.map((tile, index) => (
+              <MenuTile key={index} tile={tile} />
+            ))}
+            <Spacer />
+            {menuTiles.account.map((tile, index) => (
+              <MenuTile key={index} tile={tile} />
+            ))}
+            <Text fontSize="x-small" color="white" fontFamily="Poppins">
+              v{process.env.NEXT_PUBLIC_APP_VERSION}
             </Text>
-          </AnimatedSkeleton>
-        </Box>
-        <Fade in transition={{ enter: { duration: 0.15 } }}>
-          <Container maxW="container.lg" mx="auto">
-            {children}
-          </Container>
-        </Fade>
-      </Box>
-    </Flex>
+          </VStack>
+          <Box
+            position="relative"
+            w="100%"
+            h="100%"
+            py="16"
+            pl={SIDEBAR_WIDTH}
+            overflowX="hidden"
+          >
+            <Box position="absolute" right={3} top={3}>
+              <AnimatedSkeleton isLoaded={isLogged}>
+                <Text>
+                  Logged as{" "}
+                  <Span display="inline" fontWeight="bold" color="purple.500">
+                    {userData.data?.name} ({userData.data?.email})
+                  </Span>
+                </Text>
+              </AnimatedSkeleton>
+            </Box>
+            <Fade in transition={{ enter: { duration: 0.15 } }}>
+              <Container maxW="container.lg" mx="auto">
+                {children}
+              </Container>
+            </Fade>
+          </Box>
+        </Flex>
+      ) : (
+        <InitializingView key="overlay" />
+      )}
+    </AnimatePresence>
   );
 }

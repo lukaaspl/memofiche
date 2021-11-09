@@ -127,13 +127,14 @@ function CardSide({
       )}
       <Center height="75%">
         <Text
+          className="primary-sc"
           fontFamily="Poppins"
           fontSize="lg"
           wordBreak="break-word"
           overflow="auto"
           maxHeight="100%"
           paddingX={3}
-          className="primary-sc"
+          textAlign="center"
         >
           {content}
         </Text>

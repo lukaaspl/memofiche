@@ -14,6 +14,7 @@ import CustomButton from "components/ui/custom-button";
 import CustomList from "components/ui/custom-list";
 import Feedback from "components/ui/feedback";
 import SortingControls from "components/ui/sorting-controls";
+import Span from "components/ui/span";
 import SyncSpinner from "components/ui/sync-spinner";
 import { TooltipIconButton } from "components/ui/tooltip-buttons";
 import { STUDY_DECKS_SORT } from "consts/storage-keys";
@@ -157,10 +158,10 @@ export default function StudyDecksList(): JSX.Element {
                     )}
                   </HStack>
                 </HStack>
-                <StatNumber fontSize="xl" fontWeight="bold" letterSpacing="4px">
-                  <Text as="span" color={isDisabled ? "gray.600" : "green.600"}>
+                <StatNumber fontSize="xl" fontWeight="bold" letterSpacing="2px">
+                  <Span color={isDisabled ? "gray.600" : "green.600"}>
                     {deck.studyingCardsCount}
-                  </Text>
+                  </Span>
                   /{deck.cardsCount}
                 </StatNumber>
                 <StatHelpText fontSize="small">

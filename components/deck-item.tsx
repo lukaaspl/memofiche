@@ -1,3 +1,4 @@
+import { StarIcon } from "@chakra-ui/icons";
 import {
   Box,
   Divider,
@@ -34,6 +35,7 @@ import { TagsConverter } from "utils/tags";
 import CardsList from "./cards-list";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
+import Span from "./ui/span";
 import SyncSpinner from "./ui/sync-spinner";
 
 async function deleteDeckById(deckId: number): Promise<Deck> {
@@ -96,11 +98,19 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
   return (
     <>
       <Flex justify="space-between" align="center">
-        <PrimaryHeading>
-          <Text as="span" color="purple.700">
-            {deck.name}
-          </Text>{" "}
-          deck
+        <PrimaryHeading display="flex" alignItems="center">
+          {deck.isFavorite && (
+            <StarIcon
+              position="relative"
+              top="-2px"
+              fontSize="x-large"
+              color="yellow.500"
+              mr={2}
+            />
+          )}
+          <Span>
+            <Span color="purple.700">{deck.name}</Span> deck
+          </Span>
         </PrimaryHeading>
         <Box>
           <IconButton
@@ -130,10 +140,8 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
                 {deck.cards.length > 0 && (
                   <Text fontWeight="medium">
                     Important: You are going to lose all{" "}
-                    <Text as="span" color="red.500">
-                      {deck.cards.length}
-                    </Text>{" "}
-                    cards contained in the deck!
+                    <Span color="red.500">{deck.cards.length}</Span> cards
+                    contained in the deck!
                   </Text>
                 )}
               </>

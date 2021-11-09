@@ -1,10 +1,10 @@
-import { Text } from "@chakra-ui/react";
 import StudyingSessionFinalScreen from "components/study/studying-session-final-screen";
 import StudyingSessionProcess from "components/study/studying-session-process";
 import Feedback from "components/ui/feedback";
 import GoBackButton from "components/ui/go-back-button";
 import MotionBox from "components/ui/motion-box";
 import PrimaryHeading from "components/ui/primary-heading";
+import Span from "components/ui/span";
 import { AnimatePresence } from "framer-motion";
 import useDeckQuery from "hooks/use-deck-query";
 import useStudying from "hooks/use-studying";
@@ -50,10 +50,7 @@ export default function StudyDeckItem({
   return (
     <>
       <PrimaryHeading mb={3}>
-        Study{" "}
-        <Text as="span" color="purple.700">
-          {deck.name}
-        </Text>
+        Study <Span color="purple.700">{deck.name}</Span>
       </PrimaryHeading>
       <GoBackButton />
       <AnimatePresence initial={false} exitBeforeEnter>

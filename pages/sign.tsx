@@ -12,11 +12,11 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Text,
   VStack,
 } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import RedirectAlert from "components/ui/redirect-alert";
+import Span from "components/ui/span";
 import { Nullable } from "domains";
 import useAuth from "hooks/use-auth";
 import { GetServerSideProps, NextPage } from "next";
@@ -164,11 +164,11 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
           )}
         </VStack>
         <Divider my="8" colorScheme="purple" w="20%" mx="auto" />
-        <Text as="span" mr="1">
+        <Span mr="1">
           {onRegisterView
             ? "Already have an account?"
             : "You don't have an account yet?"}
-        </Text>
+        </Span>
         <Button
           variant="link"
           size="md"

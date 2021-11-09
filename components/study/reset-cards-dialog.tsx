@@ -1,6 +1,7 @@
 import { Box, Divider, Heading, Text } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
+import Span from "components/ui/span";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";
@@ -68,14 +69,14 @@ export default function ResetCardsDialog({
           <Body>
             <Text mb={6} fontSize="sm">
               You are going to reset all{" "}
-              <Text as="span" color="purple.500" fontWeight="bold">
+              <Span color="purple.500" fontWeight="bold">
                 {deckDetails?.cardsCount}{" "}
                 {deckDetails?.cardsCount === 1 ? "card" : "cards"}
-              </Text>{" "}
+              </Span>{" "}
               from the{" "}
-              <Text as="span" color="purple.500" fontWeight="bold">
+              <Span color="purple.500" fontWeight="bold">
                 {deckDetails?.name}
-              </Text>{" "}
+              </Span>{" "}
               deck. Pick a method how you want to do it:
             </Text>
             <Box>

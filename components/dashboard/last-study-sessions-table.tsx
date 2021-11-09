@@ -6,12 +6,12 @@ import {
   TableColumnHeaderProps,
   Tbody,
   Td,
-  Text,
   Th,
   Thead,
   Tr,
 } from "@chakra-ui/react";
 import MotionTr from "components/ui/motion-tr";
+import Span from "components/ui/span";
 import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { StudySessionWithDeck } from "domains/study";
@@ -106,14 +106,8 @@ export default function LastStudySessionsTable({
                 <Td>{session.deck.name}</Td>
                 <Td>
                   {session.studiedCards} (
-                  <Text as="span" color="green.500">
-                    {session.positiveCards}
-                  </Text>
-                  /
-                  <Text as="span" color="red.500">
-                    {session.negativeCards}
-                  </Text>
-                  )
+                  <Span color="green.500">{session.positiveCards}</Span>/
+                  <Span color="red.500">{session.negativeCards}</Span>)
                 </Td>
                 <Td>{prettyDuration(session.studyTime)}</Td>
               </MotionTr>
