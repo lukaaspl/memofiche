@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useLocalStorage } from "beautiful-react-hooks";
 import CustomButton from "components/ui/custom-button";
+import Span from "components/ui/span";
 import SyncSpinner from "components/ui/sync-spinner";
 import { STUDIED_CARDS_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
@@ -158,13 +159,13 @@ export default function StudiedCardsChart({
                       opacity={isTotalMode ? 1 : 0.6}
                     >
                       Total studied cards: {data.value.studiedCards.sum} (
-                      <Text as="span" color="green.400">
+                      <Span color="green.400">
                         {data.value.positiveCards.sum}
-                      </Text>
+                      </Span>
                       /
-                      <Text as="span" color="red.400">
+                      <Span color="red.400">
                         {data.value.negativeCards.sum}
-                      </Text>
+                      </Span>
                       )
                     </Text>
                     <Text
@@ -174,13 +175,13 @@ export default function StudiedCardsChart({
                     >
                       Avg. studied cards:{" "}
                       {prettyRound(data.value.studiedCards.mean)} (
-                      <Text as="span" color="green.400">
+                      <Span color="green.400">
                         {prettyRound(data.value.positiveCards.mean)}
-                      </Text>
+                      </Span>
                       /
-                      <Text as="span" color="red.400">
+                      <Span color="red.400">
                         {prettyRound(data.value.negativeCards.mean)}
-                      </Text>
+                      </Span>
                       )
                     </Text>
                   </>

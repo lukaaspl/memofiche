@@ -16,6 +16,9 @@
   ],
   "couldHave": [
     "[x]Cards cloning",
+    "Import cards from CSV file",
+    "Pagination",
+    "Dark theme",
     "Grid/list views options",
     "Multi-select tables/batch operations",
     "Decks avatars",
@@ -25,14 +28,14 @@
     "Warning when trying to change route while studying"
   ],
   "wontHave": [
-    "Import cards from CSV file",
     "Print decks as nice flashcards set",
-    "Dark theme",
     "Advanced studying scheduler",
     "Cards handle medias (audio, video, images, LaTeX)",
-    "Refresh tokens",
+    "Refresh tokens (advanced auth)",
     "Advanced card types",
     "Persist not completed studying sessions (LocalStorage/DB)",
-    "Internationalization"
+    "Internationalization",
+    "Public profiles",
+    "Public decks with ability to fork them"
   ]
 }

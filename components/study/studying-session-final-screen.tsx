@@ -5,7 +5,7 @@ import {
   AlertTitle,
 } from "@chakra-ui/react";
 import Feedback from "components/ui/feedback";
-import { DECKS_QUERY_KEY } from "consts/query-keys";
+import { DECKS_QUERY_KEY, STUDYING_OVERVIEW } from "consts/query-keys";
 import {
   PostStudySessionRequestData,
   StudySessionsWithDeviations,
@@ -48,6 +48,7 @@ export default function StudyingSessionFinalScreen({
   const { mutate, data, isLoading, isError } = useMutation(postStudySession, {
     onSuccess: () => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
+      queryClient.invalidateQueries(STUDYING_OVERVIEW);
     },
   });
 

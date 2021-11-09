@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   HStack,
   Stat,
@@ -14,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import MotionBox from "components/ui/motion-box";
+import Span from "components/ui/span";
 import { Nullable } from "domains";
 import { StudySessionsWithDeviations } from "domains/study";
 import { motion, TargetAndTransition, useAnimation } from "framer-motion";
@@ -57,16 +57,14 @@ function SessionStudyStatContent({
                 <StatArrow
                   type={stat.currentDeckAvg > 0 ? "increase" : "decrease"}
                 />
-                <Text as="span" fontWeight="bold">
+                <Span fontWeight="bold">
                   {prettyRound(Math.abs(stat.currentDeckAvg * 100), 2).concat(
                     "%"
                   )}
-                </Text>
+                </Span>
               </>
             ) : (
-              <Text as="span" fontWeight="bold">
-                no deviation
-              </Text>
+              <Span fontWeight="bold">no deviation</Span>
             )}
           </StatHelpText>
         </Tooltip>

@@ -27,7 +27,6 @@ function CardPauseCover({ isPaused }: CardPauseCoverProps): JSX.Element {
       backgroundColor="purple.500"
       initial={false}
       animate={{ x: isPaused ? 0 : "-100%" }}
-      // @ts-ignore
       transition={{ type: "spring", duration: 0.35 }}
     >
       <Center h="100%">
@@ -127,13 +126,14 @@ function CardSide({
       )}
       <Center height="75%">
         <Text
+          className="primary-sc"
           fontFamily="Poppins"
           fontSize="lg"
           wordBreak="break-word"
           overflow="auto"
           maxHeight="100%"
           paddingX={3}
-          className="primary-sc"
+          textAlign="center"
         >
           {content}
         </Text>
@@ -188,8 +188,6 @@ export default function Flashcard({
               ),
             }}
             exit={{ borderLeftWidth: FRAME_WIDTH_PER_CARD }}
-            // some conflict with chakra-ui transition prop
-            // @ts-ignore
             transition={{
               borderLeftWidth: { duration: 0 },
               default: { type: "spring", mass: 0.5 },

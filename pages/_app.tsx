@@ -1,8 +1,9 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import GithubReference from "components/github-reference";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import relativeTime from "dayjs/plugin/relativeTime";
 import isToday from "dayjs/plugin/isToday";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import React, { FC } from "react";
@@ -27,6 +28,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <AuthProvider>
         <ChakraProvider>
           <Component {...pageProps} />
+          <GithubReference />
         </ChakraProvider>
       </AuthProvider>
       <ReactQueryDevtools position="bottom-right" />
