@@ -43,3 +43,8 @@ export interface StudyingOverview {
   studyingSummary: StudySummarySample[];
   lastSessions: StudySessionWithDeck[];
 }
+
+export enum RatingControlMode {
+  Basic,
+  Advanced,
+}

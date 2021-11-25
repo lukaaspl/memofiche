@@ -100,6 +100,7 @@ model User {
   role      UserRole @default(User)
   decks     Deck[]
   profile   Profile?
+  config    Config?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -114,6 +115,15 @@ model Profile {
   website   String?
   avatar    Avatar?
   updatedAt DateTime @updatedAt
+}
+
+model Config {
+  id                     Int      @id @default(autoincrement())
+  userId                 Int      @unique
+  user                   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  darkTheme              Boolean  @default(false)
+  advancedRatingControls Boolean  @default(false)
+  updatedAt              DateTime @updatedAt
 }
 
 model Avatar {

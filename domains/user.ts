@@ -1,5 +1,5 @@
 import { Prisma, User } from "@prisma/client";
-import { findUserProfile } from "repositories/user";
+import { findUserProfile, findMeUser } from "repositories/user";
 
 export type RegisterUserRequestData = Pick<User, "email" | "password" | "name">;
 export type RegisterUserResponse = { token: string };
@@ -7,7 +7,12 @@ export type RegisterUserResponse = { token: string };
 export type LoginUserRequestData = Pick<User, "email" | "password">;
 export type LoginUserResponse = { token: string };
 
-export type MeUser = Pick<User, "email" | "name" | "role">;
+type MeUserRaw = NonNullable<Prisma.PromiseReturnType<typeof findMeUser>>;
+
+export type MeUser = {
+  [K in keyof MeUserRaw]: NonNullable<MeUserRaw[K]>;
+};
+
 export type MeResponse = MeUser;
 
 export type DetailedProfile = NonNullable<

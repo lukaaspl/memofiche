@@ -15,6 +15,7 @@ import AnimatedSkeleton from "components/ui/animated-skeleton";
 import NavLink from "components/ui/nav-link";
 import { AnimatePresence } from "framer-motion";
 import useAuth from "hooks/use-auth";
+import useThemeAdjuster from "hooks/use-theme-adjuster";
 import React from "react";
 import { IconType } from "react-icons";
 import {
@@ -85,7 +86,9 @@ interface LayoutProps {
 const SIDEBAR_WIDTH = "64px";
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  const { userData, isLogged } = useAuth();
+  const { authState, isLogged } = useAuth();
+
+  useThemeAdjuster();
 
   return (
     <AnimatePresence>
@@ -134,7 +137,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 <Text>
                   Logged as{" "}
                   <Span display="inline" fontWeight="bold" color="purple.500">
-                    {userData.data?.name} ({userData.data?.email})
+                    {authState.user?.name} ({authState.user?.email})
                   </Span>
                 </Text>
               </AnimatedSkeleton>

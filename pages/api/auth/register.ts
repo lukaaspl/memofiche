@@ -56,6 +56,9 @@ registerHandler.post(async (req, res) => {
             },
           },
         },
+        config: {
+          create: {},
+        },
       },
     });
 

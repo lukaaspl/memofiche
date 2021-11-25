@@ -1,4 +1,6 @@
-import { AnimatedSkeletonStack } from "components/ui/animated-skeleton";
+import { Box } from "@chakra-ui/react";
+import GeneralSettingsForm from "components/settings/general-settings-form";
+import ResetPasswordForm from "components/settings/reset-password-form";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";
@@ -11,7 +13,10 @@ const SettingsPage: NextPage = () => {
   return (
     <Layout>
       <PrimaryHeading>Settings</PrimaryHeading>
-      <AnimatedSkeletonStack />
+      <Box mt={8}>
+        <GeneralSettingsForm />
+        <ResetPasswordForm />
+      </Box>
     </Layout>
   );
 };

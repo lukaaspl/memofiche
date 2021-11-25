@@ -10,14 +10,15 @@ import {
   RegisterUserResponse,
 } from "domains/user";
 import { apiClient, authApiClient } from "lib/axios";
-import { createContext, useCallback, useEffect } from "react";
-import { useImmer } from "use-immer";
+import { createContext, useCallback, useEffect, useState } from "react";
+import { assert } from "utils/validation";
 
 export interface AuthContext {
   isUserLoading: boolean;
   isLogged: boolean;
   hasAccessToken: boolean;
-  userData: UserData;
+  authState: AuthState;
+  updateUser: (user: Partial<MeUser>) => void;
   signUp: (data: RegisterUserRequestData) => Promise<void>;
   signIn: (data: LoginUserRequestData) => Promise<void>;
   logOut: () => void;
@@ -29,28 +30,28 @@ interface AuthProviderProps {
   children: JSX.Element;
 }
 
-interface UserData {
-  data: Nullable<MeUser>;
+interface AuthState {
+  user: Nullable<MeUser>;
   isLoading: boolean;
   hasError: boolean;
 }
 
-const userDataIdentity: UserData = {
-  data: null,
+const authStateIdentity: AuthState = {
+  user: null,
   isLoading: true,
   hasError: false,
 };
 
 export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
-  const [userData, updateUserData] = useImmer<UserData>(userDataIdentity);
+  const [state, setState] = useState<AuthState>(authStateIdentity);
 
   const [accessToken, setAccessToken] = useLocalStorage<Nullable<string>>(
     ACCESS_TOKEN,
     null
   );
 
-  const isUserLoading = userData.isLoading;
-  const isLogged = Boolean(userData.data);
+  const isUserLoading = state.isLoading;
+  const isLogged = Boolean(state.user);
   const hasAccessToken = Boolean(accessToken);
 
   const signUp = useCallback(
@@ -82,15 +83,27 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   );
 
   const logOut = useCallback(() => {
-    updateUserData(userDataIdentity);
+    setState(authStateIdentity);
     setAccessToken(() => null);
-  }, [setAccessToken, updateUserData]);
+  }, [setAccessToken, setState]);
+
+  const updateUser = useCallback((user: Partial<MeUser>) => {
+    setState((prevState) => {
+      assert(prevState.user);
+
+      return {
+        ...prevState,
+        user: { ...prevState.user, ...user },
+      };
+    });
+  }, []);
 
   const grantAccess = useCallback(async () => {
     if (!hasAccessToken) {
-      updateUserData((draft) => {
-        draft.isLoading = false;
-      });
+      setState((prevState) => ({
+        ...prevState,
+        isLoading: false,
+      }));
 
       return;
     }
@@ -98,17 +111,19 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     try {
       const { data } = await authApiClient.get<MeResponse>("/me");
 
-      updateUserData((draft) => {
-        draft.data = data;
-        draft.isLoading = false;
-      });
+      setState((prevState) => ({
+        ...prevState,
+        user: data,
+        isLoading: false,
+      }));
     } catch {
-      updateUserData((draft) => {
-        draft.isLoading = false;
-        draft.hasError = true;
-      });
+      setState((prevState) => ({
+        ...prevState,
+        isLoading: false,
+        hasError: true,
+      }));
     }
-  }, [hasAccessToken, updateUserData]);
+  }, [hasAccessToken, setState]);
 
   useEffect(() => {
     grantAccess();
@@ -120,7 +135,8 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
         isUserLoading,
         isLogged,
         hasAccessToken,
-        userData,
+        authState: state,
+        updateUser,
         signUp,
         signIn,
         logOut,

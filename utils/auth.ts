@@ -15,8 +15,11 @@ export function hashPassword(plainPassword: string): Promise<string> {
   return bcrypt.hash(plainPassword, DEFAULT_SALT_ROUNDS);
 }
 
-export function comparePasswords(p1: string, p2: string): Promise<boolean> {
-  return bcrypt.compare(p1, p2);
+export function comparePasswords(
+  plainPassword: string,
+  encryptedPassword: string
+): Promise<boolean> {
+  return bcrypt.compare(plainPassword, encryptedPassword);
 }
 
 export function signToken(userId: number): string {
