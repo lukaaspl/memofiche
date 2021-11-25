@@ -3,16 +3,16 @@ import { useEffect } from "react";
 import useAuth from "./use-auth";
 
 export default function usePrivateRoute(): void {
-  const { userData, isLogged } = useAuth();
+  const { authState, isLogged } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (userData.isLoading) {
+    if (authState.isLoading) {
       return;
     }
 
     if (!isLogged) {
       router.push("/sign");
     }
-  }, [isLogged, router, userData.isLoading]);
+  }, [authState.isLoading, isLogged, router]);
 }

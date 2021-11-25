@@ -1,6 +1,8 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import { ColorModeScript } from "@chakra-ui/color-mode";
 import { createGenerateId, JssProvider, SheetsRegistry } from "react-jss";
+import theme from "theme";
 
 class CustomDocument extends Document {
   render(): JSX.Element {
@@ -19,6 +21,7 @@ class CustomDocument extends Document {
           />
         </Head>
         <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>

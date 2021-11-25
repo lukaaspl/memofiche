@@ -74,6 +74,16 @@ export const sortCardsQuerySchema = z.object({
   order: sortOrderSchema,
 });
 
+export const updateConfigSchema = z.object({
+  advancedRatingControls: z.boolean(),
+  darkTheme: z.boolean(),
+});
+
+export const resetPasswordBodySchema = z.object({
+  oldPassword: z.string(),
+  newPassword: z.string(),
+});
+
 export function assert(
   condition: unknown,
   message?: string

@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { DetailedProfile } from "domains/user";
-import useAuth from "hooks/use-auth";
+import useMe from "hooks/use-me";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { authApiClient } from "lib/axios";
 import React, { useMemo } from "react";
@@ -29,7 +29,7 @@ async function fetchProfile(): Promise<DetailedProfile> {
 }
 
 export default function ProfileDetails(): JSX.Element {
-  const { userData } = useAuth();
+  const user = useMe();
 
   const [
     isEditProfileDialogOpen,
@@ -46,11 +46,11 @@ export default function ProfileDetails(): JSX.Element {
   const availableDetailsListItems = useMemo(
     () =>
       [
-        { Icon: MdPerson, value: userData.data?.name },
-        { Icon: MdEmail, value: userData.data?.email },
+        { Icon: MdPerson, value: user.name },
+        { Icon: MdEmail, value: user.email },
         { Icon: MdInsertLink, value: profile?.website },
       ].filter((item) => Boolean(item.value)),
-    [userData, profile]
+    [user, profile]
   );
 
   if (error) {

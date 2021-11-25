@@ -1,6 +1,6 @@
 import { InternalServerError } from "http-errors";
 import createApiHandler from "lib/nc";
-import prisma from "lib/prisma";
+import { findMeUser } from "repositories/user";
 import { authenticated, extractTokenUserId } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 
@@ -20,14 +20,7 @@ meHandler.get(async (req, res) => {
   }
 
   try {
-    const requestedUser = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        name: true,
-        email: true,
-        role: true,
-      },
-    });
+    const requestedUser = await findMeUser(userId);
 
     if (!requestedUser) {
       sendError(new InternalServerError());

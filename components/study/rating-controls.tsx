@@ -1,6 +1,9 @@
 import { ButtonProps, Kbd, Stack, StackProps } from "@chakra-ui/react";
+import Span from "components/ui/span";
 import KeyAccessedButton from "components/ui/key-accessed-button";
 import { DetailedCard } from "domains/card";
+import { RatingControlMode } from "domains/study";
+import useMe from "hooks/use-me";
 import React from "react";
 import { getPredictedInterval } from "utils/cards";
 
@@ -25,6 +28,44 @@ const BASIC_RATING_CONTROLS: RatingControl[] = [
   },
 ];
 
+const ADVANCED_RATING_CONTROLS: RatingControl[] = [
+  {
+    label: "1",
+    rate: 1,
+    colorScheme: "red",
+    shortcut: { label: "1", code: "Digit1" },
+  },
+  {
+    label: "2",
+    rate: 2,
+    colorScheme: "red",
+    shortcut: { label: "2", code: "Digit2" },
+  },
+  {
+    label: "3",
+    rate: 3,
+    colorScheme: "yellow",
+    shortcut: { label: "3", code: "Digit3" },
+  },
+  {
+    label: "4",
+    rate: 4,
+    colorScheme: "yellow",
+    shortcut: { label: "4", code: "Digit4" },
+  },
+  {
+    label: "5",
+    rate: 5,
+    colorScheme: "green",
+    shortcut: { label: "5", code: "Digit5" },
+  },
+];
+
+const controlsByMode: Record<RatingControlMode, RatingControl[]> = {
+  [RatingControlMode.Basic]: BASIC_RATING_CONTROLS,
+  [RatingControlMode.Advanced]: ADVANCED_RATING_CONTROLS,
+};
+
 interface RatingControl {
   label: string;
   rate: number;
@@ -42,13 +83,18 @@ interface RatingControlsProps extends StackProps {
 export default function RatingControls({
   card,
   isDisabled,
-  controls = BASIC_RATING_CONTROLS,
   onRate,
   ...stackProps
 }: RatingControlsProps): JSX.Element {
+  const { config } = useMe();
+
+  const mode = config.advancedRatingControls
+    ? RatingControlMode.Advanced
+    : RatingControlMode.Basic;
+
   return (
     <Stack direction="row" spacing={5} {...stackProps}>
-      {controls.map((control, index) => (
+      {controlsByMode[mode].map((control, index) => (
         <KeyAccessedButton
           keyCode={control.shortcut.code}
           key={index}
@@ -61,7 +107,10 @@ export default function RatingControls({
           <Kbd mr={2} color="blackAlpha.700" fontSize="small">
             {control.shortcut.label}
           </Kbd>
-          {control.label} {getPredictedInterval(card, control.rate)}
+          {control.label}
+          <Span ml={1} fontSize="xs">
+            {getPredictedInterval(card, control.rate)}
+          </Span>
         </KeyAccessedButton>
       ))}
     </Stack>

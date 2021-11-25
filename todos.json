@@ -3,7 +3,7 @@
     "Cards handle reverse type",
     "Cards handle markdown",
     "[x]Dashboard charts & statistics",
-    "User settings"
+    "[x]User settings"
   ],
   "shouldHave": [
     "[x]Option to auto-include deck's tags while creating a new card",
