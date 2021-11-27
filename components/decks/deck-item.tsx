@@ -19,6 +19,8 @@ import Feedback from "components/ui/feedback";
 import GoBackButton from "components/ui/go-back-button";
 import PrimaryHeading from "components/ui/primary-heading";
 import SortingControls from "components/ui/sorting-controls";
+import Span from "components/ui/span";
+import SyncSpinner from "components/ui/sync-spinner";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import { CARDS_SORT } from "consts/storage-keys";
 import { CardSort } from "domains/card";
@@ -35,8 +37,6 @@ import { TagsConverter } from "utils/tags";
 import CardsList from "./cards-list";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
-import Span from "./ui/span";
-import SyncSpinner from "./ui/sync-spinner";
 
 async function deleteDeckById(deckId: number): Promise<Deck> {
   const { data: deletedDeck } = await authApiClient.delete<Deck>(

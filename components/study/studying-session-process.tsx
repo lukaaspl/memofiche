@@ -1,12 +1,13 @@
-import { Kbd, SlideFade, Stack } from "@chakra-ui/react";
+import { Kbd, Stack } from "@chakra-ui/react";
 import Flashcard from "components/study/flashcard";
 import RatingControls from "components/study/rating-controls";
 import StudyingProgressBar from "components/study/studying-progress-bar";
 import StudyingTopBar from "components/study/studying-top-bar";
 import KeyAccessedButton from "components/ui/key-accessed-button";
-import { useIsPresent } from "framer-motion";
+import { AnimatePresence, useIsPresent } from "framer-motion";
 import { StudyingOperations, StudyingState } from "hooks/use-studying";
-import React from "react";
+import React, { useMemo } from "react";
+import { StudyCard } from "utils/cards";
 import { assert } from "utils/validation";
 
 interface StudyingSessionProcessProps {
@@ -23,7 +24,11 @@ export default function StudyingSessionProcess({
   const isPresent = useIsPresent();
 
   const studyingCardsCount = state.studyingCards.length;
-  const currentCard = state.studyingCards[state.currentCardIndex];
+
+  const currentCard = useMemo(() => {
+    const rawCard = state.studyingCards[state.currentCardIndex];
+    return new StudyCard(rawCard).produce();
+  }, [state.currentCardIndex, state.studyingCards]);
 
   return (
     <>
@@ -60,16 +65,15 @@ export default function StudyingSessionProcess({
           </Kbd>
           Flip the card
         </KeyAccessedButton>
-        <SlideFade
-          transition={{ exit: { delay: 0.1, duration: 0.15 } }}
-          in={state.wasCardFlipped}
-        >
+        <AnimatePresence exitBeforeEnter>
           <RatingControls
+            key={currentCard.id}
             card={currentCard}
             onRate={operations.next}
+            isShown={state.wasCardFlipped}
             isDisabled={!state.wasCardFlipped || state.isPaused || !isPresent}
           />
-        </SlideFade>
+        </AnimatePresence>
       </Stack>
     </>
   );

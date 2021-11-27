@@ -18,7 +18,7 @@ import { MdEdit, MdEmail, MdInsertLink, MdPerson } from "react-icons/md";
 import { useQuery } from "react-query";
 import EditProfileDialog from "./edit-profile-dialog";
 import ProfileDetailsAvatar from "./profile-details-avatar";
-import Feedback from "./ui/feedback";
+import Feedback from "components/ui/feedback";
 
 async function fetchProfile(): Promise<DetailedProfile> {
   const { data: profile } = await authApiClient.get<DetailedProfile>(

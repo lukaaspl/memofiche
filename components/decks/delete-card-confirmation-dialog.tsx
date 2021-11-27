@@ -1,11 +1,11 @@
 import { Card } from "@prisma/client";
+import CustomAlertDialog from "components/ui/custom-alert-dialog";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedCard } from "domains/card";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
-import CustomAlertDialog from "./ui/custom-alert-dialog";
 
 interface DeleteCardVariables {
   deckId: number;

@@ -1,7 +1,7 @@
 import { TableRowProps, Tr } from "@chakra-ui/react";
-import { MotionCustomComponentProps } from "domains/framer-motion";
+import { OmitMotionCollidedProps } from "domains/framer-motion";
 import { motion } from "framer-motion";
 
-const MotionTr = motion<MotionCustomComponentProps<TableRowProps>>(Tr);
+const MotionTr = motion<OmitMotionCollidedProps<TableRowProps>>(Tr);
 
 export default MotionTr;

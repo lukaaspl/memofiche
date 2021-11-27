@@ -1,4 +1,4 @@
-import ProfileDetails from "components/profile-details";
+import ProfileDetails from "components/profile/profile-details";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";

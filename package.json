@@ -36,7 +36,7 @@
     "dayjs": "^1.10.7",
     "framer-motion": "^4.1.17",
     "http-errors": "^1.8.0",
-    "immer": "^9.0.2",
+    "immer": "^9.0.7",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "nanoid": "^3.1.23",
@@ -47,12 +47,12 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.7.0",
     "react-icons": "^4.2.0",
-    "react-jss": "^10.6.0",
+    "react-markdown": "^7.1.0",
     "react-query": "^3.24.3",
     "recharts": "^2.1.6",
+    "remark-gfm": "^3.0.1",
     "superjson": "^1.7.4",
     "tinycolor2": "^1.4.2",
-    "use-immer": "^0.6.0",
     "zod": "3.5.1"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import CustomDialog from "components/ui/custom-dialog";
 import { DetailedCard } from "domains/card";
 import React, { useMemo } from "react";
 import { TagsConverter } from "utils/tags";
-import CustomButton from "./ui/custom-button";
+import CustomButton from "../ui/custom-button";
 
 interface CardDetailsDialogProps {
   card: DetailedCard;

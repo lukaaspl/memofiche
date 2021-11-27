@@ -1,4 +1,4 @@
-import DecksList from "components/decks-list";
+import DecksList from "components/decks/decks-list";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";

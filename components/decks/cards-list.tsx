@@ -19,6 +19,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { CardType } from "@prisma/client";
+import Feedback from "components/ui/feedback";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
 import { DeckTag } from "domains/tags";
@@ -28,18 +29,17 @@ import { truncate } from "lodash";
 import React, { useState } from "react";
 import { BsCardText } from "react-icons/bs";
 import {
+  MdContentCopy,
   MdDelete,
   MdEdit,
   MdInfoOutline,
   MdMoreHoriz,
   MdRepeat,
-  MdContentCopy,
 } from "react-icons/md";
 import { TagsConverter } from "utils/tags";
 import CardDetailsDialog from "./card-details-dialog";
 import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
 import ManageCardDialog from "./manage-card-dialog";
-import Feedback from "./ui/feedback";
 
 interface CardsListProps {
   cards: DetailedCard[];

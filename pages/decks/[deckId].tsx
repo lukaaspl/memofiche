@@ -1,4 +1,4 @@
-import DeckItem from "components/deck-item";
+import DeckItem from "components/decks/deck-item";
 import Layout from "components/ui/layout";
 import usePrivateRoute from "hooks/use-private-route";
 import { NextPage } from "next";
