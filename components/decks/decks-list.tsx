@@ -10,6 +10,7 @@ import CustomButton from "components/ui/custom-button";
 import CustomList from "components/ui/custom-list";
 import Feedback from "components/ui/feedback";
 import SortingControls from "components/ui/sorting-controls";
+import SyncSpinner from "components/ui/sync-spinner";
 import { DECKS_SORT } from "consts/storage-keys";
 import { DeckSort } from "domains/deck";
 import useDecksQuery from "hooks/use-decks-query";
@@ -18,7 +19,6 @@ import useSortState from "hooks/use-sort-state";
 import { useRouter } from "next/router";
 import React from "react";
 import ManageDeckDialog from "./manage-deck-dialog";
-import SyncSpinner from "./ui/sync-spinner";
 
 export default function DecksList(): JSX.Element {
   const router = useRouter();

@@ -1,7 +1,7 @@
 {
   "mustHave": [
-    "Cards handle reverse type",
-    "Cards handle markdown",
+    "[x]Cards handle reverse type",
+    "[x]Cards handle markdown",
     "[x]Dashboard charts & statistics",
     "[x]User settings"
   ],
@@ -16,9 +16,9 @@
   ],
   "couldHave": [
     "[x]Cards cloning",
+    "Dark theme",
     "Import cards from CSV file",
     "Pagination",
-    "Dark theme",
     "Grid/list views options",
     "Multi-select tables/batch operations",
     "Decks avatars",

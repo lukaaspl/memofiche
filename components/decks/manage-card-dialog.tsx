@@ -21,8 +21,8 @@ import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
-import CustomButton from "./ui/custom-button";
-import CustomDialog from "./ui/custom-dialog";
+import CustomButton from "components/ui/custom-button";
+import CustomDialog from "components/ui/custom-dialog";
 
 type ManageCardDialogProps = {
   isOpen: boolean;

@@ -1,11 +1,15 @@
 import { ButtonProps, Kbd, Stack, StackProps } from "@chakra-ui/react";
-import Span from "components/ui/span";
 import KeyAccessedButton from "components/ui/key-accessed-button";
-import { DetailedCard } from "domains/card";
+import Span from "components/ui/span";
+import { DetailedCard, TransformedCard } from "domains/card";
+import { OmitMotionCollidedProps } from "domains/framer-motion";
 import { RatingControlMode } from "domains/study";
+import { motion } from "framer-motion";
 import useMe from "hooks/use-me";
 import React from "react";
 import { getPredictedInterval } from "utils/cards";
+
+const MotionStack = motion<OmitMotionCollidedProps<StackProps>>(Stack);
 
 const BASIC_RATING_CONTROLS: RatingControl[] = [
   {
@@ -73,8 +77,9 @@ interface RatingControl {
   colorScheme?: ButtonProps["colorScheme"];
 }
 
-interface RatingControlsProps extends StackProps {
-  card: DetailedCard;
+interface RatingControlsProps extends OmitMotionCollidedProps<StackProps> {
+  card: TransformedCard<DetailedCard>;
+  isShown: boolean;
   isDisabled: boolean;
   controls?: RatingControl[];
   onRate: (rate: number) => void;
@@ -82,6 +87,7 @@ interface RatingControlsProps extends StackProps {
 
 export default function RatingControls({
   card,
+  isShown,
   isDisabled,
   onRate,
   ...stackProps
@@ -93,7 +99,15 @@ export default function RatingControls({
     : RatingControlMode.Basic;
 
   return (
-    <Stack direction="row" spacing={5} {...stackProps}>
+    <MotionStack
+      direction="row"
+      spacing={5}
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: isShown ? 1 : 0, y: isShown ? 0 : 15 }}
+      exit={{ opacity: 0, y: 15, transition: { delay: 0.1 } }}
+      transition={{ duration: 0.15 }}
+      {...stackProps}
+    >
       {controlsByMode[mode].map((control, index) => (
         <KeyAccessedButton
           keyCode={control.shortcut.code}
@@ -113,6 +127,6 @@ export default function RatingControls({
           </Span>
         </KeyAccessedButton>
       ))}
-    </Stack>
+    </MotionStack>
   );
 }

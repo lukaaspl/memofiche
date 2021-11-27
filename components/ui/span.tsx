@@ -1,5 +1,10 @@
 import { Text, TextProps } from "@chakra-ui/layout";
+import { forwardRef } from "react";
 
-export default function Span(props: TextProps): JSX.Element {
-  return <Text as="span" {...props} />;
-}
+const Span = forwardRef<HTMLParagraphElement, TextProps>((props, ref) => (
+  <Text as="span" ref={ref} {...props} />
+));
+
+Span.displayName = "Span";
+
+export default Span;

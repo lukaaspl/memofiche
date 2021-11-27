@@ -1,6 +1,11 @@
-import { Card } from "@prisma/client";
+import { Card, CardType } from "@prisma/client";
 import { Nullable } from "domains";
-import { CardWithMemoParams, DetailedCard } from "domains/card";
+import {
+  CardWithMemoParams,
+  DetailedCard,
+  CardMeta,
+  TransformedCard,
+} from "domains/card";
 import { isEqual, pick } from "lodash";
 import { superMemo } from "utils/super-memo";
 
@@ -51,4 +56,49 @@ export function getPredictedInterval(
   const intervalInDays = superMemo(card.memoParams, rate).interval;
 
   return `(+${intervalInDays} ${intervalInDays === 1 ? "day" : "days"})`;
+}
+
+export class StudyCard<TCard extends Card> {
+  private rawCard: TCard;
+  private meta: CardMeta = { isSwapped: false };
+
+  constructor(card: TCard) {
+    this.rawCard = card;
+  }
+
+  private transform(card: TCard): TransformedCard<TCard> {
+    const transformedCard = [this.swapCardSides.bind(this)].reduce(
+      (result, transformer) => transformer(result),
+      card
+    );
+
+    return {
+      ...transformedCard,
+      meta: this.meta,
+    };
+  }
+
+  private swapCardSides(card: TCard): TCard {
+    const shouldSwap = card.type === CardType.Reverse && Math.random() > 0.5;
+
+    if (shouldSwap) {
+      this.meta.isSwapped = true;
+
+      return {
+        ...card,
+        obverse: card.reverse,
+        reverse: card.obverse,
+      };
+    }
+
+    return card;
+  }
+
+  getRawCard(): TCard {
+    return this.rawCard;
+  }
+
+  produce(): TransformedCard<TCard> {
+    return this.transform(this.getRawCard());
+  }
 }
