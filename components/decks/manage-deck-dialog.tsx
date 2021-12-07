@@ -8,6 +8,7 @@ import {
 import { Deck } from "@prisma/client";
 import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
+import Form from "components/ui/form";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import {
@@ -60,7 +61,7 @@ export default function ManageDeckDialog({
   editingDeck,
 }: ManageDeckDialogProps): JSX.Element {
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
-  const { register, handleSubmit, reset, setValue } = useForm<FormValues>();
+  const { register, handleSubmit, reset } = useForm<FormValues>();
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
 
@@ -110,13 +111,15 @@ export default function ManageDeckDialog({
     }
 
     if (isEditMode) {
-      setValue("name", editingDeck.name);
-      setValue("tags", TagsConverter.toString(editingDeck.tags));
-      setValue("isFavorite", editingDeck.isFavorite);
+      reset({
+        name: editingDeck.name,
+        tags: TagsConverter.toString(editingDeck.tags),
+        isFavorite: editingDeck.isFavorite,
+      });
     } else {
       reset();
     }
-  }, [editingDeck, isEditMode, isOpen, reset, setValue]);
+  }, [editingDeck, isEditMode, isOpen, reset]);
 
   useEffect(fillInputFieldsEffect, [fillInputFieldsEffect]);
 
@@ -128,7 +131,7 @@ export default function ManageDeckDialog({
       initialFocusRef={initialRef}
       title={isEditMode ? "Update the deck" : "Add a new deck"}
       render={({ Body, Footer }) => (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <Body>
             <FormControl isRequired>
               <FormLabel>Deck name</FormLabel>
@@ -170,7 +173,7 @@ export default function ManageDeckDialog({
             </CustomButton>
             <CustomButton onClick={onClose}>Cancel</CustomButton>
           </Footer>
-        </form>
+        </Form>
       )}
     />
   );
