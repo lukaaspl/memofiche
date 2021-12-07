@@ -8,40 +8,24 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { PROFILE_QUERY_KEY } from "consts/query-keys";
-import { DetailedProfile } from "domains/user";
+import Feedback from "components/ui/feedback";
 import useMe from "hooks/use-me";
+import useProfileQuery from "hooks/use-profile-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
-import { authApiClient } from "lib/axios";
 import React, { useMemo } from "react";
 import { MdEdit, MdEmail, MdInsertLink, MdPerson } from "react-icons/md";
-import { useQuery } from "react-query";
 import EditProfileDialog from "./edit-profile-dialog";
 import ProfileDetailsAvatar from "./profile-details-avatar";
-import Feedback from "components/ui/feedback";
-
-async function fetchProfile(): Promise<DetailedProfile> {
-  const { data: profile } = await authApiClient.get<DetailedProfile>(
-    "/profile"
-  );
-
-  return profile;
-}
 
 export default function ProfileDetails(): JSX.Element {
   const user = useMe();
+  const { data: profile, isLoading, error } = useProfileQuery();
 
   const [
     isEditProfileDialogOpen,
     onEditProfileDialogOpen,
     onEditProfileDialogClose,
   ] = useSimpleDisclosure();
-
-  const {
-    data: profile,
-    isLoading,
-    error,
-  } = useQuery(PROFILE_QUERY_KEY, fetchProfile);
 
   const availableDetailsListItems = useMemo(
     () =>

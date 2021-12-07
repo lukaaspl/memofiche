@@ -6,7 +6,9 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
+import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
+import Form from "components/ui/form";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { UpdateProfileRequestData } from "domains/profile";
@@ -16,7 +18,6 @@ import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import CustomButton from "../ui/custom-button";
 
 interface EditProfileDialogProps {
   profile: DetailedProfile;
@@ -49,7 +50,7 @@ export default function EditProfileDialog({
   onClose,
 }: EditProfileDialogProps): JSX.Element {
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
-  const { register, handleSubmit, setValue, watch } = useForm<FormValues>();
+  const { register, handleSubmit, reset, watch } = useForm<FormValues>();
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
 
@@ -78,12 +79,14 @@ export default function EditProfileDialog({
 
   useEffect(() => {
     if (isOpen) {
-      setValue("firstName", profile.firstName || "");
-      setValue("lastName", profile.lastName || "");
-      setValue("bio", profile.bio || "");
-      setValue("website", profile.website || "");
+      reset({
+        firstName: profile.firstName || "",
+        lastName: profile.lastName || "",
+        bio: profile.bio || "",
+        website: profile.website || "",
+      });
     }
-  }, [isOpen, profile, setValue]);
+  }, [isOpen, profile, reset]);
 
   return (
     <CustomDialog
@@ -93,7 +96,7 @@ export default function EditProfileDialog({
       isOpen={isOpen}
       onClose={onClose}
       render={({ Body, Footer }) => (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <Body>
             <Stack direction="column" spacing={4}>
               <FormControl>
@@ -146,7 +149,7 @@ export default function EditProfileDialog({
             </CustomButton>
             <CustomButton onClick={onClose}>Cancel</CustomButton>
           </Footer>
-        </form>
+        </Form>
       )}
     />
   );

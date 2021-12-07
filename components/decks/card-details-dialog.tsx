@@ -1,9 +1,9 @@
 import { Box, Stack, Tag, TagLabel, Text } from "@chakra-ui/react";
+import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
 import { DetailedCard } from "domains/card";
 import React, { useMemo } from "react";
 import { TagsConverter } from "utils/tags";
-import CustomButton from "../ui/custom-button";
 
 interface CardDetailsDialogProps {
   card: DetailedCard;
