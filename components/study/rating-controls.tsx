@@ -4,7 +4,7 @@ import Span from "components/ui/span";
 import { DetailedCard, TransformedCard } from "domains/card";
 import { OmitMotionCollidedProps } from "domains/framer-motion";
 import { RatingControlMode } from "domains/study";
-import { motion } from "framer-motion";
+import { motion, useIsPresent } from "framer-motion";
 import useMe from "hooks/use-me";
 import React from "react";
 import { getPredictedInterval } from "utils/cards";
@@ -92,6 +92,7 @@ export default function RatingControls({
   onRate,
   ...stackProps
 }: RatingControlsProps): JSX.Element {
+  const isPresent = useIsPresent();
   const { config } = useMe();
 
   const mode = config.advancedRatingControls
@@ -116,7 +117,7 @@ export default function RatingControls({
           size="lg"
           colorScheme={control.colorScheme}
           onClick={() => onRate(control.rate)}
-          isDisabled={isDisabled}
+          isDisabled={isDisabled || !isPresent}
         >
           <Kbd mr={2} color="blackAlpha.700" fontSize="small">
             {control.shortcut.label}

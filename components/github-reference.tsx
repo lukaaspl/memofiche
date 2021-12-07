@@ -7,7 +7,7 @@ const GithubIcon = chakra(RiGithubFill);
 
 export default function GithubReference(): JSX.Element {
   return (
-    <LinkBox position="fixed" bottom={4} right={4}>
+    <LinkBox position="fixed" right={3} bottom={4}>
       <LinkOverlay
         isExternal
         href={REPOSITORY_HREF}

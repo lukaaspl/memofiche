@@ -59,8 +59,10 @@ export default function ProfileDetailsAvatar({
     },
   });
 
-  const onAvatarFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const uploadedFile = e.target.files?.[0];
+  const onAvatarFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const uploadedFile = event.target.files?.[0];
     const allowedFileTypes = ["image/jpeg", "image/png"];
     const maxSizeBytes = 1024 * 1024;
 

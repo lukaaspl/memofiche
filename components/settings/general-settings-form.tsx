@@ -8,6 +8,7 @@ import { ManageableConfig } from "domains/config";
 import useMe from "hooks/use-me";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
+import { isEqual } from "lodash";
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
@@ -28,7 +29,7 @@ export default function GeneralSettingsForm(): JSX.Element {
   const toast = useSuccessToast();
   const { config, updateConfig } = useMe();
 
-  const { handleSubmit, reset, control } = useForm<ManageableConfig>({
+  const { handleSubmit, reset, control, watch } = useForm<ManageableConfig>({
     defaultValues,
   });
 
@@ -38,6 +39,8 @@ export default function GeneralSettingsForm(): JSX.Element {
       updateConfig(updatedConfig);
     },
   });
+
+  const isSubmittingDisabled = isEqual(config, watch());
 
   const onSubmit = handleSubmit((formValues) => {
     updateConfigMutation.mutate(formValues);
@@ -110,6 +113,7 @@ export default function GeneralSettingsForm(): JSX.Element {
           </FormHelperText>
         </FormControl>
         <CustomButton
+          isDisabled={isSubmittingDisabled}
           isLoading={updateConfigMutation.isLoading}
           loadingText="Saving..."
           type="submit"
