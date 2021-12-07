@@ -168,7 +168,7 @@ export default function ManageCardDialog({
                 <FormControl isRequired>
                   <FormLabel>Obverse</FormLabel>
                   <Textarea
-                    height="120px"
+                    height="145px"
                     ref={(el) => {
                       ref(el);
                       initialRef.current = el;
@@ -180,7 +180,7 @@ export default function ManageCardDialog({
                 <FormControl isRequired>
                   <FormLabel>Reverse</FormLabel>
                   <Textarea
-                    height="120px"
+                    height="145px"
                     placeholder="e.g. It’s a process in which two or more parts run simultaneously"
                     {...register("reverse", { required: true })}
                   />
