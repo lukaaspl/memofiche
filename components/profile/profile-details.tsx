@@ -73,7 +73,7 @@ export default function ProfileDetails(): JSX.Element {
                 letterSpacing="0.5px"
                 fontFamily="Poppins"
                 size="sm"
-                color="purple.500"
+                color={palette.primary}
               >
                 <Stack direction="row" alignItems="center" spacing={1.5}>
                   <item.Icon size={21} />

@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  Button,
   Flex,
   List,
   ListIcon,
@@ -16,6 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Span from "components/ui/span";
+import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useProfileQuery from "hooks/use-profile-query";
 import useTypedColorModeValue from "hooks/use-typed-color-mode-value";
@@ -38,8 +38,9 @@ const menuItems: UserPanelMenuItem[] = [
 ];
 
 export default function FloatingUserPanel(): JSX.Element {
-  const { name, email, updateConfig, config } = useMe();
+  const { name, email } = useMe();
   const { data: profile } = useProfileQuery();
+  const palette = useCommonPalette();
 
   const menuItemHoverBgColor = useTypedColorModeValue("backgroundColor")(
     "purple.50",
@@ -48,14 +49,6 @@ export default function FloatingUserPanel(): JSX.Element {
 
   return (
     <Box position="fixed" right={3} top={4}>
-      <Button
-        mr={2}
-        onClick={() =>
-          updateConfig({ ...config, darkTheme: !config.darkTheme })
-        }
-      >
-        Change to {config.darkTheme ? "light" : "dark"}
-      </Button>
       <Popover strategy="fixed" placement="bottom-end">
         <PopoverTrigger>
           <Avatar
@@ -109,7 +102,7 @@ export default function FloatingUserPanel(): JSX.Element {
                     >
                       <ListIcon
                         as={item.icon}
-                        color="purple.500"
+                        color={palette.primary}
                         fontSize="lg"
                       />
                       {item.label}

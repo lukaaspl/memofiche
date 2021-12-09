@@ -4,6 +4,7 @@ import CustomButton from "components/ui/custom-button";
 import Form from "components/ui/form";
 import PrimaryHeading from "components/ui/primary-heading";
 import { ManageableConfig } from "domains/config";
+import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
@@ -27,6 +28,7 @@ const defaultValues: ManageableConfig = {
 export default function GeneralSettingsForm(): JSX.Element {
   const toast = useSuccessToast();
   const { config, updateConfig } = useMe();
+  const palette = useCommonPalette();
 
   const { handleSubmit, reset, control, watch } = useForm<ManageableConfig>({
     defaultValues,
@@ -58,7 +60,7 @@ export default function GeneralSettingsForm(): JSX.Element {
         borderColor="purple.800"
         pb="1.5"
       >
-        <PrimaryHeading size="sm" color="purple.500">
+        <PrimaryHeading size="sm" color={palette.primary}>
           General
         </PrimaryHeading>
         <CustomButton
