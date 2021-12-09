@@ -2,6 +2,7 @@ import { Box, BoxProps } from "@chakra-ui/react";
 import MotionBox from "components/ui/motion-box";
 import { DetailedCard, TransformedCard } from "domains/card";
 import { AnimatePresence } from "framer-motion";
+import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
 import CardSide from "./card-side";
 
@@ -21,6 +22,8 @@ export default function Flashcard({
   isFlipped,
   isPaused,
 }: FlashcardProps): JSX.Element {
+  const palette = useCommonPalette();
+
   return (
     <Box w="600px" h="300px" mx="auto" position="relative">
       <AnimatePresence initial={false}>
@@ -41,7 +44,7 @@ export default function Flashcard({
             width="100%"
             height="100%"
             border={`${FRAME_WIDTH_PER_CARD}px solid`}
-            borderColor="purple.500"
+            borderColor={palette.primary}
             initial={false}
             animate={{
               rotateX: isFlipped ? 180 : 0,

@@ -15,6 +15,7 @@ import MotionTr from "components/ui/motion-tr";
 import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { EnhancedDeckWithCards } from "domains/deck";
+import useCommonPalette from "hooks/use-common-palette";
 import Link from "next/link";
 import React from "react";
 import { MdPlayCircleFilled } from "react-icons/md";
@@ -39,11 +40,13 @@ export default function MostRelevantDecksTable({
   limit,
   isRefetching,
 }: MostRelevantDecksTableProps): JSX.Element {
+  const palette = useCommonPalette();
+
   return (
     <Box>
       <Flex mb={7} align="center">
         <Heading
-          color="purple.500"
+          color={palette.primary}
           fontWeight="bold"
           textTransform="uppercase"
           fontFamily="Poppins"
@@ -62,7 +65,7 @@ export default function MostRelevantDecksTable({
                 key={index}
                 fontSize="sm"
                 fontFamily="Poppins"
-                color="purple.700"
+                color={palette.primaryDark}
                 {...tableRowProps}
               >
                 {label}
@@ -120,7 +123,7 @@ export default function MostRelevantDecksTable({
                     <IconButton
                       isDisabled={isStudyingDisabled}
                       aria-label="Study deck"
-                      color="purple.500"
+                      color={palette.primary}
                       fontSize="x-large"
                       icon={<MdPlayCircleFilled />}
                       variant="ghost"

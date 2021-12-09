@@ -91,9 +91,7 @@ export default function DecksList(): JSX.Element {
         isFavorite={(deck) => deck.isFavorite}
         renderItem={(deck) => (
           <>
-            <Heading size="sm" color="purple.900">
-              {deck.name}
-            </Heading>
+            <Heading size="sm">{deck.name}</Heading>
             <List my={1}>
               <ListItem fontSize="smaller">
                 Created: {new Date(deck.createdAt).toLocaleString()}

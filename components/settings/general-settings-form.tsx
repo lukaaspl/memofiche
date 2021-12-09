@@ -3,7 +3,6 @@ import { Config } from "@prisma/client";
 import CustomButton from "components/ui/custom-button";
 import Form from "components/ui/form";
 import PrimaryHeading from "components/ui/primary-heading";
-import Span from "components/ui/span";
 import { ManageableConfig } from "domains/config";
 import useMe from "hooks/use-me";
 import useSuccessToast from "hooks/use-success-toast";
@@ -71,7 +70,7 @@ export default function GeneralSettingsForm(): JSX.Element {
         </CustomButton>
       </Flex>
       <Form onSubmit={onSubmit} mt={5}>
-        <FormControl mt={4} opacity={0.7}>
+        <FormControl mt={4}>
           <Controller
             name="darkTheme"
             control={control}
@@ -83,8 +82,7 @@ export default function GeneralSettingsForm(): JSX.Element {
                   isChecked={value}
                   {...fieldProps}
                 >
-                  Use dark theme{" "}
-                  <Span fontStyle="italic">(work in progress)</Span>
+                  Use dark theme
                 </Checkbox>
               );
             }}

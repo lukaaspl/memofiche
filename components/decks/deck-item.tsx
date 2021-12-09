@@ -1,4 +1,3 @@
-import { StarIcon } from "@chakra-ui/icons";
 import {
   Box,
   Divider,
@@ -8,49 +7,39 @@ import {
   IconButton,
   Tag,
   TagLabel,
-  Text,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { Deck } from "@prisma/client";
-import CustomAlertDialog from "components/ui/custom-alert-dialog";
 import CustomButton from "components/ui/custom-button";
+import FavoriteStar from "components/ui/favorite-star";
 import Feedback from "components/ui/feedback";
 import GoBackButton from "components/ui/go-back-button";
 import PrimaryHeading from "components/ui/primary-heading";
 import SortingControls from "components/ui/sorting-controls";
 import Span from "components/ui/span";
 import SyncSpinner from "components/ui/sync-spinner";
-import { DECKS_QUERY_KEY } from "consts/query-keys";
 import { CARDS_SORT } from "consts/storage-keys";
 import { CardSort } from "domains/card";
+import useCommonPalette from "hooks/use-common-palette";
 import useDeckQuery from "hooks/use-deck-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useSortState from "hooks/use-sort-state";
-import useSuccessToast from "hooks/use-success-toast";
-import { authApiClient } from "lib/axios";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
 import CardsList from "./cards-list";
+import DeleteDeckConfirmationDialog from "./delete-deck-confirmation-dialog";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
-
-async function deleteDeckById(deckId: number): Promise<Deck> {
-  const { data: deletedDeck } = await authApiClient.delete<Deck>(
-    `/decks/${deckId}`
-  );
-
-  return deletedDeck;
-}
 
 interface DeckItemProps {
   id: number;
 }
 
 export default function DeckItem({ id }: DeckItemProps): JSX.Element {
+  const router = useRouter();
+
   const { sortState, updateField, updateOrder } = useSortState<
     CardSort["sortBy"]
   >(CARDS_SORT, { sortBy: "createdAt", order: "desc" });
@@ -60,10 +49,6 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
     isRefetching,
     error,
   } = useDeckQuery(id, sortState, { keepPreviousData: true });
-
-  const queryClient = useQueryClient();
-  const toast = useSuccessToast();
-  const router = useRouter();
 
   const [isEditDeckDialogOpen, onEditDeckDialogOpen, onEditDeckDialogClose] =
     useSimpleDisclosure();
@@ -79,13 +64,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
       defaultIsOpen: Boolean(router.query["add-card"]),
     });
 
-  const deleteDeckMutation = useMutation(deleteDeckById, {
-    onSuccess: () => {
-      toast("Deck has been deleted successfully");
-      queryClient.invalidateQueries(DECKS_QUERY_KEY);
-      router.push("/decks");
-    },
-  });
+  const palette = useCommonPalette();
 
   if (error) {
     return <Feedback type="error" />;
@@ -100,16 +79,15 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
       <Flex justify="space-between" align="center">
         <PrimaryHeading display="flex" alignItems="center">
           {deck.isFavorite && (
-            <StarIcon
+            <FavoriteStar
               position="relative"
               top="-2px"
               fontSize="x-large"
-              color="yellow.500"
               mr={2}
             />
           )}
           <Span>
-            <Span color="purple.700">{deck.name}</Span> deck
+            <Span color={palette.primaryDark}>{deck.name}</Span> deck
           </Span>
         </PrimaryHeading>
         <Box>
@@ -132,24 +110,10 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
             icon={<MdDelete size={20} />}
             onClick={onDeleteDeckConfirmationDialogOpen}
           />
-          <CustomAlertDialog
-            title="Delete deck?"
-            content={
-              <>
-                {`Are you sure? You can't undo this action afterwards.`}
-                {deck.cards.length > 0 && (
-                  <Text fontWeight="medium">
-                    Important: You are going to lose all{" "}
-                    <Span color="red.500">{deck.cards.length}</Span> cards
-                    contained in the deck!
-                  </Text>
-                )}
-              </>
-            }
+          <DeleteDeckConfirmationDialog
+            deck={deck}
             isOpen={isDeleteDeckConfirmationDialogOpen}
-            isLoading={deleteDeckMutation.isLoading}
             onClose={onDeleteDeckConfirmationDialogClose}
-            onConfirm={() => deleteDeckMutation.mutate(id)}
           />
         </Box>
       </Flex>

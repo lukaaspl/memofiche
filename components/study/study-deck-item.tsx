@@ -6,6 +6,7 @@ import MotionBox from "components/ui/motion-box";
 import PrimaryHeading from "components/ui/primary-heading";
 import Span from "components/ui/span";
 import { AnimatePresence } from "framer-motion";
+import useCommonPalette from "hooks/use-common-palette";
 import useDeckQuery from "hooks/use-deck-query";
 import useStudying from "hooks/use-studying";
 import React, { useEffect } from "react";
@@ -28,6 +29,7 @@ export default function StudyDeckItem({
   });
 
   const { state, operations } = useStudying();
+  const palette = useCommonPalette();
 
   useEffect(() => {
     if (deck && isFetchedAfterMount && !state.isStarted) {
@@ -50,7 +52,7 @@ export default function StudyDeckItem({
   return (
     <>
       <PrimaryHeading mb={3}>
-        Study <Span color="purple.700">{deck.name}</Span>
+        Study <Span color={palette.primaryDark}>{deck.name}</Span>
       </PrimaryHeading>
       <GoBackButton />
       <AnimatePresence initial={false} exitBeforeEnter>

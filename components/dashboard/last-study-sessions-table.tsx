@@ -15,6 +15,7 @@ import Span from "components/ui/span";
 import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { StudySessionWithDeck } from "domains/study";
+import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
 import { arrayPadEnd } from "utils/array";
 import { prettyDuration } from "utils/date-time";
@@ -37,11 +38,13 @@ export default function LastStudySessionsTable({
   limit,
   isRefetching,
 }: LastStudySessionsTableProps): JSX.Element {
+  const palette = useCommonPalette();
+
   return (
     <Box>
       <Flex mb={7} align="center">
         <Heading
-          color="purple.500"
+          color={palette.primary}
           fontWeight="bold"
           textTransform="uppercase"
           fontFamily="Poppins"
@@ -60,7 +63,7 @@ export default function LastStudySessionsTable({
                 key={index}
                 fontSize="sm"
                 fontFamily="Poppins"
-                color="purple.700"
+                color={palette.primaryDark}
                 {...tableRowProps}
               >
                 {label}
@@ -104,8 +107,8 @@ export default function LastStudySessionsTable({
                 <Td>{session.deck.name}</Td>
                 <Td>
                   {session.studiedCards} (
-                  <Span color="green.500">{session.positiveCards}</Span>/
-                  <Span color="red.500">{session.negativeCards}</Span>)
+                  <Span color={palette.green}>{session.positiveCards}</Span>/
+                  <Span color={palette.red}>{session.negativeCards}</Span>)
                 </Td>
                 <Td>{prettyDuration(session.studyTime)}</Td>
               </MotionTr>

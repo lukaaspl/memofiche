@@ -19,7 +19,7 @@ class CustomDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body className="prevent-scroll-x">
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />

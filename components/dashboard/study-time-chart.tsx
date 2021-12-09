@@ -13,6 +13,7 @@ import SyncSpinner from "components/ui/sync-spinner";
 import { STUDY_TIME_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";
+import useChartPalette from "hooks/use-chart-palette";
 import React from "react";
 import {
   Area,
@@ -42,13 +43,14 @@ export default function StudyTimeChart({
   );
 
   const theme = useTheme<Theme>();
+  const chartPalette = useChartPalette();
 
   return (
     <Box>
       <Flex mb={7} justify="space-between" align="center">
         <Flex align="center">
           <Heading
-            color="purple.500"
+            color={chartPalette.primary}
             fontWeight="bold"
             textTransform="uppercase"
             fontFamily="Poppins"
@@ -86,12 +88,12 @@ export default function StudyTimeChart({
             <linearGradient id="studyTimeFill" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="10%"
-                stopColor={theme.colors.purple["500"]}
+                stopColor={chartPalette.primary}
                 stopOpacity={0.8}
               />
               <stop
                 offset="90%"
-                stopColor={theme.colors.purple["500"]}
+                stopColor={chartPalette.primary}
                 stopOpacity={0}
               />
             </linearGradient>
@@ -100,7 +102,7 @@ export default function StudyTimeChart({
             style={{
               fontFamily: "Poppins",
               fontSize: theme.fontSizes.sm,
-              fill: theme.colors.purple[700],
+              fill: chartPalette.primaryDark,
             }}
             type="number"
             minTickGap={15}
@@ -117,7 +119,7 @@ export default function StudyTimeChart({
               textTransform: "uppercase",
               fontFamily: "Poppins",
               fontSize: theme.fontSizes.sm,
-              fill: theme.colors.purple[700],
+              fill: chartPalette.primaryDark,
             }}
             type="category"
             minTickGap={15}
@@ -127,11 +129,9 @@ export default function StudyTimeChart({
             tickFormatter={formatTickValue}
             dataKey={(data: StudySummarySample) => data.date}
           />
-          <CartesianGrid strokeDasharray="5" stroke={theme.colors.gray[200]} />
+          <CartesianGrid strokeDasharray="5" stroke={chartPalette.grid} />
           <Tooltip
-            cursor={{
-              stroke: theme.colors.gray[300],
-            }}
+            cursor={{ stroke: chartPalette.cursor }}
             content={
               <CustomTooltip<StudySummarySample>
                 render={(data) => (
@@ -167,11 +167,13 @@ export default function StudyTimeChart({
               data.value.studyTime[isTotalMode ? "sum" : "mean"]
             }
             fill="url(#studyTimeFill)"
-            stroke={theme.colors.purple["500"]}
+            stroke={chartPalette.primary}
           />
         </AreaChart>
       </ResponsiveContainer>
-      <ChartLegend items={[{ color: "purple.500", label: "Study time" }]} />
+      <ChartLegend
+        items={[{ color: chartPalette.primary, label: "Study time" }]}
+      />
     </Box>
   );
 }

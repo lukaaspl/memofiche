@@ -1,6 +1,6 @@
 import { Container, Fade } from "@chakra-ui/react";
+import FloatingUserPanel from "components/floating-user-panel";
 import InitializingView from "components/initializing-view";
-import TopBar from "components/top-bar";
 import { AnimatePresence } from "framer-motion";
 import useAuth from "hooks/use-auth";
 import useThemeAdjuster from "hooks/use-theme-adjuster";
@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       {isLogged ? (
         <>
           <MenuSidebar />
-          <TopBar />
+          <FloatingUserPanel />
           <Fade in transition={{ enter: { duration: 0.15 } }}>
             <Container
               maxW="container.lg"

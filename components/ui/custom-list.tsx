@@ -7,10 +7,12 @@ import {
   ListProps,
   Stack,
 } from "@chakra-ui/react";
+import useCommonPalette from "hooks/use-common-palette";
+import useTypedColorModeValue from "hooks/use-typed-color-mode-value";
 import Link from "next/link";
 import React from "react";
 import { MdFolder } from "react-icons/md";
-import { StarIcon } from "@chakra-ui/icons";
+import FavoriteStar from "./favorite-star";
 
 const FolderIcon = chakra(MdFolder);
 
@@ -32,6 +34,13 @@ export default function CustomList<TItem>({
   generateLinkHref,
   ...listProps
 }: CustomListProps<TItem>): JSX.Element {
+  const palette = useCommonPalette();
+
+  const hoverBgColor = useTypedColorModeValue("backgroundColor")(
+    "purple.50",
+    "gray.700"
+  );
+
   const isSelectable = typeof generateLinkHref !== "undefined";
 
   const getListItemContent = (
@@ -41,19 +50,18 @@ export default function CustomList<TItem>({
     <Stack direction="row">
       <Center
         position="relative"
-        w="100px"
-        h="100px"
-        backgroundColor={isDisabled ? "gray.200" : "purple.500"}
+        w="103px"
+        h="103px"
+        backgroundColor={isDisabled ? palette.disabled : "purple.500"}
         borderRadius="md"
       >
         {isFavorite?.(item) && (
-          <StarIcon
+          <FavoriteStar
             position="absolute"
             left={0}
             top={0}
             transform="translate(-40%, -40%)"
             fontSize="xl"
-            color="yellow.500"
           />
         )}
         <FolderIcon size={30} color={isDisabled ? "blackAlpha.800" : "white"} />
@@ -71,11 +79,12 @@ export default function CustomList<TItem>({
 
         return (
           <ListItem
+            borderRadius="md"
             key={selectId(item)}
             {...(isDisabled
               ? {}
               : {
-                  _hover: { backgroundColor: "purple.50" },
+                  _hover: { backgroundColor: hoverBgColor },
                   cursor: isSelectable ? "pointer" : "default",
                 })}
           >

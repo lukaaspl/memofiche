@@ -23,6 +23,7 @@ import Feedback from "components/ui/feedback";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
 import { DeckTag } from "domains/tags";
+import useCommonPalette from "hooks/use-common-palette";
 import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import { truncate } from "lodash";
@@ -74,6 +75,7 @@ export default function CardsList({
   ] = useSimpleDisclosure();
 
   const toast = useToast();
+  const palette = useCommonPalette();
 
   const cloneCardMutation = useCreateCardMutation({
     onMutate: () => {
@@ -119,7 +121,7 @@ export default function CardsList({
                 key={heading}
                 fontSize="sm"
                 fontFamily="Poppins"
-                color="purple.700"
+                color={palette.primaryDark}
               >
                 {heading}
               </Th>
@@ -197,7 +199,7 @@ export default function CardsList({
                       Edit card
                     </MenuItem>
                     <MenuItem
-                      color="red.500"
+                      color={palette.red}
                       icon={<MdDelete size={18} />}
                       onClick={onDeleteCardConfirmationDialogOpen}
                     >

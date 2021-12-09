@@ -18,6 +18,7 @@ import {
 import { Avatar } from "@prisma/client";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
+import useCommonPalette from "hooks/use-common-palette";
 import useStatus from "hooks/use-status";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
@@ -49,6 +50,8 @@ export default function ProfileDetailsAvatar({
   const fileInputRef = useRef<Nullable<HTMLInputElement>>(null);
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
+  const palette = useCommonPalette();
+
   const { status: fileUploadStatus, setStatus: setFileUploadStatus } =
     useStatus();
 
@@ -153,7 +156,7 @@ export default function ProfileDetailsAvatar({
                 Update avatar
               </MenuItem>
               <MenuItem
-                color="red.500"
+                color={palette.red}
                 icon={<MdDelete size={18} />}
                 onClick={() =>
                   updateAvatarSourceMutation.mutate(null, {
