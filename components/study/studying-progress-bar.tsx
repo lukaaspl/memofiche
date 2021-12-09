@@ -1,4 +1,5 @@
 import { Progress, ProgressLabel } from "@chakra-ui/react";
+import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
 
 interface StudyingProgressBarProps {
@@ -10,6 +11,7 @@ export default function StudyingProgressBar({
   currentCardIndex,
   totalCardsCount,
 }: StudyingProgressBarProps): JSX.Element {
+  const palette = useCommonPalette();
   const isHalfway = currentCardIndex + 1 > totalCardsCount / 2;
 
   return (
@@ -28,7 +30,7 @@ export default function StudyingProgressBar({
         },
       }}
     >
-      <ProgressLabel fontSize="lg" color={isHalfway ? "white" : "black"}>
+      <ProgressLabel fontSize="lg" color={isHalfway ? palette.bw : "undefined"}>
         {currentCardIndex + 1}/{totalCardsCount}
       </ProgressLabel>
     </Progress>

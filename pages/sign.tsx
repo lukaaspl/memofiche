@@ -19,6 +19,7 @@ import RedirectAlert from "components/ui/redirect-alert";
 import Span from "components/ui/span";
 import { Nullable } from "domains";
 import useAuth from "hooks/use-auth";
+import useCommonPalette from "hooks/use-common-palette";
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
@@ -41,12 +42,15 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
   const [isProcessing, setProcessing] = useState(false);
   const { isLogged, signIn, signUp } = useAuth();
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     clearErrors,
   } = useForm<SignFormValues>();
+
+  const palette = useCommonPalette();
 
   const onSubmit: SubmitHandler<SignFormValues> = async (values) => {
     setRequestError(null);
@@ -85,8 +89,15 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
 
   return (
     <Center h="100vh">
-      <Box px="10" py="8" shadow="xl" minW="lg" rounded="xl" textAlign="center">
-        <Heading color="gray.900" size="xl" mb="8">
+      <Box
+        px="10"
+        py="8"
+        shadow={palette.containerShadow}
+        minW="lg"
+        rounded="xl"
+        textAlign="center"
+      >
+        <Heading size="xl" mb="8">
           {onRegisterView ? "Sign up" : "Sign in"}
         </Heading>
         <VStack
@@ -106,7 +117,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               // TODO: Remove
               defaultValue="admin@memofiche.pl"
               size="lg"
-              focusBorderColor="purple.500"
+              focusBorderColor={palette.primary as string}
               {...register("email", { required: true })}
             />
           </InputGroup>
@@ -121,7 +132,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               // TODO: Remove
               defaultValue="admin"
               size="lg"
-              focusBorderColor="purple.500"
+              focusBorderColor={palette.primary as string}
               {...register("password", { required: true })}
             />
           </InputGroup>
@@ -135,7 +146,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
                 isInvalid={!!errors.name}
                 placeholder="Your name"
                 size="lg"
-                focusBorderColor="purple.500"
+                focusBorderColor={palette.primary as string}
                 {...register("name", { required: true })}
               />
             </InputGroup>

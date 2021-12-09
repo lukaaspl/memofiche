@@ -14,6 +14,7 @@ import SyncSpinner from "components/ui/sync-spinner";
 import { STUDIED_CARDS_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";
+import useChartPalette from "hooks/use-chart-palette";
 import React from "react";
 import {
   Bar,
@@ -44,13 +45,14 @@ export default function StudiedCardsChart({
   );
 
   const theme = useTheme<Theme>();
+  const chartPalette = useChartPalette();
 
   return (
     <Box>
       <Flex mb={7} justify="space-between" align="center">
         <Flex align="center">
           <Heading
-            color="purple.500"
+            color={chartPalette.primary}
             fontWeight="bold"
             textTransform="uppercase"
             fontFamily="Poppins"
@@ -114,7 +116,7 @@ export default function StudiedCardsChart({
             style={{
               fontFamily: "Poppins",
               fontSize: theme.fontSizes.sm,
-              fill: theme.colors.purple[700],
+              fill: chartPalette.primaryDark,
             }}
             type="number"
             minTickGap={15}
@@ -130,7 +132,7 @@ export default function StudiedCardsChart({
               textTransform: "uppercase",
               fontFamily: "Poppins",
               fontSize: theme.fontSizes.sm,
-              fill: theme.colors.purple[700],
+              fill: chartPalette.primaryDark,
             }}
             type="category"
             minTickGap={15}
@@ -140,10 +142,10 @@ export default function StudiedCardsChart({
             tickFormatter={formatTickValue}
             dataKey={(data: StudySummarySample) => data.date}
           />
-          <CartesianGrid strokeDasharray="5" stroke={theme.colors.gray[200]} />
+          <CartesianGrid strokeDasharray="5" stroke={chartPalette.grid} />
           <Tooltip
             cursor={{
-              fill: theme.colors.gray[200],
+              fill: chartPalette.cursor,
               fillOpacity: 0.7,
             }}
             content={

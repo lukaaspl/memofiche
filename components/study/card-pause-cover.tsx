@@ -1,5 +1,6 @@
 import { Center, Text } from "@chakra-ui/react";
 import MotionBox from "components/ui/motion-box";
+import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
 
 interface CardPauseCoverProps {
@@ -9,13 +10,15 @@ interface CardPauseCoverProps {
 export default function CardPauseCover({
   isPaused,
 }: CardPauseCoverProps): JSX.Element {
+  const palette = useCommonPalette();
+
   return (
     <MotionBox
       position="absolute"
       width="100%"
       height="100%"
       zIndex={1}
-      backgroundColor="purple.500"
+      backgroundColor={palette.primary}
       initial={false}
       animate={{ x: isPaused ? 0 : "-100%" }}
       transition={{ type: "spring", duration: 0.35 }}
@@ -24,7 +27,7 @@ export default function CardPauseCover({
         <Text
           fontWeight="bold"
           fontSize="md"
-          color="whiteAlpha.900"
+          color={palette.bw}
           textTransform="uppercase"
         >
           Studying is paused

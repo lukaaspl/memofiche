@@ -1,7 +1,7 @@
 import {
-  Fade,
   CircularProgress,
   CircularProgressProps,
+  Fade,
 } from "@chakra-ui/react";
 import React from "react";
 

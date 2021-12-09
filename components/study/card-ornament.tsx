@@ -1,4 +1,5 @@
 import { Heading } from "@chakra-ui/react";
+import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
 
 interface CardOrnamentProps {
@@ -10,6 +11,7 @@ export default function CardOrnament({
   position,
   text,
 }: CardOrnamentProps): JSX.Element {
+  const palette = useCommonPalette();
   const isTopLeft = position === "top-left";
 
   return (
@@ -22,7 +24,7 @@ export default function CardOrnament({
       fontSize="sm"
       fontFamily="Poppins"
       fontWeight="bold"
-      color="purple.500"
+      color={palette.primary}
       textTransform="uppercase"
       textAlign="center"
       userSelect="none"

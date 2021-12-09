@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Feedback from "components/ui/feedback";
+import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useProfileQuery from "hooks/use-profile-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
@@ -20,6 +21,7 @@ import ProfileDetailsAvatar from "./profile-details-avatar";
 export default function ProfileDetails(): JSX.Element {
   const user = useMe();
   const { data: profile, isLoading, error } = useProfileQuery();
+  const palette = useCommonPalette();
 
   const [
     isEditProfileDialogOpen,
@@ -50,7 +52,13 @@ export default function ProfileDetails(): JSX.Element {
     .join(" ");
 
   return (
-    <Flex position="relative" mt={16} boxShadow="md" px={5} py={10}>
+    <Flex
+      position="relative"
+      boxShadow={palette.containerShadow}
+      mt={16}
+      px={5}
+      py={10}
+    >
       <ProfileDetailsAvatar avatar={profile.avatar} />
       <Box pl={8}>
         {fullName.length > 0 && (
@@ -65,7 +73,7 @@ export default function ProfileDetails(): JSX.Element {
                 letterSpacing="0.5px"
                 fontFamily="Poppins"
                 size="sm"
-                color="purple.500"
+                color={palette.primary}
               >
                 <Stack direction="row" alignItems="center" spacing={1.5}>
                   <item.Icon size={21} />

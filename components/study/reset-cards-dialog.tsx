@@ -5,6 +5,7 @@ import Span from "components/ui/span";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";
+import useCommonPalette from "hooks/use-common-palette";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
 import { stringifyUrl } from "query-string";
@@ -42,6 +43,7 @@ export default function ResetCardsDialog({
 }: ResetCardsDialog): JSX.Element {
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
+  const palette = useCommonPalette();
 
   const resetCardsMutation = useMutation(resetCards, {
     onSuccess: (_, variables) => {
@@ -69,12 +71,12 @@ export default function ResetCardsDialog({
           <Body>
             <Text mb={6} fontSize="sm">
               You are going to reset all{" "}
-              <Span color="purple.500" fontWeight="bold">
+              <Span color={palette.primary} fontWeight="bold">
                 {deckDetails?.cardsCount}{" "}
                 {deckDetails?.cardsCount === 1 ? "card" : "cards"}
               </Span>{" "}
               from the{" "}
-              <Span color="purple.500" fontWeight="bold">
+              <Span color={palette.primary} fontWeight="bold">
                 {deckDetails?.name}
               </Span>{" "}
               deck. Pick a method how you want to do it:
@@ -83,7 +85,8 @@ export default function ResetCardsDialog({
               <Heading
                 fontSize="sm"
                 fontFamily="Poppins"
-                color="purple.500"
+                color={palette.primary}
+                letterSpacing="wide"
                 textTransform="uppercase"
                 mb={2}
               >
@@ -118,7 +121,8 @@ export default function ResetCardsDialog({
               <Heading
                 fontSize="sm"
                 fontFamily="Poppins"
-                color="red.500"
+                color={palette.red}
+                letterSpacing="wide"
                 textTransform="uppercase"
                 mb={2}
               >

@@ -9,6 +9,7 @@ import CustomButton from "components/ui/custom-button";
 import Form from "components/ui/form";
 import PrimaryHeading from "components/ui/primary-heading";
 import { ResetPasswordData } from "domains/config";
+import useCommonPalette from "hooks/use-common-palette";
 import useErrorToast from "hooks/use-error-toast";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
@@ -41,6 +42,7 @@ export default function ResetPasswordForm(): JSX.Element {
   } = useForm<FormValues>();
   const successToast = useSuccessToast();
   const errorToast = useErrorToast();
+  const palette = useCommonPalette();
 
   const resetPasswordMutation = useMutation(resetPassword, {
     onSuccess: () => {
@@ -72,7 +74,7 @@ export default function ResetPasswordForm(): JSX.Element {
         borderBottom="1px solid"
         borderColor="purple.800"
         size="sm"
-        color="purple.500"
+        color={palette.primary}
       >
         Reset password
       </PrimaryHeading>

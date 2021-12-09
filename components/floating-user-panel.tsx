@@ -15,29 +15,37 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Span from "components/ui/span";
+import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useProfileQuery from "hooks/use-profile-query";
+import useTypedColorModeValue from "hooks/use-typed-color-mode-value";
 import Link from "next/link";
 import React from "react";
 import { IconType } from "react-icons";
 import { MdExitToApp, MdPerson, MdSettings } from "react-icons/md";
 import { getProfileAvatarSource } from "utils/profile";
 
-interface TopBarMenuItem {
+interface UserPanelMenuItem {
   label: string;
   icon: IconType;
   href: string;
 }
 
-const menuItems: TopBarMenuItem[] = [
+const menuItems: UserPanelMenuItem[] = [
   { label: "Manage your profile", icon: MdPerson, href: "/profile" },
   { label: "Settings", icon: MdSettings, href: "/settings" },
   { label: "Log out", icon: MdExitToApp, href: "/logout" },
 ];
 
-export default function TopBar(): JSX.Element {
+export default function FloatingUserPanel(): JSX.Element {
   const { name, email } = useMe();
   const { data: profile } = useProfileQuery();
+  const palette = useCommonPalette();
+
+  const menuItemHoverBgColor = useTypedColorModeValue("backgroundColor")(
+    "purple.50",
+    "gray.600"
+  );
 
   return (
     <Box position="fixed" right={3} top={4}>
@@ -90,11 +98,11 @@ export default function TopBar(): JSX.Element {
                       py={1}
                       alignItems="center"
                       cursor="pointer"
-                      _hover={{ backgroundColor: "purple.50" }}
+                      _hover={{ backgroundColor: menuItemHoverBgColor }}
                     >
                       <ListIcon
                         as={item.icon}
-                        color="purple.500"
+                        color={palette.primary}
                         fontSize="lg"
                       />
                       {item.label}

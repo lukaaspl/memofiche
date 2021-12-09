@@ -13,13 +13,16 @@ import {
   MenuItem,
   MenuList,
   Theme,
+  useColorModeValue,
   useTheme,
 } from "@chakra-ui/react";
 import { Avatar } from "@prisma/client";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
+import useCommonPalette from "hooks/use-common-palette";
 import useStatus from "hooks/use-status";
 import useSuccessToast from "hooks/use-success-toast";
+import useTypedColorModeValue from "hooks/use-typed-color-mode-value";
 import { authApiClient } from "lib/axios";
 import Image from "next/image";
 import React, { useRef } from "react";
@@ -49,8 +52,20 @@ export default function ProfileDetailsAvatar({
   const fileInputRef = useRef<Nullable<HTMLInputElement>>(null);
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
+  const palette = useCommonPalette();
+
   const { status: fileUploadStatus, setStatus: setFileUploadStatus } =
     useStatus();
+
+  const avatarBackgroundColor = useTypedColorModeValue("backgroundColor")(
+    "purple.50",
+    "purple.500"
+  );
+
+  const avatarAccentColor = useColorModeValue(
+    colors.purple[500],
+    colors.purple[50]
+  );
 
   const updateAvatarSourceMutation = useMutation(updateAvatarSource, {
     onSuccess: () => {
@@ -122,9 +137,9 @@ export default function ProfileDetailsAvatar({
         position="relative"
         width="220px"
         height="220px"
-        boxShadow={`0 0 0 3px ${colors.purple[500]}`}
+        boxShadow={`0 0 0 3px ${avatarAccentColor}`}
         borderRadius="50%"
-        backgroundColor="purple.50"
+        backgroundColor={avatarBackgroundColor}
       >
         {hasAvatar ? (
           <Box width="100%" height="100%" overflow="hidden" borderRadius="50%">
@@ -135,7 +150,7 @@ export default function ProfileDetailsAvatar({
             />
           </Box>
         ) : (
-          <AvatarPlaceholderIcon color="purple.500" size={100} />
+          <AvatarPlaceholderIcon color={avatarAccentColor} size={100} />
         )}
         {hasAvatar ? (
           <Menu>
@@ -153,7 +168,7 @@ export default function ProfileDetailsAvatar({
                 Update avatar
               </MenuItem>
               <MenuItem
-                color="red.500"
+                color={palette.red}
                 icon={<MdDelete size={18} />}
                 onClick={() =>
                   updateAvatarSourceMutation.mutate(null, {

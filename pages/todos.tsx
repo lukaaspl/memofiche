@@ -1,7 +1,8 @@
-import { Table, Tbody, Td, Th, Thead, Tr, Text } from "@chakra-ui/react";
+import { Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import Layout from "components/ui/layout";
 import PrimaryHeading from "components/ui/primary-heading";
 import { Nullable } from "domains";
+import useCommonPalette from "hooks/use-common-palette";
 import usePrivateRoute from "hooks/use-private-route";
 import { range } from "lodash";
 import { NextPage } from "next";
@@ -33,6 +34,7 @@ const rowsCount = Math.max(
 );
 
 const TodosPage: NextPage = () => {
+  const palette = useCommonPalette();
   usePrivateRoute();
 
   return (
@@ -48,7 +50,7 @@ const TodosPage: NextPage = () => {
                   textAlign="center"
                   fontSize="md"
                   fontFamily="Poppins"
-                  color="purple.500"
+                  color={palette.primary}
                 >
                   {heading}
                 </Th>

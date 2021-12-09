@@ -119,7 +119,12 @@ export default function RatingControls({
           onClick={() => onRate(control.rate)}
           isDisabled={isDisabled || !isPresent}
         >
-          <Kbd mr={2} color="blackAlpha.700" fontSize="small">
+          <Kbd
+            mr={2}
+            backgroundColor="gray.100"
+            color="blackAlpha.900"
+            fontSize="small"
+          >
             {control.shortcut.label}
           </Kbd>
           {control.label}

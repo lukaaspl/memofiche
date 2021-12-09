@@ -24,6 +24,7 @@ import {
   DeckSort,
   EnhancedDeckWithCards,
 } from "domains/deck";
+import useCommonPalette from "hooks/use-common-palette";
 import useDecksQuery from "hooks/use-decks-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useSortState from "hooks/use-sort-state";
@@ -34,6 +35,8 @@ import { timeToX } from "utils/date-time";
 import ResetCardsDialog from "./reset-cards-dialog";
 
 export default function StudyDecksList(): JSX.Element {
+  const palette = useCommonPalette();
+
   const { sortState, updateField, updateOrder } = useSortState<
     DeckSort["sortBy"]
   >(STUDY_DECKS_SORT, { sortBy: "studyingCardsPercentage", order: "desc" });
@@ -115,11 +118,7 @@ export default function StudyDecksList(): JSX.Element {
             <Flex width="100%" justify="space-between" align="center">
               <Stat opacity={isDisabled ? 0.8 : 1}>
                 <HStack>
-                  <StatLabel
-                    fontSize="larger"
-                    fontWeight="bold"
-                    color={isDisabled ? "gray.900" : "purple.900"}
-                  >
+                  <StatLabel fontSize="larger" fontWeight="bold">
                     {deck.name}
                   </StatLabel>
                   <HStack spacing={1}>
@@ -159,7 +158,7 @@ export default function StudyDecksList(): JSX.Element {
                   </HStack>
                 </HStack>
                 <StatNumber fontSize="xl" fontWeight="bold" letterSpacing="2px">
-                  <Span color={isDisabled ? "gray.600" : "green.600"}>
+                  <Span color={!isDisabled ? palette.green : undefined}>
                     {deck.studyingCardsCount}
                   </Span>
                   /{deck.cardsCount}

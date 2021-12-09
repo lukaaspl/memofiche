@@ -1,3 +1,7 @@
+.prevent-scroll-x {
+  overflow-x: hidden;
+}
+
 /* Custom scrollbars */
 .primary-sc {
   &::-webkit-scrollbar {

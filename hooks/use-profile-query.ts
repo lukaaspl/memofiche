@@ -14,5 +14,8 @@ async function fetchProfile(): Promise<DetailedProfile> {
 export default function useProfileQuery(
   options?: UseQueryOptions<DetailedProfile>
 ): UseQueryResult<DetailedProfile> {
-  return useQuery(PROFILE_QUERY_KEY, fetchProfile, options);
+  return useQuery(PROFILE_QUERY_KEY, fetchProfile, {
+    staleTime: Infinity,
+    ...options,
+  });
 }

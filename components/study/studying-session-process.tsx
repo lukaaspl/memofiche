@@ -60,7 +60,12 @@ export default function StudyingSessionProcess({
           isDisabled={state.isPaused || !isPresent}
           colorScheme="purple"
         >
-          <Kbd marginRight={2} color="blackAlpha.700" fontSize="small">
+          <Kbd
+            marginRight={2}
+            backgroundColor="gray.100"
+            color="blackAlpha.900"
+            fontSize="small"
+          >
             F
           </Kbd>
           Flip the card
