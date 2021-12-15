@@ -22,6 +22,7 @@ import { Nullable } from "domains";
 import useCommonPalette from "hooks/use-common-palette";
 import useStatus from "hooks/use-status";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import useTypedColorModeValue from "hooks/use-typed-color-mode-value";
 import { authApiClient } from "lib/axios";
 import Image from "next/image";
@@ -51,6 +52,7 @@ export default function ProfileDetailsAvatar({
   const { colors } = useTheme<Theme>();
   const fileInputRef = useRef<Nullable<HTMLInputElement>>(null);
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
   const toast = useSuccessToast();
   const palette = useCommonPalette();
 
@@ -70,7 +72,7 @@ export default function ProfileDetailsAvatar({
   const updateAvatarSourceMutation = useMutation(updateAvatarSource, {
     onSuccess: () => {
       queryClient.invalidateQueries(PROFILE_QUERY_KEY);
-      toast("Avatar has been updated successfully");
+      toast($t({ defaultMessage: "Avatar has been updated successfully" }));
     },
   });
 
@@ -157,7 +159,7 @@ export default function ProfileDetailsAvatar({
             <MenuButton
               as={IconButton}
               icon={<MoreIcon />}
-              aria-label="Avatar actions"
+              aria-label={$t({ defaultMessage: "Avatar actions" })}
               {...iconButtonProps}
             />
             <MenuList>
@@ -165,7 +167,7 @@ export default function ProfileDetailsAvatar({
                 icon={<MdAddAPhoto size={18} />}
                 onClick={() => fileInputRef.current?.click()}
               >
-                Update avatar
+                {$t({ defaultMessage: "Update avatar" })}
               </MenuItem>
               <MenuItem
                 color={palette.red}
@@ -180,14 +182,14 @@ export default function ProfileDetailsAvatar({
                   })
                 }
               >
-                Remove avatar
+                {$t({ defaultMessage: "Remove avatar" })}
               </MenuItem>
             </MenuList>
           </Menu>
         ) : (
           <IconButton
             icon={<AddAvatarIcon />}
-            aria-label="Add avatar"
+            aria-label={$t({ defaultMessage: "Add avatar" })}
             onClick={() => fileInputRef.current?.click()}
             {...iconButtonProps}
           />
@@ -201,16 +203,19 @@ export default function ProfileDetailsAvatar({
       </Center>
       <List mt={3} textAlign="center" fontSize="11px">
         <ListItem>
-          Max. size: <b>1 MB</b>
+          {$t({ defaultMessage: "Max. size: {size}" }, { size: <b>1 MB</b> })}
         </ListItem>
         <ListItem>
-          Allowed files: <b>jpg/png</b>
+          {$t(
+            { defaultMessage: "Allowed files: {extensions}" },
+            { extensions: <b>jpg/png</b> }
+          )}
         </ListItem>
       </List>
       {fileUploadStatus === "error" && (
         <Alert status="error" mt={2} padding="8px" borderRadius="sm">
           <AlertIcon />
-          The file is invalid
+          {$t({ defaultMessage: "The file is invalid" })}
         </Alert>
       )}
     </Box>

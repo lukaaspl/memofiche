@@ -22,7 +22,7 @@ export type StudyingState = {
   wasCardFlipped: boolean;
   isFinished: boolean;
   isPaused: boolean;
-  error: Nullable<string>;
+  errorCode: Nullable<StudyingErrorCode>;
 } & (
   | {
       isStarted: false;
@@ -55,6 +55,15 @@ type StudyingActions =
   | PauseStudyingAction
   | ResumeStudyingAction;
 
+export type StudyingErrorCode =
+  | "NOT_ALLOWED_START"
+  | "NOT_ALLOWED_FLIP"
+  | "NOT_ALLOWED_NEXT"
+  | "NOT_ALLOWED_FINISH"
+  | "NOT_ALLOWED_RESTART"
+  | "ALREADY_PAUSED"
+  | "ALREADY_RESUMED";
+
 export interface StudyingOperations {
   start: (deckCards: DetailedCard[]) => void;
   restart: (deckCards: DetailedCard[]) => void;
@@ -78,7 +87,7 @@ const initialStudyingState: StudyingState = {
   isPaused: false,
   isCardFlipped: false,
   wasCardFlipped: false,
-  error: null,
+  errorCode: null,
   hasNextCard: null,
   currentCardIndex: null,
   startedDate: null,
@@ -94,8 +103,7 @@ function studyingReducer(
         const studyingCards = shuffle(getReadyToStudyCards(action.payload));
 
         if (studyingCards.length === 0) {
-          draftState.error =
-            "There must be at least 1 ready to study card to start studying process";
+          draftState.errorCode = "NOT_ALLOWED_START";
           return;
         }
 
@@ -109,8 +117,7 @@ function studyingReducer(
     case "flip":
       return produce(state, (draftState) => {
         if (state.currentCardIndex == null) {
-          draftState.error =
-            "Studying process must be started to execute flip action";
+          draftState.errorCode = "NOT_ALLOWED_FLIP";
           return;
         }
 
@@ -121,8 +128,7 @@ function studyingReducer(
     case "next":
       return produce(state, (draftState) => {
         if (state.currentCardIndex == null) {
-          draftState.error =
-            "Studying process must be started to execute next action";
+          draftState.errorCode = "NOT_ALLOWED_NEXT";
           return;
         }
 
@@ -149,7 +155,7 @@ function studyingReducer(
     case "pause":
       return produce(state, (draftState) => {
         if (state.isPaused) {
-          draftState.error = "Studying process was already paused";
+          draftState.errorCode = "ALREADY_PAUSED";
           return;
         }
 
@@ -164,7 +170,7 @@ function studyingReducer(
     case "resume":
       return produce(state, (draftState) => {
         if (!state.isPaused) {
-          draftState.error = "Studying process was already resumed";
+          draftState.errorCode = "ALREADY_RESUMED";
           return;
         }
 
@@ -179,8 +185,7 @@ function studyingReducer(
     case "finish":
       return produce(state, (draftState) => {
         if (!state.isStarted) {
-          draftState.error =
-            "Studying process must be started to execute finish action";
+          draftState.errorCode = "NOT_ALLOWED_FINISH";
           return;
         }
 
@@ -190,8 +195,7 @@ function studyingReducer(
     case "restart":
       return produce(state, (draftState) => {
         if (!state.isFinished) {
-          draftState.error =
-            "Studying process must be finished to execute restart action";
+          draftState.errorCode = "NOT_ALLOWED_RESTART";
           return;
         }
 

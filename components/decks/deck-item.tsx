@@ -24,6 +24,7 @@ import useCommonPalette from "hooks/use-common-palette";
 import useDeckQuery from "hooks/use-deck-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useSortState from "hooks/use-sort-state";
+import useTranslation from "hooks/use-translation";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
@@ -39,6 +40,7 @@ interface DeckItemProps {
 
 export default function DeckItem({ id }: DeckItemProps): JSX.Element {
   const router = useRouter();
+  const { $t } = useTranslation();
 
   const { sortState, updateField, updateOrder } = useSortState<
     CardSort["sortBy"]
@@ -87,12 +89,15 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
             />
           )}
           <Span>
-            <Span color={palette.primaryDark}>{deck.name}</Span> deck
+            {$t(
+              { defaultMessage: "{deckName} deck" },
+              { deckName: <Span color={palette.primaryDark}>{deck.name}</Span> }
+            )}
           </Span>
         </PrimaryHeading>
         <Box>
           <IconButton
-            aria-label="Edit deck"
+            aria-label={$t({ defaultMessage: "Edit deck" })}
             size="md"
             icon={<MdEdit size={20} />}
             mr={2}
@@ -104,7 +109,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
             editingDeck={deck}
           />
           <IconButton
-            aria-label="Delete deck"
+            aria-label={$t({ defaultMessage: "Delete deck" })}
             colorScheme="red"
             size="md"
             icon={<MdDelete size={20} />}
@@ -129,22 +134,36 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
       <GoBackButton />
       <Flex mt={6} mb={3} justify="space-between" align="center">
         <Heading size="md">
-          <span>Cards ({deck.cards.length})</span>
+          <span>
+            {$t(
+              { defaultMessage: "Cards ({count})" },
+              { count: deck.cards.length }
+            )}
+          </span>
           {isRefetching && <SyncSpinner />}
         </Heading>
         <HStack spacing={2}>
           <SortingControls<CardSort["sortBy"]>
             options={[
-              { label: "Type", value: "type" },
-              { label: "Creation date", value: "createdAt" },
-              { label: "Last modify", value: "updatedAt" },
+              {
+                label: $t({ defaultMessage: "Type" }),
+                value: "type",
+              },
+              {
+                label: $t({ defaultMessage: "Creation date" }),
+                value: "createdAt",
+              },
+              {
+                label: $t({ defaultMessage: "Last modify" }),
+                value: "updatedAt",
+              },
             ]}
             state={sortState}
             onChangeField={updateField}
             onChangeOrder={updateOrder}
           />
           <CustomButton colorScheme="purple" onClick={onNewCardDialogOpen}>
-            New card
+            {$t({ defaultMessage: "New card" })}
           </CustomButton>
         </HStack>
         <ManageCardDialog

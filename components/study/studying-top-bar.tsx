@@ -5,6 +5,7 @@ import CustomButton from "components/ui/custom-button";
 import dayjs from "dayjs";
 import { useIsPresent } from "framer-motion";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
+import useTranslation from "hooks/use-translation";
 import React from "react";
 
 interface StudyingTopBarProps {
@@ -24,6 +25,7 @@ export default function StudyingTopBar({
   onPause,
   onFinish,
 }: StudyingTopBarProps): JSX.Element {
+  const { $t } = useTranslation();
   const [isOpen, onOpen, onClose] = useSimpleDisclosure();
   const isPresent = useIsPresent();
 
@@ -59,21 +61,26 @@ export default function StudyingTopBar({
             onClick={isPaused ? onResume : onPause}
             colorScheme={isPaused ? "green" : "gray"}
           >
-            {isPaused ? "Resume" : "Pause"}
+            {isPaused
+              ? $t({ defaultMessage: "Resume" })
+              : $t({ defaultMessage: "Pause" })}
           </CustomButton>
           <CustomButton
             isDisabled={isFinishDisabled || !isPresent}
             colorScheme="red"
             onClick={onOpen}
           >
-            Finish session
+            {$t({ defaultMessage: "Finish session" })}
           </CustomButton>
         </HStack>
       </Flex>
       <CustomAlertDialog
-        title="Finish now?"
-        confirmButtonLabel="Finish now"
-        content={`Are you sure you want to end the session before all cards are completed?`}
+        title={$t({ defaultMessage: "Finish now?" })}
+        confirmButtonLabel={$t({ defaultMessage: "Finish now" })}
+        content={$t({
+          defaultMessage:
+            "Are you sure you want to end the session before all cards are completed?",
+        })}
         isOpen={isOpen}
         onClose={onClose}
         onConfirm={handleFinishConfirm}

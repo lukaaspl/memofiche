@@ -28,6 +28,7 @@ import useCommonPalette from "hooks/use-common-palette";
 import useDecksQuery from "hooks/use-decks-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useSortState from "hooks/use-sort-state";
+import useTranslation from "hooks/use-translation";
 import Link from "next/link";
 import React, { useState } from "react";
 import { MdEdit, MdRestore } from "react-icons/md";
@@ -35,6 +36,7 @@ import { timeToX } from "utils/date-time";
 import ResetCardsDialog from "./reset-cards-dialog";
 
 export default function StudyDecksList(): JSX.Element {
+  const { $t } = useTranslation();
   const palette = useCommonPalette();
 
   const { sortState, updateField, updateOrder } = useSortState<
@@ -78,18 +80,39 @@ export default function StudyDecksList(): JSX.Element {
     <>
       <Flex justify="space-between" align="center">
         <Heading display="flex" size="md" mt={5} mb={3}>
-          <span>Choose a deck to study</span>
+          <span>{$t({ defaultMessage: "Choose a deck to study" })}</span>
           {isRefetching && <SyncSpinner />}
         </Heading>
         <SortingControls<DeckSort["sortBy"]>
           options={[
-            { label: "Name", value: "name" },
-            { label: "Cards count", value: "cardsCount" },
-            { label: "Study cards count", value: "studyingCardsCount" },
-            { label: "Study cards ratio", value: "studyingCardsPercentage" },
-            { label: "Favorite", value: "isFavorite" },
-            { label: "Creation date", value: "createdAt" },
-            { label: "Last modify", value: "updatedAt" },
+            {
+              label: $t({ defaultMessage: "Name" }),
+              value: "name",
+            },
+            {
+              label: $t({ defaultMessage: "Cards count" }),
+              value: "cardsCount",
+            },
+            {
+              label: $t({ defaultMessage: "Study cards count" }),
+              value: "studyingCardsCount",
+            },
+            {
+              label: $t({ defaultMessage: "Study cards ratio" }),
+              value: "studyingCardsPercentage",
+            },
+            {
+              label: $t({ defaultMessage: "Favorite" }),
+              value: "isFavorite",
+            },
+            {
+              label: $t({ defaultMessage: "Creation date" }),
+              value: "createdAt",
+            },
+            {
+              label: $t({ defaultMessage: "Last modify" }),
+              value: "updatedAt",
+            },
           ]}
           state={sortState}
           onChangeField={updateField}
@@ -100,8 +123,10 @@ export default function StudyDecksList(): JSX.Element {
       {decks.length === 0 && (
         <Feedback
           type="empty-state"
-          message="The deck with cards is required to start studying"
-          actionButtonLabel="Create deck"
+          message={$t({
+            defaultMessage: "The deck with cards is required to start studying",
+          })}
+          actionButtonLabel={$t({ defaultMessage: "Create deck" })}
           actionButtonHref="/decks?add-deck=true"
         />
       )}
@@ -126,13 +151,13 @@ export default function StudyDecksList(): JSX.Element {
                       <TooltipIconButton
                         tooltipProps={{
                           hasArrow: true,
-                          label: "Edit deck",
+                          label: $t({ defaultMessage: "Edit deck" }),
                           placement: "top",
                           openDelay: 300,
                         }}
                         onFocus={(e) => e.preventDefault()}
                         colorScheme="purple"
-                        aria-label="Edit"
+                        aria-label={$t({ defaultMessage: "Edit" })}
                         icon={<MdEdit fontSize="16px" />}
                         variant="outline"
                         size="xs"
@@ -142,13 +167,13 @@ export default function StudyDecksList(): JSX.Element {
                       <TooltipIconButton
                         tooltipProps={{
                           hasArrow: true,
-                          label: "Reset deck's cards",
+                          label: $t({ defaultMessage: "Reset deck's cards" }),
                           placement: "top",
                           openDelay: 300,
                         }}
                         onFocus={(e) => e.preventDefault()}
                         colorScheme="purple"
-                        aria-label="Reset"
+                        aria-label={$t({ defaultMessage: "Reset" })}
                         icon={<MdRestore fontSize="16px" />}
                         variant="outline"
                         size="xs"
@@ -164,7 +189,7 @@ export default function StudyDecksList(): JSX.Element {
                   /{deck.cardsCount}
                 </StatNumber>
                 <StatHelpText fontSize="small">
-                  Cards ready to learn / total
+                  {$t({ defaultMessage: "Cards ready to learn / total" })}
                 </StatHelpText>
               </Stat>
               <Stack direction="column" align="flex-end" spacing={2}>
@@ -174,16 +199,18 @@ export default function StudyDecksList(): JSX.Element {
                       <>
                         <Link href={`/decks/${deck.id}?add-card=true`} passHref>
                           <CustomButton colorScheme="purple" variant="outline">
-                            Build your deck
+                            {$t({ defaultMessage: "Build your deck" })}
                           </CustomButton>
                         </Link>
                         <Text fontSize="small">
-                          Add some cards to start studying
+                          {$t({
+                            defaultMessage: "Add some cards to start studying",
+                          })}
                         </Text>
                       </>
                     ) : (
                       <Text fontSize="small">
-                        The nearest card to study{" "}
+                        {$t({ defaultMessage: "The nearest card to study" })}{" "}
                         {timeToX(deck.nearestStudyTime as number)}
                       </Text>
                     )}
@@ -191,7 +218,7 @@ export default function StudyDecksList(): JSX.Element {
                 ) : (
                   <Link href={`/study/${deck.id}`} passHref>
                     <CustomButton variant="solid" colorScheme="purple">
-                      Start studying
+                      {$t({ defaultMessage: "Start studying" })}
                     </CustomButton>
                   </Link>
                 )}

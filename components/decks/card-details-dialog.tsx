@@ -2,6 +2,7 @@ import { Box, Stack, Tag, TagLabel, Text } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
 import { DetailedCard } from "domains/card";
+import useTranslation from "hooks/use-translation";
 import React, { useMemo } from "react";
 import { TagsConverter } from "utils/tags";
 
@@ -16,28 +17,45 @@ export default function CardDetailsDialog({
   isOpen,
   onClose,
 }: CardDetailsDialogProps): JSX.Element {
+  const { $t } = useTranslation();
+
   const cardDetailsSections = useMemo(
     () => [
-      { header: "Obverse", content: card.obverse },
-      { header: "Reverse", content: card.reverse },
-      { header: "Type", content: card.type },
-      { header: "Note", content: card.note },
-      { header: "Tags", content: TagsConverter.toString(card.tags) },
       {
-        header: "Creation date",
+        header: $t({ defaultMessage: "Obverse" }),
+        content: card.obverse,
+      },
+      {
+        header: $t({ defaultMessage: "Reverse" }),
+        content: card.reverse,
+      },
+      {
+        header: $t({ defaultMessage: "Type" }),
+        content: card.type,
+      },
+      {
+        header: $t({ defaultMessage: "Note" }),
+        content: card.note,
+      },
+      {
+        header: $t({ defaultMessage: "Tags" }),
+        content: TagsConverter.toString(card.tags),
+      },
+      {
+        header: $t({ defaultMessage: "Creation date" }),
         content: new Date(card.createdAt).toLocaleString(),
       },
       {
-        header: "Last modification date",
+        header: $t({ defaultMessage: "Last modification date" }),
         content: new Date(card.updatedAt).toLocaleString(),
       },
     ],
-    [card]
+    [$t, card]
   );
 
   return (
     <CustomDialog
-      title="Card details"
+      title={$t({ defaultMessage: "Card details" })}
       size="lg"
       isOpen={isOpen}
       onClose={onClose}
@@ -65,7 +83,7 @@ export default function CardDetailsDialog({
           </Body>
           <Footer>
             <CustomButton colorScheme="purple" onClick={onClose}>
-              Done
+              {$t({ defaultMessage: "Done" })}
             </CustomButton>
           </Footer>
         </>

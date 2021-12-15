@@ -16,7 +16,8 @@
   ],
   "couldHave": [
     "[x]Cards cloning",
-    "Dark theme",
+    "[x]Dark theme",
+    "[x]Internationalization",
     "Import cards from CSV file",
     "Pagination",
     "Grid/list views options",
@@ -34,7 +35,6 @@
     "Refresh tokens (advanced auth)",
     "Advanced card types",
     "Persist not completed studying sessions (LocalStorage/DB)",
-    "Internationalization",
     "Public profiles",
     "Public decks with ability to fork them"
   ]

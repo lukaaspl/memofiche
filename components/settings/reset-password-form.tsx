@@ -12,6 +12,7 @@ import { ResetPasswordData } from "domains/config";
 import useCommonPalette from "hooks/use-common-palette";
 import useErrorToast from "hooks/use-error-toast";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -40,22 +41,27 @@ export default function ResetPasswordForm(): JSX.Element {
     reset,
     formState: { errors, isSubmitted },
   } = useForm<FormValues>();
+  const { $t } = useTranslation();
   const successToast = useSuccessToast();
   const errorToast = useErrorToast();
   const palette = useCommonPalette();
 
   const resetPasswordMutation = useMutation(resetPassword, {
     onSuccess: () => {
-      successToast("Password has been reset successfully");
+      successToast(
+        $t({ defaultMessage: "Password has been reset successfully" })
+      );
       reset();
     },
     onError: (error) => {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
-        errorToast("Old password doesn't match");
+        errorToast($t({ defaultMessage: "Old password doesn't match" }));
         return;
       }
 
-      errorToast("An error occurred while resetting password");
+      errorToast(
+        $t({ defaultMessage: "An error occurred while resetting password" })
+      );
     },
   });
 
@@ -76,22 +82,22 @@ export default function ResetPasswordForm(): JSX.Element {
         size="sm"
         color={palette.primary}
       >
-        Reset password
+        {$t({ defaultMessage: "Reset password" })}
       </PrimaryHeading>
       <Form onSubmit={onSubmit} mt={5} minW="400px" w="50%">
         <FormControl mt={4} isRequired>
-          <FormLabel>Current password</FormLabel>
+          <FormLabel>{$t({ defaultMessage: "Current password" })}</FormLabel>
           <Input
             type="password"
-            placeholder="Enter your current password"
+            placeholder={$t({ defaultMessage: "Enter your current password" })}
             {...register("currentPassword", { required: true })}
           />
         </FormControl>
         <FormControl mt={4} isRequired>
-          <FormLabel>New password</FormLabel>
+          <FormLabel>{$t({ defaultMessage: "New password" })}</FormLabel>
           <Input
             type="password"
-            placeholder="Enter the new password"
+            placeholder={$t({ defaultMessage: "Enter the new password" })}
             {...register("newPassword", { required: true })}
           />
         </FormControl>
@@ -102,25 +108,27 @@ export default function ResetPasswordForm(): JSX.Element {
             isSubmitted && errors.confirmedNewPassword?.type === "validate"
           }
         >
-          <FormLabel>Repeat new password</FormLabel>
+          <FormLabel>{$t({ defaultMessage: "Repeat new password" })}</FormLabel>
           <Input
             type="password"
-            placeholder="Enter the new password again"
+            placeholder={$t({ defaultMessage: "Enter the new password again" })}
             {...register("confirmedNewPassword", {
               required: true,
               validate: (value) => value === getValues().newPassword,
             })}
           />
-          <FormErrorMessage>Passwords don&apos;t match</FormErrorMessage>
+          <FormErrorMessage>
+            {$t({ defaultMessage: "Passwords don't match" })}
+          </FormErrorMessage>
         </FormControl>
         <CustomButton
           isLoading={resetPasswordMutation.isLoading}
-          loadingText="Resetting..."
+          loadingText={$t({ defaultMessage: "Resetting..." })}
           type="submit"
           mt={6}
           colorScheme="purple"
         >
-          Reset password
+          {$t({ defaultMessage: "Reset password" })}
         </CustomButton>
       </Form>
     </>

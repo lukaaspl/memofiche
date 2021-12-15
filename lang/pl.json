@@ -1,0 +1,578 @@
+{
+  "+U6ozc": {
+    "defaultMessage": "Typ"
+  },
+  "+VC8qb": {
+    "defaultMessage": "Awatar został zaktualizowany poprawnie"
+  },
+  "+ayPjC": {
+    "defaultMessage": "Data utworzenia"
+  },
+  "/KIR51": {
+    "defaultMessage": "Talia {deckName}"
+  },
+  "/znpbr": {
+    "defaultMessage": "Dodaj pierwszy"
+  },
+  "0CPXo9": {
+    "defaultMessage": "w porównaniu do tej talii"
+  },
+  "0UbCoA": {
+    "defaultMessage": "Do rozpoczęcia nauki wymagana jest talia z dostępnymi kartami"
+  },
+  "0V2Rkw": {
+    "defaultMessage": "Nie posiadasz jeszcze żadnej talii"
+  },
+  "0sHCb3": {
+    "defaultMessage": "You have successfully completed your studying session. Grab a few statistics to find out how you did."
+  },
+  "1+C8Ea": {
+    "defaultMessage": "Zakończ sesję"
+  },
+  "1D2KFf": {
+    "defaultMessage": "Talie"
+  },
+  "1EYCdR": {
+    "defaultMessage": "Tagi"
+  },
+  "1Jufsz": {
+    "defaultMessage": "Ostatnia modyfikacja"
+  },
+  "1iEPTM": {
+    "defaultMessage": "Ogólne"
+  },
+  "2/2yg+": {
+    "defaultMessage": "Dodaj"
+  },
+  "2Hqxnu": {
+    "defaultMessage": "Edytuj talię"
+  },
+  "2KXvZ0": {
+    "defaultMessage": "Are you sure? You can't undo this action afterwards."
+  },
+  "2W0f9h": {
+    "defaultMessage": "O mnie"
+  },
+  "35iM8d": {
+    "defaultMessage": "Most relevant decks"
+  },
+  "38aKqB": {
+    "defaultMessage": "Enter the new password"
+  },
+  "3NzIdG": {
+    "defaultMessage": "Study {deckName}"
+  },
+  "3sk8v2": {
+    "defaultMessage": "Delete card?"
+  },
+  "3y9DGg": {
+    "defaultMessage": "Wznów"
+  },
+  "47FYwb": {
+    "defaultMessage": "Anuluj"
+  },
+  "4adKdJ": {
+    "defaultMessage": "e.g. What is multithreaded programming?"
+  },
+  "52ZTKE": {
+    "defaultMessage": "Card has been updated successfully"
+  },
+  "5Hzwqs": {
+    "defaultMessage": "Ulubiony"
+  },
+  "5oL/GD": {
+    "defaultMessage": "Max. size: {size}"
+  },
+  "5sg7KC": {
+    "defaultMessage": "Hasło"
+  },
+  "6+7UgD": {
+    "defaultMessage": "Plik jest nieprawidłowy"
+  },
+  "62nsdy": {
+    "defaultMessage": "Ponów"
+  },
+  "63wyw+": {
+    "defaultMessage": "Shallow reset"
+  },
+  "67jx+1": {
+    "defaultMessage": "There was no card found"
+  },
+  "68PmLe": {
+    "defaultMessage": "Total studied cards"
+  },
+  "6OWS4p": {
+    "defaultMessage": "Procesowanie..."
+  },
+  "7XQoh9": {
+    "defaultMessage": "Deck has been deleted successfully"
+  },
+  "7cwB0R": {
+    "defaultMessage": "Cards have been reset successfully"
+  },
+  "7os1KN": {
+    "defaultMessage": "Nowa talia"
+  },
+  "8D4mqd": {
+    "defaultMessage": "Use advanced rating cards controls"
+  },
+  "8HJxXG": {
+    "defaultMessage": "Sign up"
+  },
+  "8Rqn5a": {
+    "defaultMessage": "e.g. Doe"
+  },
+  "8eCXRw": {
+    "defaultMessage": "Negative cards"
+  },
+  "96S5w3": {
+    "defaultMessage": "Obverse"
+  },
+  "AIGagR": {
+    "defaultMessage": "Add a new deck"
+  },
+  "ATZ766": {
+    "defaultMessage": "You don't have an account yet?"
+  },
+  "BNSmGR": {
+    "defaultMessage": "Redirecting..."
+  },
+  "BY+Cbm": {
+    "defaultMessage": "Card sides were reversed"
+  },
+  "C06zJP": {
+    "defaultMessage": "Your decks ({count})"
+  },
+  "C23He5": {
+    "defaultMessage": "Sort in ascending order"
+  },
+  "CFUBzf": {
+    "defaultMessage": "Well-known cards"
+  },
+  "D3idYv": {
+    "defaultMessage": "Settings"
+  },
+  "DXDNt9": {
+    "defaultMessage": "Important! You are going to lose all {count} cards contained in the deck!"
+  },
+  "DlVFL+": {
+    "defaultMessage": "Delete card"
+  },
+  "E1ZC4X": {
+    "defaultMessage": "Cloning the card..."
+  },
+  "EJJHc/": {
+    "defaultMessage": "Old password doesn't match"
+  },
+  "HAlOn1": {
+    "defaultMessage": "Name"
+  },
+  "HPamiU": {
+    "defaultMessage": "Session finished"
+  },
+  "HWYd5e": {
+    "defaultMessage": "There must be at least 1 ready to study card to start studying process"
+  },
+  "J+Pu4g": {
+    "defaultMessage": "Visit the dashboard"
+  },
+  "J0oJEs": {
+    "defaultMessage": "e.g. twitter.com/johndoe_87"
+  },
+  "JXdbo8": {
+    "defaultMessage": "Done"
+  },
+  "JkLHGw": {
+    "defaultMessage": "Website"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Delete"
+  },
+  "KHL8ap": {
+    "defaultMessage": "Study time"
+  },
+  "KHV2DZ": {
+    "defaultMessage": "Avatar actions"
+  },
+  "MJ2jZQ": {
+    "defaultMessage": "Total"
+  },
+  "MisSXp": {
+    "defaultMessage": "Update avatar"
+  },
+  "MthpnL": {
+    "defaultMessage": "Go to app"
+  },
+  "NIynnB": {
+    "defaultMessage": "Current password"
+  },
+  "Ntjkqd": {
+    "defaultMessage": "or"
+  },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
+  "OV0Tkk": {
+    "defaultMessage": "Last studied"
+  },
+  "OWgHbg": {
+    "defaultMessage": "Edit card"
+  },
+  "P1G2Ry": {
+    "defaultMessage": "Available cards"
+  },
+  "P7PLVj": {
+    "defaultMessage": "Date"
+  },
+  "P8VfZA": {
+    "defaultMessage": "Todos"
+  },
+  "PUrJRh": {
+    "defaultMessage": "Little-known cards"
+  },
+  "PdMcML": {
+    "defaultMessage": "Resetting..."
+  },
+  "PlBReU": {
+    "defaultMessage": "Log out"
+  },
+  "PvifjG": {
+    "defaultMessage": "compared to all your decks"
+  },
+  "QKdFRv": {
+    "defaultMessage": "New card"
+  },
+  "QrAcDQ": {
+    "defaultMessage": "Note: {note}"
+  },
+  "Rljmgs": {
+    "defaultMessage": "Update the deck"
+  },
+  "SNP1/u": {
+    "defaultMessage": "Deck has been created successfully"
+  },
+  "SO8m/b": {
+    "defaultMessage": "An error occurred while signing in"
+  },
+  "SQJto2": {
+    "defaultMessage": "Sign in"
+  },
+  "SRipU7": {
+    "defaultMessage": "Profile has been updated successfully"
+  },
+  "SYGs5A": {
+    "defaultMessage": "Flip the card"
+  },
+  "TE23Q2": {
+    "defaultMessage": "Build your deck"
+  },
+  "TYmNBD": {
+    "defaultMessage": "Same card type as normal with the difference that there's a 50% chance to swipe the sides (from the reverse to the obverse)"
+  },
+  "TiR/Hq": {
+    "defaultMessage": "Saving..."
+  },
+  "TnhvIh": {
+    "defaultMessage": "e.g. I am Doe, John Doe."
+  },
+  "UJE0EW": {
+    "defaultMessage": "Basic, double-sided card being flipped from the obverse to the reverse while studying"
+  },
+  "UTFsoN": {
+    "defaultMessage": "Study"
+  },
+  "Urt04S": {
+    "defaultMessage": "Include deck's tags"
+  },
+  "W4lBwL": {
+    "defaultMessage": "Last studied sessions"
+  },
+  "WSnSu+": {
+    "defaultMessage": "Cards ({count})"
+  },
+  "X0ha1a": {
+    "defaultMessage": "Save changes"
+  },
+  "XeQ3F3": {
+    "defaultMessage": "The shallow reset means all cards' due dates will be set to now, hence you can start studying them without waiting until the required time has elapsed. At the same time, this reset has no effect on other card parameters that affect their scheduling process."
+  },
+  "YNCCrE": {
+    "defaultMessage": "Deep reset"
+  },
+  "YWUIL7": {
+    "defaultMessage": "Manage your profile"
+  },
+  "Yy/yDL": {
+    "defaultMessage": "Reset password"
+  },
+  "aEAYJG": {
+    "defaultMessage": "Restore default settings"
+  },
+  "axy7jn": {
+    "defaultMessage": "Study cards ratio"
+  },
+  "bYN8D0": {
+    "defaultMessage": "Remove avatar"
+  },
+  "bZo6QQ": {
+    "defaultMessage": "You are going to reset all <b>{cardsCount, plural, =1 {# card} other {# cards}}</b> from the <b>{deckName}</b> deck. Pick a method how you want to do it"
+  },
+  "bgtcEb": {
+    "defaultMessage": "Finish now?"
+  },
+  "ch7hfM": {
+    "defaultMessage": "Total study time"
+  },
+  "cheKKR": {
+    "defaultMessage": "Enter the new password again"
+  },
+  "cr4z0d": {
+    "defaultMessage": "e.g. interview, business, technical"
+  },
+  "d9iNyj": {
+    "defaultMessage": "Cards"
+  },
+  "dOG/KB": {
+    "defaultMessage": "Avg. time per card"
+  },
+  "e9917C": {
+    "defaultMessage": "Study cards count"
+  },
+  "eaCxak": {
+    "defaultMessage": "Card has been deleted successfully"
+  },
+  "fTHhSB": {
+    "defaultMessage": "New password"
+  },
+  "fZpZBV": {
+    "defaultMessage": "no deviation"
+  },
+  "fwSVTQ": {
+    "defaultMessage": "Sort in descending order"
+  },
+  "gMKKUl": {
+    "defaultMessage": "The deep reset means all cards' parameters will be set to their defaults as if the cards have just been created. The scheduling system will forget about their previous statistics."
+  },
+  "grdxdO": {
+    "defaultMessage": "Start studying"
+  },
+  "h4sNB+": {
+    "defaultMessage": "Clone card"
+  },
+  "hDI+JM": {
+    "defaultMessage": "Sort by"
+  },
+  "huqKGl": {
+    "defaultMessage": "Create account"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
+  },
+  "hziisK": {
+    "defaultMessage": "Repeat new password"
+  },
+  "itPgxd": {
+    "defaultMessage": "Profile"
+  },
+  "j2jrS/": {
+    "defaultMessage": "Deck has been updated successfully"
+  },
+  "jm/spn": {
+    "defaultMessage": "Reset"
+  },
+  "jqwEYo": {
+    "defaultMessage": "e.g. What is this process about?"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Save"
+  },
+  "k1s/3C": {
+    "defaultMessage": "Create deck"
+  },
+  "kIW/Ua": {
+    "defaultMessage": "E-mail address"
+  },
+  "kVcUTN": {
+    "defaultMessage": "Add avatar"
+  },
+  "kVxnQ2": {
+    "defaultMessage": "Last modification date"
+  },
+  "kWjk9u": {
+    "defaultMessage": "Language: {locale}"
+  },
+  "keFu/T": {
+    "defaultMessage": "Avg. study time"
+  },
+  "lP4qIQ": {
+    "defaultMessage": "Card details"
+  },
+  "lUaq7M": {
+    "defaultMessage": "There was no item found"
+  },
+  "lrfCD6": {
+    "defaultMessage": "Add a new card"
+  },
+  "m0Ur9S": {
+    "defaultMessage": "There was an error processing your request"
+  },
+  "mAO1Wz": {
+    "defaultMessage": "Enter your current password"
+  },
+  "mRqzZl": {
+    "defaultMessage": "Avg. studied cards"
+  },
+  "md+KoP": {
+    "defaultMessage": "Finish now"
+  },
+  "myq2ZL": {
+    "defaultMessage": "Normal"
+  },
+  "n0gRiB": {
+    "defaultMessage": "e.g. Google interview questions"
+  },
+  "nAruna": {
+    "defaultMessage": "Update the card"
+  },
+  "nYrKWp": {
+    "defaultMessage": "Edit profile"
+  },
+  "nluMRP": {
+    "defaultMessage": "Delete deck"
+  },
+  "o/gK53": {
+    "defaultMessage": "Deck"
+  },
+  "oAo2CK": {
+    "defaultMessage": "Choose a deck to study"
+  },
+  "oSC1XZ": {
+    "defaultMessage": "Tags should be comma-separated"
+  },
+  "olw3tr": {
+    "defaultMessage": "The nearest card to study"
+  },
+  "orvpWh": {
+    "defaultMessage": "Go back"
+  },
+  "ot1oMB": {
+    "defaultMessage": "Studying is paused"
+  },
+  "pONqz8": {
+    "defaultMessage": "First name"
+  },
+  "pX7T6w": {
+    "defaultMessage": "Last modify"
+  },
+  "qMePPG": {
+    "defaultMessage": "Note"
+  },
+  "quyVXD": {
+    "defaultMessage": "Use dark theme"
+  },
+  "r5W3i1": {
+    "defaultMessage": "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work"
+  },
+  "rbVj9G": {
+    "defaultMessage": "Avg."
+  },
+  "rkIjo/": {
+    "defaultMessage": "Passwords don't match"
+  },
+  "rxwWfu": {
+    "defaultMessage": "An error occurred while resetting password"
+  },
+  "s2XIgr": {
+    "defaultMessage": "Show details"
+  },
+  "smhHt+": {
+    "defaultMessage": "{charactersCount, plural, =1 {# character} other {# characters}} left"
+  },
+  "t4zNNz": {
+    "defaultMessage": "Studied cards"
+  },
+  "tFFMkF": {
+    "defaultMessage": "Pause"
+  },
+  "tV4lm3": {
+    "defaultMessage": "e.g. John"
+  },
+  "tag2T/": {
+    "defaultMessage": "Positive cards"
+  },
+  "txUL0F": {
+    "defaultMessage": "Last name"
+  },
+  "u5kx+4": {
+    "defaultMessage": "Cloning card failed"
+  },
+  "uCk8r+": {
+    "defaultMessage": "Already have an account?"
+  },
+  "ug01Mk": {
+    "defaultMessage": "Time"
+  },
+  "ukP5IJ": {
+    "defaultMessage": "Mark as favorite deck"
+  },
+  "v1kMcG": {
+    "defaultMessage": "Select a card type"
+  },
+  "v2naw/": {
+    "defaultMessage": "Delete deck?"
+  },
+  "vC94kH": {
+    "defaultMessage": "e.g. It's a process in which two or more parts run simultaneously"
+  },
+  "vJfMhp": {
+    "defaultMessage": "Allowed files: {extensions}"
+  },
+  "vRTZ4K": {
+    "defaultMessage": "Reverse"
+  },
+  "vlKhIl": {
+    "defaultMessage": "Your name"
+  },
+  "vlZInC": {
+    "defaultMessage": "Avg. rate"
+  },
+  "wEQDC6": {
+    "defaultMessage": "Edit"
+  },
+  "wGEV5o": {
+    "defaultMessage": "Password has been reset successfully"
+  },
+  "wL7VAE": {
+    "defaultMessage": "Actions"
+  },
+  "wZFe08": {
+    "defaultMessage": "An error occurred while signing up"
+  },
+  "wxDxqW": {
+    "defaultMessage": "Config has been updated successfully"
+  },
+  "xBmTkn": {
+    "defaultMessage": "Deck name"
+  },
+  "xatRkX": {
+    "defaultMessage": "Are you sure you want to end the session before all cards are completed?"
+  },
+  "y2Q/xC": {
+    "defaultMessage": "Cards ready to learn / total"
+  },
+  "yqOZND": {
+    "defaultMessage": "(+{daysCount, plural, =1 {# day} other {# days}})"
+  },
+  "yrDppn": {
+    "defaultMessage": "Reset deck's cards"
+  },
+  "ytuF3Q": {
+    "defaultMessage": "Study another deck"
+  },
+  "zO+fCo": {
+    "defaultMessage": "Cards count"
+  },
+  "zhGplL": {
+    "defaultMessage": "Add some cards to start studying"
+  }
+}

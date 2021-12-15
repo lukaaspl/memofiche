@@ -9,6 +9,7 @@ import {
   AlertDialogProps,
 } from "@chakra-ui/react";
 import { Nullable } from "domains";
+import useTranslation from "hooks/use-translation";
 import React, { useRef } from "react";
 import CustomButton from "./custom-button";
 
@@ -33,12 +34,13 @@ export default function CustomAlertDialog({
   content,
   isLoading = false,
   hasCloseButton = true,
-  confirmButtonLabel = "Delete",
-  cancelButtonLabel = "Cancel",
+  confirmButtonLabel,
+  cancelButtonLabel,
   onConfirm,
   onClose,
   ...modalProps
 }: CustomAlertDialogProps): JSX.Element {
+  const { $t } = useTranslation();
   const leastDestructiveRef = useRef<Nullable<HTMLButtonElement>>(null);
 
   return (
@@ -56,7 +58,7 @@ export default function CustomAlertDialog({
           <AlertDialogBody>{content}</AlertDialogBody>
           <AlertDialogFooter>
             <CustomButton ref={leastDestructiveRef} onClick={onClose}>
-              {cancelButtonLabel}
+              {cancelButtonLabel || $t({ defaultMessage: "Cancel" })}
             </CustomButton>
             <CustomButton
               isLoading={isLoading}
@@ -64,7 +66,7 @@ export default function CustomAlertDialog({
               onClick={onConfirm}
               ml={3}
             >
-              {confirmButtonLabel}
+              {confirmButtonLabel || $t({ defaultMessage: "Delete" })}
             </CustomButton>
           </AlertDialogFooter>
         </AlertDialogContent>

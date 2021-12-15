@@ -6,9 +6,10 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import React, { useMemo } from "react";
+import { IconType } from "react-icons";
 
 export interface CardMark {
-  icon: ChakraComponent<"svg", IconProps>;
+  icon: ChakraComponent<IconType>;
   bgColor: TagProps["colorScheme"];
   color: IconProps["color"];
   label: string;

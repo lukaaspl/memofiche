@@ -26,8 +26,9 @@ import { DeckTag } from "domains/tags";
 import useCommonPalette from "hooks/use-common-palette";
 import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
+import useTranslation from "hooks/use-translation";
 import { truncate } from "lodash";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { BsCardText } from "react-icons/bs";
 import {
   MdContentCopy,
@@ -74,13 +75,14 @@ export default function CardsList({
     onDeleteCardConfirmationDialogClose,
   ] = useSimpleDisclosure();
 
+  const { $t } = useTranslation();
   const toast = useToast();
   const palette = useCommonPalette();
 
   const cloneCardMutation = useCreateCardMutation({
     onMutate: () => {
       toast({
-        description: "Cloning the card...",
+        description: $t({ defaultMessage: "Cloning the card..." }),
         duration: null,
         id: CLONE_CARD_TOAST_ID,
         isClosable: false,
@@ -92,7 +94,7 @@ export default function CardsList({
     },
     onError: () => {
       toast.update(CLONE_CARD_TOAST_ID, {
-        description: "Cloning card failed",
+        description: $t({ defaultMessage: "Cloning card failed" }),
         duration: 5000,
         isClosable: true,
         status: "error",
@@ -100,12 +102,23 @@ export default function CardsList({
     },
   });
 
+  const tableHeadings = useMemo(
+    () => [
+      $t({ defaultMessage: "Type" }),
+      $t({ defaultMessage: "Obverse" }),
+      $t({ defaultMessage: "Reverse" }),
+      $t({ defaultMessage: "Tags" }),
+      "",
+    ],
+    [$t]
+  );
+
   if (cards.length === 0) {
     return (
       <Feedback
         type="empty-state"
-        message="There was no card found"
-        actionButtonLabel="Add first"
+        message={$t({ defaultMessage: "There was no card found" })}
+        actionButtonLabel={$t({ defaultMessage: "Add first" })}
         onAction={onNewCardDialogOpen}
       />
     );
@@ -116,7 +129,7 @@ export default function CardsList({
       <Table mt={5} variant="simple" colorScheme="purple">
         <Thead>
           <Tr>
-            {["Type", "Obverse", "Reverse", "Tags", ""].map((heading) => (
+            {tableHeadings.map((heading) => (
               <Th
                 key={heading}
                 fontSize="sm"
@@ -167,7 +180,7 @@ export default function CardsList({
                 <Menu>
                   <MenuButton
                     as={IconButton}
-                    aria-label="Actions"
+                    aria-label={$t({ defaultMessage: "Actions" })}
                     icon={<MdMoreHoriz size={22} />}
                     colorScheme="purple"
                     variant="ghost"
@@ -178,7 +191,7 @@ export default function CardsList({
                       icon={<MdInfoOutline size={18} />}
                       onClick={onCardDetailsDialogOpen}
                     >
-                      Show details
+                      {$t({ defaultMessage: "Show details" })}
                     </MenuItem>
                     <MenuItem
                       icon={<MdContentCopy size={18} />}
@@ -190,20 +203,20 @@ export default function CardsList({
                       }
                       isDisabled={cloneCardMutation.isLoading}
                     >
-                      Clone card
+                      {$t({ defaultMessage: "Clone card" })}
                     </MenuItem>
                     <MenuItem
                       icon={<MdEdit size={18} />}
                       onClick={onEditCardDialogOpen}
                     >
-                      Edit card
+                      {$t({ defaultMessage: "Edit card" })}
                     </MenuItem>
                     <MenuItem
                       color={palette.red}
                       icon={<MdDelete size={18} />}
                       onClick={onDeleteCardConfirmationDialogOpen}
                     >
-                      Delete card
+                      {$t({ defaultMessage: "Delete card" })}
                     </MenuItem>
                   </MenuList>
                 </Menu>

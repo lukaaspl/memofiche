@@ -20,19 +20,26 @@ const AuthProvider = dynamic(
   { ssr: false }
 );
 
+const EnhancedIntlProvider = dynamic(
+  async () => (await import("contexts/enhanced-intl")).EnhancedIntlProvider,
+  { ssr: false }
+);
+
 const queryClient = new QueryClient();
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <ChakraProvider>
-          <Component {...pageProps} />
-          <GithubReference />
-        </ChakraProvider>
-      </AuthProvider>
-      <ReactQueryDevtools position="bottom-right" />
-    </QueryClientProvider>
+    <EnhancedIntlProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ChakraProvider>
+            <Component {...pageProps} />
+            <GithubReference />
+          </ChakraProvider>
+        </AuthProvider>
+        <ReactQueryDevtools position="bottom-right" />
+      </QueryClientProvider>
+    </EnhancedIntlProvider>
   );
 };
 

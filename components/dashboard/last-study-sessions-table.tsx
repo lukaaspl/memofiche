@@ -16,16 +16,10 @@ import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { StudySessionWithDeck } from "domains/study";
 import useCommonPalette from "hooks/use-common-palette";
-import React from "react";
+import useTranslation from "hooks/use-translation";
+import React, { useMemo } from "react";
 import { arrayPadEnd } from "utils/array";
 import { prettyDuration } from "utils/date-time";
-
-const TABLE_HEADINGS: ({ label: string } & TableColumnHeaderProps)[] = [
-  { label: "Date" },
-  { label: "Deck" },
-  { label: "Studied cards" },
-  { label: "Time" },
-];
 
 interface LastStudySessionsTableProps {
   sessions: StudySessionWithDeck[];
@@ -39,6 +33,17 @@ export default function LastStudySessionsTable({
   isRefetching,
 }: LastStudySessionsTableProps): JSX.Element {
   const palette = useCommonPalette();
+  const { $t } = useTranslation();
+
+  const tableHeadings: ({ label: string } & TableColumnHeaderProps)[] = useMemo(
+    () => [
+      { label: $t({ defaultMessage: "Date" }) },
+      { label: $t({ defaultMessage: "Deck" }) },
+      { label: $t({ defaultMessage: "Studied cards" }) },
+      { label: $t({ defaultMessage: "Time" }) },
+    ],
+    [$t]
+  );
 
   return (
     <Box>
@@ -51,14 +56,14 @@ export default function LastStudySessionsTable({
           fontSize="xl"
           letterSpacing="wider"
         >
-          Last studied sessions
+          {$t({ defaultMessage: "Last studied sessions" })}
         </Heading>
         {isRefetching && <SyncSpinner />}
       </Flex>
       <Table size="sm" colorScheme="purple">
         <Thead>
           <Tr>
-            {TABLE_HEADINGS.map(({ label, ...tableRowProps }, index) => (
+            {tableHeadings.map(({ label, ...tableRowProps }, index) => (
               <Th
                 key={index}
                 fontSize="sm"

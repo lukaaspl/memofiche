@@ -14,6 +14,7 @@ import { STUDY_TIME_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";
 import useChartPalette from "hooks/use-chart-palette";
+import useTranslation from "hooks/use-translation";
 import React from "react";
 import {
   Area,
@@ -44,6 +45,7 @@ export default function StudyTimeChart({
 
   const theme = useTheme<Theme>();
   const chartPalette = useChartPalette();
+  const { $t } = useTranslation();
 
   return (
     <Box>
@@ -57,7 +59,9 @@ export default function StudyTimeChart({
             fontSize="xl"
             letterSpacing="wider"
           >
-            {isTotalMode ? "Total study time" : "Avg. study time"}
+            {isTotalMode
+              ? $t({ defaultMessage: "Total study time" })
+              : $t({ defaultMessage: "Avg. study time" })}
           </Heading>
           {isRefetching && <SyncSpinner />}
         </Flex>
@@ -72,13 +76,13 @@ export default function StudyTimeChart({
             mr="-1px"
             variant={isTotalMode ? "solid" : "outline"}
           >
-            &sum; Total
+            &sum; {$t({ defaultMessage: "Total" })}
           </CustomButton>
           <CustomButton
             onClick={() => setIsTotalMode(() => false)}
             variant={isTotalMode ? "outline" : "solid"}
           >
-            X&#772; Avg.
+            X&#772; {$t({ defaultMessage: "Avg." })}
           </CustomButton>
         </ButtonGroup>
       </Flex>
@@ -144,7 +148,7 @@ export default function StudyTimeChart({
                       fontSize="md"
                       opacity={isTotalMode ? 1 : 0.6}
                     >
-                      Total study time:{" "}
+                      {$t({ defaultMessage: "Total study time" })}:{" "}
                       {prettyDuration(data.value.studyTime.sum)}
                     </Text>
                     <Text
@@ -152,7 +156,7 @@ export default function StudyTimeChart({
                       fontSize="md"
                       opacity={isTotalMode ? 0.6 : 1}
                     >
-                      Avg. study time:{" "}
+                      {$t({ defaultMessage: "Avg. study time" })}:{" "}
                       {prettyDuration(data.value.studyTime.mean)}
                     </Text>
                   </>
@@ -172,7 +176,12 @@ export default function StudyTimeChart({
         </AreaChart>
       </ResponsiveContainer>
       <ChartLegend
-        items={[{ color: chartPalette.primary, label: "Study time" }]}
+        items={[
+          {
+            color: chartPalette.primary,
+            label: $t({ defaultMessage: "Study time" }),
+          },
+        ]}
       />
     </Box>
   );

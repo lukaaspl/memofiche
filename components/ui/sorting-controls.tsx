@@ -8,6 +8,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { BaseSort, SortOrder } from "domains";
+import useTranslation from "hooks/use-translation";
 import React from "react";
 
 interface SortControlsProps<TFields extends string> extends FlexProps {
@@ -24,12 +25,13 @@ export default function SortingControls<TFields extends string>({
   onChangeOrder,
   ...flexProps
 }: SortControlsProps<TFields>): JSX.Element {
+  const { $t } = useTranslation();
   const isASC = state.order === "asc";
 
   return (
     <Flex {...flexProps}>
       <FormControl w="250px" display="flex" alignItems="center">
-        <FormLabel mb={0}>Sort by</FormLabel>
+        <FormLabel mb={0}>{$t({ defaultMessage: "Sort by" })}</FormLabel>
         <Select
           w="180px"
           onChange={(event) => onChangeField(event.target.value as TFields)}
@@ -43,7 +45,7 @@ export default function SortingControls<TFields extends string>({
         </Select>
       </FormControl>
       <IconButton
-        aria-label="Sort in descending order"
+        aria-label={$t({ defaultMessage: "Sort in descending order" })}
         icon={<ArrowDownIcon fontSize="2xl" />}
         variant="ghost"
         color={isASC ? "gray.400" : "purple.600"}
@@ -51,7 +53,7 @@ export default function SortingControls<TFields extends string>({
         onClick={() => onChangeOrder("desc")}
       />
       <IconButton
-        aria-label="Sort in ascending order"
+        aria-label={$t({ defaultMessage: "Sort in ascending order" })}
         icon={<ArrowUpIcon fontSize="2xl" />}
         variant="ghost"
         color={isASC ? "purple.600" : "gray.400"}

@@ -16,18 +16,12 @@ import SyncSpinner from "components/ui/sync-spinner";
 import dayjs from "dayjs";
 import { EnhancedDeckWithCards } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";
+import useTranslation from "hooks/use-translation";
 import Link from "next/link";
-import React from "react";
+import React, { useMemo } from "react";
 import { MdPlayCircleFilled } from "react-icons/md";
 import { arrayPadEnd } from "utils/array";
 import { prettyRound } from "utils/string";
-
-const TABLE_HEADINGS: ({ label: string } & TableColumnHeaderProps)[] = [
-  { label: "Name" },
-  { label: "Available cards" },
-  { label: "Last studied" },
-  { label: "Study", textAlign: "center" },
-];
 
 interface MostRelevantDecksTableProps {
   decks: EnhancedDeckWithCards[];
@@ -41,6 +35,17 @@ export default function MostRelevantDecksTable({
   isRefetching,
 }: MostRelevantDecksTableProps): JSX.Element {
   const palette = useCommonPalette();
+  const { $t } = useTranslation();
+
+  const tableHeadings: ({ label: string } & TableColumnHeaderProps)[] = useMemo(
+    () => [
+      { label: $t({ defaultMessage: "Name" }) },
+      { label: $t({ defaultMessage: "Available cards" }) },
+      { label: $t({ defaultMessage: "Last studied" }) },
+      { label: $t({ defaultMessage: "Study" }), textAlign: "center" },
+    ],
+    [$t]
+  );
 
   return (
     <Box>
@@ -53,14 +58,14 @@ export default function MostRelevantDecksTable({
           fontSize="xl"
           letterSpacing="wider"
         >
-          Most relevant decks
+          {$t({ defaultMessage: "Most relevant decks" })}
         </Heading>
         {isRefetching && <SyncSpinner />}
       </Flex>
       <Table size="sm" colorScheme="purple">
         <Thead>
           <Tr>
-            {TABLE_HEADINGS.map(({ label, ...tableRowProps }, index) => (
+            {tableHeadings.map(({ label, ...tableRowProps }, index) => (
               <Th
                 key={index}
                 fontSize="sm"

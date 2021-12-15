@@ -7,6 +7,7 @@ import { ManageableConfig } from "domains/config";
 import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import { isEqual } from "lodash";
 import React, { useEffect } from "react";
@@ -26,8 +27,9 @@ const defaultValues: ManageableConfig = {
 };
 
 export default function GeneralSettingsForm(): JSX.Element {
-  const toast = useSuccessToast();
   const { config, updateConfig } = useMe();
+  const { $t } = useTranslation();
+  const toast = useSuccessToast();
   const palette = useCommonPalette();
 
   const { handleSubmit, reset, control, watch } = useForm<ManageableConfig>({
@@ -36,7 +38,7 @@ export default function GeneralSettingsForm(): JSX.Element {
 
   const updateConfigMutation = useMutation(updateConfigMutationFn, {
     onSuccess: (updatedConfig) => {
-      toast("Config has been updated successfully");
+      toast($t({ defaultMessage: "Config has been updated successfully" }));
       updateConfig(updatedConfig);
     },
   });
@@ -61,14 +63,14 @@ export default function GeneralSettingsForm(): JSX.Element {
         pb="1.5"
       >
         <PrimaryHeading size="sm" color={palette.primary}>
-          General
+          {$t({ defaultMessage: "General" })}
         </PrimaryHeading>
         <CustomButton
           onClick={() => reset(defaultValues)}
           size="sm"
           variant="outline"
         >
-          Restore default settings
+          {$t({ defaultMessage: "Restore default settings" })}
         </CustomButton>
       </Flex>
       <Form onSubmit={onSubmit} mt={5}>
@@ -84,7 +86,7 @@ export default function GeneralSettingsForm(): JSX.Element {
                   isChecked={value}
                   {...fieldProps}
                 >
-                  Use dark theme
+                  {$t({ defaultMessage: "Use dark theme" })}
                 </Checkbox>
               );
             }}
@@ -102,25 +104,27 @@ export default function GeneralSettingsForm(): JSX.Element {
                   isChecked={value}
                   {...fieldProps}
                 >
-                  Use advanced rating cards controls
+                  {$t({ defaultMessage: "Use advanced rating cards controls" })}
                 </Checkbox>
               );
             }}
           />
           <FormHelperText>
-            Use advanced controls to evaluate cards, which will allow for a more
-            precise scheduler&apos;s work
+            {$t({
+              defaultMessage:
+                "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work",
+            })}
           </FormHelperText>
         </FormControl>
         <CustomButton
           isDisabled={isSubmittingDisabled}
           isLoading={updateConfigMutation.isLoading}
-          loadingText="Saving..."
+          loadingText={$t({ defaultMessage: "Saving..." })}
           type="submit"
           mt={6}
           colorScheme="purple"
         >
-          Save changes
+          {$t({ defaultMessage: "Save changes" })}
         </CustomButton>
       </Form>
     </>

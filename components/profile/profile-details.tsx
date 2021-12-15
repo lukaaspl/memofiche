@@ -13,6 +13,7 @@ import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useProfileQuery from "hooks/use-profile-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
+import useTranslation from "hooks/use-translation";
 import React, { useMemo } from "react";
 import { MdEdit, MdEmail, MdInsertLink, MdPerson } from "react-icons/md";
 import EditProfileDialog from "./edit-profile-dialog";
@@ -21,6 +22,7 @@ import ProfileDetailsAvatar from "./profile-details-avatar";
 export default function ProfileDetails(): JSX.Element {
   const user = useMe();
   const { data: profile, isLoading, error } = useProfileQuery();
+  const { $t } = useTranslation();
   const palette = useCommonPalette();
 
   const [
@@ -93,7 +95,7 @@ export default function ProfileDetails(): JSX.Element {
         position="absolute"
         right={3}
         top={3}
-        aria-label="Edit profile"
+        aria-label={$t({ defaultMessage: "Edit profile" })}
         size="md"
         icon={<MdEdit size={20} />}
         mr={2}

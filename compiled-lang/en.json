@@ -1,0 +1,1320 @@
+{
+  "+U6ozc": [
+    {
+      "type": 0,
+      "value": "Type"
+    }
+  ],
+  "+VC8qb": [
+    {
+      "type": 0,
+      "value": "Avatar has been updated successfully"
+    }
+  ],
+  "+ayPjC": [
+    {
+      "type": 0,
+      "value": "Creation date"
+    }
+  ],
+  "/KIR51": [
+    {
+      "type": 1,
+      "value": "deckName"
+    },
+    {
+      "type": 0,
+      "value": " deck"
+    }
+  ],
+  "/znpbr": [
+    {
+      "type": 0,
+      "value": "Add first"
+    }
+  ],
+  "0CPXo9": [
+    {
+      "type": 0,
+      "value": "compared to this deck"
+    }
+  ],
+  "0UbCoA": [
+    {
+      "type": 0,
+      "value": "The deck with cards is required to start studying"
+    }
+  ],
+  "0V2Rkw": [
+    {
+      "type": 0,
+      "value": "There was no deck found"
+    }
+  ],
+  "0sHCb3": [
+    {
+      "type": 0,
+      "value": "You have successfully completed your studying session. Grab a few statistics to find out how you did."
+    }
+  ],
+  "1+C8Ea": [
+    {
+      "type": 0,
+      "value": "Finish session"
+    }
+  ],
+  "1D2KFf": [
+    {
+      "type": 0,
+      "value": "Decks"
+    }
+  ],
+  "1EYCdR": [
+    {
+      "type": 0,
+      "value": "Tags"
+    }
+  ],
+  "1Jufsz": [
+    {
+      "type": 0,
+      "value": "Last modified"
+    }
+  ],
+  "1iEPTM": [
+    {
+      "type": 0,
+      "value": "General"
+    }
+  ],
+  "2/2yg+": [
+    {
+      "type": 0,
+      "value": "Add"
+    }
+  ],
+  "2Hqxnu": [
+    {
+      "type": 0,
+      "value": "Edit deck"
+    }
+  ],
+  "2KXvZ0": [
+    {
+      "type": 0,
+      "value": "Are you sure? You can't undo this action afterwards."
+    }
+  ],
+  "2W0f9h": [
+    {
+      "type": 0,
+      "value": "Bio"
+    }
+  ],
+  "35iM8d": [
+    {
+      "type": 0,
+      "value": "Most relevant decks"
+    }
+  ],
+  "38aKqB": [
+    {
+      "type": 0,
+      "value": "Enter the new password"
+    }
+  ],
+  "3NzIdG": [
+    {
+      "type": 0,
+      "value": "Study "
+    },
+    {
+      "type": 1,
+      "value": "deckName"
+    }
+  ],
+  "3sk8v2": [
+    {
+      "type": 0,
+      "value": "Delete card?"
+    }
+  ],
+  "3y9DGg": [
+    {
+      "type": 0,
+      "value": "Resume"
+    }
+  ],
+  "47FYwb": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "4adKdJ": [
+    {
+      "type": 0,
+      "value": "e.g. What is multithreaded programming?"
+    }
+  ],
+  "52ZTKE": [
+    {
+      "type": 0,
+      "value": "Card has been updated successfully"
+    }
+  ],
+  "5Hzwqs": [
+    {
+      "type": 0,
+      "value": "Favorite"
+    }
+  ],
+  "5oL/GD": [
+    {
+      "type": 0,
+      "value": "Max. size: "
+    },
+    {
+      "type": 1,
+      "value": "size"
+    }
+  ],
+  "5sg7KC": [
+    {
+      "type": 0,
+      "value": "Password"
+    }
+  ],
+  "6+7UgD": [
+    {
+      "type": 0,
+      "value": "The file is invalid"
+    }
+  ],
+  "62nsdy": [
+    {
+      "type": 0,
+      "value": "Retry"
+    }
+  ],
+  "63wyw+": [
+    {
+      "type": 0,
+      "value": "Shallow reset"
+    }
+  ],
+  "67jx+1": [
+    {
+      "type": 0,
+      "value": "There was no card found"
+    }
+  ],
+  "68PmLe": [
+    {
+      "type": 0,
+      "value": "Total studied cards"
+    }
+  ],
+  "6OWS4p": [
+    {
+      "type": 0,
+      "value": "Processing..."
+    }
+  ],
+  "7XQoh9": [
+    {
+      "type": 0,
+      "value": "Deck has been deleted successfully"
+    }
+  ],
+  "7cwB0R": [
+    {
+      "type": 0,
+      "value": "Cards have been reset successfully"
+    }
+  ],
+  "7os1KN": [
+    {
+      "type": 0,
+      "value": "New deck"
+    }
+  ],
+  "8D4mqd": [
+    {
+      "type": 0,
+      "value": "Use advanced rating cards controls"
+    }
+  ],
+  "8HJxXG": [
+    {
+      "type": 0,
+      "value": "Sign up"
+    }
+  ],
+  "8Rqn5a": [
+    {
+      "type": 0,
+      "value": "e.g. Doe"
+    }
+  ],
+  "8eCXRw": [
+    {
+      "type": 0,
+      "value": "Negative cards"
+    }
+  ],
+  "96S5w3": [
+    {
+      "type": 0,
+      "value": "Obverse"
+    }
+  ],
+  "AIGagR": [
+    {
+      "type": 0,
+      "value": "Add a new deck"
+    }
+  ],
+  "ATZ766": [
+    {
+      "type": 0,
+      "value": "You don't have an account yet?"
+    }
+  ],
+  "BNSmGR": [
+    {
+      "type": 0,
+      "value": "Redirecting..."
+    }
+  ],
+  "BY+Cbm": [
+    {
+      "type": 0,
+      "value": "Card sides were reversed"
+    }
+  ],
+  "C06zJP": [
+    {
+      "type": 0,
+      "value": "Your decks ("
+    },
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "C23He5": [
+    {
+      "type": 0,
+      "value": "Sort in ascending order"
+    }
+  ],
+  "CFUBzf": [
+    {
+      "type": 0,
+      "value": "Well-known cards"
+    }
+  ],
+  "D3idYv": [
+    {
+      "type": 0,
+      "value": "Settings"
+    }
+  ],
+  "DXDNt9": [
+    {
+      "type": 0,
+      "value": "Important! You are going to lose all "
+    },
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": " cards contained in the deck!"
+    }
+  ],
+  "DlVFL+": [
+    {
+      "type": 0,
+      "value": "Delete card"
+    }
+  ],
+  "E1ZC4X": [
+    {
+      "type": 0,
+      "value": "Cloning the card..."
+    }
+  ],
+  "EJJHc/": [
+    {
+      "type": 0,
+      "value": "Old password doesn't match"
+    }
+  ],
+  "HAlOn1": [
+    {
+      "type": 0,
+      "value": "Name"
+    }
+  ],
+  "HPamiU": [
+    {
+      "type": 0,
+      "value": "Session finished"
+    }
+  ],
+  "HWYd5e": [
+    {
+      "type": 0,
+      "value": "There must be at least 1 ready to study card to start studying process"
+    }
+  ],
+  "J+Pu4g": [
+    {
+      "type": 0,
+      "value": "Visit the dashboard"
+    }
+  ],
+  "J0oJEs": [
+    {
+      "type": 0,
+      "value": "e.g. twitter.com/johndoe_87"
+    }
+  ],
+  "JXdbo8": [
+    {
+      "type": 0,
+      "value": "Done"
+    }
+  ],
+  "JkLHGw": [
+    {
+      "type": 0,
+      "value": "Website"
+    }
+  ],
+  "K3r6DQ": [
+    {
+      "type": 0,
+      "value": "Delete"
+    }
+  ],
+  "KHL8ap": [
+    {
+      "type": 0,
+      "value": "Study time"
+    }
+  ],
+  "KHV2DZ": [
+    {
+      "type": 0,
+      "value": "Avatar actions"
+    }
+  ],
+  "MJ2jZQ": [
+    {
+      "type": 0,
+      "value": "Total"
+    }
+  ],
+  "MisSXp": [
+    {
+      "type": 0,
+      "value": "Update avatar"
+    }
+  ],
+  "MthpnL": [
+    {
+      "type": 0,
+      "value": "Go to app"
+    }
+  ],
+  "NIynnB": [
+    {
+      "type": 0,
+      "value": "Current password"
+    }
+  ],
+  "Ntjkqd": [
+    {
+      "type": 0,
+      "value": "or"
+    }
+  ],
+  "ORGv1Q": [
+    {
+      "type": 0,
+      "value": "Created"
+    }
+  ],
+  "OV0Tkk": [
+    {
+      "type": 0,
+      "value": "Last studied"
+    }
+  ],
+  "OWgHbg": [
+    {
+      "type": 0,
+      "value": "Edit card"
+    }
+  ],
+  "P1G2Ry": [
+    {
+      "type": 0,
+      "value": "Available cards"
+    }
+  ],
+  "P7PLVj": [
+    {
+      "type": 0,
+      "value": "Date"
+    }
+  ],
+  "P8VfZA": [
+    {
+      "type": 0,
+      "value": "Todos"
+    }
+  ],
+  "PUrJRh": [
+    {
+      "type": 0,
+      "value": "Little-known cards"
+    }
+  ],
+  "PdMcML": [
+    {
+      "type": 0,
+      "value": "Resetting..."
+    }
+  ],
+  "PlBReU": [
+    {
+      "type": 0,
+      "value": "Log out"
+    }
+  ],
+  "PvifjG": [
+    {
+      "type": 0,
+      "value": "compared to all your decks"
+    }
+  ],
+  "QKdFRv": [
+    {
+      "type": 0,
+      "value": "New card"
+    }
+  ],
+  "QrAcDQ": [
+    {
+      "type": 0,
+      "value": "Note: "
+    },
+    {
+      "type": 1,
+      "value": "note"
+    }
+  ],
+  "Rljmgs": [
+    {
+      "type": 0,
+      "value": "Update the deck"
+    }
+  ],
+  "SNP1/u": [
+    {
+      "type": 0,
+      "value": "Deck has been created successfully"
+    }
+  ],
+  "SO8m/b": [
+    {
+      "type": 0,
+      "value": "An error occurred while signing in"
+    }
+  ],
+  "SQJto2": [
+    {
+      "type": 0,
+      "value": "Sign in"
+    }
+  ],
+  "SRipU7": [
+    {
+      "type": 0,
+      "value": "Profile has been updated successfully"
+    }
+  ],
+  "SYGs5A": [
+    {
+      "type": 0,
+      "value": "Flip the card"
+    }
+  ],
+  "TE23Q2": [
+    {
+      "type": 0,
+      "value": "Build your deck"
+    }
+  ],
+  "TYmNBD": [
+    {
+      "type": 0,
+      "value": "Same card type as normal with the difference that there's a 50% chance to swipe the sides (from the reverse to the obverse)"
+    }
+  ],
+  "TiR/Hq": [
+    {
+      "type": 0,
+      "value": "Saving..."
+    }
+  ],
+  "TnhvIh": [
+    {
+      "type": 0,
+      "value": "e.g. I am Doe, John Doe."
+    }
+  ],
+  "UJE0EW": [
+    {
+      "type": 0,
+      "value": "Basic, double-sided card being flipped from the obverse to the reverse while studying"
+    }
+  ],
+  "UTFsoN": [
+    {
+      "type": 0,
+      "value": "Study"
+    }
+  ],
+  "Urt04S": [
+    {
+      "type": 0,
+      "value": "Include deck's tags"
+    }
+  ],
+  "W4lBwL": [
+    {
+      "type": 0,
+      "value": "Last studied sessions"
+    }
+  ],
+  "WSnSu+": [
+    {
+      "type": 0,
+      "value": "Cards ("
+    },
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "X0ha1a": [
+    {
+      "type": 0,
+      "value": "Save changes"
+    }
+  ],
+  "XeQ3F3": [
+    {
+      "type": 0,
+      "value": "The shallow reset means all cards' due dates will be set to now, hence you can start studying them without waiting until the required time has elapsed. At the same time, this reset has no effect on other card parameters that affect their scheduling process."
+    }
+  ],
+  "YNCCrE": [
+    {
+      "type": 0,
+      "value": "Deep reset"
+    }
+  ],
+  "YWUIL7": [
+    {
+      "type": 0,
+      "value": "Manage your profile"
+    }
+  ],
+  "Yy/yDL": [
+    {
+      "type": 0,
+      "value": "Reset password"
+    }
+  ],
+  "aEAYJG": [
+    {
+      "type": 0,
+      "value": "Restore default settings"
+    }
+  ],
+  "axy7jn": [
+    {
+      "type": 0,
+      "value": "Study cards ratio"
+    }
+  ],
+  "bYN8D0": [
+    {
+      "type": 0,
+      "value": "Remove avatar"
+    }
+  ],
+  "bZo6QQ": [
+    {
+      "type": 0,
+      "value": "You are going to reset all "
+    },
+    {
+      "children": [
+        {
+          "offset": 0,
+          "options": {
+            "=1": {
+              "value": [
+                {
+                  "type": 7
+                },
+                {
+                  "type": 0,
+                  "value": " card"
+                }
+              ]
+            },
+            "other": {
+              "value": [
+                {
+                  "type": 7
+                },
+                {
+                  "type": 0,
+                  "value": " cards"
+                }
+              ]
+            }
+          },
+          "pluralType": "cardinal",
+          "type": 6,
+          "value": "cardsCount"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    },
+    {
+      "type": 0,
+      "value": " from the "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "deckName"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    },
+    {
+      "type": 0,
+      "value": " deck. Pick a method how you want to do it"
+    }
+  ],
+  "bgtcEb": [
+    {
+      "type": 0,
+      "value": "Finish now?"
+    }
+  ],
+  "ch7hfM": [
+    {
+      "type": 0,
+      "value": "Total study time"
+    }
+  ],
+  "cheKKR": [
+    {
+      "type": 0,
+      "value": "Enter the new password again"
+    }
+  ],
+  "cr4z0d": [
+    {
+      "type": 0,
+      "value": "e.g. interview, business, technical"
+    }
+  ],
+  "d9iNyj": [
+    {
+      "type": 0,
+      "value": "Cards"
+    }
+  ],
+  "dOG/KB": [
+    {
+      "type": 0,
+      "value": "Avg. time per card"
+    }
+  ],
+  "e9917C": [
+    {
+      "type": 0,
+      "value": "Study cards count"
+    }
+  ],
+  "eaCxak": [
+    {
+      "type": 0,
+      "value": "Card has been deleted successfully"
+    }
+  ],
+  "fTHhSB": [
+    {
+      "type": 0,
+      "value": "New password"
+    }
+  ],
+  "fZpZBV": [
+    {
+      "type": 0,
+      "value": "no deviation"
+    }
+  ],
+  "fwSVTQ": [
+    {
+      "type": 0,
+      "value": "Sort in descending order"
+    }
+  ],
+  "gMKKUl": [
+    {
+      "type": 0,
+      "value": "The deep reset means all cards' parameters will be set to their defaults as if the cards have just been created. The scheduling system will forget about their previous statistics."
+    }
+  ],
+  "grdxdO": [
+    {
+      "type": 0,
+      "value": "Start studying"
+    }
+  ],
+  "h4sNB+": [
+    {
+      "type": 0,
+      "value": "Clone card"
+    }
+  ],
+  "hDI+JM": [
+    {
+      "type": 0,
+      "value": "Sort by"
+    }
+  ],
+  "huqKGl": [
+    {
+      "type": 0,
+      "value": "Create account"
+    }
+  ],
+  "hzSNj4": [
+    {
+      "type": 0,
+      "value": "Dashboard"
+    }
+  ],
+  "hziisK": [
+    {
+      "type": 0,
+      "value": "Repeat new password"
+    }
+  ],
+  "itPgxd": [
+    {
+      "type": 0,
+      "value": "Profile"
+    }
+  ],
+  "j2jrS/": [
+    {
+      "type": 0,
+      "value": "Deck has been updated successfully"
+    }
+  ],
+  "jm/spn": [
+    {
+      "type": 0,
+      "value": "Reset"
+    }
+  ],
+  "jqwEYo": [
+    {
+      "type": 0,
+      "value": "e.g. What is this process about?"
+    }
+  ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Save"
+    }
+  ],
+  "k1s/3C": [
+    {
+      "type": 0,
+      "value": "Create deck"
+    }
+  ],
+  "kIW/Ua": [
+    {
+      "type": 0,
+      "value": "E-mail address"
+    }
+  ],
+  "kVcUTN": [
+    {
+      "type": 0,
+      "value": "Add avatar"
+    }
+  ],
+  "kVxnQ2": [
+    {
+      "type": 0,
+      "value": "Last modification date"
+    }
+  ],
+  "kWjk9u": [
+    {
+      "type": 0,
+      "value": "Language: "
+    },
+    {
+      "type": 1,
+      "value": "locale"
+    }
+  ],
+  "keFu/T": [
+    {
+      "type": 0,
+      "value": "Avg. study time"
+    }
+  ],
+  "lP4qIQ": [
+    {
+      "type": 0,
+      "value": "Card details"
+    }
+  ],
+  "lUaq7M": [
+    {
+      "type": 0,
+      "value": "There was no item found"
+    }
+  ],
+  "lrfCD6": [
+    {
+      "type": 0,
+      "value": "Add a new card"
+    }
+  ],
+  "m0Ur9S": [
+    {
+      "type": 0,
+      "value": "There was an error processing your request"
+    }
+  ],
+  "mAO1Wz": [
+    {
+      "type": 0,
+      "value": "Enter your current password"
+    }
+  ],
+  "mRqzZl": [
+    {
+      "type": 0,
+      "value": "Avg. studied cards"
+    }
+  ],
+  "md+KoP": [
+    {
+      "type": 0,
+      "value": "Finish now"
+    }
+  ],
+  "myq2ZL": [
+    {
+      "type": 0,
+      "value": "Normal"
+    }
+  ],
+  "n0gRiB": [
+    {
+      "type": 0,
+      "value": "e.g. Google interview questions"
+    }
+  ],
+  "nAruna": [
+    {
+      "type": 0,
+      "value": "Update the card"
+    }
+  ],
+  "nYrKWp": [
+    {
+      "type": 0,
+      "value": "Edit profile"
+    }
+  ],
+  "nluMRP": [
+    {
+      "type": 0,
+      "value": "Delete deck"
+    }
+  ],
+  "o/gK53": [
+    {
+      "type": 0,
+      "value": "Deck"
+    }
+  ],
+  "oAo2CK": [
+    {
+      "type": 0,
+      "value": "Choose a deck to study"
+    }
+  ],
+  "oSC1XZ": [
+    {
+      "type": 0,
+      "value": "Tags should be comma-separated"
+    }
+  ],
+  "olw3tr": [
+    {
+      "type": 0,
+      "value": "The nearest card to study"
+    }
+  ],
+  "orvpWh": [
+    {
+      "type": 0,
+      "value": "Go back"
+    }
+  ],
+  "ot1oMB": [
+    {
+      "type": 0,
+      "value": "Studying is paused"
+    }
+  ],
+  "pONqz8": [
+    {
+      "type": 0,
+      "value": "First name"
+    }
+  ],
+  "pX7T6w": [
+    {
+      "type": 0,
+      "value": "Last modify"
+    }
+  ],
+  "qMePPG": [
+    {
+      "type": 0,
+      "value": "Note"
+    }
+  ],
+  "quyVXD": [
+    {
+      "type": 0,
+      "value": "Use dark theme"
+    }
+  ],
+  "r5W3i1": [
+    {
+      "type": 0,
+      "value": "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work"
+    }
+  ],
+  "rbVj9G": [
+    {
+      "type": 0,
+      "value": "Avg."
+    }
+  ],
+  "rkIjo/": [
+    {
+      "type": 0,
+      "value": "Passwords don't match"
+    }
+  ],
+  "rxwWfu": [
+    {
+      "type": 0,
+      "value": "An error occurred while resetting password"
+    }
+  ],
+  "s2XIgr": [
+    {
+      "type": 0,
+      "value": "Show details"
+    }
+  ],
+  "smhHt+": [
+    {
+      "offset": 0,
+      "options": {
+        "=1": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " character"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " characters"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "charactersCount"
+    },
+    {
+      "type": 0,
+      "value": " left"
+    }
+  ],
+  "t4zNNz": [
+    {
+      "type": 0,
+      "value": "Studied cards"
+    }
+  ],
+  "tFFMkF": [
+    {
+      "type": 0,
+      "value": "Pause"
+    }
+  ],
+  "tV4lm3": [
+    {
+      "type": 0,
+      "value": "e.g. John"
+    }
+  ],
+  "tag2T/": [
+    {
+      "type": 0,
+      "value": "Positive cards"
+    }
+  ],
+  "txUL0F": [
+    {
+      "type": 0,
+      "value": "Last name"
+    }
+  ],
+  "u5kx+4": [
+    {
+      "type": 0,
+      "value": "Cloning card failed"
+    }
+  ],
+  "uCk8r+": [
+    {
+      "type": 0,
+      "value": "Already have an account?"
+    }
+  ],
+  "ug01Mk": [
+    {
+      "type": 0,
+      "value": "Time"
+    }
+  ],
+  "ukP5IJ": [
+    {
+      "type": 0,
+      "value": "Mark as favorite deck"
+    }
+  ],
+  "v1kMcG": [
+    {
+      "type": 0,
+      "value": "Select a card type"
+    }
+  ],
+  "v2naw/": [
+    {
+      "type": 0,
+      "value": "Delete deck?"
+    }
+  ],
+  "vC94kH": [
+    {
+      "type": 0,
+      "value": "e.g. It's a process in which two or more parts run simultaneously"
+    }
+  ],
+  "vJfMhp": [
+    {
+      "type": 0,
+      "value": "Allowed files: "
+    },
+    {
+      "type": 1,
+      "value": "extensions"
+    }
+  ],
+  "vRTZ4K": [
+    {
+      "type": 0,
+      "value": "Reverse"
+    }
+  ],
+  "vlKhIl": [
+    {
+      "type": 0,
+      "value": "Your name"
+    }
+  ],
+  "vlZInC": [
+    {
+      "type": 0,
+      "value": "Avg. rate"
+    }
+  ],
+  "wEQDC6": [
+    {
+      "type": 0,
+      "value": "Edit"
+    }
+  ],
+  "wGEV5o": [
+    {
+      "type": 0,
+      "value": "Password has been reset successfully"
+    }
+  ],
+  "wL7VAE": [
+    {
+      "type": 0,
+      "value": "Actions"
+    }
+  ],
+  "wZFe08": [
+    {
+      "type": 0,
+      "value": "An error occurred while signing up"
+    }
+  ],
+  "wxDxqW": [
+    {
+      "type": 0,
+      "value": "Config has been updated successfully"
+    }
+  ],
+  "xBmTkn": [
+    {
+      "type": 0,
+      "value": "Deck name"
+    }
+  ],
+  "xatRkX": [
+    {
+      "type": 0,
+      "value": "Are you sure you want to end the session before all cards are completed?"
+    }
+  ],
+  "y2Q/xC": [
+    {
+      "type": 0,
+      "value": "Cards ready to learn / total"
+    }
+  ],
+  "yqOZND": [
+    {
+      "type": 0,
+      "value": "(+"
+    },
+    {
+      "offset": 0,
+      "options": {
+        "=1": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " day"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " days"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "daysCount"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "yrDppn": [
+    {
+      "type": 0,
+      "value": "Reset deck's cards"
+    }
+  ],
+  "ytuF3Q": [
+    {
+      "type": 0,
+      "value": "Study another deck"
+    }
+  ],
+  "zO+fCo": [
+    {
+      "type": 0,
+      "value": "Cards count"
+    }
+  ],
+  "zhGplL": [
+    {
+      "type": 0,
+      "value": "Add some cards to start studying"
+    }
+  ]
+}

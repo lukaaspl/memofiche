@@ -8,7 +8,9 @@
     "start": "next start",
     "export": "next export",
     "lint": "eslint ./ --ext .ts,.tsx",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "intl:extract": "formatjs extract pages/**/*.ts* components/**/*.ts* --out-file lang/en.json --id-interpolation-pattern [sha512:contenthash:base64:6] --additional-function-names $t",
+    "intl:compile": "formatjs compile lang/en.json --ast --out-file compiled-lang/en.json"
   },
   "husky": {
     "hooks": {
@@ -47,6 +49,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.7.0",
     "react-icons": "^4.2.0",
+    "react-intl": "^5.23.0",
     "react-markdown": "^7.1.0",
     "react-query": "^3.24.3",
     "recharts": "^2.1.6",
@@ -56,6 +59,7 @@
     "zod": "3.5.1"
   },
   "devDependencies": {
+    "@formatjs/cli": "^4.5.0",
     "@next/eslint-plugin-next": "^11.1.2",
     "@types/bcrypt": "^5.0.0",
     "@types/http-errors": "^1.8.0",
@@ -66,9 +70,11 @@
     "@types/tinycolor2": "^1.4.3",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
+    "babel-plugin-formatjs": "^10.3.12",
     "babel-plugin-superjson-next": "^0.3.0",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-formatjs": "^2.19.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",

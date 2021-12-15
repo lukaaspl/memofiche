@@ -16,12 +16,14 @@ import { DeckSort } from "domains/deck";
 import useDecksQuery from "hooks/use-decks-query";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useSortState from "hooks/use-sort-state";
+import useTranslation from "hooks/use-translation";
 import { useRouter } from "next/router";
 import React from "react";
 import ManageDeckDialog from "./manage-deck-dialog";
 
 export default function DecksList(): JSX.Element {
   const router = useRouter();
+  const { $t } = useTranslation();
 
   const [isNewDeckDialogOpen, onNewDeckDialogOpen, onNewDeckDialogClose] =
     useSimpleDisclosure({
@@ -50,24 +52,44 @@ export default function DecksList(): JSX.Element {
     <>
       <Flex justify="space-between" align="center">
         <Heading display="flex" size="md" mt={5} mb={3}>
-          <span>Your decks ({decks.length})</span>
+          <span>
+            {$t(
+              { defaultMessage: "Your decks ({count})" },
+              { count: decks.length }
+            )}
+          </span>
           {isRefetching && <SyncSpinner />}
         </Heading>
         <HStack spacing={2}>
           <SortingControls<DeckSort["sortBy"]>
             options={[
-              { label: "Name", value: "name" },
-              { label: "Cards count", value: "cardsCount" },
-              { label: "Favorite", value: "isFavorite" },
-              { label: "Creation date", value: "createdAt" },
-              { label: "Last modify", value: "updatedAt" },
+              {
+                label: $t({ defaultMessage: "Name" }),
+                value: "name",
+              },
+              {
+                label: $t({ defaultMessage: "Cards count" }),
+                value: "cardsCount",
+              },
+              {
+                label: $t({ defaultMessage: "Favorite" }),
+                value: "isFavorite",
+              },
+              {
+                label: $t({ defaultMessage: "Creation date" }),
+                value: "createdAt",
+              },
+              {
+                label: $t({ defaultMessage: "Last modify" }),
+                value: "updatedAt",
+              },
             ]}
             state={sortState}
             onChangeField={updateField}
             onChangeOrder={updateOrder}
           />
           <CustomButton colorScheme="purple" onClick={onNewDeckDialogOpen}>
-            New deck
+            {$t({ defaultMessage: "New deck" })}
           </CustomButton>
           <ManageDeckDialog
             isOpen={isNewDeckDialogOpen}
@@ -79,8 +101,8 @@ export default function DecksList(): JSX.Element {
       {decks.length === 0 && (
         <Feedback
           type="empty-state"
-          message="There was no deck found"
-          actionButtonLabel="Add first"
+          message={$t({ defaultMessage: "There was no deck found" })}
+          actionButtonLabel={$t({ defaultMessage: "Add first" })}
           onAction={onNewDeckDialogOpen}
         />
       )}
@@ -94,13 +116,15 @@ export default function DecksList(): JSX.Element {
             <Heading size="sm">{deck.name}</Heading>
             <List my={1}>
               <ListItem fontSize="smaller">
-                Created: {new Date(deck.createdAt).toLocaleString()}
+                {$t({ defaultMessage: "Created" })}:{" "}
+                {new Date(deck.createdAt).toLocaleString()}
               </ListItem>
               <ListItem fontSize="smaller">
-                Last modified: {new Date(deck.updatedAt).toLocaleString()}
+                {$t({ defaultMessage: "Last modified" })}:{" "}
+                {new Date(deck.updatedAt).toLocaleString()}
               </ListItem>
               <ListItem fontSize="smaller">
-                Cards: <b>{deck.cards.length}</b>
+                {$t({ defaultMessage: "Cards" })}: <b>{deck.cards.length}</b>
               </ListItem>
             </List>
           </>

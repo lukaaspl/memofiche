@@ -4,13 +4,16 @@ import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";
 import { NextPage } from "next";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 const DashboardPage: NextPage = () => {
   usePrivateRoute();
 
   return (
     <Layout>
-      <PrimaryHeading>Dashboard</PrimaryHeading>
+      <PrimaryHeading>
+        <FormattedMessage defaultMessage="Dashboard" />
+      </PrimaryHeading>
       <DashboardContent />
     </Layout>
   );

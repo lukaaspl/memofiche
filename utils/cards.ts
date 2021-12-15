@@ -45,17 +45,17 @@ export function revealCardNearestStudyTime(
   }, Infinity);
 }
 
-export function getPredictedInterval(
+export function getPredictedIntervalInDays(
   card: DetailedCard,
   rate: number
-): Nullable<string> {
+): Nullable<number> {
   if (!card?.memoParams) {
     return null;
   }
 
   const intervalInDays = superMemo(card.memoParams, rate).interval;
 
-  return `(+${intervalInDays} ${intervalInDays === 1 ? "day" : "days"})`;
+  return intervalInDays;
 }
 
 export class StudyCard<TCard extends Card> {

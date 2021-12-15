@@ -3,6 +3,7 @@ import CustomAlertDialog from "components/ui/custom-alert-dialog";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedCard } from "domains/card";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
@@ -34,21 +35,24 @@ export default function DeleteCardConfirmationDialog({
   onClose,
 }: DeleteCardConfirmationDialogProps): JSX.Element {
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
   const toast = useSuccessToast();
 
   const deleteCardMutation = useMutation(deleteCard, {
     onSuccess: (card) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       queryClient.invalidateQueries([DECK_QUERY_KEY, card.deckId]);
-      toast("Card has been deleted successfully");
+      toast($t({ defaultMessage: "Card has been deleted successfully" }));
       onClose();
     },
   });
 
   return (
     <CustomAlertDialog
-      title="Delete card?"
-      content={`Are you sure? You can't undo this action afterwards.`}
+      title={$t({ defaultMessage: "Delete card?" })}
+      content={$t({
+        defaultMessage: "Are you sure? You can't undo this action afterwards.",
+      })}
       isLoading={deleteCardMutation.isLoading}
       isOpen={isOpen}
       onClose={onClose}
