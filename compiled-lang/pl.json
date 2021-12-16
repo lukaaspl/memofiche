@@ -1,4 +1,10 @@
 {
+  "+P22YN": [
+    {
+      "type": 0,
+      "value": "Dodaj"
+    }
+  ],
   "+U6ozc": [
     {
       "type": 0,
@@ -42,7 +48,7 @@
   "0UbCoA": [
     {
       "type": 0,
-      "value": "Do rozpoczęcia nauki wymagana jest talia z dostępnymi kartami"
+      "value": "Do rozpoczęcia nauki wymagana jest talia z kartami"
     }
   ],
   "0V2Rkw": [
@@ -54,7 +60,7 @@
   "0sHCb3": [
     {
       "type": 0,
-      "value": "You have successfully completed your studying session. Grab a few statistics to find out how you did."
+      "value": "Udało Ci się pomyślnie ukończyć sesję nauczania. Sprawdź kilka statystyk, aby dowiedzieć się, jak Ci poszło."
     }
   ],
   "1+C8Ea": [
@@ -102,7 +108,7 @@
   "2KXvZ0": [
     {
       "type": 0,
-      "value": "Are you sure? You can't undo this action afterwards."
+      "value": "Jesteś pewny? Ta operacja jest nieodwracalna."
     }
   ],
   "2W0f9h": [
@@ -114,19 +120,19 @@
   "35iM8d": [
     {
       "type": 0,
-      "value": "Most relevant decks"
+      "value": "Najbardziej istotne talie"
     }
   ],
   "38aKqB": [
     {
       "type": 0,
-      "value": "Enter the new password"
+      "value": "Wprowadź nowe hasło"
     }
   ],
   "3NzIdG": [
     {
       "type": 0,
-      "value": "Study "
+      "value": "Ucz się "
     },
     {
       "type": 1,
@@ -136,7 +142,7 @@
   "3sk8v2": [
     {
       "type": 0,
-      "value": "Delete card?"
+      "value": "Usunąć kartę?"
     }
   ],
   "3y9DGg": [
@@ -154,25 +160,25 @@
   "4adKdJ": [
     {
       "type": 0,
-      "value": "e.g. What is multithreaded programming?"
+      "value": "np. Co to jest programowanie wielowątkowe?"
     }
   ],
   "52ZTKE": [
     {
       "type": 0,
-      "value": "Card has been updated successfully"
+      "value": "Karta została zaktualizowana pomyślnie"
     }
   ],
   "5Hzwqs": [
     {
       "type": 0,
-      "value": "Ulubiony"
+      "value": "Ulubione"
     }
   ],
   "5oL/GD": [
     {
       "type": 0,
-      "value": "Max. size: "
+      "value": "Maks. rozmiar: "
     },
     {
       "type": 1,
@@ -200,37 +206,49 @@
   "63wyw+": [
     {
       "type": 0,
-      "value": "Shallow reset"
+      "value": "Płytki reset"
     }
   ],
   "67jx+1": [
     {
       "type": 0,
-      "value": "There was no card found"
+      "value": "Nie posiadasz jeszcze żadnej karty"
     }
   ],
   "68PmLe": [
     {
       "type": 0,
-      "value": "Total studied cards"
+      "value": "Przestudiowane karty"
     }
   ],
   "6OWS4p": [
     {
       "type": 0,
-      "value": "Procesowanie..."
+      "value": "Przetwarzanie..."
+    }
+  ],
+  "6n4LpX": [
+    {
+      "type": 0,
+      "value": "Łatwe"
+    }
+  ],
+  "6xap9L": [
+    {
+      "type": 0,
+      "value": "OK"
     }
   ],
   "7XQoh9": [
     {
       "type": 0,
-      "value": "Deck has been deleted successfully"
+      "value": "Talia została usunięta pomyślnie"
     }
   ],
   "7cwB0R": [
     {
       "type": 0,
-      "value": "Cards have been reset successfully"
+      "value": "Karty zostały zresetowane pomyślnie"
     }
   ],
   "7os1KN": [
@@ -242,61 +260,61 @@
   "8D4mqd": [
     {
       "type": 0,
-      "value": "Use advanced rating cards controls"
+      "value": "Używaj zaawansowanego systemu oceny kart"
     }
   ],
   "8HJxXG": [
     {
       "type": 0,
-      "value": "Sign up"
+      "value": "Zarejestruj"
     }
   ],
   "8Rqn5a": [
     {
       "type": 0,
-      "value": "e.g. Doe"
+      "value": "np. Doe"
     }
   ],
   "8eCXRw": [
     {
       "type": 0,
-      "value": "Negative cards"
+      "value": "Negatywne karty"
     }
   ],
   "96S5w3": [
     {
       "type": 0,
-      "value": "Obverse"
+      "value": "Awers"
     }
   ],
   "AIGagR": [
     {
       "type": 0,
-      "value": "Add a new deck"
+      "value": "Dodaj nową talię"
     }
   ],
   "ATZ766": [
     {
       "type": 0,
-      "value": "You don't have an account yet?"
+      "value": "Nie masz jeszcze konta?"
     }
   ],
   "BNSmGR": [
     {
       "type": 0,
-      "value": "Redirecting..."
+      "value": "Przekierowywanie..."
     }
   ],
   "BY+Cbm": [
     {
       "type": 0,
-      "value": "Card sides were reversed"
+      "value": "Strony kart zostały zamienione"
     }
   ],
   "C06zJP": [
     {
       "type": 0,
-      "value": "Your decks ("
+      "value": "Twoje talie ("
     },
     {
       "type": 1,
@@ -310,25 +328,25 @@
   "C23He5": [
     {
       "type": 0,
-      "value": "Sort in ascending order"
+      "value": "Sortuj w porządku rosnącym"
     }
   ],
   "CFUBzf": [
     {
       "type": 0,
-      "value": "Well-known cards"
+      "value": "Dobrze znane karty"
     }
   ],
   "D3idYv": [
     {
       "type": 0,
-      "value": "Settings"
+      "value": "Ustawienia"
     }
   ],
   "DXDNt9": [
     {
       "type": 0,
-      "value": "Important! You are going to lose all "
+      "value": "Ważne! Utracisz wszystkie "
     },
     {
       "type": 1,
@@ -336,145 +354,151 @@
     },
     {
       "type": 0,
-      "value": " cards contained in the deck!"
+      "value": " karty wchodzące w skład talii!"
     }
   ],
   "DlVFL+": [
     {
       "type": 0,
-      "value": "Delete card"
+      "value": "Usuń kartę"
+    }
+  ],
+  "DyXxzt": [
+    {
+      "type": 0,
+      "value": "Dodaj pierwszą"
     }
   ],
   "E1ZC4X": [
     {
       "type": 0,
-      "value": "Cloning the card..."
+      "value": "Klonowanie karty..."
     }
   ],
   "EJJHc/": [
     {
       "type": 0,
-      "value": "Old password doesn't match"
+      "value": "Stare hasło jest nieprawidłowe"
     }
   ],
   "HAlOn1": [
     {
       "type": 0,
-      "value": "Name"
+      "value": "Nazwa"
     }
   ],
   "HPamiU": [
     {
       "type": 0,
-      "value": "Session finished"
+      "value": "Sesja zakończona"
     }
   ],
   "HWYd5e": [
     {
       "type": 0,
-      "value": "There must be at least 1 ready to study card to start studying process"
+      "value": "Wymagana jest co najmniej 1 dostępna karta do rozpoczęcia nauki"
     }
   ],
   "J+Pu4g": [
     {
       "type": 0,
-      "value": "Visit the dashboard"
+      "value": "Odwiedź dashboard"
     }
   ],
   "J0oJEs": [
     {
       "type": 0,
-      "value": "e.g. twitter.com/johndoe_87"
+      "value": "np. twitter.com/johndoe_87"
     }
   ],
   "JXdbo8": [
     {
       "type": 0,
-      "value": "Done"
+      "value": "Gotowe"
     }
   ],
   "JkLHGw": [
     {
       "type": 0,
-      "value": "Website"
+      "value": "Strona internetowa"
     }
   ],
   "K3r6DQ": [
     {
       "type": 0,
-      "value": "Delete"
+      "value": "Usuń"
     }
   ],
   "KHL8ap": [
     {
       "type": 0,
-      "value": "Study time"
+      "value": "Czas nauki"
     }
   ],
   "KHV2DZ": [
     {
       "type": 0,
-      "value": "Avatar actions"
+      "value": "Akcje awataru"
     }
   ],
   "MJ2jZQ": [
     {
       "type": 0,
-      "value": "Total"
+      "value": "Suma"
     }
   ],
   "MisSXp": [
     {
       "type": 0,
-      "value": "Update avatar"
+      "value": "Zmień awatar"
     }
   ],
   "MthpnL": [
     {
       "type": 0,
-      "value": "Go to app"
+      "value": "Przejdź do aplikacji"
     }
   ],
   "NIynnB": [
     {
       "type": 0,
-      "value": "Current password"
+      "value": "Aktualne hasło"
     }
   ],
   "Ntjkqd": [
     {
       "type": 0,
-      "value": "or"
+      "value": "lub"
     }
   ],
   "ORGv1Q": [
     {
       "type": 0,
-      "value": "Created"
+      "value": "Utworzono"
     }
   ],
   "OV0Tkk": [
     {
       "type": 0,
-      "value": "Last studied"
+      "value": "Ostatnia sesja"
     }
   ],
   "OWgHbg": [
     {
       "type": 0,
-      "value": "Edit card"
+      "value": "Edytuj kartę"
     }
   ],
   "P1G2Ry": [
     {
       "type": 0,
-      "value": "Available cards"
+      "value": "Dostępne karty"
     }
   ],
   "P7PLVj": [
     {
       "type": 0,
-      "value": "Date"
+      "value": "Data"
     }
   ],
   "P8VfZA": [
@@ -486,37 +510,37 @@
   "PUrJRh": [
     {
       "type": 0,
-      "value": "Little-known cards"
+      "value": "Słabo znane karty"
     }
   ],
   "PdMcML": [
     {
       "type": 0,
-      "value": "Resetting..."
+      "value": "Resetowanie..."
     }
   ],
   "PlBReU": [
     {
       "type": 0,
-      "value": "Log out"
+      "value": "Wyloguj"
     }
   ],
   "PvifjG": [
     {
       "type": 0,
-      "value": "compared to all your decks"
+      "value": "w porównaniu do wszystkich twoich talii"
     }
   ],
   "QKdFRv": [
     {
       "type": 0,
-      "value": "New card"
+      "value": "Nowa karta"
     }
   ],
   "QrAcDQ": [
     {
       "type": 0,
-      "value": "Note: "
+      "value": "Notatka: "
     },
     {
       "type": 1,
@@ -526,91 +550,91 @@
   "Rljmgs": [
     {
       "type": 0,
-      "value": "Update the deck"
+      "value": "Edytuj talię"
     }
   ],
   "SNP1/u": [
     {
       "type": 0,
-      "value": "Deck has been created successfully"
+      "value": "Talia została utworzona pomyślnie"
     }
   ],
   "SO8m/b": [
     {
       "type": 0,
-      "value": "An error occurred while signing in"
+      "value": "Wystąpił błąd podczas logowania"
     }
   ],
   "SQJto2": [
     {
       "type": 0,
-      "value": "Sign in"
+      "value": "Zaloguj"
     }
   ],
   "SRipU7": [
     {
       "type": 0,
-      "value": "Profile has been updated successfully"
+      "value": "Profil został zaktualizowany pomyślnie"
     }
   ],
   "SYGs5A": [
     {
       "type": 0,
-      "value": "Flip the card"
+      "value": "Odwróć kartę"
     }
   ],
   "TE23Q2": [
     {
       "type": 0,
-      "value": "Build your deck"
+      "value": "Zbuduj swoją talię"
     }
   ],
   "TYmNBD": [
     {
       "type": 0,
-      "value": "Same card type as normal with the difference that there's a 50% chance to swipe the sides (from the reverse to the obverse)"
+      "value": "Karta podstawowa z taką różnicą, że występuje 50% szansy na zamianę stron (z rewersu na awers)"
     }
   ],
   "TiR/Hq": [
     {
       "type": 0,
-      "value": "Saving..."
+      "value": "Zapisywanie..."
     }
   ],
   "TnhvIh": [
     {
       "type": 0,
-      "value": "e.g. I am Doe, John Doe."
+      "value": "np. Jestem Doe, John Doe."
     }
   ],
   "UJE0EW": [
     {
       "type": 0,
-      "value": "Basic, double-sided card being flipped from the obverse to the reverse while studying"
+      "value": "Podstawowa, dwustronna karta przewracana z awersu na rewers podczas studiowania"
     }
   ],
   "UTFsoN": [
     {
       "type": 0,
-      "value": "Study"
+      "value": "Nauka"
     }
   ],
   "Urt04S": [
     {
       "type": 0,
-      "value": "Include deck's tags"
+      "value": "Dołącz tagi z talii"
     }
   ],
   "W4lBwL": [
     {
       "type": 0,
-      "value": "Last studied sessions"
+      "value": "Ostatnio studiowane sesje"
     }
   ],
   "WSnSu+": [
     {
       "type": 0,
-      "value": "Cards ("
+      "value": "Karty ("
     },
     {
       "type": 1,
@@ -624,87 +648,71 @@
   "X0ha1a": [
     {
       "type": 0,
-      "value": "Save changes"
+      "value": "Zapisz zmiany"
     }
   ],
   "XeQ3F3": [
     {
       "type": 0,
-      "value": "The shallow reset means all cards' due dates will be set to now, hence you can start studying them without waiting until the required time has elapsed. At the same time, this reset has no effect on other card parameters that affect their scheduling process."
+      "value": "Płytki reset oznacza, że wszystkie karty natychmiastowo stają się gotowe do nauki bez konieczności oczekiwania aż upłynie wymagany czas. Należy podkreślić, że ten reset nie dotyczy innych parametrów kart, które mają wpływ na proces odkładania karty w czasie."
     }
   ],
   "YNCCrE": [
     {
       "type": 0,
-      "value": "Deep reset"
+      "value": "Głęboki reset"
     }
   ],
   "YWUIL7": [
     {
       "type": 0,
-      "value": "Manage your profile"
+      "value": "Zarządzaj swoim profilem"
     }
   ],
   "Yy/yDL": [
     {
       "type": 0,
-      "value": "Reset password"
+      "value": "Resetuj hasło"
     }
   ],
   "aEAYJG": [
     {
       "type": 0,
-      "value": "Restore default settings"
+      "value": "Przywróć ustawienia domyślne"
+    }
+  ],
+  "aP2JKk": [
+    {
+      "type": 0,
+      "value": "Karta została utworzona pomyślnie"
     }
   ],
   "axy7jn": [
     {
       "type": 0,
-      "value": "Study cards ratio"
+      "value": "Stosunek kart do nauki"
     }
   ],
   "bYN8D0": [
     {
       "type": 0,
-      "value": "Remove avatar"
+      "value": "Usuń awatar"
     }
   ],
   "bZo6QQ": [
     {
       "type": 0,
-      "value": "You are going to reset all "
+      "value": "Zamierzasz zresetować wszystkie "
     },
     {
       "children": [
         {
-          "offset": 0,
-          "options": {
-            "=1": {
-              "value": [
-                {
-                  "type": 7
-                },
-                {
-                  "type": 0,
-                  "value": " card"
-                }
-              ]
-            },
-            "other": {
-              "value": [
-                {
-                  "type": 7
-                },
-                {
-                  "type": 0,
-                  "value": " cards"
-                }
-              ]
-            }
-          },
-          "pluralType": "cardinal",
-          "type": 6,
+          "type": 1,
           "value": "cardsCount"
+        },
+        {
+          "type": 0,
+          "value": " karty"
         }
       ],
       "type": 8,
@@ -712,7 +720,7 @@
     },
     {
       "type": 0,
-      "value": " from the "
+      "value": " z talii "
     },
     {
       "children": [
@@ -726,103 +734,103 @@
     },
     {
       "type": 0,
-      "value": " deck. Pick a method how you want to do it"
+      "value": ". Wybierz sposób w jaki chcesz to zrobić"
     }
   ],
   "bgtcEb": [
     {
       "type": 0,
-      "value": "Finish now?"
+      "value": "Zakończyć teraz?"
     }
   ],
   "ch7hfM": [
     {
       "type": 0,
-      "value": "Total study time"
+      "value": "Całkowity czas nauki"
     }
   ],
   "cheKKR": [
     {
       "type": 0,
-      "value": "Enter the new password again"
+      "value": "Wprowadź nowe hasło ponownie"
     }
   ],
   "cr4z0d": [
     {
       "type": 0,
-      "value": "e.g. interview, business, technical"
+      "value": "np. rozmowa kwalifikacyjna, biznes, technikalia"
     }
   ],
   "d9iNyj": [
     {
       "type": 0,
-      "value": "Cards"
+      "value": "Karty"
     }
   ],
   "dOG/KB": [
     {
       "type": 0,
-      "value": "Avg. time per card"
+      "value": "Śrd. czas na kartę"
     }
   ],
   "e9917C": [
     {
       "type": 0,
-      "value": "Study cards count"
+      "value": "Liczba kart do nauki"
     }
   ],
   "eaCxak": [
     {
       "type": 0,
-      "value": "Card has been deleted successfully"
+      "value": "Karta została usunięta pomyślnie"
     }
   ],
   "fTHhSB": [
     {
       "type": 0,
-      "value": "New password"
+      "value": "Nowe hasło"
     }
   ],
   "fZpZBV": [
     {
       "type": 0,
-      "value": "no deviation"
+      "value": "brak odchyleń"
     }
   ],
   "fwSVTQ": [
     {
       "type": 0,
-      "value": "Sort in descending order"
+      "value": "Sortuj w porządku malejącym"
     }
   ],
   "gMKKUl": [
     {
       "type": 0,
-      "value": "The deep reset means all cards' parameters will be set to their defaults as if the cards have just been created. The scheduling system will forget about their previous statistics."
+      "value": "Głęboki reset oznacza, że wszystkie parametry kart zostaną przywrócone do swojego pierwotnego stanu, tak jakby karty zostały dopiero utworzone. Dotychczasowe statystki systemu odkładania kart w czasie zostaną zapomniane."
     }
   ],
   "grdxdO": [
     {
       "type": 0,
-      "value": "Start studying"
+      "value": "Zacznij naukę"
     }
   ],
   "h4sNB+": [
     {
       "type": 0,
-      "value": "Clone card"
+      "value": "Klonuj kartę"
     }
   ],
   "hDI+JM": [
     {
       "type": 0,
-      "value": "Sort by"
+      "value": "Sortuj wg"
     }
   ],
   "huqKGl": [
     {
       "type": 0,
-      "value": "Create account"
+      "value": "Załóż konto"
     }
   ],
   "hzSNj4": [
@@ -834,67 +842,67 @@
   "hziisK": [
     {
       "type": 0,
-      "value": "Repeat new password"
+      "value": "Potwierdź nowe hasło"
     }
   ],
   "itPgxd": [
     {
       "type": 0,
-      "value": "Profile"
+      "value": "Profil"
     }
   ],
   "j2jrS/": [
     {
       "type": 0,
-      "value": "Deck has been updated successfully"
+      "value": "Talia została zaktualizowana pomyślnie"
     }
   ],
   "jm/spn": [
     {
       "type": 0,
-      "value": "Reset"
+      "value": "Resetuj"
     }
   ],
   "jqwEYo": [
     {
       "type": 0,
-      "value": "e.g. What is this process about?"
+      "value": "np. Na czym polega ten proces?"
     }
   ],
   "jvo0vs": [
     {
       "type": 0,
-      "value": "Save"
+      "value": "Zapisz"
     }
   ],
   "k1s/3C": [
     {
       "type": 0,
-      "value": "Create deck"
+      "value": "Stwórz talię"
     }
   ],
   "kIW/Ua": [
     {
       "type": 0,
-      "value": "E-mail address"
+      "value": "Adres e-mail"
     }
   ],
   "kVcUTN": [
     {
       "type": 0,
-      "value": "Add avatar"
+      "value": "Dodaj awatar"
     }
   ],
   "kVxnQ2": [
     {
       "type": 0,
-      "value": "Last modification date"
+      "value": "Data ostatniej modyfikacji"
     }
   ],
   "kWjk9u": [
     {
       "type": 0,
-      "value": "Language: "
+      "value": "Język: "
     },
     {
       "type": 1,
@@ -904,169 +912,181 @@
   "keFu/T": [
     {
       "type": 0,
-      "value": "Avg. study time"
+      "value": "Śrd. czas nauki"
     }
   ],
   "lP4qIQ": [
     {
       "type": 0,
-      "value": "Card details"
+      "value": "Szczegóły karty"
     }
   ],
   "lUaq7M": [
     {
       "type": 0,
-      "value": "There was no item found"
+      "value": "Nie znaleziono żadnego elementu"
     }
   ],
   "lrfCD6": [
     {
       "type": 0,
-      "value": "Add a new card"
+      "value": "Dodaj nową kartę"
     }
   ],
   "m0Ur9S": [
     {
       "type": 0,
-      "value": "There was an error processing your request"
+      "value": "Wystąpił błąd podczas przetwarzania twojego zapytania"
     }
   ],
   "mAO1Wz": [
     {
       "type": 0,
-      "value": "Enter your current password"
+      "value": "Wprowadź aktualne hasło"
     }
   ],
   "mRqzZl": [
     {
       "type": 0,
-      "value": "Avg. studied cards"
+      "value": "Śrd. przestudiowanych kart"
     }
   ],
   "md+KoP": [
     {
       "type": 0,
-      "value": "Finish now"
+      "value": "Zakończ teraz"
     }
   ],
   "myq2ZL": [
     {
       "type": 0,
-      "value": "Normal"
+      "value": "Normalna"
     }
   ],
   "n0gRiB": [
     {
       "type": 0,
-      "value": "e.g. Google interview questions"
+      "value": "np. pytania kwalifikacyjne Google"
+    }
+  ],
+  "n8uxry": [
+    {
+      "type": 0,
+      "value": "Trudne"
     }
   ],
   "nAruna": [
     {
       "type": 0,
-      "value": "Update the card"
+      "value": "Edytuj kartę"
     }
   ],
   "nYrKWp": [
     {
       "type": 0,
-      "value": "Edit profile"
+      "value": "Edytuj profil"
     }
   ],
   "nluMRP": [
     {
       "type": 0,
-      "value": "Delete deck"
+      "value": "Usuń talię"
     }
   ],
   "o/gK53": [
     {
       "type": 0,
-      "value": "Deck"
+      "value": "Talia"
     }
   ],
   "oAo2CK": [
     {
       "type": 0,
-      "value": "Choose a deck to study"
+      "value": "Wybierz talię do nauki"
     }
   ],
   "oSC1XZ": [
     {
       "type": 0,
-      "value": "Tags should be comma-separated"
+      "value": "Tagi powinny być oddzielone przecinkami"
     }
   ],
   "olw3tr": [
     {
       "type": 0,
-      "value": "The nearest card to study"
+      "value": "Najbliższa karta do nauki"
     }
   ],
   "orvpWh": [
     {
       "type": 0,
-      "value": "Go back"
+      "value": "Wróć"
     }
   ],
   "ot1oMB": [
     {
       "type": 0,
-      "value": "Studying is paused"
+      "value": "Studiowanie jest wstrzymane"
     }
   ],
   "pONqz8": [
     {
       "type": 0,
-      "value": "First name"
+      "value": "Imię"
     }
   ],
   "pX7T6w": [
     {
       "type": 0,
-      "value": "Last modify"
+      "value": "Ostatnia modyfikacja"
     }
   ],
   "qMePPG": [
     {
       "type": 0,
-      "value": "Note"
+      "value": "Notatka"
     }
   ],
   "quyVXD": [
     {
       "type": 0,
-      "value": "Use dark theme"
+      "value": "Używaj ciemnego motywu"
     }
   ],
   "r5W3i1": [
     {
       "type": 0,
-      "value": "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work"
+      "value": "Używaj zaawansowanego systemu oceny kart, w celu bardziej precyzyjnego odkładania kart w czasie"
+    }
+  ],
+  "razLg8": [
+    {
+      "type": 0,
+      "value": "Ucz się"
     }
   ],
   "rbVj9G": [
     {
       "type": 0,
-      "value": "Avg."
+      "value": "Średnia"
     }
   ],
   "rkIjo/": [
     {
       "type": 0,
-      "value": "Passwords don't match"
+      "value": "Podane hasła nie są takie same"
     }
   ],
   "rxwWfu": [
     {
       "type": 0,
-      "value": "An error occurred while resetting password"
+      "value": "Wystąpił błąd podczas resetowania hasła"
     }
   ],
   "s2XIgr": [
     {
       "type": 0,
-      "value": "Show details"
+      "value": "Pokaż szczegóły"
     }
   ],
   "smhHt+": [
@@ -1076,22 +1096,30 @@
         "=1": {
           "value": [
             {
+              "type": 0,
+              "value": "pozostał "
+            },
+            {
               "type": 7
             },
             {
               "type": 0,
-              "value": " character"
+              "value": " znak"
             }
           ]
         },
         "other": {
           "value": [
             {
+              "type": 0,
+              "value": "pozostało "
+            },
+            {
               "type": 7
             },
             {
               "type": 0,
-              "value": " characters"
+              "value": " znaków"
             }
           ]
         }
@@ -1099,88 +1127,84 @@
       "pluralType": "cardinal",
       "type": 6,
       "value": "charactersCount"
-    },
-    {
-      "type": 0,
-      "value": " left"
     }
   ],
   "t4zNNz": [
     {
       "type": 0,
-      "value": "Studied cards"
+      "value": "Przestudiowane karty"
     }
   ],
   "tFFMkF": [
     {
       "type": 0,
-      "value": "Pause"
+      "value": "Wstrzymaj"
     }
   ],
   "tV4lm3": [
     {
       "type": 0,
-      "value": "e.g. John"
+      "value": "np. John"
     }
   ],
   "tag2T/": [
     {
       "type": 0,
-      "value": "Positive cards"
+      "value": "Pozytywne karty"
     }
   ],
   "txUL0F": [
     {
       "type": 0,
-      "value": "Last name"
+      "value": "Nazwisko"
     }
   ],
   "u5kx+4": [
     {
       "type": 0,
-      "value": "Cloning card failed"
+      "value": "Klonowanie karty nie powiodło się"
     }
   ],
   "uCk8r+": [
     {
       "type": 0,
-      "value": "Already have an account?"
+      "value": "Posiadasz już konto?"
     }
   ],
   "ug01Mk": [
     {
       "type": 0,
-      "value": "Time"
+      "value": "Czas"
     }
   ],
   "ukP5IJ": [
     {
       "type": 0,
-      "value": "Mark as favorite deck"
+      "value": "Oznacz jako ulubioną talię"
     }
   ],
   "v1kMcG": [
     {
       "type": 0,
-      "value": "Select a card type"
+      "value": "Wybierz typ karty"
     }
   ],
   "v2naw/": [
     {
       "type": 0,
-      "value": "Delete deck?"
+      "value": "Usunąć talię?"
     }
   ],
   "vC94kH": [
     {
       "type": 0,
-      "value": "e.g. It's a process in which two or more parts run simultaneously"
+      "value": "np. To proces, w którym dwie lub więcej części aplikacji mogą działać jednocześnie"
     }
   ],
   "vJfMhp": [
     {
       "type": 0,
-      "value": "Allowed files: "
+      "value": "Dozwolone pliki: "
     },
     {
       "type": 1,
@@ -1190,67 +1214,67 @@
   "vRTZ4K": [
     {
       "type": 0,
-      "value": "Reverse"
+      "value": "Rewers"
     }
   ],
   "vlKhIl": [
     {
       "type": 0,
-      "value": "Your name"
+      "value": "Nazwa użytkownika"
     }
   ],
   "vlZInC": [
     {
       "type": 0,
-      "value": "Avg. rate"
+      "value": "Śrd. ocena"
     }
   ],
   "wEQDC6": [
     {
       "type": 0,
-      "value": "Edit"
+      "value": "Edytuj"
     }
   ],
   "wGEV5o": [
     {
       "type": 0,
-      "value": "Password has been reset successfully"
+      "value": "Hasło zostało zresetowane pomyślnie"
     }
   ],
   "wL7VAE": [
     {
       "type": 0,
-      "value": "Actions"
+      "value": "Akcje"
     }
   ],
   "wZFe08": [
     {
       "type": 0,
-      "value": "An error occurred while signing up"
+      "value": "Wystąpił błąd podczas zakładania konta"
     }
   ],
   "wxDxqW": [
     {
       "type": 0,
-      "value": "Config has been updated successfully"
+      "value": "Ustawienia zostały zaktualizowane pomyślnie"
     }
   ],
   "xBmTkn": [
     {
       "type": 0,
-      "value": "Deck name"
+      "value": "Nazwa talii"
     }
   ],
   "xatRkX": [
     {
       "type": 0,
-      "value": "Are you sure you want to end the session before all cards are completed?"
+      "value": "Jesteś pewny, że chcesz zakończyć sesję przed ukończeniem nauki wszystkich kart?"
     }
   ],
   "y2Q/xC": [
     {
       "type": 0,
-      "value": "Cards ready to learn / total"
+      "value": "Karty gotowe do nauki / wszystkie"
     }
   ],
   "yqOZND": [
@@ -1268,7 +1292,7 @@
             },
             {
               "type": 0,
-              "value": " day"
+              "value": " dzień"
             }
           ]
         },
@@ -1279,7 +1303,7 @@
             },
             {
               "type": 0,
-              "value": " days"
+              "value": " dni"
             }
           ]
         }
@@ -1296,25 +1320,25 @@
   "yrDppn": [
     {
       "type": 0,
-      "value": "Reset deck's cards"
+      "value": "Resetuj karty"
     }
   ],
   "ytuF3Q": [
     {
       "type": 0,
-      "value": "Study another deck"
+      "value": "Ucz się dalej"
     }
   ],
   "zO+fCo": [
     {
       "type": 0,
-      "value": "Cards count"
+      "value": "Ilość kart"
     }
   ],
   "zhGplL": [
     {
       "type": 0,
-      "value": "Add some cards to start studying"
+      "value": "Dodaj karty w celu rozpoczęcia nauki"
     }
   ]
 }

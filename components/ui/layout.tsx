@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           <FloatingUserPanel />
           <Fade in transition={{ enter: { duration: 0.15 } }}>
             <Container
-              maxW="container.lg"
+              maxW="container.xl"
               mx="auto"
               position="relative"
               id="xd"

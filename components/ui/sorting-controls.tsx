@@ -30,10 +30,16 @@ export default function SortingControls<TFields extends string>({
 
   return (
     <Flex {...flexProps}>
-      <FormControl w="250px" display="flex" alignItems="center">
+      <FormControl
+        w="280px"
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-end"
+        mr={1}
+      >
         <FormLabel mb={0}>{$t({ defaultMessage: "Sort by" })}</FormLabel>
         <Select
-          w="180px"
+          w="190px"
           onChange={(event) => onChangeField(event.target.value as TFields)}
           value={state.sortBy}
         >

@@ -102,7 +102,10 @@ export default function DecksList(): JSX.Element {
         <Feedback
           type="empty-state"
           message={$t({ defaultMessage: "There was no deck found" })}
-          actionButtonLabel={$t({ defaultMessage: "Add first" })}
+          actionButtonLabel={$t({
+            defaultMessage: "Add first",
+            description: "Add first deck button",
+          })}
           onAction={onNewDeckDialogOpen}
         />
       )}

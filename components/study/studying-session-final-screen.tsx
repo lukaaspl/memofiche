@@ -83,7 +83,7 @@ export default function StudyingSessionFinalScreen({
         >
           {$t({ defaultMessage: "Session finished" })}
         </AlertTitle>
-        <AlertDescription maxWidth="sm">
+        <AlertDescription maxWidth="md">
           {$t({
             defaultMessage:
               "You have successfully completed your studying session. Grab a few statistics to find out how you did.",

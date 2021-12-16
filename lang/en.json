@@ -1,4 +1,8 @@
 {
+  "+P22YN": {
+    "defaultMessage": "Add first",
+    "description": "Add first deck button"
+  },
   "+U6ozc": {
     "defaultMessage": "Type"
   },
@@ -10,9 +14,6 @@
   },
   "/KIR51": {
     "defaultMessage": "{deckName} deck"
-  },
-  "/znpbr": {
-    "defaultMessage": "Add first"
   },
   "0CPXo9": {
     "defaultMessage": "compared to this deck"
@@ -104,6 +105,12 @@
   "6OWS4p": {
     "defaultMessage": "Processing..."
   },
+  "6n4LpX": {
+    "defaultMessage": "Easy"
+  },
+  "6xap9L": {
+    "defaultMessage": "Good"
+  },
   "7XQoh9": {
     "defaultMessage": "Deck has been deleted successfully"
   },
@@ -157,6 +164,10 @@
   },
   "DlVFL+": {
     "defaultMessage": "Delete card"
+  },
+  "DyXxzt": {
+    "defaultMessage": "Add first",
+    "description": "Add first card button"
   },
   "E1ZC4X": {
     "defaultMessage": "Cloning the card..."
@@ -308,6 +319,9 @@
   "aEAYJG": {
     "defaultMessage": "Restore default settings"
   },
+  "aP2JKk": {
+    "defaultMessage": "Card has been created successfully"
+  },
   "axy7jn": {
     "defaultMessage": "Study cards ratio"
   },
@@ -431,6 +445,9 @@
   "n0gRiB": {
     "defaultMessage": "e.g. Google interview questions"
   },
+  "n8uxry": {
+    "defaultMessage": "Hard"
+  },
   "nAruna": {
     "defaultMessage": "Update the card"
   },
@@ -472,6 +489,10 @@
   },
   "r5W3i1": {
     "defaultMessage": "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work"
+  },
+  "razLg8": {
+    "defaultMessage": "Study",
+    "description": "Study CTA button"
   },
   "rbVj9G": {
     "defaultMessage": "Avg."

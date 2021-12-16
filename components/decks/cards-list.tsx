@@ -118,7 +118,10 @@ export default function CardsList({
       <Feedback
         type="empty-state"
         message={$t({ defaultMessage: "There was no card found" })}
-        actionButtonLabel={$t({ defaultMessage: "Add first" })}
+        actionButtonLabel={$t({
+          defaultMessage: "Add first",
+          description: "Add first card button",
+        })}
         onAction={onNewCardDialogOpen}
       />
     );

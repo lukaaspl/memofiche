@@ -1,4 +1,10 @@
 {
+  "+P22YN": [
+    {
+      "type": 0,
+      "value": "Add first"
+    }
+  ],
   "+U6ozc": [
     {
       "type": 0,
@@ -25,12 +31,6 @@
     {
       "type": 0,
       "value": " deck"
-    }
-  ],
-  "/znpbr": [
-    {
-      "type": 0,
-      "value": "Add first"
     }
   ],
   "0CPXo9": [
@@ -221,6 +221,18 @@
       "value": "Processing..."
     }
   ],
+  "6n4LpX": [
+    {
+      "type": 0,
+      "value": "Easy"
+    }
+  ],
+  "6xap9L": [
+    {
+      "type": 0,
+      "value": "Good"
+    }
+  ],
   "7XQoh9": [
     {
       "type": 0,
@@ -343,6 +355,12 @@
     {
       "type": 0,
       "value": "Delete card"
+    }
+  ],
+  "DyXxzt": [
+    {
+      "type": 0,
+      "value": "Add first"
     }
   ],
   "E1ZC4X": [
@@ -657,6 +675,12 @@
       "value": "Restore default settings"
     }
   ],
+  "aP2JKk": [
+    {
+      "type": 0,
+      "value": "Card has been created successfully"
+    }
+  ],
   "axy7jn": [
     {
       "type": 0,
@@ -961,6 +985,12 @@
       "value": "e.g. Google interview questions"
     }
   ],
+  "n8uxry": [
+    {
+      "type": 0,
+      "value": "Hard"
+    }
+  ],
   "nAruna": [
     {
       "type": 0,
@@ -1043,6 +1073,12 @@
     {
       "type": 0,
       "value": "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work"
+    }
+  ],
+  "razLg8": [
+    {
+      "type": 0,
+      "value": "Study"
     }
   ],
   "rbVj9G": [

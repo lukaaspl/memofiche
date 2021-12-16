@@ -99,10 +99,10 @@
     "defaultMessage": "Nie posiadasz jeszcze żadnej karty"
   },
   "68PmLe": {
-    "defaultMessage": "Wszystkie przestudiowane karty"
+    "defaultMessage": "Przestudiowane karty"
   },
   "6OWS4p": {
-    "defaultMessage": "Procesowanie..."
+    "defaultMessage": "Przetwarzanie..."
   },
   "7XQoh9": {
     "defaultMessage": "Talia została usunięta pomyślnie"
@@ -138,7 +138,7 @@
     "defaultMessage": "Przekierowywanie..."
   },
   "BY+Cbm": {
-    "defaultMessage": "Strony kart zostały odwrócone"
+    "defaultMessage": "Strony kart zostały zamienione"
   },
   "C06zJP": {
     "defaultMessage": "Twoje talie ({count})"
@@ -183,13 +183,13 @@
     "defaultMessage": "Gotowe"
   },
   "JkLHGw": {
-    "defaultMessage": "Strona WWW"
+    "defaultMessage": "Strona internetowa"
   },
   "K3r6DQ": {
     "defaultMessage": "Usuń"
   },
   "KHL8ap": {
-    "defaultMessage": "Czas studiowania"
+    "defaultMessage": "Czas nauki"
   },
   "KHV2DZ": {
     "defaultMessage": "Akcje awataru"
@@ -198,10 +198,10 @@
     "defaultMessage": "Suma"
   },
   "MisSXp": {
-    "defaultMessage": "Zaktualizuj awatar"
+    "defaultMessage": "Zmień awatar"
   },
   "MthpnL": {
-    "defaultMessage": "Idź do aplikacji"
+    "defaultMessage": "Przejdź do aplikacji"
   },
   "NIynnB": {
     "defaultMessage": "Aktualne hasło"
@@ -213,7 +213,7 @@
     "defaultMessage": "Utworzono"
   },
   "OV0Tkk": {
-    "defaultMessage": "Ostatnio studiowane"
+    "defaultMessage": "Ostatnia sesja"
   },
   "OWgHbg": {
     "defaultMessage": "Edytuj kartę"
@@ -267,7 +267,7 @@
     "defaultMessage": "Zbuduj swoją talię"
   },
   "TYmNBD": {
-    "defaultMessage": "Karta podstawowa z różnicą, że występuje 50% szansy na zamianę stron (z rewersu na awers)"
+    "defaultMessage": "Karta podstawowa z taką różnicą, że występuje 50% szansy na zamianę stron (z rewersu na awers)"
   },
   "TiR/Hq": {
     "defaultMessage": "Zapisywanie..."
@@ -279,7 +279,7 @@
     "defaultMessage": "Podstawowa, dwustronna karta przewracana z awersu na rewers podczas studiowania"
   },
   "UTFsoN": {
-    "defaultMessage": "Ucz się"
+    "defaultMessage": "Nauka"
   },
   "Urt04S": {
     "defaultMessage": "Dołącz tagi z talii"
@@ -315,7 +315,7 @@
     "defaultMessage": "Usuń awatar"
   },
   "bZo6QQ": {
-    "defaultMessage": "You are going to reset all <b>{cardsCount, plural, =1 {# card} other {# cards}}</b> from the <b>{deckName}</b> deck. Pick a method how you want to do it"
+    "defaultMessage": "Zamierzasz zresetować wszystkie <b>{cardsCount} karty</b> z talii <b>{deckName}</b>. Wybierz sposób w jaki chcesz to zrobić"
   },
   "bgtcEb": {
     "defaultMessage": "Zakończyć teraz?"
@@ -327,13 +327,13 @@
     "defaultMessage": "Wprowadź nowe hasło ponownie"
   },
   "cr4z0d": {
-    "defaultMessage": "np. rozmowa kwalifikacyjna, biznes, techniczne"
+    "defaultMessage": "np. rozmowa kwalifikacyjna, biznes, technikalia"
   },
   "d9iNyj": {
     "defaultMessage": "Karty"
   },
   "dOG/KB": {
-    "defaultMessage": "Średni czas na kartę"
+    "defaultMessage": "Śrd. czas na kartę"
   },
   "e9917C": {
     "defaultMessage": "Liczba kart do nauki"
@@ -351,228 +351,252 @@
     "defaultMessage": "Sortuj w porządku malejącym"
   },
   "gMKKUl": {
-    "defaultMessage": "The deep reset means all cards' parameters will be set to their defaults as if the cards have just been created. The scheduling system will forget about their previous statistics."
+    "defaultMessage": "Głęboki reset oznacza, że wszystkie parametry kart zostaną przywrócone do swojego pierwotnego stanu, tak jakby karty zostały dopiero utworzone. Dotychczasowe statystki systemu odkładania kart w czasie zostaną zapomniane."
   },
   "grdxdO": {
-    "defaultMessage": "Start studying"
+    "defaultMessage": "Zacznij naukę"
   },
   "h4sNB+": {
-    "defaultMessage": "Clone card"
+    "defaultMessage": "Klonuj kartę"
   },
   "hDI+JM": {
-    "defaultMessage": "Sort by"
+    "defaultMessage": "Sortuj wg"
   },
   "huqKGl": {
-    "defaultMessage": "Create account"
+    "defaultMessage": "Załóż konto"
   },
   "hzSNj4": {
     "defaultMessage": "Dashboard"
   },
   "hziisK": {
-    "defaultMessage": "Repeat new password"
+    "defaultMessage": "Potwierdź nowe hasło"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "Profil"
   },
   "j2jrS/": {
-    "defaultMessage": "Deck has been updated successfully"
+    "defaultMessage": "Talia została zaktualizowana pomyślnie"
   },
   "jm/spn": {
-    "defaultMessage": "Reset"
+    "defaultMessage": "Resetuj"
   },
   "jqwEYo": {
-    "defaultMessage": "e.g. What is this process about?"
+    "defaultMessage": "np. Na czym polega ten proces?"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Zapisz"
   },
   "k1s/3C": {
-    "defaultMessage": "Create deck"
+    "defaultMessage": "Stwórz talię"
   },
   "kIW/Ua": {
-    "defaultMessage": "E-mail address"
+    "defaultMessage": "Adres e-mail"
   },
   "kVcUTN": {
-    "defaultMessage": "Add avatar"
+    "defaultMessage": "Dodaj awatar"
   },
   "kVxnQ2": {
-    "defaultMessage": "Last modification date"
+    "defaultMessage": "Data ostatniej modyfikacji"
   },
   "kWjk9u": {
-    "defaultMessage": "Language: {locale}"
+    "defaultMessage": "Język: {locale}"
   },
   "keFu/T": {
-    "defaultMessage": "Avg. study time"
+    "defaultMessage": "Śrd. czas nauki"
   },
   "lP4qIQ": {
-    "defaultMessage": "Card details"
+    "defaultMessage": "Szczegóły karty"
   },
   "lUaq7M": {
-    "defaultMessage": "There was no item found"
+    "defaultMessage": "Nie znaleziono żadnego elementu"
   },
   "lrfCD6": {
-    "defaultMessage": "Add a new card"
+    "defaultMessage": "Dodaj nową kartę"
   },
   "m0Ur9S": {
-    "defaultMessage": "There was an error processing your request"
+    "defaultMessage": "Wystąpił błąd podczas przetwarzania twojego zapytania"
   },
   "mAO1Wz": {
-    "defaultMessage": "Enter your current password"
+    "defaultMessage": "Wprowadź aktualne hasło"
   },
   "mRqzZl": {
-    "defaultMessage": "Avg. studied cards"
+    "defaultMessage": "Śrd. przestudiowanych kart"
   },
   "md+KoP": {
-    "defaultMessage": "Finish now"
+    "defaultMessage": "Zakończ teraz"
   },
   "myq2ZL": {
-    "defaultMessage": "Normal"
+    "defaultMessage": "Normalna"
   },
   "n0gRiB": {
-    "defaultMessage": "e.g. Google interview questions"
+    "defaultMessage": "np. pytania kwalifikacyjne Google"
   },
   "nAruna": {
-    "defaultMessage": "Update the card"
+    "defaultMessage": "Edytuj kartę"
   },
   "nYrKWp": {
-    "defaultMessage": "Edit profile"
+    "defaultMessage": "Edytuj profil"
   },
   "nluMRP": {
-    "defaultMessage": "Delete deck"
+    "defaultMessage": "Usuń talię"
   },
   "o/gK53": {
-    "defaultMessage": "Deck"
+    "defaultMessage": "Talia"
   },
   "oAo2CK": {
-    "defaultMessage": "Choose a deck to study"
+    "defaultMessage": "Wybierz talię do nauki"
   },
   "oSC1XZ": {
-    "defaultMessage": "Tags should be comma-separated"
+    "defaultMessage": "Tagi powinny być oddzielone przecinkami"
   },
   "olw3tr": {
-    "defaultMessage": "The nearest card to study"
+    "defaultMessage": "Najbliższa karta do nauki"
   },
   "orvpWh": {
-    "defaultMessage": "Go back"
+    "defaultMessage": "Wróć"
   },
   "ot1oMB": {
-    "defaultMessage": "Studying is paused"
+    "defaultMessage": "Studiowanie jest wstrzymane"
   },
   "pONqz8": {
-    "defaultMessage": "First name"
+    "defaultMessage": "Imię"
   },
   "pX7T6w": {
-    "defaultMessage": "Last modify"
+    "defaultMessage": "Ostatnia modyfikacja"
   },
   "qMePPG": {
-    "defaultMessage": "Note"
+    "defaultMessage": "Notatka"
   },
   "quyVXD": {
-    "defaultMessage": "Use dark theme"
+    "defaultMessage": "Używaj ciemnego motywu"
   },
   "r5W3i1": {
-    "defaultMessage": "Use advanced controls to evaluate cards, which will allow for a more precise scheduler's work"
+    "defaultMessage": "Używaj zaawansowanego systemu oceny kart, w celu bardziej precyzyjnego odkładania kart w czasie"
   },
   "rbVj9G": {
-    "defaultMessage": "Avg."
+    "defaultMessage": "Średnia"
   },
   "rkIjo/": {
-    "defaultMessage": "Passwords don't match"
+    "defaultMessage": "Podane hasła nie są takie same"
   },
   "rxwWfu": {
-    "defaultMessage": "An error occurred while resetting password"
+    "defaultMessage": "Wystąpił błąd podczas resetowania hasła"
   },
   "s2XIgr": {
-    "defaultMessage": "Show details"
+    "defaultMessage": "Pokaż szczegóły"
   },
   "smhHt+": {
-    "defaultMessage": "{charactersCount, plural, =1 {# character} other {# characters}} left"
+    "defaultMessage": "{charactersCount, plural, =1 {pozostał # znak} other {pozostało # znaków}}"
   },
   "t4zNNz": {
-    "defaultMessage": "Studied cards"
+    "defaultMessage": "Przestudiowane karty"
   },
   "tFFMkF": {
-    "defaultMessage": "Pause"
+    "defaultMessage": "Wstrzymaj"
   },
   "tV4lm3": {
-    "defaultMessage": "e.g. John"
+    "defaultMessage": "np. John"
   },
   "tag2T/": {
-    "defaultMessage": "Positive cards"
+    "defaultMessage": "Pozytywne karty"
   },
   "txUL0F": {
-    "defaultMessage": "Last name"
+    "defaultMessage": "Nazwisko"
   },
   "u5kx+4": {
-    "defaultMessage": "Cloning card failed"
+    "defaultMessage": "Klonowanie karty nie powiodło się"
   },
   "uCk8r+": {
-    "defaultMessage": "Already have an account?"
+    "defaultMessage": "Posiadasz już konto?"
   },
   "ug01Mk": {
-    "defaultMessage": "Time"
+    "defaultMessage": "Czas"
   },
   "ukP5IJ": {
-    "defaultMessage": "Mark as favorite deck"
+    "defaultMessage": "Oznacz jako ulubioną talię"
   },
   "v1kMcG": {
-    "defaultMessage": "Select a card type"
+    "defaultMessage": "Wybierz typ karty"
   },
   "v2naw/": {
-    "defaultMessage": "Delete deck?"
+    "defaultMessage": "Usunąć talię?"
   },
   "vC94kH": {
-    "defaultMessage": "e.g. It's a process in which two or more parts run simultaneously"
+    "defaultMessage": "np. To proces, w którym dwie lub więcej części aplikacji mogą działać jednocześnie"
   },
   "vJfMhp": {
-    "defaultMessage": "Allowed files: {extensions}"
+    "defaultMessage": "Dozwolone pliki: {extensions}"
   },
   "vRTZ4K": {
-    "defaultMessage": "Reverse"
+    "defaultMessage": "Rewers"
   },
   "vlKhIl": {
-    "defaultMessage": "Your name"
+    "defaultMessage": "Nazwa użytkownika"
   },
   "vlZInC": {
-    "defaultMessage": "Avg. rate"
+    "defaultMessage": "Śrd. ocena"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "Edytuj"
   },
   "wGEV5o": {
-    "defaultMessage": "Password has been reset successfully"
+    "defaultMessage": "Hasło zostało zresetowane pomyślnie"
   },
   "wL7VAE": {
-    "defaultMessage": "Actions"
+    "defaultMessage": "Akcje"
   },
   "wZFe08": {
-    "defaultMessage": "An error occurred while signing up"
+    "defaultMessage": "Wystąpił błąd podczas zakładania konta"
   },
   "wxDxqW": {
-    "defaultMessage": "Config has been updated successfully"
+    "defaultMessage": "Ustawienia zostały zaktualizowane pomyślnie"
   },
   "xBmTkn": {
-    "defaultMessage": "Deck name"
+    "defaultMessage": "Nazwa talii"
   },
   "xatRkX": {
-    "defaultMessage": "Are you sure you want to end the session before all cards are completed?"
+    "defaultMessage": "Jesteś pewny, że chcesz zakończyć sesję przed ukończeniem nauki wszystkich kart?"
   },
   "y2Q/xC": {
-    "defaultMessage": "Cards ready to learn / total"
+    "defaultMessage": "Karty gotowe do nauki / wszystkie"
   },
   "yqOZND": {
-    "defaultMessage": "(+{daysCount, plural, =1 {# day} other {# days}})"
+    "defaultMessage": "(+{daysCount, plural, =1 {# dzień} other {# dni}})"
   },
   "yrDppn": {
-    "defaultMessage": "Reset deck's cards"
+    "defaultMessage": "Resetuj karty"
   },
   "ytuF3Q": {
-    "defaultMessage": "Study another deck"
+    "defaultMessage": "Ucz się dalej"
   },
   "zO+fCo": {
-    "defaultMessage": "Cards count"
+    "defaultMessage": "Ilość kart"
   },
   "zhGplL": {
-    "defaultMessage": "Add some cards to start studying"
+    "defaultMessage": "Dodaj karty w celu rozpoczęcia nauki"
+  },
+  "razLg8": {
+    "defaultMessage": "Ucz się",
+    "description": "Study CTA button"
+  },
+  "n8uxry": {
+    "defaultMessage": "Trudne"
+  },
+  "aP2JKk": {
+    "defaultMessage": "Karta została utworzona pomyślnie"
+  },
+  "DyXxzt": {
+    "defaultMessage": "Dodaj pierwszą",
+    "description": "Add first card button"
+  },
+  "6n4LpX": {
+    "defaultMessage": "Łatwe"
+  },
+  "6xap9L": {
+    "defaultMessage": "OK"
+  },
+  "+P22YN": {
+    "defaultMessage": "Dodaj",
+    "description": "Add first deck button"
   }
 }

@@ -42,7 +42,10 @@ export default function MostRelevantDecksTable({
       { label: $t({ defaultMessage: "Name" }) },
       { label: $t({ defaultMessage: "Available cards" }) },
       { label: $t({ defaultMessage: "Last studied" }) },
-      { label: $t({ defaultMessage: "Study" }), textAlign: "center" },
+      {
+        label: $t({ defaultMessage: "Study", description: "Study CTA button" }),
+        textAlign: "center",
+      },
     ],
     [$t]
   );
