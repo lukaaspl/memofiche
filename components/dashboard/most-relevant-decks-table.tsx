@@ -124,13 +124,13 @@ export default function MostRelevantDecksTable({
                 <Td>
                   {deck.lastStudied
                     ? dayjs(deck.lastStudied).fromNow()
-                    : "never"}
+                    : $t({ defaultMessage: "never" })}
                 </Td>
                 <Td textAlign="center">
                   <Link href={`/study/${deck.id}`} passHref>
                     <IconButton
                       isDisabled={isStudyingDisabled}
-                      aria-label="Study deck"
+                      aria-label={$t({ defaultMessage: "Study deck" })}
                       color={palette.primary}
                       fontSize="x-large"
                       icon={<MdPlayCircleFilled />}

@@ -25,7 +25,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatTickValue, prettyDuration } from "utils/date-time";
+import { prettyDuration } from "utils/date-time";
 import ChartLegend from "./chart-legend";
 import CustomTooltip from "./custom-tooltip";
 
@@ -130,7 +130,13 @@ export default function StudyTimeChart({
             tickMargin={10}
             axisLine={false}
             tickLine={false}
-            tickFormatter={formatTickValue}
+            tickFormatter={(dateMs) => {
+              const date = dayjs(dateMs);
+
+              return date.isToday()
+                ? $t({ defaultMessage: "Today" })
+                : date.format("MMM DD");
+            }}
             dataKey={(data: StudySummarySample) => data.date}
           />
           <CartesianGrid strokeDasharray="5" stroke={chartPalette.grid} />
@@ -140,9 +146,7 @@ export default function StudyTimeChart({
               <CustomTooltip<StudySummarySample>
                 render={(data) => (
                   <>
-                    <Text fontSize="sm">
-                      {dayjs(data.date).format("MMMM DD")}
-                    </Text>
+                    <Text fontSize="sm">{dayjs(data.date).format("LL")}</Text>
                     <Text
                       fontWeight="medium"
                       fontSize="md"

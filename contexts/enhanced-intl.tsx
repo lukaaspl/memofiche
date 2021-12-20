@@ -1,6 +1,7 @@
 import { useLocalStorage } from "beautiful-react-hooks";
 import { Locale } from "consts/locales";
 import { LOCALE } from "consts/storage-keys";
+import dayjs from "dayjs";
 import { Nullable } from "domains";
 import { createContext, useCallback, useEffect, useState } from "react";
 import { IntlConfig, IntlProvider } from "react-intl";
@@ -30,11 +31,20 @@ async function getMessagesByLocale(locale: Locale): Promise<Messages> {
   return messages;
 }
 
+async function setDayjsLocale(locale: Locale): Promise<void> {
+  try {
+    await import(`dayjs/locale/${locale}.js`);
+    dayjs.locale(locale);
+  } catch {
+    console.warn(`Lack of ${locale}.js dayjs locale file`);
+  }
+}
+
 export function EnhancedIntlProvider({
   children,
 }: EnhancedIntlProviderProps): JSX.Element {
-  const [locale, setLocale] = useLocalStorage<Locale>(LOCALE, Locale.EN);
   const [messages, setMessages] = useState<Messages>();
+  const [locale, setLocale] = useLocalStorage<Locale>(LOCALE, Locale.EN);
 
   const onLocaleChange = useCallback(
     (locale: Locale) => {
@@ -47,12 +57,16 @@ export function EnhancedIntlProvider({
   const handleIntlError = (): void => void 0;
 
   useEffect(() => {
-    async function applyMessages(): Promise<void> {
-      const messages = await getMessagesByLocale(locale);
+    async function updateLocales(): Promise<void> {
+      const [messages] = await Promise.all([
+        getMessagesByLocale(locale),
+        setDayjsLocale(locale),
+      ]);
+
       setMessages(messages);
     }
 
-    applyMessages();
+    updateLocales();
   }, [locale]);
 
   return (

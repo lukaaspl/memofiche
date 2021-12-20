@@ -98,7 +98,7 @@ export default function LastStudySessionsTable({
 
             const date =
               dayjs().diff(session.createdAt, "day") >= 1
-                ? dayjs(session.createdAt).format("DD/MM/YYYY")
+                ? dayjs(session.createdAt).format("l")
                 : dayjs(session.createdAt).fromNow();
 
             return (

@@ -11,9 +11,6 @@
   "/KIR51": {
     "defaultMessage": "Talia {deckName}"
   },
-  "/znpbr": {
-    "defaultMessage": "Dodaj pierwszy"
-  },
   "0CPXo9": {
     "defaultMessage": "w porównaniu do tej talii"
   },
@@ -380,6 +377,9 @@
   "jm/spn": {
     "defaultMessage": "Resetuj"
   },
+  "JObeli": {
+    "defaultMessage": "Studiuj talię"
+  },
   "jqwEYo": {
     "defaultMessage": "np. Na czym polega ten proces?"
   },
@@ -424,6 +424,9 @@
   },
   "md+KoP": {
     "defaultMessage": "Zakończ teraz"
+  },
+  "md4Qkb": {
+    "defaultMessage": "nigdy"
   },
   "myq2ZL": {
     "defaultMessage": "Normalna"
@@ -598,5 +601,8 @@
   "+P22YN": {
     "defaultMessage": "Dodaj",
     "description": "Add first deck button"
+  },
+  "zWgbGg": {
+    "defaultMessage": "Dzisiaj"
   }
 }

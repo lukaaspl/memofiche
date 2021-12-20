@@ -50,9 +50,3 @@ export function prettyDuration(
     .map((tag) => `${tag.value}${tag.unit}`)
     .join(spaceBetweenTags ? " " : "");
 }
-
-export function formatTickValue(dateMs: number): string {
-  const date = dayjs(dateMs);
-
-  return date.isToday() ? "Today" : date.format("MMM DD");
-}

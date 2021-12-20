@@ -190,6 +190,9 @@
   "J0oJEs": {
     "defaultMessage": "e.g. twitter.com/johndoe_87"
   },
+  "JObeli": {
+    "defaultMessage": "Study deck"
+  },
   "JXdbo8": {
     "defaultMessage": "Done"
   },
@@ -439,6 +442,9 @@
   "md+KoP": {
     "defaultMessage": "Finish now"
   },
+  "md4Qkb": {
+    "defaultMessage": "never"
+  },
   "myq2ZL": {
     "defaultMessage": "Normal"
   },
@@ -592,6 +598,9 @@
   },
   "zO+fCo": {
     "defaultMessage": "Cards count"
+  },
+  "zWgbGg": {
+    "defaultMessage": "Today"
   },
   "zhGplL": {
     "defaultMessage": "Add some cards to start studying"

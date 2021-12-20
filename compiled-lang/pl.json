@@ -33,12 +33,6 @@
       "value": "deckName"
     }
   ],
-  "/znpbr": [
-    {
-      "type": 0,
-      "value": "Dodaj pierwszy"
-    }
-  ],
   "0CPXo9": [
     {
       "type": 0,
@@ -409,6 +403,12 @@
     {
       "type": 0,
       "value": "np. twitter.com/johndoe_87"
+    }
+  ],
+  "JObeli": [
+    {
+      "type": 0,
+      "value": "Studiuj talię"
     }
   ],
   "JXdbo8": [
@@ -957,6 +957,12 @@
       "value": "Zakończ teraz"
     }
   ],
+  "md4Qkb": [
+    {
+      "type": 0,
+      "value": "nigdy"
+    }
+  ],
   "myq2ZL": [
     {
       "type": 0,
@@ -1333,6 +1339,12 @@
     {
       "type": 0,
       "value": "Ilość kart"
+    }
+  ],
+  "zWgbGg": [
+    {
+      "type": 0,
+      "value": "Dzisiaj"
     }
   ],
   "zhGplL": [
