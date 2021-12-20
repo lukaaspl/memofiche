@@ -6,8 +6,10 @@ import {
   FormLabel,
   IconButton,
   Select,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BaseSort, SortOrder } from "domains";
+import useTranslation from "hooks/use-translation";
 import React from "react";
 
 interface SortControlsProps<TFields extends string> extends FlexProps {
@@ -24,14 +26,26 @@ export default function SortingControls<TFields extends string>({
   onChangeOrder,
   ...flexProps
 }: SortControlsProps<TFields>): JSX.Element {
+  const { $t } = useTranslation();
   const isASC = state.order === "asc";
+
+  const sortDirectionLabels = {
+    desc: $t({ defaultMessage: "Sort descending" }),
+    asc: $t({ defaultMessage: "Sort ascending" }),
+  };
 
   return (
     <Flex {...flexProps}>
-      <FormControl w="250px" display="flex" alignItems="center">
-        <FormLabel mb={0}>Sort by</FormLabel>
+      <FormControl
+        w="280px"
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-end"
+        mr={1}
+      >
+        <FormLabel mb={0}>{$t({ defaultMessage: "Sort by" })}</FormLabel>
         <Select
-          w="180px"
+          w="190px"
           onChange={(event) => onChangeField(event.target.value as TFields)}
           value={state.sortBy}
         >
@@ -42,22 +56,34 @@ export default function SortingControls<TFields extends string>({
           ))}
         </Select>
       </FormControl>
-      <IconButton
-        aria-label="Sort in descending order"
-        icon={<ArrowDownIcon fontSize="2xl" />}
-        variant="ghost"
-        color={isASC ? "gray.400" : "purple.600"}
-        pointerEvents={isASC ? "all" : "none"}
-        onClick={() => onChangeOrder("desc")}
-      />
-      <IconButton
-        aria-label="Sort in ascending order"
-        icon={<ArrowUpIcon fontSize="2xl" />}
-        variant="ghost"
-        color={isASC ? "purple.600" : "gray.400"}
-        pointerEvents={isASC ? "none" : "all"}
-        onClick={() => onChangeOrder("asc")}
-      />
+      <Tooltip
+        hasArrow
+        openDelay={500}
+        placement="top"
+        label={sortDirectionLabels.desc}
+      >
+        <IconButton
+          aria-label={sortDirectionLabels.desc}
+          icon={<ArrowDownIcon fontSize="2xl" />}
+          variant="ghost"
+          color={isASC ? "gray.400" : "purple.600"}
+          onClick={() => onChangeOrder("desc")}
+        />
+      </Tooltip>
+      <Tooltip
+        hasArrow
+        openDelay={500}
+        placement="top"
+        label={sortDirectionLabels.asc}
+      >
+        <IconButton
+          aria-label={sortDirectionLabels.asc}
+          icon={<ArrowUpIcon fontSize="2xl" />}
+          variant="ghost"
+          color={isASC ? "purple.600" : "gray.400"}
+          onClick={() => onChangeOrder("asc")}
+        />
+      </Tooltip>
     </Flex>
   );
 }

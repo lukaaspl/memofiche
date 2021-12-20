@@ -2,6 +2,7 @@ import { Center, Text } from "@chakra-ui/react";
 import MotionBox from "components/ui/motion-box";
 import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 interface CardPauseCoverProps {
   isPaused: boolean;
@@ -30,7 +31,7 @@ export default function CardPauseCover({
           color={palette.bw}
           textTransform="uppercase"
         >
-          Studying is paused
+          <FormattedMessage defaultMessage="Studying is paused" />
         </Text>
       </Center>
     </MotionBox>

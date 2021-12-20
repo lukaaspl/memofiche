@@ -1,0 +1,1356 @@
+{
+  "+P22YN": [
+    {
+      "type": 0,
+      "value": "Dodaj"
+    }
+  ],
+  "+U6ozc": [
+    {
+      "type": 0,
+      "value": "Typ"
+    }
+  ],
+  "+VC8qb": [
+    {
+      "type": 0,
+      "value": "Awatar został zaktualizowany poprawnie"
+    }
+  ],
+  "+ayPjC": [
+    {
+      "type": 0,
+      "value": "Data utworzenia"
+    }
+  ],
+  "/KIR51": [
+    {
+      "type": 0,
+      "value": "Talia "
+    },
+    {
+      "type": 1,
+      "value": "deckName"
+    }
+  ],
+  "0CPXo9": [
+    {
+      "type": 0,
+      "value": "w porównaniu do tej talii"
+    }
+  ],
+  "0UbCoA": [
+    {
+      "type": 0,
+      "value": "Do rozpoczęcia nauki wymagana jest talia z kartami"
+    }
+  ],
+  "0V2Rkw": [
+    {
+      "type": 0,
+      "value": "Nie posiadasz jeszcze żadnej talii"
+    }
+  ],
+  "0sHCb3": [
+    {
+      "type": 0,
+      "value": "Udało Ci się pomyślnie ukończyć sesję nauczania. Sprawdź kilka statystyk, aby dowiedzieć się, jak Ci poszło."
+    }
+  ],
+  "1+C8Ea": [
+    {
+      "type": 0,
+      "value": "Zakończ sesję"
+    }
+  ],
+  "1D2KFf": [
+    {
+      "type": 0,
+      "value": "Talie"
+    }
+  ],
+  "1EYCdR": [
+    {
+      "type": 0,
+      "value": "Tagi"
+    }
+  ],
+  "1Jufsz": [
+    {
+      "type": 0,
+      "value": "Ostatnia modyfikacja"
+    }
+  ],
+  "1iEPTM": [
+    {
+      "type": 0,
+      "value": "Ogólne"
+    }
+  ],
+  "2/2yg+": [
+    {
+      "type": 0,
+      "value": "Dodaj"
+    }
+  ],
+  "2Hqxnu": [
+    {
+      "type": 0,
+      "value": "Edytuj talię"
+    }
+  ],
+  "2KXvZ0": [
+    {
+      "type": 0,
+      "value": "Jesteś pewny? Ta operacja jest nieodwracalna."
+    }
+  ],
+  "2W0f9h": [
+    {
+      "type": 0,
+      "value": "O mnie"
+    }
+  ],
+  "35iM8d": [
+    {
+      "type": 0,
+      "value": "Najbardziej istotne talie"
+    }
+  ],
+  "38aKqB": [
+    {
+      "type": 0,
+      "value": "Wprowadź nowe hasło"
+    }
+  ],
+  "3NzIdG": [
+    {
+      "type": 0,
+      "value": "Ucz się "
+    },
+    {
+      "type": 1,
+      "value": "deckName"
+    }
+  ],
+  "3sk8v2": [
+    {
+      "type": 0,
+      "value": "Usunąć kartę?"
+    }
+  ],
+  "3y9DGg": [
+    {
+      "type": 0,
+      "value": "Wznów"
+    }
+  ],
+  "47FYwb": [
+    {
+      "type": 0,
+      "value": "Anuluj"
+    }
+  ],
+  "4adKdJ": [
+    {
+      "type": 0,
+      "value": "np. Co to jest programowanie wielowątkowe?"
+    }
+  ],
+  "52ZTKE": [
+    {
+      "type": 0,
+      "value": "Karta została zaktualizowana pomyślnie"
+    }
+  ],
+  "5Hzwqs": [
+    {
+      "type": 0,
+      "value": "Ulubione"
+    }
+  ],
+  "5oL/GD": [
+    {
+      "type": 0,
+      "value": "Maks. rozmiar: "
+    },
+    {
+      "type": 1,
+      "value": "size"
+    }
+  ],
+  "5sg7KC": [
+    {
+      "type": 0,
+      "value": "Hasło"
+    }
+  ],
+  "6+7UgD": [
+    {
+      "type": 0,
+      "value": "Plik jest nieprawidłowy"
+    }
+  ],
+  "62nsdy": [
+    {
+      "type": 0,
+      "value": "Ponów"
+    }
+  ],
+  "63wyw+": [
+    {
+      "type": 0,
+      "value": "Płytki reset"
+    }
+  ],
+  "67jx+1": [
+    {
+      "type": 0,
+      "value": "Nie posiadasz jeszcze żadnej karty"
+    }
+  ],
+  "68PmLe": [
+    {
+      "type": 0,
+      "value": "Przestudiowane karty"
+    }
+  ],
+  "6OWS4p": [
+    {
+      "type": 0,
+      "value": "Przetwarzanie..."
+    }
+  ],
+  "6n4LpX": [
+    {
+      "type": 0,
+      "value": "Łatwe"
+    }
+  ],
+  "6xap9L": [
+    {
+      "type": 0,
+      "value": "OK"
+    }
+  ],
+  "7XQoh9": [
+    {
+      "type": 0,
+      "value": "Talia została usunięta pomyślnie"
+    }
+  ],
+  "7cwB0R": [
+    {
+      "type": 0,
+      "value": "Karty zostały zresetowane pomyślnie"
+    }
+  ],
+  "7os1KN": [
+    {
+      "type": 0,
+      "value": "Nowa talia"
+    }
+  ],
+  "8D4mqd": [
+    {
+      "type": 0,
+      "value": "Używaj zaawansowanego systemu oceny kart"
+    }
+  ],
+  "8HJxXG": [
+    {
+      "type": 0,
+      "value": "Zarejestruj"
+    }
+  ],
+  "8Rqn5a": [
+    {
+      "type": 0,
+      "value": "np. Doe"
+    }
+  ],
+  "8eCXRw": [
+    {
+      "type": 0,
+      "value": "Negatywne karty"
+    }
+  ],
+  "96S5w3": [
+    {
+      "type": 0,
+      "value": "Awers"
+    }
+  ],
+  "AIGagR": [
+    {
+      "type": 0,
+      "value": "Dodaj nową talię"
+    }
+  ],
+  "ATZ766": [
+    {
+      "type": 0,
+      "value": "Nie masz jeszcze konta?"
+    }
+  ],
+  "BNSmGR": [
+    {
+      "type": 0,
+      "value": "Przekierowywanie..."
+    }
+  ],
+  "BY+Cbm": [
+    {
+      "type": 0,
+      "value": "Strony kart zostały zamienione"
+    }
+  ],
+  "C06zJP": [
+    {
+      "type": 0,
+      "value": "Twoje talie ("
+    },
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "CFUBzf": [
+    {
+      "type": 0,
+      "value": "Dobrze znane karty"
+    }
+  ],
+  "D3idYv": [
+    {
+      "type": 0,
+      "value": "Ustawienia"
+    }
+  ],
+  "DXDNt9": [
+    {
+      "type": 0,
+      "value": "Ważne! Utracisz wszystkie "
+    },
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": " karty wchodzące w skład talii!"
+    }
+  ],
+  "DlVFL+": [
+    {
+      "type": 0,
+      "value": "Usuń kartę"
+    }
+  ],
+  "DyXxzt": [
+    {
+      "type": 0,
+      "value": "Dodaj pierwszą"
+    }
+  ],
+  "E1ZC4X": [
+    {
+      "type": 0,
+      "value": "Klonowanie karty..."
+    }
+  ],
+  "EJJHc/": [
+    {
+      "type": 0,
+      "value": "Stare hasło jest nieprawidłowe"
+    }
+  ],
+  "GuZfUM": [
+    {
+      "type": 0,
+      "value": "Sortuj rosnąco"
+    }
+  ],
+  "HAlOn1": [
+    {
+      "type": 0,
+      "value": "Nazwa"
+    }
+  ],
+  "HPamiU": [
+    {
+      "type": 0,
+      "value": "Sesja zakończona"
+    }
+  ],
+  "HWYd5e": [
+    {
+      "type": 0,
+      "value": "Wymagana jest co najmniej 1 dostępna karta do rozpoczęcia nauki"
+    }
+  ],
+  "J+Pu4g": [
+    {
+      "type": 0,
+      "value": "Odwiedź dashboard"
+    }
+  ],
+  "J0oJEs": [
+    {
+      "type": 0,
+      "value": "np. twitter.com/johndoe_87"
+    }
+  ],
+  "JObeli": [
+    {
+      "type": 0,
+      "value": "Studiuj talię"
+    }
+  ],
+  "JXdbo8": [
+    {
+      "type": 0,
+      "value": "Gotowe"
+    }
+  ],
+  "JkLHGw": [
+    {
+      "type": 0,
+      "value": "Strona internetowa"
+    }
+  ],
+  "K3r6DQ": [
+    {
+      "type": 0,
+      "value": "Usuń"
+    }
+  ],
+  "KHL8ap": [
+    {
+      "type": 0,
+      "value": "Czas nauki"
+    }
+  ],
+  "KHV2DZ": [
+    {
+      "type": 0,
+      "value": "Akcje awataru"
+    }
+  ],
+  "MJ2jZQ": [
+    {
+      "type": 0,
+      "value": "Suma"
+    }
+  ],
+  "MisSXp": [
+    {
+      "type": 0,
+      "value": "Zmień awatar"
+    }
+  ],
+  "MthpnL": [
+    {
+      "type": 0,
+      "value": "Przejdź do aplikacji"
+    }
+  ],
+  "NIynnB": [
+    {
+      "type": 0,
+      "value": "Aktualne hasło"
+    }
+  ],
+  "Ntjkqd": [
+    {
+      "type": 0,
+      "value": "lub"
+    }
+  ],
+  "ORGv1Q": [
+    {
+      "type": 0,
+      "value": "Utworzono"
+    }
+  ],
+  "OV0Tkk": [
+    {
+      "type": 0,
+      "value": "Ostatnia sesja"
+    }
+  ],
+  "OWgHbg": [
+    {
+      "type": 0,
+      "value": "Edytuj kartę"
+    }
+  ],
+  "P1G2Ry": [
+    {
+      "type": 0,
+      "value": "Dostępne karty"
+    }
+  ],
+  "P7PLVj": [
+    {
+      "type": 0,
+      "value": "Data"
+    }
+  ],
+  "P8VfZA": [
+    {
+      "type": 0,
+      "value": "Todos"
+    }
+  ],
+  "PUrJRh": [
+    {
+      "type": 0,
+      "value": "Słabo znane karty"
+    }
+  ],
+  "PdMcML": [
+    {
+      "type": 0,
+      "value": "Resetowanie..."
+    }
+  ],
+  "PlBReU": [
+    {
+      "type": 0,
+      "value": "Wyloguj"
+    }
+  ],
+  "PvifjG": [
+    {
+      "type": 0,
+      "value": "w porównaniu do wszystkich twoich talii"
+    }
+  ],
+  "QKdFRv": [
+    {
+      "type": 0,
+      "value": "Nowa karta"
+    }
+  ],
+  "QrAcDQ": [
+    {
+      "type": 0,
+      "value": "Notatka: "
+    },
+    {
+      "type": 1,
+      "value": "note"
+    }
+  ],
+  "Rljmgs": [
+    {
+      "type": 0,
+      "value": "Edytuj talię"
+    }
+  ],
+  "SNP1/u": [
+    {
+      "type": 0,
+      "value": "Talia została utworzona pomyślnie"
+    }
+  ],
+  "SO8m/b": [
+    {
+      "type": 0,
+      "value": "Wystąpił błąd podczas logowania"
+    }
+  ],
+  "SQJto2": [
+    {
+      "type": 0,
+      "value": "Zaloguj"
+    }
+  ],
+  "SRipU7": [
+    {
+      "type": 0,
+      "value": "Profil został zaktualizowany pomyślnie"
+    }
+  ],
+  "SYGs5A": [
+    {
+      "type": 0,
+      "value": "Odwróć kartę"
+    }
+  ],
+  "TE23Q2": [
+    {
+      "type": 0,
+      "value": "Zbuduj swoją talię"
+    }
+  ],
+  "TYmNBD": [
+    {
+      "type": 0,
+      "value": "Karta podstawowa z taką różnicą, że występuje 50% szansy na zamianę stron (z rewersu na awers)"
+    }
+  ],
+  "TiR/Hq": [
+    {
+      "type": 0,
+      "value": "Zapisywanie..."
+    }
+  ],
+  "TnhvIh": [
+    {
+      "type": 0,
+      "value": "np. Jestem Doe, John Doe."
+    }
+  ],
+  "UJE0EW": [
+    {
+      "type": 0,
+      "value": "Podstawowa, dwustronna karta przewracana z awersu na rewers podczas studiowania"
+    }
+  ],
+  "UTFsoN": [
+    {
+      "type": 0,
+      "value": "Nauka"
+    }
+  ],
+  "Urt04S": [
+    {
+      "type": 0,
+      "value": "Dołącz tagi z talii"
+    }
+  ],
+  "W4lBwL": [
+    {
+      "type": 0,
+      "value": "Ostatnio studiowane sesje"
+    }
+  ],
+  "WSnSu+": [
+    {
+      "type": 0,
+      "value": "Karty ("
+    },
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "X0ha1a": [
+    {
+      "type": 0,
+      "value": "Zapisz zmiany"
+    }
+  ],
+  "XeQ3F3": [
+    {
+      "type": 0,
+      "value": "Płytki reset oznacza, że wszystkie karty natychmiastowo stają się gotowe do nauki bez konieczności oczekiwania aż upłynie wymagany czas. Należy podkreślić, że ten reset nie dotyczy innych parametrów kart, które mają wpływ na proces odkładania karty w czasie."
+    }
+  ],
+  "YNCCrE": [
+    {
+      "type": 0,
+      "value": "Głęboki reset"
+    }
+  ],
+  "YWUIL7": [
+    {
+      "type": 0,
+      "value": "Zarządzaj swoim profilem"
+    }
+  ],
+  "Yy/yDL": [
+    {
+      "type": 0,
+      "value": "Resetuj hasło"
+    }
+  ],
+  "aEAYJG": [
+    {
+      "type": 0,
+      "value": "Przywróć ustawienia domyślne"
+    }
+  ],
+  "aP2JKk": [
+    {
+      "type": 0,
+      "value": "Karta została utworzona pomyślnie"
+    }
+  ],
+  "axy7jn": [
+    {
+      "type": 0,
+      "value": "Stosunek kart do nauki"
+    }
+  ],
+  "bYN8D0": [
+    {
+      "type": 0,
+      "value": "Usuń awatar"
+    }
+  ],
+  "bZo6QQ": [
+    {
+      "type": 0,
+      "value": "Zamierzasz zresetować wszystkie "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "cardsCount"
+        },
+        {
+          "type": 0,
+          "value": " karty"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    },
+    {
+      "type": 0,
+      "value": " z talii "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "deckName"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    },
+    {
+      "type": 0,
+      "value": ". Wybierz sposób w jaki chcesz to zrobić"
+    }
+  ],
+  "bgtcEb": [
+    {
+      "type": 0,
+      "value": "Zakończyć teraz?"
+    }
+  ],
+  "ch7hfM": [
+    {
+      "type": 0,
+      "value": "Całkowity czas nauki"
+    }
+  ],
+  "cheKKR": [
+    {
+      "type": 0,
+      "value": "Wprowadź nowe hasło ponownie"
+    }
+  ],
+  "cr4z0d": [
+    {
+      "type": 0,
+      "value": "np. rozmowa kwalifikacyjna, biznes, technikalia"
+    }
+  ],
+  "d9iNyj": [
+    {
+      "type": 0,
+      "value": "Karty"
+    }
+  ],
+  "dOG/KB": [
+    {
+      "type": 0,
+      "value": "Śrd. czas na kartę"
+    }
+  ],
+  "e9917C": [
+    {
+      "type": 0,
+      "value": "Liczba kart do nauki"
+    }
+  ],
+  "eaCxak": [
+    {
+      "type": 0,
+      "value": "Karta została usunięta pomyślnie"
+    }
+  ],
+  "fTHhSB": [
+    {
+      "type": 0,
+      "value": "Nowe hasło"
+    }
+  ],
+  "fZpZBV": [
+    {
+      "type": 0,
+      "value": "brak odchyleń"
+    }
+  ],
+  "gMKKUl": [
+    {
+      "type": 0,
+      "value": "Głęboki reset oznacza, że wszystkie parametry kart zostaną przywrócone do swojego pierwotnego stanu, tak jakby karty zostały dopiero utworzone. Dotychczasowe statystki systemu odkładania kart w czasie zostaną zapomniane."
+    }
+  ],
+  "grdxdO": [
+    {
+      "type": 0,
+      "value": "Zacznij naukę"
+    }
+  ],
+  "h4sNB+": [
+    {
+      "type": 0,
+      "value": "Klonuj kartę"
+    }
+  ],
+  "hDI+JM": [
+    {
+      "type": 0,
+      "value": "Sortuj wg"
+    }
+  ],
+  "huqKGl": [
+    {
+      "type": 0,
+      "value": "Załóż konto"
+    }
+  ],
+  "hzSNj4": [
+    {
+      "type": 0,
+      "value": "Dashboard"
+    }
+  ],
+  "hziisK": [
+    {
+      "type": 0,
+      "value": "Potwierdź nowe hasło"
+    }
+  ],
+  "itPgxd": [
+    {
+      "type": 0,
+      "value": "Profil"
+    }
+  ],
+  "j2jrS/": [
+    {
+      "type": 0,
+      "value": "Talia została zaktualizowana pomyślnie"
+    }
+  ],
+  "jm/spn": [
+    {
+      "type": 0,
+      "value": "Resetuj"
+    }
+  ],
+  "jqwEYo": [
+    {
+      "type": 0,
+      "value": "np. Na czym polega ten proces?"
+    }
+  ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Zapisz"
+    }
+  ],
+  "k1s/3C": [
+    {
+      "type": 0,
+      "value": "Stwórz talię"
+    }
+  ],
+  "kIW/Ua": [
+    {
+      "type": 0,
+      "value": "Adres e-mail"
+    }
+  ],
+  "kVcUTN": [
+    {
+      "type": 0,
+      "value": "Dodaj awatar"
+    }
+  ],
+  "kVxnQ2": [
+    {
+      "type": 0,
+      "value": "Data ostatniej modyfikacji"
+    }
+  ],
+  "kWjk9u": [
+    {
+      "type": 0,
+      "value": "Język: "
+    },
+    {
+      "type": 1,
+      "value": "locale"
+    }
+  ],
+  "keFu/T": [
+    {
+      "type": 0,
+      "value": "Śrd. czas nauki"
+    }
+  ],
+  "lP4qIQ": [
+    {
+      "type": 0,
+      "value": "Szczegóły karty"
+    }
+  ],
+  "lUaq7M": [
+    {
+      "type": 0,
+      "value": "Nie znaleziono żadnego elementu"
+    }
+  ],
+  "lrfCD6": [
+    {
+      "type": 0,
+      "value": "Dodaj nową kartę"
+    }
+  ],
+  "m0Ur9S": [
+    {
+      "type": 0,
+      "value": "Wystąpił błąd podczas przetwarzania twojego zapytania"
+    }
+  ],
+  "mAO1Wz": [
+    {
+      "type": 0,
+      "value": "Wprowadź aktualne hasło"
+    }
+  ],
+  "mRqzZl": [
+    {
+      "type": 0,
+      "value": "Śrd. przestudiowanych kart"
+    }
+  ],
+  "md+KoP": [
+    {
+      "type": 0,
+      "value": "Zakończ teraz"
+    }
+  ],
+  "md4Qkb": [
+    {
+      "type": 0,
+      "value": "nigdy"
+    }
+  ],
+  "myq2ZL": [
+    {
+      "type": 0,
+      "value": "Normalna"
+    }
+  ],
+  "n0gRiB": [
+    {
+      "type": 0,
+      "value": "np. pytania kwalifikacyjne Google"
+    }
+  ],
+  "n8uxry": [
+    {
+      "type": 0,
+      "value": "Trudne"
+    }
+  ],
+  "nAruna": [
+    {
+      "type": 0,
+      "value": "Edytuj kartę"
+    }
+  ],
+  "nYrKWp": [
+    {
+      "type": 0,
+      "value": "Edytuj profil"
+    }
+  ],
+  "nluMRP": [
+    {
+      "type": 0,
+      "value": "Usuń talię"
+    }
+  ],
+  "o/gK53": [
+    {
+      "type": 0,
+      "value": "Talia"
+    }
+  ],
+  "oAo2CK": [
+    {
+      "type": 0,
+      "value": "Wybierz talię do nauki"
+    }
+  ],
+  "oSC1XZ": [
+    {
+      "type": 0,
+      "value": "Tagi powinny być oddzielone przecinkami"
+    }
+  ],
+  "olw3tr": [
+    {
+      "type": 0,
+      "value": "Najbliższa karta do nauki"
+    }
+  ],
+  "orvpWh": [
+    {
+      "type": 0,
+      "value": "Wróć"
+    }
+  ],
+  "ot1oMB": [
+    {
+      "type": 0,
+      "value": "Studiowanie jest wstrzymane"
+    }
+  ],
+  "pONqz8": [
+    {
+      "type": 0,
+      "value": "Imię"
+    }
+  ],
+  "pX7T6w": [
+    {
+      "type": 0,
+      "value": "Ostatnia modyfikacja"
+    }
+  ],
+  "qMePPG": [
+    {
+      "type": 0,
+      "value": "Notatka"
+    }
+  ],
+  "quyVXD": [
+    {
+      "type": 0,
+      "value": "Używaj ciemnego motywu"
+    }
+  ],
+  "r5W3i1": [
+    {
+      "type": 0,
+      "value": "Używaj zaawansowanego systemu oceny kart, w celu bardziej precyzyjnego odkładania kart w czasie"
+    }
+  ],
+  "razLg8": [
+    {
+      "type": 0,
+      "value": "Ucz się"
+    }
+  ],
+  "rbVj9G": [
+    {
+      "type": 0,
+      "value": "Średnia"
+    }
+  ],
+  "rkIjo/": [
+    {
+      "type": 0,
+      "value": "Podane hasła nie są takie same"
+    }
+  ],
+  "rxwWfu": [
+    {
+      "type": 0,
+      "value": "Wystąpił błąd podczas resetowania hasła"
+    }
+  ],
+  "s2XIgr": [
+    {
+      "type": 0,
+      "value": "Pokaż szczegóły"
+    }
+  ],
+  "smhHt+": [
+    {
+      "offset": 0,
+      "options": {
+        "=1": {
+          "value": [
+            {
+              "type": 0,
+              "value": "pozostał "
+            },
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " znak"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 0,
+              "value": "pozostało "
+            },
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " znaków"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "charactersCount"
+    }
+  ],
+  "t4zNNz": [
+    {
+      "type": 0,
+      "value": "Przestudiowane karty"
+    }
+  ],
+  "tFFMkF": [
+    {
+      "type": 0,
+      "value": "Wstrzymaj"
+    }
+  ],
+  "tV4lm3": [
+    {
+      "type": 0,
+      "value": "np. John"
+    }
+  ],
+  "tag2T/": [
+    {
+      "type": 0,
+      "value": "Pozytywne karty"
+    }
+  ],
+  "txUL0F": [
+    {
+      "type": 0,
+      "value": "Nazwisko"
+    }
+  ],
+  "u5kx+4": [
+    {
+      "type": 0,
+      "value": "Klonowanie karty nie powiodło się"
+    }
+  ],
+  "uCk8r+": [
+    {
+      "type": 0,
+      "value": "Posiadasz już konto?"
+    }
+  ],
+  "uSWYZd": [
+    {
+      "type": 0,
+      "value": "Sortuj malejąco"
+    }
+  ],
+  "ug01Mk": [
+    {
+      "type": 0,
+      "value": "Czas"
+    }
+  ],
+  "ukP5IJ": [
+    {
+      "type": 0,
+      "value": "Oznacz jako ulubioną talię"
+    }
+  ],
+  "v1kMcG": [
+    {
+      "type": 0,
+      "value": "Wybierz typ karty"
+    }
+  ],
+  "v2naw/": [
+    {
+      "type": 0,
+      "value": "Usunąć talię?"
+    }
+  ],
+  "vC94kH": [
+    {
+      "type": 0,
+      "value": "np. To proces, w którym dwie lub więcej części aplikacji mogą działać jednocześnie"
+    }
+  ],
+  "vJfMhp": [
+    {
+      "type": 0,
+      "value": "Dozwolone pliki: "
+    },
+    {
+      "type": 1,
+      "value": "extensions"
+    }
+  ],
+  "vRTZ4K": [
+    {
+      "type": 0,
+      "value": "Rewers"
+    }
+  ],
+  "vlKhIl": [
+    {
+      "type": 0,
+      "value": "Nazwa użytkownika"
+    }
+  ],
+  "vlZInC": [
+    {
+      "type": 0,
+      "value": "Śrd. ocena"
+    }
+  ],
+  "wEQDC6": [
+    {
+      "type": 0,
+      "value": "Edytuj"
+    }
+  ],
+  "wGEV5o": [
+    {
+      "type": 0,
+      "value": "Hasło zostało zresetowane pomyślnie"
+    }
+  ],
+  "wL7VAE": [
+    {
+      "type": 0,
+      "value": "Akcje"
+    }
+  ],
+  "wZFe08": [
+    {
+      "type": 0,
+      "value": "Wystąpił błąd podczas zakładania konta"
+    }
+  ],
+  "wxDxqW": [
+    {
+      "type": 0,
+      "value": "Ustawienia zostały zaktualizowane pomyślnie"
+    }
+  ],
+  "xBmTkn": [
+    {
+      "type": 0,
+      "value": "Nazwa talii"
+    }
+  ],
+  "xatRkX": [
+    {
+      "type": 0,
+      "value": "Jesteś pewny, że chcesz zakończyć sesję przed ukończeniem nauki wszystkich kart?"
+    }
+  ],
+  "y2Q/xC": [
+    {
+      "type": 0,
+      "value": "Karty gotowe do nauki / wszystkie"
+    }
+  ],
+  "yqOZND": [
+    {
+      "type": 0,
+      "value": "(+"
+    },
+    {
+      "offset": 0,
+      "options": {
+        "=1": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " dzień"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 7
+            },
+            {
+              "type": 0,
+              "value": " dni"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "daysCount"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "yrDppn": [
+    {
+      "type": 0,
+      "value": "Resetuj karty"
+    }
+  ],
+  "ytuF3Q": [
+    {
+      "type": 0,
+      "value": "Ucz się dalej"
+    }
+  ],
+  "zO+fCo": [
+    {
+      "type": 0,
+      "value": "Ilość kart"
+    }
+  ],
+  "zWgbGg": [
+    {
+      "type": 0,
+      "value": "Dzisiaj"
+    }
+  ],
+  "zhGplL": [
+    {
+      "type": 0,
+      "value": "Dodaj karty w celu rozpoczęcia nauki"
+    }
+  ]
+}

@@ -1,0 +1,608 @@
+{
+  "+U6ozc": {
+    "defaultMessage": "Typ"
+  },
+  "+VC8qb": {
+    "defaultMessage": "Awatar został zaktualizowany poprawnie"
+  },
+  "+ayPjC": {
+    "defaultMessage": "Data utworzenia"
+  },
+  "/KIR51": {
+    "defaultMessage": "Talia {deckName}"
+  },
+  "0CPXo9": {
+    "defaultMessage": "w porównaniu do tej talii"
+  },
+  "0UbCoA": {
+    "defaultMessage": "Do rozpoczęcia nauki wymagana jest talia z kartami"
+  },
+  "0V2Rkw": {
+    "defaultMessage": "Nie posiadasz jeszcze żadnej talii"
+  },
+  "0sHCb3": {
+    "defaultMessage": "Udało Ci się pomyślnie ukończyć sesję nauczania. Sprawdź kilka statystyk, aby dowiedzieć się, jak Ci poszło."
+  },
+  "1+C8Ea": {
+    "defaultMessage": "Zakończ sesję"
+  },
+  "1D2KFf": {
+    "defaultMessage": "Talie"
+  },
+  "1EYCdR": {
+    "defaultMessage": "Tagi"
+  },
+  "1Jufsz": {
+    "defaultMessage": "Ostatnia modyfikacja"
+  },
+  "1iEPTM": {
+    "defaultMessage": "Ogólne"
+  },
+  "2/2yg+": {
+    "defaultMessage": "Dodaj"
+  },
+  "2Hqxnu": {
+    "defaultMessage": "Edytuj talię"
+  },
+  "2KXvZ0": {
+    "defaultMessage": "Jesteś pewny? Ta operacja jest nieodwracalna."
+  },
+  "2W0f9h": {
+    "defaultMessage": "O mnie"
+  },
+  "35iM8d": {
+    "defaultMessage": "Najbardziej istotne talie"
+  },
+  "38aKqB": {
+    "defaultMessage": "Wprowadź nowe hasło"
+  },
+  "3NzIdG": {
+    "defaultMessage": "Ucz się {deckName}"
+  },
+  "3sk8v2": {
+    "defaultMessage": "Usunąć kartę?"
+  },
+  "3y9DGg": {
+    "defaultMessage": "Wznów"
+  },
+  "47FYwb": {
+    "defaultMessage": "Anuluj"
+  },
+  "4adKdJ": {
+    "defaultMessage": "np. Co to jest programowanie wielowątkowe?"
+  },
+  "52ZTKE": {
+    "defaultMessage": "Karta została zaktualizowana pomyślnie"
+  },
+  "5Hzwqs": {
+    "defaultMessage": "Ulubione"
+  },
+  "5oL/GD": {
+    "defaultMessage": "Maks. rozmiar: {size}"
+  },
+  "5sg7KC": {
+    "defaultMessage": "Hasło"
+  },
+  "6+7UgD": {
+    "defaultMessage": "Plik jest nieprawidłowy"
+  },
+  "62nsdy": {
+    "defaultMessage": "Ponów"
+  },
+  "63wyw+": {
+    "defaultMessage": "Płytki reset"
+  },
+  "67jx+1": {
+    "defaultMessage": "Nie posiadasz jeszcze żadnej karty"
+  },
+  "68PmLe": {
+    "defaultMessage": "Przestudiowane karty"
+  },
+  "6OWS4p": {
+    "defaultMessage": "Przetwarzanie..."
+  },
+  "7XQoh9": {
+    "defaultMessage": "Talia została usunięta pomyślnie"
+  },
+  "7cwB0R": {
+    "defaultMessage": "Karty zostały zresetowane pomyślnie"
+  },
+  "7os1KN": {
+    "defaultMessage": "Nowa talia"
+  },
+  "8D4mqd": {
+    "defaultMessage": "Używaj zaawansowanego systemu oceny kart"
+  },
+  "8HJxXG": {
+    "defaultMessage": "Zarejestruj"
+  },
+  "8Rqn5a": {
+    "defaultMessage": "np. Doe"
+  },
+  "8eCXRw": {
+    "defaultMessage": "Negatywne karty"
+  },
+  "96S5w3": {
+    "defaultMessage": "Awers"
+  },
+  "AIGagR": {
+    "defaultMessage": "Dodaj nową talię"
+  },
+  "ATZ766": {
+    "defaultMessage": "Nie masz jeszcze konta?"
+  },
+  "BNSmGR": {
+    "defaultMessage": "Przekierowywanie..."
+  },
+  "BY+Cbm": {
+    "defaultMessage": "Strony kart zostały zamienione"
+  },
+  "C06zJP": {
+    "defaultMessage": "Twoje talie ({count})"
+  },
+  "CFUBzf": {
+    "defaultMessage": "Dobrze znane karty"
+  },
+  "D3idYv": {
+    "defaultMessage": "Ustawienia"
+  },
+  "DXDNt9": {
+    "defaultMessage": "Ważne! Utracisz wszystkie {count} karty wchodzące w skład talii!"
+  },
+  "DlVFL+": {
+    "defaultMessage": "Usuń kartę"
+  },
+  "E1ZC4X": {
+    "defaultMessage": "Klonowanie karty..."
+  },
+  "EJJHc/": {
+    "defaultMessage": "Stare hasło jest nieprawidłowe"
+  },
+  "HAlOn1": {
+    "defaultMessage": "Nazwa"
+  },
+  "HPamiU": {
+    "defaultMessage": "Sesja zakończona"
+  },
+  "HWYd5e": {
+    "defaultMessage": "Wymagana jest co najmniej 1 dostępna karta do rozpoczęcia nauki"
+  },
+  "J+Pu4g": {
+    "defaultMessage": "Odwiedź dashboard"
+  },
+  "J0oJEs": {
+    "defaultMessage": "np. twitter.com/johndoe_87"
+  },
+  "JXdbo8": {
+    "defaultMessage": "Gotowe"
+  },
+  "JkLHGw": {
+    "defaultMessage": "Strona internetowa"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Usuń"
+  },
+  "KHL8ap": {
+    "defaultMessage": "Czas nauki"
+  },
+  "KHV2DZ": {
+    "defaultMessage": "Akcje awataru"
+  },
+  "MJ2jZQ": {
+    "defaultMessage": "Suma"
+  },
+  "MisSXp": {
+    "defaultMessage": "Zmień awatar"
+  },
+  "MthpnL": {
+    "defaultMessage": "Przejdź do aplikacji"
+  },
+  "NIynnB": {
+    "defaultMessage": "Aktualne hasło"
+  },
+  "Ntjkqd": {
+    "defaultMessage": "lub"
+  },
+  "ORGv1Q": {
+    "defaultMessage": "Utworzono"
+  },
+  "OV0Tkk": {
+    "defaultMessage": "Ostatnia sesja"
+  },
+  "OWgHbg": {
+    "defaultMessage": "Edytuj kartę"
+  },
+  "P1G2Ry": {
+    "defaultMessage": "Dostępne karty"
+  },
+  "P7PLVj": {
+    "defaultMessage": "Data"
+  },
+  "P8VfZA": {
+    "defaultMessage": "Todos"
+  },
+  "PUrJRh": {
+    "defaultMessage": "Słabo znane karty"
+  },
+  "PdMcML": {
+    "defaultMessage": "Resetowanie..."
+  },
+  "PlBReU": {
+    "defaultMessage": "Wyloguj"
+  },
+  "PvifjG": {
+    "defaultMessage": "w porównaniu do wszystkich twoich talii"
+  },
+  "QKdFRv": {
+    "defaultMessage": "Nowa karta"
+  },
+  "QrAcDQ": {
+    "defaultMessage": "Notatka: {note}"
+  },
+  "Rljmgs": {
+    "defaultMessage": "Edytuj talię"
+  },
+  "SNP1/u": {
+    "defaultMessage": "Talia została utworzona pomyślnie"
+  },
+  "SO8m/b": {
+    "defaultMessage": "Wystąpił błąd podczas logowania"
+  },
+  "SQJto2": {
+    "defaultMessage": "Zaloguj"
+  },
+  "SRipU7": {
+    "defaultMessage": "Profil został zaktualizowany pomyślnie"
+  },
+  "SYGs5A": {
+    "defaultMessage": "Odwróć kartę"
+  },
+  "TE23Q2": {
+    "defaultMessage": "Zbuduj swoją talię"
+  },
+  "TYmNBD": {
+    "defaultMessage": "Karta podstawowa z taką różnicą, że występuje 50% szansy na zamianę stron (z rewersu na awers)"
+  },
+  "TiR/Hq": {
+    "defaultMessage": "Zapisywanie..."
+  },
+  "TnhvIh": {
+    "defaultMessage": "np. Jestem Doe, John Doe."
+  },
+  "UJE0EW": {
+    "defaultMessage": "Podstawowa, dwustronna karta przewracana z awersu na rewers podczas studiowania"
+  },
+  "UTFsoN": {
+    "defaultMessage": "Nauka"
+  },
+  "Urt04S": {
+    "defaultMessage": "Dołącz tagi z talii"
+  },
+  "W4lBwL": {
+    "defaultMessage": "Ostatnio studiowane sesje"
+  },
+  "WSnSu+": {
+    "defaultMessage": "Karty ({count})"
+  },
+  "X0ha1a": {
+    "defaultMessage": "Zapisz zmiany"
+  },
+  "XeQ3F3": {
+    "defaultMessage": "Płytki reset oznacza, że wszystkie karty natychmiastowo stają się gotowe do nauki bez konieczności oczekiwania aż upłynie wymagany czas. Należy podkreślić, że ten reset nie dotyczy innych parametrów kart, które mają wpływ na proces odkładania karty w czasie."
+  },
+  "YNCCrE": {
+    "defaultMessage": "Głęboki reset"
+  },
+  "YWUIL7": {
+    "defaultMessage": "Zarządzaj swoim profilem"
+  },
+  "Yy/yDL": {
+    "defaultMessage": "Resetuj hasło"
+  },
+  "aEAYJG": {
+    "defaultMessage": "Przywróć ustawienia domyślne"
+  },
+  "axy7jn": {
+    "defaultMessage": "Stosunek kart do nauki"
+  },
+  "bYN8D0": {
+    "defaultMessage": "Usuń awatar"
+  },
+  "bZo6QQ": {
+    "defaultMessage": "Zamierzasz zresetować wszystkie <b>{cardsCount} karty</b> z talii <b>{deckName}</b>. Wybierz sposób w jaki chcesz to zrobić"
+  },
+  "bgtcEb": {
+    "defaultMessage": "Zakończyć teraz?"
+  },
+  "ch7hfM": {
+    "defaultMessage": "Całkowity czas nauki"
+  },
+  "cheKKR": {
+    "defaultMessage": "Wprowadź nowe hasło ponownie"
+  },
+  "cr4z0d": {
+    "defaultMessage": "np. rozmowa kwalifikacyjna, biznes, technikalia"
+  },
+  "d9iNyj": {
+    "defaultMessage": "Karty"
+  },
+  "dOG/KB": {
+    "defaultMessage": "Śrd. czas na kartę"
+  },
+  "e9917C": {
+    "defaultMessage": "Liczba kart do nauki"
+  },
+  "eaCxak": {
+    "defaultMessage": "Karta została usunięta pomyślnie"
+  },
+  "fTHhSB": {
+    "defaultMessage": "Nowe hasło"
+  },
+  "fZpZBV": {
+    "defaultMessage": "brak odchyleń"
+  },
+  "gMKKUl": {
+    "defaultMessage": "Głęboki reset oznacza, że wszystkie parametry kart zostaną przywrócone do swojego pierwotnego stanu, tak jakby karty zostały dopiero utworzone. Dotychczasowe statystki systemu odkładania kart w czasie zostaną zapomniane."
+  },
+  "grdxdO": {
+    "defaultMessage": "Zacznij naukę"
+  },
+  "h4sNB+": {
+    "defaultMessage": "Klonuj kartę"
+  },
+  "hDI+JM": {
+    "defaultMessage": "Sortuj wg"
+  },
+  "huqKGl": {
+    "defaultMessage": "Załóż konto"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
+  },
+  "hziisK": {
+    "defaultMessage": "Potwierdź nowe hasło"
+  },
+  "itPgxd": {
+    "defaultMessage": "Profil"
+  },
+  "j2jrS/": {
+    "defaultMessage": "Talia została zaktualizowana pomyślnie"
+  },
+  "jm/spn": {
+    "defaultMessage": "Resetuj"
+  },
+  "JObeli": {
+    "defaultMessage": "Studiuj talię"
+  },
+  "jqwEYo": {
+    "defaultMessage": "np. Na czym polega ten proces?"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Zapisz"
+  },
+  "k1s/3C": {
+    "defaultMessage": "Stwórz talię"
+  },
+  "kIW/Ua": {
+    "defaultMessage": "Adres e-mail"
+  },
+  "kVcUTN": {
+    "defaultMessage": "Dodaj awatar"
+  },
+  "kVxnQ2": {
+    "defaultMessage": "Data ostatniej modyfikacji"
+  },
+  "kWjk9u": {
+    "defaultMessage": "Język: {locale}"
+  },
+  "keFu/T": {
+    "defaultMessage": "Śrd. czas nauki"
+  },
+  "lP4qIQ": {
+    "defaultMessage": "Szczegóły karty"
+  },
+  "lUaq7M": {
+    "defaultMessage": "Nie znaleziono żadnego elementu"
+  },
+  "lrfCD6": {
+    "defaultMessage": "Dodaj nową kartę"
+  },
+  "m0Ur9S": {
+    "defaultMessage": "Wystąpił błąd podczas przetwarzania twojego zapytania"
+  },
+  "mAO1Wz": {
+    "defaultMessage": "Wprowadź aktualne hasło"
+  },
+  "mRqzZl": {
+    "defaultMessage": "Śrd. przestudiowanych kart"
+  },
+  "md+KoP": {
+    "defaultMessage": "Zakończ teraz"
+  },
+  "md4Qkb": {
+    "defaultMessage": "nigdy"
+  },
+  "myq2ZL": {
+    "defaultMessage": "Normalna"
+  },
+  "n0gRiB": {
+    "defaultMessage": "np. pytania kwalifikacyjne Google"
+  },
+  "nAruna": {
+    "defaultMessage": "Edytuj kartę"
+  },
+  "nYrKWp": {
+    "defaultMessage": "Edytuj profil"
+  },
+  "nluMRP": {
+    "defaultMessage": "Usuń talię"
+  },
+  "o/gK53": {
+    "defaultMessage": "Talia"
+  },
+  "oAo2CK": {
+    "defaultMessage": "Wybierz talię do nauki"
+  },
+  "oSC1XZ": {
+    "defaultMessage": "Tagi powinny być oddzielone przecinkami"
+  },
+  "olw3tr": {
+    "defaultMessage": "Najbliższa karta do nauki"
+  },
+  "orvpWh": {
+    "defaultMessage": "Wróć"
+  },
+  "ot1oMB": {
+    "defaultMessage": "Studiowanie jest wstrzymane"
+  },
+  "pONqz8": {
+    "defaultMessage": "Imię"
+  },
+  "pX7T6w": {
+    "defaultMessage": "Ostatnia modyfikacja"
+  },
+  "qMePPG": {
+    "defaultMessage": "Notatka"
+  },
+  "quyVXD": {
+    "defaultMessage": "Używaj ciemnego motywu"
+  },
+  "r5W3i1": {
+    "defaultMessage": "Używaj zaawansowanego systemu oceny kart, w celu bardziej precyzyjnego odkładania kart w czasie"
+  },
+  "rbVj9G": {
+    "defaultMessage": "Średnia"
+  },
+  "rkIjo/": {
+    "defaultMessage": "Podane hasła nie są takie same"
+  },
+  "rxwWfu": {
+    "defaultMessage": "Wystąpił błąd podczas resetowania hasła"
+  },
+  "s2XIgr": {
+    "defaultMessage": "Pokaż szczegóły"
+  },
+  "smhHt+": {
+    "defaultMessage": "{charactersCount, plural, =1 {pozostał # znak} other {pozostało # znaków}}"
+  },
+  "t4zNNz": {
+    "defaultMessage": "Przestudiowane karty"
+  },
+  "tFFMkF": {
+    "defaultMessage": "Wstrzymaj"
+  },
+  "tV4lm3": {
+    "defaultMessage": "np. John"
+  },
+  "tag2T/": {
+    "defaultMessage": "Pozytywne karty"
+  },
+  "txUL0F": {
+    "defaultMessage": "Nazwisko"
+  },
+  "u5kx+4": {
+    "defaultMessage": "Klonowanie karty nie powiodło się"
+  },
+  "uCk8r+": {
+    "defaultMessage": "Posiadasz już konto?"
+  },
+  "ug01Mk": {
+    "defaultMessage": "Czas"
+  },
+  "ukP5IJ": {
+    "defaultMessage": "Oznacz jako ulubioną talię"
+  },
+  "v1kMcG": {
+    "defaultMessage": "Wybierz typ karty"
+  },
+  "v2naw/": {
+    "defaultMessage": "Usunąć talię?"
+  },
+  "vC94kH": {
+    "defaultMessage": "np. To proces, w którym dwie lub więcej części aplikacji mogą działać jednocześnie"
+  },
+  "vJfMhp": {
+    "defaultMessage": "Dozwolone pliki: {extensions}"
+  },
+  "vRTZ4K": {
+    "defaultMessage": "Rewers"
+  },
+  "vlKhIl": {
+    "defaultMessage": "Nazwa użytkownika"
+  },
+  "vlZInC": {
+    "defaultMessage": "Śrd. ocena"
+  },
+  "wEQDC6": {
+    "defaultMessage": "Edytuj"
+  },
+  "wGEV5o": {
+    "defaultMessage": "Hasło zostało zresetowane pomyślnie"
+  },
+  "wL7VAE": {
+    "defaultMessage": "Akcje"
+  },
+  "wZFe08": {
+    "defaultMessage": "Wystąpił błąd podczas zakładania konta"
+  },
+  "wxDxqW": {
+    "defaultMessage": "Ustawienia zostały zaktualizowane pomyślnie"
+  },
+  "xBmTkn": {
+    "defaultMessage": "Nazwa talii"
+  },
+  "xatRkX": {
+    "defaultMessage": "Jesteś pewny, że chcesz zakończyć sesję przed ukończeniem nauki wszystkich kart?"
+  },
+  "y2Q/xC": {
+    "defaultMessage": "Karty gotowe do nauki / wszystkie"
+  },
+  "yqOZND": {
+    "defaultMessage": "(+{daysCount, plural, =1 {# dzień} other {# dni}})"
+  },
+  "yrDppn": {
+    "defaultMessage": "Resetuj karty"
+  },
+  "ytuF3Q": {
+    "defaultMessage": "Ucz się dalej"
+  },
+  "zO+fCo": {
+    "defaultMessage": "Ilość kart"
+  },
+  "zhGplL": {
+    "defaultMessage": "Dodaj karty w celu rozpoczęcia nauki"
+  },
+  "razLg8": {
+    "defaultMessage": "Ucz się",
+    "description": "Study CTA button"
+  },
+  "n8uxry": {
+    "defaultMessage": "Trudne"
+  },
+  "aP2JKk": {
+    "defaultMessage": "Karta została utworzona pomyślnie"
+  },
+  "DyXxzt": {
+    "defaultMessage": "Dodaj pierwszą",
+    "description": "Add first card button"
+  },
+  "6n4LpX": {
+    "defaultMessage": "Łatwe"
+  },
+  "6xap9L": {
+    "defaultMessage": "OK"
+  },
+  "+P22YN": {
+    "defaultMessage": "Dodaj",
+    "description": "Add first deck button"
+  },
+  "zWgbGg": {
+    "defaultMessage": "Dzisiaj"
+  },
+  "GuZfUM": {
+    "defaultMessage": "Sortuj rosnąco"
+  },
+  "uSWYZd": {
+    "defaultMessage": "Sortuj malejąco"
+  }
+}

@@ -23,7 +23,9 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:@next/next/recommended",
   ],
+  plugins: ["formatjs"],
   rules: {
+    "formatjs/enforce-placeholders": "error",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
@@ -38,6 +40,7 @@ module.exports = {
     ],
   },
   settings: {
+    additionalFunctionNames: ["$t"],
     react: {
       version: "detect",
     },

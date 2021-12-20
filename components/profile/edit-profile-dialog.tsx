@@ -14,6 +14,7 @@ import { Nullable } from "domains";
 import { UpdateProfileRequestData } from "domains/profile";
 import { DetailedProfile } from "domains/user";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -52,6 +53,7 @@ export default function EditProfileDialog({
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
   const { register, handleSubmit, reset, watch } = useForm<FormValues>();
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
   const toast = useSuccessToast();
 
   const bioInputValue = watch("bio");
@@ -61,7 +63,7 @@ export default function EditProfileDialog({
   const updateProfileMutation = useMutation(updateProfile, {
     onSuccess: () => {
       queryClient.invalidateQueries(PROFILE_QUERY_KEY);
-      toast("Profile has been updated successfully");
+      toast($t({ defaultMessage: "Profile has been updated successfully" }));
       onClose();
     },
   });
@@ -91,7 +93,7 @@ export default function EditProfileDialog({
   return (
     <CustomDialog
       initialFocusRef={initialRef}
-      title="Edit profile"
+      title={$t({ defaultMessage: "Edit profile" })}
       size="lg"
       isOpen={isOpen}
       onClose={onClose}
@@ -100,9 +102,9 @@ export default function EditProfileDialog({
           <Body>
             <Stack direction="column" spacing={4}>
               <FormControl>
-                <FormLabel>First name</FormLabel>
+                <FormLabel>{$t({ defaultMessage: "First name" })}</FormLabel>
                 <Input
-                  placeholder="e.g. John"
+                  placeholder={$t({ defaultMessage: "e.g. John" })}
                   ref={(el) => {
                     ref(el);
                     initialRef.current = el;
@@ -111,29 +113,44 @@ export default function EditProfileDialog({
                 />
               </FormControl>
               <FormControl>
-                <FormLabel>Last name</FormLabel>
-                <Input placeholder="e.g. Doe" {...register("lastName")} />
+                <FormLabel>{$t({ defaultMessage: "Last name" })}</FormLabel>
+                <Input
+                  placeholder={$t({ defaultMessage: "e.g. Doe" })}
+                  {...register("lastName")}
+                />
               </FormControl>
               <FormControl>
-                <FormLabel>Website</FormLabel>
+                <FormLabel>{$t({ defaultMessage: "Website" })}</FormLabel>
                 <Input
-                  placeholder="e.g. twitter.com/johndoe_87"
+                  placeholder={$t({
+                    defaultMessage: "e.g. twitter.com/johndoe_87",
+                  })}
                   {...register("website")}
                 />
               </FormControl>
               <FormControl>
-                <FormLabel>Bio</FormLabel>
+                <FormLabel>{$t({ defaultMessage: "Bio" })}</FormLabel>
                 <Textarea
                   height="150px"
                   maxHeight="400px"
                   maxLength={BIO_CHARS_LIMIT}
                   resize="vertical"
-                  placeholder="e.g. I am Doe, John Doe."
+                  placeholder={$t({
+                    defaultMessage: "e.g. I am Doe, John Doe.",
+                  })}
                   {...register("bio")}
                 />
                 <FormHelperText>
-                  {BIO_CHARS_LIMIT - (bioInputValue || "").length} characters
-                  left
+                  {$t(
+                    {
+                      defaultMessage:
+                        "{charactersCount, plural, =1 {# character} other {# characters}} left",
+                    },
+                    {
+                      charactersCount:
+                        BIO_CHARS_LIMIT - (bioInputValue || "").length,
+                    }
+                  )}
                 </FormHelperText>
               </FormControl>
             </Stack>
@@ -145,9 +162,11 @@ export default function EditProfileDialog({
               colorScheme="purple"
               mr={3}
             >
-              Save
+              {$t({ defaultMessage: "Save" })}
             </CustomButton>
-            <CustomButton onClick={onClose}>Cancel</CustomButton>
+            <CustomButton onClick={onClose}>
+              {$t({ defaultMessage: "Cancel" })}
+            </CustomButton>
           </Footer>
         </Form>
       )}

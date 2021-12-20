@@ -7,6 +7,7 @@ import {
   Fade,
 } from "@chakra-ui/react";
 import { Nullable } from "domains";
+import useTranslation from "hooks/use-translation";
 import Link from "next/link";
 import React, { useState } from "react";
 import CustomButton from "./custom-button";
@@ -27,6 +28,7 @@ type FeedbackProps = BoxProps &
 
 export default function Feedback(props: FeedbackProps): Nullable<JSX.Element> {
   const [isVisible, setIsVisible] = useState(true);
+  const { $t } = useTranslation();
 
   const handleClose = (): void => setIsVisible((s) => !s);
 
@@ -40,8 +42,6 @@ export default function Feedback(props: FeedbackProps): Nullable<JSX.Element> {
       onAction,
       ...boxProps
     } = props;
-
-    // <Link href={`/decks/${deck.id}?add-card=true`} passHref>
 
     const isError = type === "error";
 
@@ -70,8 +70,11 @@ export default function Feedback(props: FeedbackProps): Nullable<JSX.Element> {
             <AlertIcon />
             {message ||
               (isError
-                ? "There was an error processing your request"
-                : "There was no item found")}
+                ? $t({
+                    defaultMessage:
+                      "There was an error processing your request",
+                  })
+                : $t({ defaultMessage: "There was no item found" }))}
             {isCloseable && (
               <CloseButton
                 position="absolute"

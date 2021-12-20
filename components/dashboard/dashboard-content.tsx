@@ -7,6 +7,7 @@ import Feedback from "components/ui/feedback";
 import { STUDYING_OVERVIEW } from "consts/query-keys";
 import { StudyingOverview } from "domains/study";
 import useDecksQuery from "hooks/use-decks-query";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import { stringifyUrl } from "query-string";
 import React from "react";
@@ -33,6 +34,8 @@ const SUMMARY_PERIOD_IN_DAYS = 14;
 const TABLE_ITEMS_LIMIT = 5;
 
 export default function DashboardContent(): JSX.Element {
+  const { $t } = useTranslation();
+
   const overviewQuery = useQuery(STUDYING_OVERVIEW, () =>
     fetchStudyingOverview(SUMMARY_PERIOD_IN_DAYS, TABLE_ITEMS_LIMIT)
   );
@@ -55,7 +58,7 @@ export default function DashboardContent(): JSX.Element {
     return (
       <Feedback
         type="error"
-        actionButtonLabel="Retry"
+        actionButtonLabel={$t({ defaultMessage: "Retry" })}
         onAction={handleRefetchOnError}
       />
     );

@@ -1,5 +1,6 @@
 import { Heading, Spacer, Text, VStack } from "@chakra-ui/react";
-import React from "react";
+import useTranslation from "hooks/use-translation";
+import React, { useMemo } from "react";
 import {
   MdDashboard,
   MdExitToApp,
@@ -12,21 +13,55 @@ import MenuTile, { IMenuTile } from "./menu-tile";
 
 const SIDEBAR_WIDTH = "64px";
 
-const menuTiles: Record<"features" | "account", IMenuTile[]> = {
-  features: [
-    { label: "Dashboard", exact: true, icon: MdDashboard, href: "/" },
-    { label: "Decks", icon: RiStackFill, href: "/decks" },
-    { label: "Study", icon: MdSchool, href: "/study" },
-    { label: "Todos", icon: RiTodoLine, href: "/todos" },
-  ],
-  account: [
-    { label: "Profile", icon: MdPerson, href: "/profile" },
-    { label: "Settings", icon: MdSettings, href: "/settings" },
-    { label: "Logout", icon: MdExitToApp, href: "/logout" },
-  ],
-};
-
 export default function MenuSidebar(): JSX.Element {
+  const { $t } = useTranslation();
+
+  const menuTiles: Record<"features" | "account", IMenuTile[]> = useMemo(
+    () => ({
+      features: [
+        {
+          label: $t({ defaultMessage: "Dashboard" }),
+          exact: true,
+          icon: MdDashboard,
+          href: "/",
+        },
+        {
+          label: $t({ defaultMessage: "Decks" }),
+          icon: RiStackFill,
+          href: "/decks",
+        },
+        {
+          label: $t({ defaultMessage: "Study" }),
+          icon: MdSchool,
+          href: "/study",
+        },
+        {
+          label: $t({ defaultMessage: "Todos" }),
+          icon: RiTodoLine,
+          href: "/todos",
+        },
+      ],
+      account: [
+        {
+          label: $t({ defaultMessage: "Profile" }),
+          icon: MdPerson,
+          href: "/profile",
+        },
+        {
+          label: $t({ defaultMessage: "Settings" }),
+          icon: MdSettings,
+          href: "/settings",
+        },
+        {
+          label: $t({ defaultMessage: "Log out" }),
+          icon: MdExitToApp,
+          href: "/logout",
+        },
+      ],
+    }),
+    [$t]
+  );
+
   return (
     <VStack
       position="fixed"

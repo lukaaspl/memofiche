@@ -17,6 +17,7 @@ import Span from "components/ui/span";
 import { Nullable } from "domains";
 import { StudySessionsWithDeviations } from "domains/study";
 import { motion, TargetAndTransition, useAnimation } from "framer-motion";
+import useTranslation from "hooks/use-translation";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { prettyDuration } from "utils/date-time";
@@ -36,6 +37,8 @@ interface SessionStudyStatContentProps {
 function SessionStudyStatContent({
   stat,
 }: SessionStudyStatContentProps): JSX.Element {
+  const { $t } = useTranslation();
+
   return (
     <>
       <StatLabel>{stat.label}</StatLabel>
@@ -45,7 +48,7 @@ function SessionStudyStatContent({
           hasArrow
           label={
             <Text fontSize="small" p={0.5}>
-              compared to this deck
+              {$t({ defaultMessage: "compared to this deck" })}
             </Text>
           }
           placement="bottom"
@@ -64,7 +67,9 @@ function SessionStudyStatContent({
                 </Span>
               </>
             ) : (
-              <Span fontWeight="bold">no deviation</Span>
+              <Span fontWeight="bold">
+                {$t({ defaultMessage: "no deviation" })}
+              </Span>
             )}
           </StatHelpText>
         </Tooltip>
@@ -72,7 +77,7 @@ function SessionStudyStatContent({
           hasArrow
           label={
             <Text fontSize="small" p={0.5}>
-              compared to all your decks
+              {$t({ defaultMessage: "compared to all your decks" })}
             </Text>
           }
           placement="bottom"
@@ -87,7 +92,7 @@ function SessionStudyStatContent({
                 {prettyRound(Math.abs(stat.allDecksAvg * 100), 2).concat("%")}
               </>
             ) : (
-              "no deviation"
+              $t({ defaultMessage: "no deviation" })
             )}
           </StatHelpText>
         </Tooltip>
@@ -105,6 +110,7 @@ const MotionStat = motion<StatProps>(Stat);
 export default function StudyingSessionSummary({
   data,
 }: StudyingSessionSummaryProps): JSX.Element {
+  const { $t } = useTranslation();
   const [upperStatsControls, lowerStatsControls, ctasControls] = [
     useAnimation(),
     useAnimation(),
@@ -115,19 +121,19 @@ export default function StudyingSessionSummary({
 
   const upperStats: SessionStudyStatRecord[] = [
     {
-      label: "Studied cards",
+      label: $t({ defaultMessage: "Studied cards" }),
       value: data.studiedCards,
       currentDeckAvg: relativeToCurrentDeck.studiedCards,
       allDecksAvg: relativeToAllDecks.studiedCards,
     },
     {
-      label: "Well-known cards",
+      label: $t({ defaultMessage: "Well-known cards" }),
       value: data.positiveCards,
       currentDeckAvg: relativeToCurrentDeck.positiveCards,
       allDecksAvg: relativeToAllDecks.positiveCards,
     },
     {
-      label: "Little-known cards",
+      label: $t({ defaultMessage: "Little-known cards" }),
       value: data.negativeCards,
       currentDeckAvg: relativeToCurrentDeck.negativeCards,
       allDecksAvg: relativeToAllDecks.negativeCards,
@@ -136,13 +142,13 @@ export default function StudyingSessionSummary({
 
   const lowerStats: SessionStudyStatRecord[] = [
     {
-      label: "Study time",
+      label: $t({ defaultMessage: "Study time" }),
       value: prettyDuration(data.studyTime),
       currentDeckAvg: relativeToCurrentDeck.studyTime,
       allDecksAvg: relativeToAllDecks.studyTime,
     },
     {
-      label: "Avg. time per card",
+      label: $t({ defaultMessage: "Avg. time per card" }),
       value: prettyDuration(data.avgTimePerCard, {
         milliseconds: true,
         decimals: true,
@@ -151,7 +157,7 @@ export default function StudyingSessionSummary({
       allDecksAvg: relativeToAllDecks.avgTimePerCard,
     },
     {
-      label: "Avg. rate",
+      label: $t({ defaultMessage: "Avg. rate" }),
       value: prettyRound(data.avgRate, 2),
       currentDeckAvg: relativeToCurrentDeck.avgRate,
       allDecksAvg: relativeToAllDecks.avgRate,
@@ -207,11 +213,15 @@ export default function StudyingSessionSummary({
       <MotionBox initial={{ opacity: 0, y: 30 }} animate={ctasControls}>
         <HStack justify="center" mt={12} spacing={3}>
           <Link href="/study" passHref>
-            <CustomButton colorScheme="purple">Study another deck</CustomButton>
+            <CustomButton colorScheme="purple">
+              {$t({ defaultMessage: "Study another deck" })}
+            </CustomButton>
           </Link>
-          <Text>or</Text>
+          <Text>{$t({ defaultMessage: "or" })}</Text>
           <Link href="/" passHref>
-            <CustomButton colorScheme="gray">Visit the dashboard</CustomButton>
+            <CustomButton colorScheme="gray">
+              {$t({ defaultMessage: "Visit the dashboard" })}
+            </CustomButton>
           </Link>
         </HStack>
       </MotionBox>

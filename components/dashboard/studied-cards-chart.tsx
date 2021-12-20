@@ -15,6 +15,7 @@ import { STUDIED_CARDS_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";
 import useChartPalette from "hooks/use-chart-palette";
+import useTranslation from "hooks/use-translation";
 import React from "react";
 import {
   Bar,
@@ -25,7 +26,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatTickValue } from "utils/date-time";
 import { prettyRound } from "utils/string";
 import ChartLegend from "./chart-legend";
 import CustomTooltip from "./custom-tooltip";
@@ -46,6 +46,7 @@ export default function StudiedCardsChart({
 
   const theme = useTheme<Theme>();
   const chartPalette = useChartPalette();
+  const { $t } = useTranslation();
 
   return (
     <Box>
@@ -59,7 +60,9 @@ export default function StudiedCardsChart({
             fontSize="xl"
             letterSpacing="wider"
           >
-            {isTotalMode ? "Total studied cards" : "Avg. studied cards"}
+            {isTotalMode
+              ? $t({ defaultMessage: "Total studied cards" })
+              : $t({ defaultMessage: "Avg. studied cards" })}
           </Heading>
           {isRefetching && <SyncSpinner />}
         </Flex>
@@ -74,13 +77,13 @@ export default function StudiedCardsChart({
             mr="-1px"
             variant={isTotalMode ? "solid" : "outline"}
           >
-            &sum; Total
+            &sum; {$t({ defaultMessage: "Total" })}
           </CustomButton>
           <CustomButton
             onClick={() => setIsTotalMode(() => false)}
             variant={isTotalMode ? "outline" : "solid"}
           >
-            X&#772; Avg.
+            X&#772; {$t({ defaultMessage: "Avg." })}
           </CustomButton>
         </ButtonGroup>
       </Flex>
@@ -139,7 +142,13 @@ export default function StudiedCardsChart({
             tickMargin={10}
             axisLine={false}
             tickLine={false}
-            tickFormatter={formatTickValue}
+            tickFormatter={(dateMs) => {
+              const date = dayjs(dateMs);
+
+              return date.isToday()
+                ? $t({ defaultMessage: "Today" })
+                : date.format("MMM DD");
+            }}
             dataKey={(data: StudySummarySample) => data.date}
           />
           <CartesianGrid strokeDasharray="5" stroke={chartPalette.grid} />
@@ -152,15 +161,14 @@ export default function StudiedCardsChart({
               <CustomTooltip<StudySummarySample>
                 render={(data) => (
                   <>
-                    <Text fontSize="sm">
-                      {dayjs(data.date).format("MMMM DD")}
-                    </Text>
+                    <Text fontSize="sm">{dayjs(data.date).format("LL")}</Text>
                     <Text
                       fontWeight="medium"
                       fontSize="md"
                       opacity={isTotalMode ? 1 : 0.6}
                     >
-                      Total studied cards: {data.value.studiedCards.sum} (
+                      {$t({ defaultMessage: "Total studied cards" })}:{" "}
+                      {data.value.studiedCards.sum} (
                       <Span color="green.400">
                         {data.value.positiveCards.sum}
                       </Span>
@@ -175,7 +183,7 @@ export default function StudiedCardsChart({
                       fontSize="md"
                       opacity={isTotalMode ? 0.6 : 1}
                     >
-                      Avg. studied cards:{" "}
+                      {$t({ defaultMessage: "Avg. studied cards" })}:{" "}
                       {prettyRound(data.value.studiedCards.mean)} (
                       <Span color="green.400">
                         {prettyRound(data.value.positiveCards.mean)}
@@ -215,8 +223,14 @@ export default function StudiedCardsChart({
       </ResponsiveContainer>
       <ChartLegend
         items={[
-          { color: "green.500", label: "Positive cards" },
-          { color: "red.500", label: "Negative cards" },
+          {
+            color: "green.500",
+            label: $t({ defaultMessage: "Positive cards" }),
+          },
+          {
+            color: "red.500",
+            label: $t({ defaultMessage: "Negative cards" }),
+          },
         ]}
       />
     </Box>

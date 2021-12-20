@@ -21,13 +21,20 @@ import { DeckTag } from "domains/tags";
 import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSuccessToast from "hooks/use-success-toast";
 import { authApiClient } from "lib/axios";
-import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
+import React, {
+  EffectCallback,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
 import CustomButton from "components/ui/custom-button";
 import CustomDialog from "components/ui/custom-dialog";
 import Form from "components/ui/form";
+import useTranslation from "hooks/use-translation";
 
 type ManageCardDialogProps = {
   isOpen: boolean;
@@ -57,13 +64,6 @@ async function updateCard(variables: UpdateCardRequestData): Promise<Card> {
   return updatedCard;
 }
 
-const descriptionsByCardType = {
-  [CardType.Normal]:
-    "Basic, double-sided card being flipped from the obverse to the reverse while studying",
-  [CardType.Reverse]:
-    "Same card type as normal with the difference that there's a 50% chance to swipe the sides (from the reverse to the obverse)",
-};
-
 export default function ManageCardDialog({
   deckId,
   deckTags,
@@ -73,6 +73,7 @@ export default function ManageCardDialog({
 }: ManageCardDialogProps): JSX.Element {
   const initialRef = useRef<Nullable<HTMLTextAreaElement>>(null);
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
   const toast = useSuccessToast();
 
   const { register, handleSubmit, reset, watch } = useForm<FormValues>({
@@ -91,10 +92,24 @@ export default function ManageCardDialog({
   const updateCardMutation = useMutation(updateCard, {
     onSuccess: (card) => {
       queryClient.invalidateQueries([DECK_QUERY_KEY, card.deckId]);
-      toast("Card has been updated successfully");
+      toast($t({ defaultMessage: "Card has been updated successfully" }));
       onClose();
     },
   });
+
+  const descriptionsByCardType = useMemo(
+    () => ({
+      [CardType.Normal]: $t({
+        defaultMessage:
+          "Basic, double-sided card being flipped from the obverse to the reverse while studying",
+      }),
+      [CardType.Reverse]: $t({
+        defaultMessage:
+          "Same card type as normal with the difference that there's a 50% chance to swipe the sides (from the reverse to the obverse)",
+      }),
+    }),
+    [$t]
+  );
 
   const isEditMode = typeof editingCard !== "undefined";
 
@@ -159,43 +174,56 @@ export default function ManageCardDialog({
       size="4xl"
       onClose={onClose}
       initialFocusRef={initialRef}
-      title={isEditMode ? "Update the card" : "Add a new card"}
+      title={
+        isEditMode
+          ? $t({ defaultMessage: "Update the card" })
+          : $t({ defaultMessage: "Add a new card" })
+      }
       render={({ Body, Footer }) => (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Body>
             <Flex justify="space-between">
               <Stack direction="column" spacing={4} flexBasis="50%" mr={8}>
                 <FormControl isRequired>
-                  <FormLabel>Obverse</FormLabel>
+                  <FormLabel>{$t({ defaultMessage: "Obverse" })}</FormLabel>
                   <Textarea
                     height="145px"
                     ref={(el) => {
                       ref(el);
                       initialRef.current = el;
                     }}
-                    placeholder="e.g. What is multithreaded programming?"
+                    placeholder={$t({
+                      defaultMessage: "e.g. What is multithreaded programming?",
+                    })}
                     {...rest}
                   />
                 </FormControl>
                 <FormControl isRequired>
-                  <FormLabel>Reverse</FormLabel>
+                  <FormLabel>{$t({ defaultMessage: "Reverse" })}</FormLabel>
                   <Textarea
                     height="145px"
-                    placeholder="e.g. It’s a process in which two or more parts run simultaneously"
+                    placeholder={$t({
+                      defaultMessage:
+                        "e.g. It's a process in which two or more parts run simultaneously",
+                    })}
                     {...register("reverse", { required: true })}
                   />
                 </FormControl>
               </Stack>
               <Stack direction="column" spacing={4} flexBasis="50%">
                 <FormControl isRequired>
-                  <FormLabel>Type</FormLabel>
+                  <FormLabel>{$t({ defaultMessage: "Type" })}</FormLabel>
                   <Select
-                    placeholder="Select a card type"
+                    placeholder={$t({ defaultMessage: "Select a card type" })}
                     defaultValue={CardType.Normal}
                     {...register("type", { required: true })}
                   >
-                    <option value={CardType.Normal}>Normal</option>
-                    <option value={CardType.Reverse}>Reverse</option>
+                    <option value={CardType.Normal}>
+                      {$t({ defaultMessage: "Normal" })}
+                    </option>
+                    <option value={CardType.Reverse}>
+                      {$t({ defaultMessage: "Reverse" })}
+                    </option>
                   </Select>
                   {pickedCardType && (
                     <Alert
@@ -218,16 +246,20 @@ export default function ManageCardDialog({
                   )}
                 </FormControl>
                 <FormControl>
-                  <FormLabel>Note</FormLabel>
+                  <FormLabel>{$t({ defaultMessage: "Note" })}</FormLabel>
                   <Input
-                    placeholder="e.g. What is this process about?"
+                    placeholder={$t({
+                      defaultMessage: "e.g. What is this process about?",
+                    })}
                     {...register("note")}
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel>Tags</FormLabel>
+                  <FormLabel>{$t({ defaultMessage: "Tags" })}</FormLabel>
                   <Input
-                    placeholder="e.g. interview, business, technical"
+                    placeholder={$t({
+                      defaultMessage: "e.g. interview, business, technical",
+                    })}
                     {...register("tags")}
                   />
                   <Checkbox
@@ -239,10 +271,10 @@ export default function ManageCardDialog({
                       setAreDeckTagsIncluded(() => event.target.checked)
                     }
                   >
-                    Include deck&apos;s tags
+                    {$t({ defaultMessage: "Include deck's tags" })}
                   </Checkbox>
                   <FormHelperText>
-                    Tags should be comma-separated
+                    {$t({ defaultMessage: "Tags should be comma-separated" })}
                   </FormHelperText>
                 </FormControl>
               </Stack>
@@ -259,9 +291,13 @@ export default function ManageCardDialog({
               colorScheme="purple"
               mr={3}
             >
-              {isEditMode ? "Save" : "Add"}
+              {isEditMode
+                ? $t({ defaultMessage: "Save" })
+                : $t({ defaultMessage: "Add" })}
             </CustomButton>
-            <CustomButton onClick={onClose}>Cancel</CustomButton>
+            <CustomButton onClick={onClose}>
+              {$t({ defaultMessage: "Cancel" })}
+            </CustomButton>
           </Footer>
         </Form>
       )}

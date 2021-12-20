@@ -1,4 +1,4 @@
-import { ButtonProps, Kbd, Stack, StackProps } from "@chakra-ui/react";
+import { Kbd, Stack, StackProps } from "@chakra-ui/react";
 import KeyAccessedButton from "components/ui/key-accessed-button";
 import Span from "components/ui/span";
 import { DetailedCard, TransformedCard } from "domains/card";
@@ -6,76 +6,12 @@ import { OmitMotionCollidedProps } from "domains/framer-motion";
 import { RatingControlMode } from "domains/study";
 import { motion, useIsPresent } from "framer-motion";
 import useMe from "hooks/use-me";
+import useRatingControls, { RatingControl } from "hooks/use-rating-controls";
 import React from "react";
-import { getPredictedInterval } from "utils/cards";
+import { FormattedMessage } from "react-intl";
+import { getPredictedIntervalInDays } from "utils/cards";
 
 const MotionStack = motion<OmitMotionCollidedProps<StackProps>>(Stack);
-
-const BASIC_RATING_CONTROLS: RatingControl[] = [
-  {
-    label: "Hard",
-    rate: 1,
-    colorScheme: "red",
-    shortcut: { label: "1", code: "Digit1" },
-  },
-  {
-    label: "Good",
-    rate: 3,
-    colorScheme: "yellow",
-    shortcut: { label: "2", code: "Digit2" },
-  },
-  {
-    label: "Easy",
-    rate: 5,
-    colorScheme: "green",
-    shortcut: { label: "3", code: "Digit3" },
-  },
-];
-
-const ADVANCED_RATING_CONTROLS: RatingControl[] = [
-  {
-    label: "1",
-    rate: 1,
-    colorScheme: "red",
-    shortcut: { label: "1", code: "Digit1" },
-  },
-  {
-    label: "2",
-    rate: 2,
-    colorScheme: "red",
-    shortcut: { label: "2", code: "Digit2" },
-  },
-  {
-    label: "3",
-    rate: 3,
-    colorScheme: "yellow",
-    shortcut: { label: "3", code: "Digit3" },
-  },
-  {
-    label: "4",
-    rate: 4,
-    colorScheme: "yellow",
-    shortcut: { label: "4", code: "Digit4" },
-  },
-  {
-    label: "5",
-    rate: 5,
-    colorScheme: "green",
-    shortcut: { label: "5", code: "Digit5" },
-  },
-];
-
-const controlsByMode: Record<RatingControlMode, RatingControl[]> = {
-  [RatingControlMode.Basic]: BASIC_RATING_CONTROLS,
-  [RatingControlMode.Advanced]: ADVANCED_RATING_CONTROLS,
-};
-
-interface RatingControl {
-  label: string;
-  rate: number;
-  shortcut: { label: string; code: string };
-  colorScheme?: ButtonProps["colorScheme"];
-}
 
 interface RatingControlsProps extends OmitMotionCollidedProps<StackProps> {
   card: TransformedCard<DetailedCard>;
@@ -99,6 +35,8 @@ export default function RatingControls({
     ? RatingControlMode.Advanced
     : RatingControlMode.Basic;
 
+  const ratingControls = useRatingControls(mode);
+
   return (
     <MotionStack
       direction="row"
@@ -109,7 +47,7 @@ export default function RatingControls({
       transition={{ duration: 0.15 }}
       {...stackProps}
     >
-      {controlsByMode[mode].map((control, index) => (
+      {ratingControls.map((control, index) => (
         <KeyAccessedButton
           keyCode={control.shortcut.code}
           key={index}
@@ -129,7 +67,12 @@ export default function RatingControls({
           </Kbd>
           {control.label}
           <Span ml={1} fontSize="xs">
-            {getPredictedInterval(card, control.rate)}
+            <FormattedMessage
+              defaultMessage="(+{daysCount, plural, =1 {# day} other {# days}})"
+              values={{
+                daysCount: getPredictedIntervalInDays(card, control.rate),
+              }}
+            />
           </Span>
         </KeyAccessedButton>
       ))}

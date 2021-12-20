@@ -6,6 +6,7 @@ import { DECKS_QUERY_KEY } from "consts/query-keys";
 import { DetailedDeck } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import { useRouter } from "next/router";
 import React from "react";
@@ -33,11 +34,12 @@ export default function DeleteDeckConfirmationDialog({
   const queryClient = useQueryClient();
   const toast = useSuccessToast();
   const router = useRouter();
+  const { $t } = useTranslation();
   const palette = useCommonPalette();
 
   const deleteDeckMutation = useMutation(deleteDeckById, {
     onSuccess: () => {
-      toast("Deck has been deleted successfully");
+      toast($t({ defaultMessage: "Deck has been deleted successfully" }));
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       router.push("/decks");
     },
@@ -45,15 +47,22 @@ export default function DeleteDeckConfirmationDialog({
 
   return (
     <CustomAlertDialog
-      title="Delete deck?"
+      title={$t({ defaultMessage: "Delete deck?" })}
       content={
         <>
-          {`Are you sure? You can't undo this action afterwards.`}
+          {$t({
+            defaultMessage:
+              "Are you sure? You can't undo this action afterwards.",
+          })}
           {deck.cards.length > 0 && (
             <Text fontWeight="medium">
-              Important: You are going to lose all{" "}
-              <Span color={palette.red}>{deck.cards.length}</Span> cards
-              contained in the deck!
+              {$t(
+                {
+                  defaultMessage:
+                    "Important! You are going to lose all {count} cards contained in the deck!",
+                },
+                { count: <Span color={palette.red}>{deck.cards.length}</Span> }
+              )}
             </Text>
           )}
         </>

@@ -17,6 +17,7 @@ import {
   UpdateDeckRequestData,
 } from "domains/deck";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -63,6 +64,7 @@ export default function ManageDeckDialog({
   const initialRef = useRef<Nullable<HTMLInputElement>>(null);
   const { register, handleSubmit, reset } = useForm<FormValues>();
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
   const toast = useSuccessToast();
 
   const isEditMode = typeof editingDeck !== "undefined";
@@ -72,7 +74,7 @@ export default function ManageDeckDialog({
   const createDeckMutation = useMutation(createDeck, {
     onSuccess: () => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
-      toast("Deck has been created successfully");
+      toast($t({ defaultMessage: "Deck has been created successfully" }));
       onClose();
     },
   });
@@ -80,7 +82,7 @@ export default function ManageDeckDialog({
   const updateDeckMutation = useMutation(updateDeck, {
     onSuccess: (deck) => {
       queryClient.invalidateQueries([DECK_QUERY_KEY, deck.id]);
-      toast("Deck has been updated successfully");
+      toast($t({ defaultMessage: "Deck has been updated successfully" }));
       onClose();
     },
   });
@@ -129,32 +131,42 @@ export default function ManageDeckDialog({
       size="xl"
       onClose={onClose}
       initialFocusRef={initialRef}
-      title={isEditMode ? "Update the deck" : "Add a new deck"}
+      title={
+        isEditMode
+          ? $t({ defaultMessage: "Update the deck" })
+          : $t({ defaultMessage: "Add a new deck" })
+      }
       render={({ Body, Footer }) => (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Body>
             <FormControl isRequired>
-              <FormLabel>Deck name</FormLabel>
+              <FormLabel>{$t({ defaultMessage: "Deck name" })}</FormLabel>
               <Input
                 ref={(el) => {
                   ref(el);
                   initialRef.current = el;
                 }}
-                placeholder="e.g. Google interview questions"
+                placeholder={$t({
+                  defaultMessage: "e.g. Google interview questions",
+                })}
                 {...rest}
               />
             </FormControl>
             <FormControl mt={4}>
-              <FormLabel>Tags</FormLabel>
+              <FormLabel>{$t({ defaultMessage: "Tags" })}</FormLabel>
               <Input
-                placeholder="e.g. interview, business, technical"
+                placeholder={$t({
+                  defaultMessage: "e.g. interview, business, technical",
+                })}
                 {...register("tags")}
               />
-              <FormHelperText>Tags should be comma-separated</FormHelperText>
+              <FormHelperText>
+                {$t({ defaultMessage: "Tags should be comma-separated" })}
+              </FormHelperText>
             </FormControl>
             <FormControl mt={4}>
               <Checkbox colorScheme="purple" {...register("isFavorite")}>
-                Mark as favorite deck
+                {$t({ defaultMessage: "Mark as favorite deck" })}
               </Checkbox>
             </FormControl>
           </Body>
@@ -169,9 +181,13 @@ export default function ManageDeckDialog({
               colorScheme="purple"
               mr={3}
             >
-              {isEditMode ? "Save" : "Add"}
+              {isEditMode
+                ? $t({ defaultMessage: "Save" })
+                : $t({ defaultMessage: "Add" })}
             </CustomButton>
-            <CustomButton onClick={onClose}>Cancel</CustomButton>
+            <CustomButton onClick={onClose}>
+              {$t({ defaultMessage: "Cancel" })}
+            </CustomButton>
           </Footer>
         </Form>
       )}

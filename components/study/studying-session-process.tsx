@@ -7,6 +7,7 @@ import KeyAccessedButton from "components/ui/key-accessed-button";
 import { AnimatePresence, useIsPresent } from "framer-motion";
 import { StudyingOperations, StudyingState } from "hooks/use-studying";
 import React, { useMemo } from "react";
+import { FormattedMessage } from "react-intl";
 import { StudyCard } from "utils/cards";
 import { assert } from "utils/validation";
 
@@ -68,7 +69,7 @@ export default function StudyingSessionProcess({
           >
             F
           </Kbd>
-          Flip the card
+          <FormattedMessage defaultMessage="Flip the card" />
         </KeyAccessedButton>
         <AnimatePresence exitBeforeEnter>
           <RatingControls

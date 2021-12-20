@@ -1,5 +1,6 @@
 import { Alert, AlertIcon, AlertTitle, Center } from "@chakra-ui/react";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 export default function RedirectAlert(): JSX.Element {
   return (
@@ -16,7 +17,7 @@ export default function RedirectAlert(): JSX.Element {
       >
         <AlertIcon boxSize="40px" mr={0} />
         <AlertTitle fontSize="lg" mt={4} mb={1}>
-          Redirecting...
+          <FormattedMessage defaultMessage="Redirecting..." />
         </AlertTitle>
       </Alert>
     </Center>

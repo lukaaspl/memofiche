@@ -20,6 +20,7 @@ import Span from "components/ui/span";
 import { Nullable } from "domains";
 import useAuth from "hooks/use-auth";
 import useCommonPalette from "hooks/use-common-palette";
+import useTranslation from "hooks/use-translation";
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
@@ -42,6 +43,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
   const [isProcessing, setProcessing] = useState(false);
   const { isLogged, signIn, signUp } = useAuth();
   const router = useRouter();
+  const { $t } = useTranslation();
 
   const {
     register,
@@ -60,13 +62,17 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
       try {
         await signUp(values);
       } catch {
-        setRequestError("An error occurred while signing up");
+        setRequestError(
+          $t({ defaultMessage: "An error occurred while signing up" })
+        );
       }
     } else {
       try {
         await signIn(values);
       } catch {
-        setRequestError("An error occurred while signing in");
+        setRequestError(
+          $t({ defaultMessage: "An error occurred while signing in" })
+        );
       }
     }
 
@@ -98,7 +104,9 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
         textAlign="center"
       >
         <Heading size="xl" mb="8">
-          {onRegisterView ? "Sign up" : "Sign in"}
+          {onRegisterView
+            ? $t({ defaultMessage: "Sign up" })
+            : $t({ defaultMessage: "Sign in" })}
         </Heading>
         <VStack
           as="form"
@@ -113,7 +121,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
             <Input
               type="email"
               isInvalid={!!errors.email}
-              placeholder="E-mail address"
+              placeholder={$t({ defaultMessage: "E-mail address" })}
               // TODO: Remove
               defaultValue="admin@memofiche.pl"
               size="lg"
@@ -128,7 +136,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
             <Input
               type="password"
               isInvalid={!!errors.password}
-              placeholder="Password"
+              placeholder={$t({ defaultMessage: "Password" })}
               // TODO: Remove
               defaultValue="admin"
               size="lg"
@@ -144,7 +152,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               <Input
                 type="text"
                 isInvalid={!!errors.name}
-                placeholder="Your name"
+                placeholder={$t({ defaultMessage: "Your name" })}
                 size="lg"
                 focusBorderColor={palette.primary as string}
                 {...register("name", { required: true })}
@@ -157,9 +165,11 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
             colorScheme="purple"
             size="lg"
             isLoading={isProcessing}
-            loadingText="Processing..."
+            loadingText={$t({ defaultMessage: "Processing..." })}
           >
-            {onRegisterView ? "Create account" : "Go to app"}
+            {onRegisterView
+              ? $t({ defaultMessage: "Create account" })
+              : $t({ defaultMessage: "Go to app" })}
           </CustomButton>
           {requestError && (
             <Alert status="error">
@@ -177,8 +187,8 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
         <Divider my="8" colorScheme="purple" w="20%" mx="auto" />
         <Span mr="1">
           {onRegisterView
-            ? "Already have an account?"
-            : "You don't have an account yet?"}
+            ? $t({ defaultMessage: "Already have an account?" })
+            : $t({ defaultMessage: "You don't have an account yet?" })}
         </Span>
         <Button
           variant="link"
@@ -186,7 +196,9 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
           colorScheme="purple"
           onClick={() => setOnRegisterView((s) => !s)}
         >
-          {onRegisterView ? "Sign in" : "Sign up"}
+          {onRegisterView
+            ? $t({ defaultMessage: "Sign in" })
+            : $t({ defaultMessage: "Sign up" })}
         </Button>
       </Box>
     </Center>

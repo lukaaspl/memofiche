@@ -1,4 +1,14 @@
 module.exports = {
   presets: ["next/babel"],
-  plugins: ["superjson-next"],
+  plugins: [
+    [
+      "formatjs",
+      {
+        idInterpolationPattern: "[sha512:contenthash:base64:6]",
+        additionalFunctionNames: ["$t"],
+        ast: true,
+      },
+    ],
+    "superjson-next",
+  ],
 };

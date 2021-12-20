@@ -2,6 +2,7 @@ import { Center, chakra, Text } from "@chakra-ui/react";
 import Markdown from "components/markdown";
 import { Nullable } from "domains";
 import { CardMeta } from "domains/card";
+import useTranslation from "hooks/use-translation";
 import React, { useMemo } from "react";
 import { MdNote, MdRepeat } from "react-icons/md";
 import CardMarks, { CardMark } from "./card-marks";
@@ -26,6 +27,8 @@ export default function CardSide({
   isPaused,
   reversed = false,
 }: CardSideProps): JSX.Element {
+  const { $t } = useTranslation();
+
   const isReversed = reversed;
 
   const marks = useMemo<CardMark[]>(
@@ -34,19 +37,24 @@ export default function CardSide({
         icon: NoteIcon,
         bgColor: "blue",
         color: "white",
-        label: note ? `Note: ${note}` : "",
+        label: $t({ defaultMessage: "Note: {note}" }, { note: note || "" }),
         isVisible: Boolean(note),
       },
       {
         icon: RepeatIcon,
         bgColor: "purple",
         color: "white",
-        label: "Card sides were reversed",
+        label: $t({ defaultMessage: "Card sides were reversed" }),
         isVisible: meta.isSwapped,
       },
     ],
-    [meta.isSwapped, note]
+    [meta.isSwapped, note, $t]
   );
+
+  const labels = {
+    reverse: $t({ defaultMessage: "Reverse" }),
+    obverse: $t({ defaultMessage: "Obverse" }),
+  };
 
   return (
     <Center
@@ -62,11 +70,11 @@ export default function CardSide({
       <CardPauseCover isPaused={isPaused} />
       <CardOrnament
         position="top-left"
-        text={isReversed ? "Reverse" : "Obverse"}
+        text={isReversed ? labels.reverse : labels.obverse}
       />
       <CardOrnament
         position="bottom-right"
-        text={isReversed ? "Reverse" : "Obverse"}
+        text={isReversed ? labels.reverse : labels.obverse}
       />
       <CardMarks marks={marks} />
       <Center height="75%">

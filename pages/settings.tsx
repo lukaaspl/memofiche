@@ -6,13 +6,16 @@ import PrimaryHeading from "components/ui/primary-heading";
 import usePrivateRoute from "hooks/use-private-route";
 import { NextPage } from "next";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 const SettingsPage: NextPage = () => {
   usePrivateRoute();
 
   return (
     <Layout>
-      <PrimaryHeading>Settings</PrimaryHeading>
+      <PrimaryHeading>
+        <FormattedMessage defaultMessage="Settings" />
+      </PrimaryHeading>
       <Box mt={8}>
         <GeneralSettingsForm />
         <ResetPasswordForm />

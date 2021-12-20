@@ -11,6 +11,7 @@ import {
   StudySessionsWithDeviations,
 } from "domains/study";
 import { StudyingState } from "hooks/use-studying";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
 import { stringifyUrl } from "query-string";
 import React, { useCallback, useEffect } from "react";
@@ -44,6 +45,7 @@ export default function StudyingSessionFinalScreen({
   state,
 }: StudyingSessionSummaryProps): JSX.Element {
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
 
   const { mutate, data, isLoading, isError } = useMutation(postStudySession, {
     onSuccess: () => {
@@ -79,11 +81,13 @@ export default function StudyingSessionFinalScreen({
           fontFamily="Poppins"
           textTransform="uppercase"
         >
-          Session finished
+          {$t({ defaultMessage: "Session finished" })}
         </AlertTitle>
-        <AlertDescription maxWidth="sm">
-          You have successfully completed your studying session. Grab a few
-          statistics to find out how you did.
+        <AlertDescription maxWidth="md">
+          {$t({
+            defaultMessage:
+              "You have successfully completed your studying session. Grab a few statistics to find out how you did.",
+          })}
         </AlertDescription>
       </Alert>
       {isError ? (

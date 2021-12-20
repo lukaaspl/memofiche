@@ -9,6 +9,7 @@ import {
   useQueryClient,
 } from "react-query";
 import useSuccessToast from "./use-success-toast";
+import useTranslation from "./use-translation";
 
 async function createCard(variables: PostCardRequestData): Promise<Card> {
   const { deckId, ...body } = variables;
@@ -25,6 +26,7 @@ export default function useCreateCardMutation(
   options?: UseMutationOptions<Card, unknown, PostCardRequestData, unknown>
 ): UseMutationResult<Card, unknown, PostCardRequestData, unknown> {
   const queryClient = useQueryClient();
+  const { $t } = useTranslation();
   const toast = useSuccessToast();
 
   return useMutation(createCard, {
@@ -32,7 +34,7 @@ export default function useCreateCardMutation(
     onSuccess: (card, ...args) => {
       queryClient.invalidateQueries(DECKS_QUERY_KEY);
       queryClient.invalidateQueries([DECK_QUERY_KEY, card.deckId]);
-      toast("Card has been created successfully");
+      toast($t({ defaultMessage: "Card has been created successfully" }));
       options?.onSuccess?.(card, ...args);
     },
   });

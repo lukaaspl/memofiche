@@ -14,6 +14,7 @@ import { STUDY_TIME_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";
 import useChartPalette from "hooks/use-chart-palette";
+import useTranslation from "hooks/use-translation";
 import React from "react";
 import {
   Area,
@@ -24,7 +25,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatTickValue, prettyDuration } from "utils/date-time";
+import { prettyDuration } from "utils/date-time";
 import ChartLegend from "./chart-legend";
 import CustomTooltip from "./custom-tooltip";
 
@@ -44,6 +45,7 @@ export default function StudyTimeChart({
 
   const theme = useTheme<Theme>();
   const chartPalette = useChartPalette();
+  const { $t } = useTranslation();
 
   return (
     <Box>
@@ -57,7 +59,9 @@ export default function StudyTimeChart({
             fontSize="xl"
             letterSpacing="wider"
           >
-            {isTotalMode ? "Total study time" : "Avg. study time"}
+            {isTotalMode
+              ? $t({ defaultMessage: "Total study time" })
+              : $t({ defaultMessage: "Avg. study time" })}
           </Heading>
           {isRefetching && <SyncSpinner />}
         </Flex>
@@ -72,13 +76,13 @@ export default function StudyTimeChart({
             mr="-1px"
             variant={isTotalMode ? "solid" : "outline"}
           >
-            &sum; Total
+            &sum; {$t({ defaultMessage: "Total" })}
           </CustomButton>
           <CustomButton
             onClick={() => setIsTotalMode(() => false)}
             variant={isTotalMode ? "outline" : "solid"}
           >
-            X&#772; Avg.
+            X&#772; {$t({ defaultMessage: "Avg." })}
           </CustomButton>
         </ButtonGroup>
       </Flex>
@@ -126,7 +130,13 @@ export default function StudyTimeChart({
             tickMargin={10}
             axisLine={false}
             tickLine={false}
-            tickFormatter={formatTickValue}
+            tickFormatter={(dateMs) => {
+              const date = dayjs(dateMs);
+
+              return date.isToday()
+                ? $t({ defaultMessage: "Today" })
+                : date.format("MMM DD");
+            }}
             dataKey={(data: StudySummarySample) => data.date}
           />
           <CartesianGrid strokeDasharray="5" stroke={chartPalette.grid} />
@@ -136,15 +146,13 @@ export default function StudyTimeChart({
               <CustomTooltip<StudySummarySample>
                 render={(data) => (
                   <>
-                    <Text fontSize="sm">
-                      {dayjs(data.date).format("MMMM DD")}
-                    </Text>
+                    <Text fontSize="sm">{dayjs(data.date).format("LL")}</Text>
                     <Text
                       fontWeight="medium"
                       fontSize="md"
                       opacity={isTotalMode ? 1 : 0.6}
                     >
-                      Total study time:{" "}
+                      {$t({ defaultMessage: "Total study time" })}:{" "}
                       {prettyDuration(data.value.studyTime.sum)}
                     </Text>
                     <Text
@@ -152,7 +160,7 @@ export default function StudyTimeChart({
                       fontSize="md"
                       opacity={isTotalMode ? 0.6 : 1}
                     >
-                      Avg. study time:{" "}
+                      {$t({ defaultMessage: "Avg. study time" })}:{" "}
                       {prettyDuration(data.value.studyTime.mean)}
                     </Text>
                   </>
@@ -172,7 +180,12 @@ export default function StudyTimeChart({
         </AreaChart>
       </ResponsiveContainer>
       <ChartLegend
-        items={[{ color: chartPalette.primary, label: "Study time" }]}
+        items={[
+          {
+            color: chartPalette.primary,
+            label: $t({ defaultMessage: "Study time" }),
+          },
+        ]}
       />
     </Box>
   );
