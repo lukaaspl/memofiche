@@ -150,9 +150,6 @@
   "C06zJP": {
     "defaultMessage": "Your decks ({count})"
   },
-  "C23He5": {
-    "defaultMessage": "Sort in ascending order"
-  },
   "CFUBzf": {
     "defaultMessage": "Well-known cards"
   },
@@ -174,6 +171,9 @@
   },
   "EJJHc/": {
     "defaultMessage": "Old password doesn't match"
+  },
+  "GuZfUM": {
+    "defaultMessage": "Sort ascending"
   },
   "HAlOn1": {
     "defaultMessage": "Name"
@@ -364,9 +364,6 @@
   "fZpZBV": {
     "defaultMessage": "no deviation"
   },
-  "fwSVTQ": {
-    "defaultMessage": "Sort in descending order"
-  },
   "gMKKUl": {
     "defaultMessage": "The deep reset means all cards' parameters will be set to their defaults as if the cards have just been created. The scheduling system will forget about their previous statistics."
   },
@@ -535,6 +532,9 @@
   },
   "uCk8r+": {
     "defaultMessage": "Already have an account?"
+  },
+  "uSWYZd": {
+    "defaultMessage": "Sort descending"
   },
   "ug01Mk": {
     "defaultMessage": "Time"

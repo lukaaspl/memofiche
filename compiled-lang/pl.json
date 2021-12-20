@@ -319,12 +319,6 @@
       "value": ")"
     }
   ],
-  "C23He5": [
-    {
-      "type": 0,
-      "value": "Sortuj w porządku rosnącym"
-    }
-  ],
   "CFUBzf": [
     {
       "type": 0,
@@ -373,6 +367,12 @@
     {
       "type": 0,
       "value": "Stare hasło jest nieprawidłowe"
+    }
+  ],
+  "GuZfUM": [
+    {
+      "type": 0,
+      "value": "Sortuj rosnąco"
     }
   ],
   "HAlOn1": [
@@ -797,12 +797,6 @@
       "value": "brak odchyleń"
     }
   ],
-  "fwSVTQ": [
-    {
-      "type": 0,
-      "value": "Sortuj w porządku malejącym"
-    }
-  ],
   "gMKKUl": [
     {
       "type": 0,
@@ -1175,6 +1169,12 @@
     {
       "type": 0,
       "value": "Posiadasz już konto?"
+    }
+  ],
+  "uSWYZd": [
+    {
+      "type": 0,
+      "value": "Sortuj malejąco"
     }
   ],
   "ug01Mk": [

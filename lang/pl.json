@@ -140,9 +140,6 @@
   "C06zJP": {
     "defaultMessage": "Twoje talie ({count})"
   },
-  "C23He5": {
-    "defaultMessage": "Sortuj w porządku rosnącym"
-  },
   "CFUBzf": {
     "defaultMessage": "Dobrze znane karty"
   },
@@ -343,9 +340,6 @@
   },
   "fZpZBV": {
     "defaultMessage": "brak odchyleń"
-  },
-  "fwSVTQ": {
-    "defaultMessage": "Sortuj w porządku malejącym"
   },
   "gMKKUl": {
     "defaultMessage": "Głęboki reset oznacza, że wszystkie parametry kart zostaną przywrócone do swojego pierwotnego stanu, tak jakby karty zostały dopiero utworzone. Dotychczasowe statystki systemu odkładania kart w czasie zostaną zapomniane."
@@ -604,5 +598,11 @@
   },
   "zWgbGg": {
     "defaultMessage": "Dzisiaj"
+  },
+  "GuZfUM": {
+    "defaultMessage": "Sortuj rosnąco"
+  },
+  "uSWYZd": {
+    "defaultMessage": "Sortuj malejąco"
   }
 }

@@ -319,12 +319,6 @@
       "value": ")"
     }
   ],
-  "C23He5": [
-    {
-      "type": 0,
-      "value": "Sort in ascending order"
-    }
-  ],
   "CFUBzf": [
     {
       "type": 0,
@@ -373,6 +367,12 @@
     {
       "type": 0,
       "value": "Old password doesn't match"
+    }
+  ],
+  "GuZfUM": [
+    {
+      "type": 0,
+      "value": "Sort ascending"
     }
   ],
   "HAlOn1": [
@@ -819,12 +819,6 @@
       "value": "no deviation"
     }
   ],
-  "fwSVTQ": [
-    {
-      "type": 0,
-      "value": "Sort in descending order"
-    }
-  ],
   "gMKKUl": [
     {
       "type": 0,
@@ -1193,6 +1187,12 @@
     {
       "type": 0,
       "value": "Already have an account?"
+    }
+  ],
+  "uSWYZd": [
+    {
+      "type": 0,
+      "value": "Sort descending"
     }
   ],
   "ug01Mk": [

@@ -6,6 +6,7 @@ import {
   FormLabel,
   IconButton,
   Select,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BaseSort, SortOrder } from "domains";
 import useTranslation from "hooks/use-translation";
@@ -27,6 +28,11 @@ export default function SortingControls<TFields extends string>({
 }: SortControlsProps<TFields>): JSX.Element {
   const { $t } = useTranslation();
   const isASC = state.order === "asc";
+
+  const sortDirectionLabels = {
+    desc: $t({ defaultMessage: "Sort descending" }),
+    asc: $t({ defaultMessage: "Sort ascending" }),
+  };
 
   return (
     <Flex {...flexProps}>
@@ -50,22 +56,34 @@ export default function SortingControls<TFields extends string>({
           ))}
         </Select>
       </FormControl>
-      <IconButton
-        aria-label={$t({ defaultMessage: "Sort in descending order" })}
-        icon={<ArrowDownIcon fontSize="2xl" />}
-        variant="ghost"
-        color={isASC ? "gray.400" : "purple.600"}
-        pointerEvents={isASC ? "all" : "none"}
-        onClick={() => onChangeOrder("desc")}
-      />
-      <IconButton
-        aria-label={$t({ defaultMessage: "Sort in ascending order" })}
-        icon={<ArrowUpIcon fontSize="2xl" />}
-        variant="ghost"
-        color={isASC ? "purple.600" : "gray.400"}
-        pointerEvents={isASC ? "none" : "all"}
-        onClick={() => onChangeOrder("asc")}
-      />
+      <Tooltip
+        hasArrow
+        openDelay={500}
+        placement="top"
+        label={sortDirectionLabels.desc}
+      >
+        <IconButton
+          aria-label={sortDirectionLabels.desc}
+          icon={<ArrowDownIcon fontSize="2xl" />}
+          variant="ghost"
+          color={isASC ? "gray.400" : "purple.600"}
+          onClick={() => onChangeOrder("desc")}
+        />
+      </Tooltip>
+      <Tooltip
+        hasArrow
+        openDelay={500}
+        placement="top"
+        label={sortDirectionLabels.asc}
+      >
+        <IconButton
+          aria-label={sortDirectionLabels.asc}
+          icon={<ArrowUpIcon fontSize="2xl" />}
+          variant="ghost"
+          color={isASC ? "purple.600" : "gray.400"}
+          onClick={() => onChangeOrder("asc")}
+        />
+      </Tooltip>
     </Flex>
   );
 }
