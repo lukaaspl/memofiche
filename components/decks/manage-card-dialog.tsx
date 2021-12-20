@@ -13,6 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
 import { useLocalStorage } from "beautiful-react-hooks";
+import CustomButton from "components/ui/custom-button";
+import CustomDialog from "components/ui/custom-dialog";
+import Form from "components/ui/form";
+import { cardTypeDetails, cardTypeDetailsByType } from "consts/card-types";
 import { DECK_QUERY_KEY } from "consts/query-keys";
 import { ARE_DECK_TAGS_INCLUDED } from "consts/storage-keys";
 import { Nullable } from "domains";
@@ -20,21 +24,12 @@ import { DetailedCard, UpdateCardRequestData } from "domains/card";
 import { DeckTag } from "domains/tags";
 import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSuccessToast from "hooks/use-success-toast";
+import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
-import React, {
-  EffectCallback,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from "react";
+import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Form from "components/ui/form";
-import useTranslation from "hooks/use-translation";
 
 type ManageCardDialogProps = {
   isOpen: boolean;
@@ -96,20 +91,6 @@ export default function ManageCardDialog({
       onClose();
     },
   });
-
-  const descriptionsByCardType = useMemo(
-    () => ({
-      [CardType.Normal]: $t({
-        defaultMessage:
-          "Basic, double-sided card being flipped from the obverse to the reverse while studying",
-      }),
-      [CardType.Reverse]: $t({
-        defaultMessage:
-          "Same card type as normal with the difference that there's a 50% chance to swipe the sides (from the reverse to the obverse)",
-      }),
-    }),
-    [$t]
-  );
 
   const isEditMode = typeof editingCard !== "undefined";
 
@@ -218,12 +199,11 @@ export default function ManageCardDialog({
                     defaultValue={CardType.Normal}
                     {...register("type", { required: true })}
                   >
-                    <option value={CardType.Normal}>
-                      {$t({ defaultMessage: "Normal" })}
-                    </option>
-                    <option value={CardType.Reverse}>
-                      {$t({ defaultMessage: "Reverse" })}
-                    </option>
+                    {cardTypeDetails.map((details) => (
+                      <option key={details.type} value={details.type}>
+                        {$t(details.titleDescriptor)}
+                      </option>
+                    ))}
                   </Select>
                   {pickedCardType && (
                     <Alert
@@ -241,7 +221,7 @@ export default function ManageCardDialog({
                         position="relative"
                         top="3px"
                       />
-                      {descriptionsByCardType[pickedCardType]}
+                      {$t(cardTypeDetailsByType[pickedCardType].descDescriptor)}
                     </Alert>
                   )}
                 </FormControl>

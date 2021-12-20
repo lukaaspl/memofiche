@@ -123,6 +123,12 @@
       "value": "Wprowadź nowe hasło"
     }
   ],
+  "3G4CA+": [
+    {
+      "type": 0,
+      "value": "Standardowa"
+    }
+  ],
   "3NzIdG": [
     {
       "type": 0,
@@ -535,6 +541,12 @@
     {
       "type": 0,
       "value": "Nowa karta"
+    }
+  ],
+  "QqZ1h6": [
+    {
+      "type": 0,
+      "value": "Odwrócona"
     }
   ],
   "QrAcDQ": [
@@ -955,12 +967,6 @@
     {
       "type": 0,
       "value": "nigdy"
-    }
-  ],
-  "myq2ZL": [
-    {
-      "type": 0,
-      "value": "Normalna"
     }
   ],
   "n0gRiB": [

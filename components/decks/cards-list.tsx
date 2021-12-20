@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { CardType } from "@prisma/client";
 import Feedback from "components/ui/feedback";
+import { cardTypeDetailsByType } from "consts/card-types";
 import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
 import { DeckTag } from "domains/tags";
@@ -153,7 +154,9 @@ export default function CardsList({
                     as={card.type === CardType.Reverse ? MdRepeat : BsCardText}
                     fontSize={19}
                   />
-                  <TagLabel>{card.type}</TagLabel>
+                  <TagLabel>
+                    {$t(cardTypeDetailsByType[card.type].titleDescriptor)}
+                  </TagLabel>
                 </Tag>
               </Td>
               <Td>

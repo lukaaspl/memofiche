@@ -422,9 +422,6 @@
   "md4Qkb": {
     "defaultMessage": "nigdy"
   },
-  "myq2ZL": {
-    "defaultMessage": "Normalna"
-  },
   "n0gRiB": {
     "defaultMessage": "np. pytania kwalifikacyjne Google"
   },
@@ -604,5 +601,13 @@
   },
   "uSWYZd": {
     "defaultMessage": "Sortuj malejąco"
+  },
+  "QqZ1h6": {
+    "defaultMessage": "Odwrócona",
+    "description": "Reverse card type"
+  },
+  "3G4CA+": {
+    "defaultMessage": "Standardowa",
+    "description": "Normal card type"
   }
 }

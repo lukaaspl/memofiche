@@ -60,6 +60,10 @@
   "38aKqB": {
     "defaultMessage": "Enter the new password"
   },
+  "3G4CA+": {
+    "defaultMessage": "Basic",
+    "description": "Normal card type"
+  },
   "3NzIdG": {
     "defaultMessage": "Study {deckName}"
   },
@@ -256,6 +260,10 @@
   "QKdFRv": {
     "defaultMessage": "New card"
   },
+  "QqZ1h6": {
+    "defaultMessage": "Reverse",
+    "description": "Reverse card type"
+  },
   "QrAcDQ": {
     "defaultMessage": "Note: {note}"
   },
@@ -441,9 +449,6 @@
   },
   "md4Qkb": {
     "defaultMessage": "never"
-  },
-  "myq2ZL": {
-    "defaultMessage": "Normal"
   },
   "n0gRiB": {
     "defaultMessage": "e.g. Google interview questions"

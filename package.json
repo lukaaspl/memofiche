@@ -1,6 +1,6 @@
 {
   "name": "next-starter",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,9 @@
     "export": "next export",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
-    "intl:extract": "formatjs extract pages/**/*.ts* components/**/*.ts* hooks/**/*.ts* --out-file lang/en.json --id-interpolation-pattern [sha512:contenthash:base64:6] --additional-function-names $t",
-    "intl:compile": "formatjs compile lang/en.json --ast --out-file compiled-lang/en.json"
+    "intl:extract": "formatjs extract pages/**/*.ts* components/**/*.ts* hooks/**/*.ts* consts/**/*.ts* --out-file lang/en.json --id-interpolation-pattern [sha512:contenthash:base64:6] --additional-function-names $t",
+    "intl:compile-en": "formatjs compile lang/en.json --ast --out-file compiled-lang/en.json",
+    "intl:compile-pl": "formatjs compile lang/pl.json --ast --out-file compiled-lang/pl.json"
   },
   "husky": {
     "hooks": {
