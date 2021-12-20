@@ -123,6 +123,12 @@
       "value": "Enter the new password"
     }
   ],
+  "3G4CA+": [
+    {
+      "type": 0,
+      "value": "Basic"
+    }
+  ],
   "3NzIdG": [
     {
       "type": 0,
@@ -535,6 +541,12 @@
     {
       "type": 0,
       "value": "New card"
+    }
+  ],
+  "QqZ1h6": [
+    {
+      "type": 0,
+      "value": "Reverse"
     }
   ],
   "QrAcDQ": [
@@ -977,12 +989,6 @@
     {
       "type": 0,
       "value": "never"
-    }
-  ],
-  "myq2ZL": [
-    {
-      "type": 0,
-      "value": "Normal"
     }
   ],
   "n0gRiB": [
