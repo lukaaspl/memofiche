@@ -29,7 +29,7 @@ interface CardMarkProps {
 }
 
 function CardMarkComponent({ mark, index }: CardMarkProps): JSX.Element {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const offset = (index * SPACE_BETWEEN_MARKS + OFFSET_FROM_EDGE)
     .toString()
@@ -38,7 +38,7 @@ function CardMarkComponent({ mark, index }: CardMarkProps): JSX.Element {
   return (
     <Tooltip
       hasArrow
-      isOpen={isOpen}
+      isOpen={isTooltipOpen}
       label={mark.label}
       fontSize="sm"
       padding={1.5}
@@ -53,9 +53,9 @@ function CardMarkComponent({ mark, index }: CardMarkProps): JSX.Element {
         cursor="help"
         variant="solid"
         colorScheme={mark.bgColor}
-        onMouseEnter={() => setIsOpen(true)}
-        onClick={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseEnter={() => setIsTooltipOpen(true)}
+        onClick={() => setIsTooltipOpen(true)}
+        onMouseLeave={() => setIsTooltipOpen(false)}
       >
         <mark.icon color={mark.color} fontSize="md" />
       </Tag>

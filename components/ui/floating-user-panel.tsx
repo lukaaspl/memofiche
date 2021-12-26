@@ -92,6 +92,7 @@ export default function FloatingUserPanel(boxProps: BoxProps): JSX.Element {
             backgroundColor="purple.500"
             fontFamily="Poppins"
             fontWeight="bold"
+            boxShadow="base"
             size="sm"
             cursor="pointer"
           />
