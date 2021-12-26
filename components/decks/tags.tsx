@@ -10,16 +10,16 @@ import { DetailedCard } from "domains/card";
 import React from "react";
 import { TagsConverter } from "utils/tags";
 
-interface ItemTagsProps extends WrapProps {
+interface TagsProps extends WrapProps {
   tags: DetailedCard["tags"];
   size?: TagProps["size"];
 }
 
-export default function ItemTags({
+export default function Tags({
   tags,
   size,
   ...wrapProps
-}: ItemTagsProps): JSX.Element {
+}: TagsProps): JSX.Element {
   return (
     <Wrap {...wrapProps}>
       {TagsConverter.extractNames(tags).map((tagName, index) => (

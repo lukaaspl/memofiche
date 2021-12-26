@@ -3,7 +3,7 @@ import LastStudySessionsTable from "components/dashboard/last-study-sessions-tab
 import MostRelevantDecksTable from "components/dashboard/most-relevant-decks-table";
 import StudiedCardsChart from "components/dashboard/studied-cards-chart";
 import StudyTimeChart from "components/dashboard/study-time-chart";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import { STUDYING_OVERVIEW } from "consts/query-keys";
 import { StudyingOverview } from "domains/study";
 import useDecksQuery from "hooks/use-decks-query";

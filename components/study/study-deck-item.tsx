@@ -1,10 +1,10 @@
 import StudyingSessionFinalScreen from "components/study/studying-session-final-screen";
 import StudyingSessionProcess from "components/study/studying-session-process";
-import Feedback from "components/ui/feedback";
-import GoBackButton from "components/ui/go-back-button";
-import MotionBox from "components/ui/motion-box";
-import PrimaryHeading from "components/ui/primary-heading";
-import Span from "components/ui/span";
+import Feedback from "components/shared/feedback";
+import GoBackButton from "components/shared/go-back-button";
+import MotionBox from "components/shared/motion-box";
+import PrimaryHeading from "components/shared/primary-heading";
+import Span from "components/shared/span";
 import { AnimatePresence } from "framer-motion";
 import useCommonPalette from "hooks/use-common-palette";
 import useDeckQuery from "hooks/use-deck-query";

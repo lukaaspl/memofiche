@@ -6,9 +6,9 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { Deck } from "@prisma/client";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Form from "components/ui/form";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
+import Form from "components/shared/form";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import {

@@ -10,14 +10,11 @@ import {
   DrawerOverlay,
   IconButton,
   List,
-  ListIcon,
-  ListItem,
   Spacer,
-  Text,
   VStack,
 } from "@chakra-ui/react";
-import FloatingUserPanel from "components/floating-user-panel";
-import Logo from "components/logo";
+import FloatingUserPanel from "components/ui/floating-user-panel";
+import Logo from "components/ui/logo";
 import { SIDEBAR_WIDTH } from "consts/dimensions";
 import useScreenWidth from "hooks/use-screen-width";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
@@ -31,54 +28,15 @@ import {
   MdSettings,
 } from "react-icons/md";
 import { RiStackFill, RiTodoLine } from "react-icons/ri";
-import MenuTile, { IMenuTile } from "./menu-tile";
-import NavLink from "./nav-link";
-
-function AppVersion(): JSX.Element {
-  return (
-    <Text fontSize="x-small" color="white" fontFamily="Poppins">
-      v{process.env.NEXT_PUBLIC_APP_VERSION}
-    </Text>
-  );
-}
-
-export interface MenuLinkProps {
-  tile: IMenuTile;
-}
-
-function MenuLink({ tile }: MenuLinkProps): JSX.Element {
-  return (
-    <NavLink
-      href={tile.href}
-      exact={tile.exact}
-      render={(isActive) => (
-        <ListItem
-          d="flex"
-          py={3}
-          px={3}
-          alignItems="center"
-          fontFamily="Poppins"
-          cursor="pointer"
-          userSelect="none"
-          borderRadius="md"
-          fontWeight={isActive ? "bold" : "none"}
-          backgroundColor={isActive ? "white" : "transparent"}
-          color={isActive ? "purple.500" : "white"}
-        >
-          <ListIcon as={tile.icon} fontSize="2xl" mr={5} />
-          {tile.label}
-        </ListItem>
-      )}
-    />
-  );
-}
+import AppVersion from "./app-version";
+import { MenuItem, MenuLink, MenuTile } from "./menu-items";
 
 export default function MenuSidebar(): JSX.Element {
   const { $t } = useTranslation();
   const { isLargerThanMD } = useScreenWidth();
   const [isOpen, onOpen, onClose] = useSimpleDisclosure();
 
-  const menuTiles: Record<"features" | "account", IMenuTile[]> = useMemo(
+  const menuItems: Record<"features" | "account", MenuItem[]> = useMemo(
     () => ({
       features: [
         {
@@ -138,12 +96,12 @@ export default function MenuSidebar(): JSX.Element {
           zIndex="docked"
         >
           <Logo mb={4} />
-          {menuTiles.features.map((tile, index) => (
-            <MenuTile key={index} tile={tile} />
+          {menuItems.features.map((item, index) => (
+            <MenuTile key={index} item={item} />
           ))}
           <Spacer />
-          {menuTiles.account.map((tile, index) => (
-            <MenuTile key={index} tile={tile} />
+          {menuItems.account.map((item, index) => (
+            <MenuTile key={index} item={item} />
           ))}
           <AppVersion />
         </VStack>
@@ -183,12 +141,12 @@ export default function MenuSidebar(): JSX.Element {
           <DrawerCloseButton fontSize="lg" color="white" />
           <DrawerBody px={0}>
             <List my={10} px={3}>
-              {menuTiles.features.map((menuTile, index) => (
-                <MenuLink key={index} tile={menuTile} />
+              {menuItems.features.map((item, index) => (
+                <MenuLink key={index} item={item} />
               ))}
               <Divider my={4} />
-              {menuTiles.account.map((menuTile, index) => (
-                <MenuLink key={index} tile={menuTile} />
+              {menuItems.account.map((item, index) => (
+                <MenuLink key={index} item={item} />
               ))}
             </List>
           </DrawerBody>

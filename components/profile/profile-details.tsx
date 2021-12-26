@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useProfileQuery from "hooks/use-profile-query";

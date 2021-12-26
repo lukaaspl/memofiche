@@ -6,9 +6,9 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Form from "components/ui/form";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
+import Form from "components/shared/form";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { UpdateProfileRequestData } from "domains/profile";

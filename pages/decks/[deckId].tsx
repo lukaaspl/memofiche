@@ -1,6 +1,6 @@
-import DeckItem from "components/decks/deck-item";
+import Deck from "components/decks/deck";
 import Layout from "components/ui/layout";
-import usePrivateRoute from "hooks/use-private-route";
+import usePrivateView from "hooks/use-private-view";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
@@ -9,11 +9,9 @@ const DeckPage: NextPage = () => {
   const router = useRouter();
   const deckId = Number(router.query.deckId);
 
-  usePrivateRoute();
-
   return (
     <Layout>
-      <DeckItem id={deckId} />
+      <Deck id={deckId} />
     </Layout>
   );
 };

@@ -15,7 +15,7 @@ import {
   Portal,
   VStack,
 } from "@chakra-ui/react";
-import Span from "components/ui/span";
+import Span from "components/shared/span";
 import { Locale } from "consts/locales";
 import useCommonPalette from "hooks/use-common-palette";
 import useIntlConfig from "hooks/use-intl-config";

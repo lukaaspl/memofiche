@@ -1,10 +1,9 @@
 import { Flex, HStack, Text } from "@chakra-ui/react";
+import CustomAlertDialog from "components/shared/custom-alert-dialog";
+import CustomButton from "components/shared/custom-button";
 import Counter from "components/study/counter";
-import CustomAlertDialog from "components/ui/custom-alert-dialog";
-import CustomButton from "components/ui/custom-button";
 import dayjs from "dayjs";
 import { useIsPresent } from "framer-motion";
-import useScreenWidth from "hooks/use-screen-width";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useTranslation from "hooks/use-translation";
 import React from "react";
@@ -27,7 +26,6 @@ export default function StudyingTopBar({
   onFinish,
 }: StudyingTopBarProps): JSX.Element {
   const { $t } = useTranslation();
-  const { isLargerThanSM } = useScreenWidth();
   const [isOpen, onOpen, onClose] = useSimpleDisclosure();
   const isPresent = useIsPresent();
 
@@ -77,7 +75,6 @@ export default function StudyingTopBar({
         </HStack>
       </Flex>
       <CustomAlertDialog
-        size={isLargerThanSM ? "md" : "full"}
         title={$t({ defaultMessage: "Finish now?" })}
         confirmButtonLabel={$t({ defaultMessage: "Finish now" })}
         content={$t({

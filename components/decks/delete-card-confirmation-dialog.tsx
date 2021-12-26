@@ -1,8 +1,7 @@
 import { Card } from "@prisma/client";
-import CustomAlertDialog from "components/ui/custom-alert-dialog";
+import CustomAlertDialog from "components/shared/custom-alert-dialog";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { DetailedCard } from "domains/card";
-import useScreenWidth from "hooks/use-screen-width";
 import useSuccessToast from "hooks/use-success-toast";
 import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
@@ -36,7 +35,6 @@ export default function DeleteCardConfirmationDialog({
   onClose,
 }: DeleteCardConfirmationDialogProps): JSX.Element {
   const queryClient = useQueryClient();
-  const { isLargerThanSM } = useScreenWidth();
   const { $t } = useTranslation();
   const toast = useSuccessToast();
 
@@ -51,7 +49,6 @@ export default function DeleteCardConfirmationDialog({
 
   return (
     <CustomAlertDialog
-      size={isLargerThanSM ? "md" : "full"}
       title={$t({ defaultMessage: "Delete card?" })}
       content={$t({
         defaultMessage: "Are you sure? You can't undo this action afterwards.",

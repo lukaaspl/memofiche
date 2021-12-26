@@ -10,9 +10,9 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import MotionTr from "components/ui/motion-tr";
-import Span from "components/ui/span";
-import SyncSpinner from "components/ui/sync-spinner";
+import MotionTr from "components/shared/motion-tr";
+import Span from "components/shared/span";
+import SyncSpinner from "components/shared/sync-spinner";
 import dayjs from "dayjs";
 import { StudySessionWithDeck } from "domains/study";
 import useCommonPalette from "hooks/use-common-palette";

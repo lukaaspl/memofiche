@@ -11,9 +11,9 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import MotionBox from "components/ui/motion-box";
-import Span from "components/ui/span";
+import CustomButton from "components/shared/custom-button";
+import MotionBox from "components/shared/motion-box";
+import Span from "components/shared/span";
 import { Nullable } from "domains";
 import { StudySessionsWithDeviations } from "domains/study";
 import { motion, TargetAndTransition, useAnimation } from "framer-motion";

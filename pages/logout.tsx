@@ -1,4 +1,4 @@
-import RedirectAlert from "components/ui/redirect-alert";
+import RedirectAlert from "components/shared/redirect-alert";
 import useAuth from "hooks/use-auth";
 import { NextPage } from "next";
 import { useRouter } from "next/router";

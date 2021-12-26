@@ -6,14 +6,14 @@ import {
   IconButton,
   Stack,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import FavoriteStar from "components/ui/favorite-star";
-import Feedback from "components/ui/feedback";
-import GoBackButton from "components/ui/go-back-button";
-import PrimaryHeading from "components/ui/primary-heading";
-import SortingControls from "components/ui/sorting-controls";
-import Span from "components/ui/span";
-import SyncSpinner from "components/ui/sync-spinner";
+import CustomButton from "components/shared/custom-button";
+import FavoriteStar from "components/shared/favorite-star";
+import Feedback from "components/shared/feedback";
+import GoBackButton from "components/shared/go-back-button";
+import PrimaryHeading from "components/shared/primary-heading";
+import SortingControls from "components/shared/sorting-controls";
+import Span from "components/shared/span";
+import SyncSpinner from "components/shared/sync-spinner";
 import { CARDS_SORT } from "consts/storage-keys";
 import { CardSort } from "domains/card";
 import useCommonPalette from "hooks/use-common-palette";
@@ -26,15 +26,15 @@ import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import CardsList from "./cards-list";
 import DeleteDeckConfirmationDialog from "./delete-deck-confirmation-dialog";
-import ItemTags from "./item-tags";
+import Tags from "./tags";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
 
-interface DeckItemProps {
+interface DeckProps {
   id: number;
 }
 
-export default function DeckItem({ id }: DeckItemProps): JSX.Element {
+export default function Deck({ id }: DeckProps): JSX.Element {
   const router = useRouter();
   const { $t } = useTranslation();
 
@@ -117,7 +117,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
           />
         </HStack>
       </Flex>
-      <ItemTags tags={deck.tags} size="lg" spacing={2} mt={1} mb={3} />
+      <Tags tags={deck.tags} size="lg" spacing={2} mt={1} mb={3} />
       <GoBackButton />
       <Flex
         mt={{ base: 4, md: 8 }}

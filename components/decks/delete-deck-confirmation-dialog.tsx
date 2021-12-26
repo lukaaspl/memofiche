@@ -1,11 +1,10 @@
 import { Text } from "@chakra-ui/react";
 import { Deck } from "@prisma/client";
-import CustomAlertDialog from "components/ui/custom-alert-dialog";
-import Span from "components/ui/span";
+import CustomAlertDialog from "components/shared/custom-alert-dialog";
+import Span from "components/shared/span";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import { DetailedDeck } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";
-import useScreenWidth from "hooks/use-screen-width";
 import useSuccessToast from "hooks/use-success-toast";
 import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
@@ -33,7 +32,6 @@ export default function DeleteDeckConfirmationDialog({
   onClose,
 }: DeleteDeckConfirmationDialogProps): JSX.Element {
   const queryClient = useQueryClient();
-  const { isLargerThanSM } = useScreenWidth();
   const toast = useSuccessToast();
   const router = useRouter();
   const { $t } = useTranslation();
@@ -49,7 +47,6 @@ export default function DeleteDeckConfirmationDialog({
 
   return (
     <CustomAlertDialog
-      size={isLargerThanSM ? "md" : "full"}
       title={$t({ defaultMessage: "Delete deck?" })}
       content={
         <>

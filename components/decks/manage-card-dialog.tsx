@@ -13,9 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
 import { useLocalStorage } from "beautiful-react-hooks";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Form from "components/ui/form";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
+import Form from "components/shared/form";
 import { cardTypeDetails, cardTypeDetailsByType } from "consts/card-types";
 import { DECK_QUERY_KEY } from "consts/query-keys";
 import { ARE_DECK_TAGS_INCLUDED } from "consts/storage-keys";

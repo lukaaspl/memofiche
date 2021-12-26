@@ -1,8 +1,9 @@
 import { Box, Fade } from "@chakra-ui/react";
-import InitializingView from "components/initializing-view";
+import InitializingView from "components/ui/initializing-view";
 import { SIDEBAR_WIDTH } from "consts/dimensions";
 import { AnimatePresence } from "framer-motion";
 import useAuth from "hooks/use-auth";
+import usePrivateView from "hooks/use-private-view";
 import useThemeAdjuster from "hooks/use-theme-adjuster";
 import React from "react";
 import MenuSidebar from "./menu-sidebar";
@@ -13,7 +14,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const { isLogged } = useAuth();
-
+  usePrivateView();
   useThemeAdjuster();
 
   return (

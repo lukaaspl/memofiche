@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 import useAuth from "./use-auth";
 
-export default function usePrivateRoute(): void {
+export default function usePrivateView(): void {
   const { authState, isLogged } = useAuth();
   const router = useRouter();
 

@@ -10,7 +10,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import { DetailedCard } from "domains/card";
 import { DeckTag } from "domains/tags";
 import useCommonPalette from "hooks/use-common-palette";
@@ -18,9 +18,9 @@ import useScreenWidth from "hooks/use-screen-width";
 import useTranslation from "hooks/use-translation";
 import { truncate } from "lodash";
 import React, { useMemo } from "react";
-import CardItemMenu from "./card-item-menu";
-import CardItemTypeTag from "./card-item-type-tag";
-import ItemTags from "./item-tags";
+import CardMenu from "./card-menu";
+import CardTypeTag from "./card-type-tag";
+import Tags from "./tags";
 
 const CARD_CHARS_LIMIT = 150;
 
@@ -91,7 +91,7 @@ export default function CardsList({
             {cards.map((card) => (
               <Tr key={card.id}>
                 <Td>
-                  <CardItemTypeTag cardType={card.type} />
+                  <CardTypeTag cardType={card.type} />
                 </Td>
                 <Td>
                   <Text>{shortenCardText(card.obverse)}</Text>
@@ -100,10 +100,10 @@ export default function CardsList({
                   <Text>{shortenCardText(card.reverse)}</Text>
                 </Td>
                 <Td>
-                  <ItemTags tags={card.tags} />
+                  <Tags tags={card.tags} />
                 </Td>
                 <Td textAlign="right">
-                  <CardItemMenu card={card} deckTags={deckTags} />
+                  <CardMenu card={card} deckTags={deckTags} />
                 </Td>
               </Tr>
             ))}
@@ -156,11 +156,11 @@ export default function CardsList({
                   >
                     {headings.tags}
                   </Heading>
-                  <ItemTags tags={card.tags} />
+                  <Tags tags={card.tags} />
                 </Box>
               )}
             </SimpleGrid>
-            <CardItemTypeTag
+            <CardTypeTag
               cardType={card.type}
               borderRadius="none"
               borderTopLeftRadius="lg"
@@ -168,7 +168,7 @@ export default function CardsList({
               bottom="0"
               right="0"
             />
-            <CardItemMenu
+            <CardMenu
               position="absolute"
               right="0"
               top="0"

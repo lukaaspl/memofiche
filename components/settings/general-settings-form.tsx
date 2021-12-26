@@ -1,8 +1,8 @@
 import { Checkbox, Flex, FormControl, FormHelperText } from "@chakra-ui/react";
 import { Config } from "@prisma/client";
-import CustomButton from "components/ui/custom-button";
-import Form from "components/ui/form";
-import PrimaryHeading from "components/ui/primary-heading";
+import CustomButton from "components/shared/custom-button";
+import Form from "components/shared/form";
+import PrimaryHeading from "components/shared/primary-heading";
 import { ManageableConfig } from "domains/config";
 import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";

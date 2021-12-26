@@ -27,18 +27,18 @@ import CardDetailsDialog from "./card-details-dialog";
 import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
 import ManageCardDialog from "./manage-card-dialog";
 
-interface CardItemMenuProps extends MenuButtonProps {
+interface CardMenuProps extends MenuButtonProps {
   card: DetailedCard;
   deckTags: DeckTag[];
 }
 
 const CLONE_CARD_TOAST_ID = "cloneCardToast";
 
-export default function CardItemMenu({
+export default function CardMenu({
   card,
   deckTags,
   ...menuButtonProps
-}: CardItemMenuProps): JSX.Element {
+}: CardMenuProps): JSX.Element {
   const [bufferedCard, setBufferedCard] =
     useState<Nullable<DetailedCard>>(null);
 

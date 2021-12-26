@@ -10,13 +10,13 @@ import {
   StatNumber,
   Text,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import CustomList from "components/ui/custom-list";
-import Feedback from "components/ui/feedback";
-import SortingControls from "components/ui/sorting-controls";
-import Span from "components/ui/span";
-import SyncSpinner from "components/ui/sync-spinner";
-import { TooltipIconButton } from "components/ui/tooltip-buttons";
+import CustomButton from "components/shared/custom-button";
+import CustomList from "components/shared/custom-list";
+import Feedback from "components/shared/feedback";
+import SortingControls from "components/shared/sorting-controls";
+import Span from "components/shared/span";
+import SyncSpinner from "components/shared/sync-spinner";
+import { TooltipIconButton } from "components/shared/tooltip-buttons";
 import { STUDY_DECKS_SORT } from "consts/storage-keys";
 import { Nullable } from "domains";
 import {

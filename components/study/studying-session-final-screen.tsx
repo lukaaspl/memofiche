@@ -4,7 +4,7 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import { DECKS_QUERY_KEY, STUDYING_OVERVIEW } from "consts/query-keys";
 import {
   PostStudySessionRequestData,

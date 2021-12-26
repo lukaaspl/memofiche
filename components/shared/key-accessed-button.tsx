@@ -1,5 +1,5 @@
 import { ButtonProps } from "@chakra-ui/react";
-import MotionButton from "components/ui/motion-button";
+import MotionButton from "components/shared/motion-button";
 import { OmitMotionCollidedProps } from "domains/framer-motion";
 import useKeyUpEvent from "hooks/use-key-up-event";
 import React, { useCallback, useState } from "react";

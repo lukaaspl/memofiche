@@ -12,11 +12,10 @@ import {
   Tr,
   UnorderedList,
 } from "@chakra-ui/react";
+import PrimaryHeading from "components/shared/primary-heading";
 import Layout from "components/ui/layout";
-import PrimaryHeading from "components/ui/primary-heading";
 import { Nullable } from "domains";
 import useCommonPalette from "hooks/use-common-palette";
-import usePrivateRoute from "hooks/use-private-route";
 import useScreenWidth from "hooks/use-screen-width";
 import { range } from "lodash";
 import { NextPage } from "next";
@@ -50,7 +49,6 @@ const rowsCount = Math.max(
 const TodosPage: NextPage = () => {
   const palette = useCommonPalette();
   const { isLargerThanMD } = useScreenWidth();
-  usePrivateRoute();
 
   return (
     <Layout>

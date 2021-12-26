@@ -11,8 +11,8 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import MotionTr from "components/ui/motion-tr";
-import SyncSpinner from "components/ui/sync-spinner";
+import MotionTr from "components/shared/motion-tr";
+import SyncSpinner from "components/shared/sync-spinner";
 import dayjs from "dayjs";
 import { EnhancedDeckWithCards } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";
@@ -65,7 +65,7 @@ export default function MostRelevantDecksTable({
         </Heading>
         {isRefetching && <SyncSpinner />}
       </Flex>
-      <Table maxWidth="100%" size="sm" colorScheme="purple">
+      <Table size="sm" colorScheme="purple">
         <Thead>
           <Tr>
             {tableHeadings.map(({ label, ...tableRowProps }, index) => (

@@ -1,6 +1,6 @@
 import { Kbd, Stack, StackProps } from "@chakra-ui/react";
-import KeyAccessedButton from "components/ui/key-accessed-button";
-import Span from "components/ui/span";
+import KeyAccessedButton from "components/shared/key-accessed-button";
+import Span from "components/shared/span";
 import { DetailedCard, TransformedCard } from "domains/card";
 import { OmitMotionCollidedProps } from "domains/framer-motion";
 import { RatingControlMode } from "domains/study";

@@ -1,5 +1,5 @@
 import { Center, Text } from "@chakra-ui/react";
-import MotionBox from "components/ui/motion-box";
+import MotionBox from "components/shared/motion-box";
 import useCommonPalette from "hooks/use-common-palette";
 import React from "react";
 import { FormattedMessage } from "react-intl";

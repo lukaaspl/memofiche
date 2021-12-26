@@ -8,8 +8,8 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 import { useLocalStorage } from "beautiful-react-hooks";
-import CustomButton from "components/ui/custom-button";
-import SyncSpinner from "components/ui/sync-spinner";
+import CustomButton from "components/shared/custom-button";
+import SyncSpinner from "components/shared/sync-spinner";
 import { STUDY_TIME_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";

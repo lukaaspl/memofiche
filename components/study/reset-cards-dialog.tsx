@@ -1,7 +1,7 @@
 import { Box, Divider, Heading, Text } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Span from "components/ui/span";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
+import Span from "components/shared/span";
 import { DECKS_QUERY_KEY, DECK_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { BasicDeckDetails, ResetCardsMode } from "domains/deck";

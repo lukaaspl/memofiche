@@ -1,5 +1,5 @@
-import { Center, chakra, Text } from "@chakra-ui/react";
-import Markdown from "components/markdown";
+import { Box, Center, chakra } from "@chakra-ui/react";
+import Markdown from "components/shared/markdown";
 import { Nullable } from "domains";
 import { CardMeta } from "domains/card";
 import useTranslation from "hooks/use-translation";
@@ -78,8 +78,7 @@ export default function CardSide({
       />
       <CardMarks marks={marks} />
       <Center height="75%">
-        <Text
-          as="div"
+        <Box
           className="primary-sc"
           fontFamily="Poppins"
           fontSize="lg"
@@ -90,7 +89,7 @@ export default function CardSide({
           textAlign="center"
         >
           <Markdown>{content}</Markdown>
-        </Text>
+        </Box>
       </Center>
     </Center>
   );

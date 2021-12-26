@@ -37,7 +37,6 @@ export default function SortingControls<TFields extends string>({
   return (
     <Flex {...flexProps}>
       <FormControl
-        // w="280px"
         display="flex"
         alignItems="center"
         justifyContent={{ base: "flex-start", md: "flex-end" }}

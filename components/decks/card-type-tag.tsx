@@ -6,14 +6,14 @@ import React from "react";
 import { BsCardText } from "react-icons/bs";
 import { MdRepeat } from "react-icons/md";
 
-interface CardItemTypeTagProps extends TagProps {
+interface CardTypeTagProps extends TagProps {
   cardType: CardType;
 }
 
-export default function CardItemTypeTag({
+export default function CardTypeTag({
   cardType,
   ...tagProps
-}: CardItemTypeTagProps): JSX.Element {
+}: CardTypeTagProps): JSX.Element {
   const { $t } = useTranslation();
 
   return (

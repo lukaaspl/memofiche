@@ -7,11 +7,11 @@ import {
   ListItem,
   Stack,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import CustomList from "components/ui/custom-list";
-import Feedback from "components/ui/feedback";
-import SortingControls from "components/ui/sorting-controls";
-import SyncSpinner from "components/ui/sync-spinner";
+import CustomButton from "components/shared/custom-button";
+import CustomList from "components/shared/custom-list";
+import Feedback from "components/shared/feedback";
+import SortingControls from "components/shared/sorting-controls";
+import SyncSpinner from "components/shared/sync-spinner";
 import { DECKS_SORT } from "consts/storage-keys";
 import { DeckSort } from "domains/deck";
 import useDecksQuery from "hooks/use-decks-query";

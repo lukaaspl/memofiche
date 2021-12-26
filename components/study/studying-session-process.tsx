@@ -3,7 +3,7 @@ import Flashcard from "components/study/flashcard";
 import RatingControls from "components/study/rating-controls";
 import StudyingProgressBar from "components/study/studying-progress-bar";
 import StudyingTopBar from "components/study/studying-top-bar";
-import KeyAccessedButton from "components/ui/key-accessed-button";
+import KeyAccessedButton from "components/shared/key-accessed-button";
 import { AnimatePresence, useIsPresent } from "framer-motion";
 import useScreenWidth from "hooks/use-screen-width";
 import { StudyingOperations, StudyingState } from "hooks/use-studying";
