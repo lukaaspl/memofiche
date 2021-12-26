@@ -79,6 +79,7 @@ export default function CardSide({
       <CardMarks marks={marks} />
       <Center height="75%">
         <Text
+          as="div"
           className="primary-sc"
           fontFamily="Poppins"
           fontSize="lg"

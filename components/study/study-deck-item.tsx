@@ -83,6 +83,7 @@ export default function StudyDeckItem({
       <GoBackButton />
       <AnimatePresence initial={false} exitBeforeEnter>
         <MotionBox
+          mt={{ base: 4, md: 8 }}
           key={Number(state.isFinished)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

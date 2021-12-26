@@ -1,6 +1,6 @@
 import {
   Flex,
-  HStack,
+  Stack,
   Stat,
   StatArrow,
   StatGroup,
@@ -17,6 +17,7 @@ import Span from "components/ui/span";
 import { Nullable } from "domains";
 import { StudySessionsWithDeviations } from "domains/study";
 import { motion, TargetAndTransition, useAnimation } from "framer-motion";
+import useScreenWidth from "hooks/use-screen-width";
 import useTranslation from "hooks/use-translation";
 import Link from "next/link";
 import React, { useEffect } from "react";
@@ -41,7 +42,7 @@ function SessionStudyStatContent({
 
   return (
     <>
-      <StatLabel>{stat.label}</StatLabel>
+      <StatLabel fontSize={{ base: "xl", md: "sm" }}>{stat.label}</StatLabel>
       <StatNumber>{stat.value}</StatNumber>
       <Flex mt={1} justify="center" align="center">
         <Tooltip
@@ -110,7 +111,9 @@ const MotionStat = motion<StatProps>(Stat);
 export default function StudyingSessionSummary({
   data,
 }: StudyingSessionSummaryProps): JSX.Element {
+  const { isLargerThanMD } = useScreenWidth();
   const { $t } = useTranslation();
+
   const [upperStatsControls, lowerStatsControls, ctasControls] = [
     useAnimation(),
     useAnimation(),
@@ -186,44 +189,72 @@ export default function StudyingSessionSummary({
 
   return (
     <>
-      <StatGroup mt={8} textAlign="center">
-        {upperStats.map((stat, index) => (
-          <MotionStat
-            key={index}
-            initial={{ opacity: 0, y: -30 }}
-            animate={upperStatsControls}
-            custom={index}
-          >
-            <SessionStudyStatContent stat={stat} />
-          </MotionStat>
-        ))}
-      </StatGroup>
-      <StatGroup mt={8} textAlign="center">
-        {lowerStats.map((stat, index) => (
-          <MotionStat
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            animate={lowerStatsControls}
-            custom={index}
-          >
-            <SessionStudyStatContent stat={stat} />
-          </MotionStat>
-        ))}
-      </StatGroup>
+      {isLargerThanMD ? (
+        <>
+          <StatGroup mt={8} textAlign="center">
+            {upperStats.map((stat, index) => (
+              <MotionStat
+                key={index}
+                initial={{ opacity: 0, y: -30 }}
+                animate={upperStatsControls}
+                custom={index}
+              >
+                <SessionStudyStatContent stat={stat} />
+              </MotionStat>
+            ))}
+          </StatGroup>
+          <StatGroup mt={8} textAlign="center">
+            {lowerStats.map((stat, index) => (
+              <MotionStat
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={lowerStatsControls}
+                custom={index}
+              >
+                <SessionStudyStatContent stat={stat} />
+              </MotionStat>
+            ))}
+          </StatGroup>
+        </>
+      ) : (
+        <StatGroup
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+        >
+          {[...lowerStats, ...upperStats].map((stat, index) => (
+            <MotionStat
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={lowerStatsControls}
+              custom={index}
+              mt={8}
+            >
+              <SessionStudyStatContent stat={stat} />
+            </MotionStat>
+          ))}
+        </StatGroup>
+      )}
       <MotionBox initial={{ opacity: 0, y: 30 }} animate={ctasControls}>
-        <HStack justify="center" mt={12} spacing={3}>
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          justify="center"
+          mt={12}
+          spacing={3}
+        >
           <Link href="/study" passHref>
             <CustomButton colorScheme="purple">
               {$t({ defaultMessage: "Study another deck" })}
             </CustomButton>
           </Link>
-          <Text>{$t({ defaultMessage: "or" })}</Text>
+          <Text textAlign="center">{$t({ defaultMessage: "or" })}</Text>
           <Link href="/" passHref>
             <CustomButton colorScheme="gray">
               {$t({ defaultMessage: "Visit the dashboard" })}
             </CustomButton>
           </Link>
-        </HStack>
+        </Stack>
       </MotionBox>
     </>
   );

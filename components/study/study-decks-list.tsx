@@ -1,10 +1,10 @@
 import {
+  Box,
   Divider,
   Flex,
   Heading,
   HStack,
   Stack,
-  Stat,
   StatHelpText,
   StatLabel,
   StatNumber,
@@ -26,6 +26,7 @@ import {
 } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";
 import useDecksQuery from "hooks/use-decks-query";
+import useScreenWidth from "hooks/use-screen-width";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useSortState from "hooks/use-sort-state";
 import useTranslation from "hooks/use-translation";
@@ -37,6 +38,7 @@ import ResetCardsDialog from "./reset-cards-dialog";
 
 export default function StudyDecksList(): JSX.Element {
   const { $t } = useTranslation();
+  const { isLargerThanMD } = useScreenWidth();
   const palette = useCommonPalette();
 
   const { sortState, updateField, updateOrder } = useSortState<
@@ -78,8 +80,14 @@ export default function StudyDecksList(): JSX.Element {
 
   return (
     <>
-      <Flex justify="space-between" align="center">
-        <Heading display="flex" size="md" mt={5} mb={3}>
+      <Flex
+        justify={{ base: "flex-start", md: "space-between" }}
+        align={{ base: "flex-start", md: "flex-end" }}
+        direction={{ base: "column", md: "row" }}
+        mt={{ base: 4, md: 8 }}
+        mb={3}
+      >
+        <Heading display="flex" size="md" mb={{ base: 3, md: 0 }}>
           <span>{$t({ defaultMessage: "Choose a deck to study" })}</span>
           {isRefetching && <SyncSpinner />}
         </Heading>
@@ -140,10 +148,24 @@ export default function StudyDecksList(): JSX.Element {
           const isDisabled = deck.studyingCardsCount === 0;
 
           return (
-            <Flex width="100%" justify="space-between" align="center">
-              <Stat opacity={isDisabled ? 0.8 : 1}>
-                <HStack>
-                  <StatLabel fontSize="larger" fontWeight="bold">
+            <Flex
+              width="100%"
+              direction={{ base: "column", md: "row" }}
+              justify={{ base: "flex-start", md: "space-between" }}
+              align={{ base: "flex-start", md: "center" }}
+            >
+              <Box
+                width={{ base: "100%", md: "unset" }}
+                mb={{ base: 1.5, md: 0 }}
+                opacity={isDisabled ? 0.8 : 1}
+              >
+                <HStack justify={{ base: "space-between", md: "flex-start" }}>
+                  <StatLabel
+                    isTruncated
+                    maxW="45vw"
+                    fontSize="larger"
+                    fontWeight="bold"
+                  >
                     {deck.name}
                   </StatLabel>
                   <HStack spacing={1}>
@@ -188,25 +210,34 @@ export default function StudyDecksList(): JSX.Element {
                   </Span>
                   /{deck.cardsCount}
                 </StatNumber>
-                <StatHelpText fontSize="small">
-                  {$t({ defaultMessage: "Cards ready to learn / total" })}
-                </StatHelpText>
-              </Stat>
+                {isLargerThanMD && (
+                  <StatHelpText fontSize="small">
+                    {$t({ defaultMessage: "Cards ready to learn / total" })}
+                  </StatHelpText>
+                )}
+              </Box>
               <Stack direction="column" align="flex-end" spacing={2}>
                 {isDisabled ? (
                   <>
                     {deck.cardsCount === 0 ? (
                       <>
                         <Link href={`/decks/${deck.id}?add-card=true`} passHref>
-                          <CustomButton colorScheme="purple" variant="outline">
+                          <CustomButton
+                            size={isLargerThanMD ? "md" : "sm"}
+                            colorScheme="purple"
+                            variant="outline"
+                          >
                             {$t({ defaultMessage: "Build your deck" })}
                           </CustomButton>
                         </Link>
-                        <Text fontSize="small">
-                          {$t({
-                            defaultMessage: "Add some cards to start studying",
-                          })}
-                        </Text>
+                        {isLargerThanMD && (
+                          <Text fontSize="small">
+                            {$t({
+                              defaultMessage:
+                                "Add some cards to start studying",
+                            })}
+                          </Text>
+                        )}
                       </>
                     ) : (
                       <Text fontSize="small">
@@ -217,7 +248,11 @@ export default function StudyDecksList(): JSX.Element {
                   </>
                 ) : (
                   <Link href={`/study/${deck.id}`} passHref>
-                    <CustomButton variant="solid" colorScheme="purple">
+                    <CustomButton
+                      size={isLargerThanMD ? "md" : "sm"}
+                      variant="solid"
+                      colorScheme="purple"
+                    >
                       {$t({ defaultMessage: "Start studying" })}
                     </CustomButton>
                   </Link>

@@ -65,7 +65,7 @@ export default function MostRelevantDecksTable({
         </Heading>
         {isRefetching && <SyncSpinner />}
       </Flex>
-      <Table size="sm" colorScheme="purple">
+      <Table maxWidth="100%" size="sm" colorScheme="purple">
         <Thead>
           <Tr>
             {tableHeadings.map(({ label, ...tableRowProps }, index) => (

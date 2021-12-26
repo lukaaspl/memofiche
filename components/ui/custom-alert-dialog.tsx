@@ -9,6 +9,7 @@ import {
   AlertDialogProps,
 } from "@chakra-ui/react";
 import { Nullable } from "domains";
+import useScreenWidth from "hooks/use-screen-width";
 import useTranslation from "hooks/use-translation";
 import React, { useRef } from "react";
 import CustomButton from "./custom-button";
@@ -41,6 +42,7 @@ export default function CustomAlertDialog({
   ...modalProps
 }: CustomAlertDialogProps): JSX.Element {
   const { $t } = useTranslation();
+  const { isLargerThanSM } = useScreenWidth();
   const leastDestructiveRef = useRef<Nullable<HTMLButtonElement>>(null);
 
   return (
@@ -48,6 +50,7 @@ export default function CustomAlertDialog({
       onClose={onClose}
       leastDestructiveRef={leastDestructiveRef}
       {...modalProps}
+      size={isLargerThanSM ? modalProps.size : "full"}
     >
       <AlertDialogOverlay>
         <AlertDialogContent>

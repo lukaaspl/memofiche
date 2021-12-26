@@ -1,10 +1,11 @@
 import {
+  Box,
   Divider,
   Flex,
   Heading,
-  HStack,
   List,
   ListItem,
+  Stack,
 } from "@chakra-ui/react";
 import CustomButton from "components/ui/custom-button";
 import CustomList from "components/ui/custom-list";
@@ -50,8 +51,14 @@ export default function DecksList(): JSX.Element {
 
   return (
     <>
-      <Flex justify="space-between" align="center">
-        <Heading display="flex" size="md" mt={5} mb={3}>
+      <Flex
+        justify={{ base: "flex-start", md: "space-between" }}
+        align={{ base: "flex-start", md: "flex-end" }}
+        direction={{ base: "column", md: "row" }}
+        mt={{ base: 4, md: 8 }}
+        mb={3}
+      >
+        <Heading display="flex" size="md" mb={{ base: 3, md: 0 }}>
           <span>
             {$t(
               { defaultMessage: "Your decks ({count})" },
@@ -60,7 +67,11 @@ export default function DecksList(): JSX.Element {
           </span>
           {isRefetching && <SyncSpinner />}
         </Heading>
-        <HStack spacing={2}>
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          align="flex-start"
+          spacing={{ base: 3, md: 2 }}
+        >
           <SortingControls<DeckSort["sortBy"]>
             options={[
               {
@@ -95,7 +106,7 @@ export default function DecksList(): JSX.Element {
             isOpen={isNewDeckDialogOpen}
             onClose={onNewDeckDialogClose}
           />
-        </HStack>
+        </Stack>
       </Flex>
       <Divider />
       {decks.length === 0 && (
@@ -115,7 +126,7 @@ export default function DecksList(): JSX.Element {
         selectId={(deck) => deck.id}
         isFavorite={(deck) => deck.isFavorite}
         renderItem={(deck) => (
-          <>
+          <Box px={{ base: 1, md: 2 }} py={{ base: 0, md: 2 }}>
             <Heading size="sm">{deck.name}</Heading>
             <List my={1}>
               <ListItem fontSize="smaller">
@@ -130,7 +141,7 @@ export default function DecksList(): JSX.Element {
                 {$t({ defaultMessage: "Cards" })}: <b>{deck.cards.length}</b>
               </ListItem>
             </List>
-          </>
+          </Box>
         )}
         generateLinkHref={(deck) => `/decks/${deck.id}`}
       />

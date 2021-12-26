@@ -128,7 +128,7 @@ export default function ManageDeckDialog({
   return (
     <CustomDialog
       isOpen={isOpen}
-      size="xl"
+      size="lg"
       onClose={onClose}
       initialFocusRef={initialRef}
       title={
@@ -137,7 +137,12 @@ export default function ManageDeckDialog({
           : $t({ defaultMessage: "Add a new deck" })
       }
       render={({ Body, Footer }) => (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          flex={1}
+          display="flex"
+          flexDirection="column"
+        >
           <Body>
             <FormControl isRequired>
               <FormLabel>{$t({ defaultMessage: "Deck name" })}</FormLabel>

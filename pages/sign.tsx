@@ -96,10 +96,10 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
   return (
     <Center h="100vh">
       <Box
-        px="10"
+        px={{ base: 5, sm: 7, md: 10 }}
         py="8"
         shadow={palette.containerShadow}
-        minW="lg"
+        minW={{ base: "sm", sm: "md", md: "lg" }}
         rounded="xl"
         textAlign="center"
       >

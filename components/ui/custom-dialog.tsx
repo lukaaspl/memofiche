@@ -11,6 +11,7 @@ import {
   ModalOverlay,
   ModalProps,
 } from "@chakra-ui/react";
+import useScreenWidth from "hooks/use-screen-width";
 import React from "react";
 
 type ModalPropsWithoutChildren = Omit<ModalProps, "children">;
@@ -30,8 +31,10 @@ export default function CustomDialog({
   render,
   ...modalProps
 }: CustomDialogProps): JSX.Element {
+  const { isLargerThanSM } = useScreenWidth();
+
   return (
-    <Modal {...modalProps}>
+    <Modal {...modalProps} size={isLargerThanSM ? modalProps.size : "full"}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>

@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  BoxProps,
   Flex,
   List,
   ListIcon,
@@ -35,7 +36,7 @@ type UserPanelMenuItem = {
   onClick?: (event: React.MouseEvent<HTMLLIElement>) => void;
 };
 
-export default function FloatingUserPanel(): JSX.Element {
+export default function FloatingUserPanel(boxProps: BoxProps): JSX.Element {
   const { name, email } = useMe();
   const { locale, onLocaleChange } = useIntlConfig();
   const { $t } = useTranslation();
@@ -81,7 +82,7 @@ export default function FloatingUserPanel(): JSX.Element {
   );
 
   return (
-    <Box position="fixed" right={3} top={4}>
+    <Box {...boxProps}>
       <Popover strategy="fixed" placement="bottom-end">
         <PopoverTrigger>
           <Avatar

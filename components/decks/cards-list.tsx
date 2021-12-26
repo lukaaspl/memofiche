@@ -1,48 +1,32 @@
 import {
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
+  Box,
+  Heading,
+  SimpleGrid,
   Table,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
   Tbody,
   Td,
   Text,
   Th,
   Thead,
   Tr,
-  useToast,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
-import { CardType } from "@prisma/client";
 import Feedback from "components/ui/feedback";
-import { cardTypeDetailsByType } from "consts/card-types";
-import { Nullable } from "domains";
 import { DetailedCard } from "domains/card";
 import { DeckTag } from "domains/tags";
 import useCommonPalette from "hooks/use-common-palette";
-import useCreateCardMutation from "hooks/use-create-card-mutation";
-import useSimpleDisclosure from "hooks/use-simple-disclosure";
+import useScreenWidth from "hooks/use-screen-width";
 import useTranslation from "hooks/use-translation";
 import { truncate } from "lodash";
-import React, { useMemo, useState } from "react";
-import { BsCardText } from "react-icons/bs";
-import {
-  MdContentCopy,
-  MdDelete,
-  MdEdit,
-  MdInfoOutline,
-  MdMoreHoriz,
-  MdRepeat,
-} from "react-icons/md";
-import { TagsConverter } from "utils/tags";
-import CardDetailsDialog from "./card-details-dialog";
-import DeleteCardConfirmationDialog from "./delete-card-confirmation-dialog";
-import ManageCardDialog from "./manage-card-dialog";
+import React, { useMemo } from "react";
+import CardItemMenu from "./card-item-menu";
+import CardItemTypeTag from "./card-item-type-tag";
+import ItemTags from "./item-tags";
+
+const CARD_CHARS_LIMIT = 150;
+
+function shortenCardText(value: string): string {
+  return truncate(value, { length: CARD_CHARS_LIMIT });
+}
 
 interface CardsListProps {
   cards: DetailedCard[];
@@ -50,67 +34,22 @@ interface CardsListProps {
   onNewCardDialogOpen: () => void;
 }
 
-const TABLE_CELL_CHARS_LIMIT = 150;
-const CLONE_CARD_TOAST_ID = "cloneCardToast";
-
 export default function CardsList({
   cards,
   deckTags,
   onNewCardDialogOpen,
 }: CardsListProps): JSX.Element {
-  const [bufferedCard, setBufferedCard] =
-    useState<Nullable<DetailedCard>>(null);
-
-  const [
-    isCardDetailsDialogOpen,
-    onCardDetailsDialogOpen,
-    onCardDetailsDialogClose,
-  ] = useSimpleDisclosure();
-
-  const [isEditCardDialogOpen, onEditCardDialogOpen, onEditCardDialogClose] =
-    useSimpleDisclosure();
-
-  const [
-    isDeleteCardConfirmationDialogOpen,
-    onDeleteCardConfirmationDialogOpen,
-    onDeleteCardConfirmationDialogClose,
-  ] = useSimpleDisclosure();
-
+  const { isLargerThanMD } = useScreenWidth();
   const { $t } = useTranslation();
-  const toast = useToast();
   const palette = useCommonPalette();
 
-  const cloneCardMutation = useCreateCardMutation({
-    onMutate: () => {
-      toast({
-        description: $t({ defaultMessage: "Cloning the card..." }),
-        duration: null,
-        id: CLONE_CARD_TOAST_ID,
-        isClosable: false,
-        status: "info",
-      });
-    },
-    onSuccess: () => {
-      toast.close(CLONE_CARD_TOAST_ID);
-    },
-    onError: () => {
-      toast.update(CLONE_CARD_TOAST_ID, {
-        description: $t({ defaultMessage: "Cloning card failed" }),
-        duration: 5000,
-        isClosable: true,
-        status: "error",
-      });
-    },
-  });
-
-  const tableHeadings = useMemo(
-    () => [
-      $t({ defaultMessage: "Type" }),
-      $t({ defaultMessage: "Obverse" }),
-      $t({ defaultMessage: "Reverse" }),
-      $t({ defaultMessage: "Tags" }),
-      "",
-    ],
+  const headings = useMemo(
+    () => ({
+      type: $t({ defaultMessage: "Type" }),
+      obverse: $t({ defaultMessage: "Obverse" }),
+      reverse: $t({ defaultMessage: "Reverse" }),
+      tags: $t({ defaultMessage: "Tags" }),
+    }),
     [$t]
   );
 
@@ -130,126 +69,114 @@ export default function CardsList({
 
   return (
     <>
-      <Table mt={5} variant="simple" colorScheme="purple">
-        <Thead>
-          <Tr>
-            {tableHeadings.map((heading) => (
-              <Th
-                key={heading}
-                fontSize="sm"
-                fontFamily="Poppins"
-                color={palette.primaryDark}
-              >
-                {heading}
-              </Th>
-            ))}
-          </Tr>
-        </Thead>
-        <Tbody>
-          {cards.map((card) => (
-            <Tr key={card.id}>
-              <Td>
-                <Tag variant="solid" colorScheme="purple">
-                  <TagLeftIcon
-                    as={card.type === CardType.Reverse ? MdRepeat : BsCardText}
-                    fontSize={19}
-                  />
-                  <TagLabel>
-                    {$t(cardTypeDetailsByType[card.type].titleDescriptor)}
-                  </TagLabel>
-                </Tag>
-              </Td>
-              <Td>
-                <Text>
-                  {truncate(card.obverse, { length: TABLE_CELL_CHARS_LIMIT })}
-                </Text>
-              </Td>
-              <Td>
-                <Text>
-                  {truncate(card.reverse, { length: TABLE_CELL_CHARS_LIMIT })}
-                </Text>
-              </Td>
-              <Td>
-                <Wrap>
-                  {TagsConverter.extractNames(card.tags).map(
-                    (tagName, index) => (
-                      <WrapItem key={index}>
-                        <Tag variant="subtle" colorScheme="purple">
-                          <TagLabel>{tagName}</TagLabel>
-                        </Tag>
-                      </WrapItem>
-                    )
-                  )}
-                </Wrap>
-              </Td>
-              <Td textAlign="right">
-                <Menu>
-                  <MenuButton
-                    as={IconButton}
-                    aria-label={$t({ defaultMessage: "Actions" })}
-                    icon={<MdMoreHoriz size={22} />}
-                    colorScheme="purple"
-                    variant="ghost"
-                    onClick={() => setBufferedCard(card)}
-                  />
-                  <MenuList>
-                    <MenuItem
-                      icon={<MdInfoOutline size={18} />}
-                      onClick={onCardDetailsDialogOpen}
-                    >
-                      {$t({ defaultMessage: "Show details" })}
-                    </MenuItem>
-                    <MenuItem
-                      icon={<MdContentCopy size={18} />}
-                      onClick={() =>
-                        cloneCardMutation.mutate({
-                          ...card,
-                          tags: TagsConverter.extractNames(card.tags),
-                        })
-                      }
-                      isDisabled={cloneCardMutation.isLoading}
-                    >
-                      {$t({ defaultMessage: "Clone card" })}
-                    </MenuItem>
-                    <MenuItem
-                      icon={<MdEdit size={18} />}
-                      onClick={onEditCardDialogOpen}
-                    >
-                      {$t({ defaultMessage: "Edit card" })}
-                    </MenuItem>
-                    <MenuItem
-                      color={palette.red}
-                      icon={<MdDelete size={18} />}
-                      onClick={onDeleteCardConfirmationDialogOpen}
-                    >
-                      {$t({ defaultMessage: "Delete card" })}
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
-              </Td>
+      {isLargerThanMD ? (
+        <Table mt={5} variant="simple" colorScheme="purple">
+          <Thead>
+            <Tr>
+              {Object.values(headings)
+                .concat("")
+                .map((heading) => (
+                  <Th
+                    key={heading}
+                    fontSize="sm"
+                    fontFamily="Poppins"
+                    color={palette.primaryDark}
+                  >
+                    {heading}
+                  </Th>
+                ))}
             </Tr>
-          ))}
-        </Tbody>
-      </Table>
-      {bufferedCard && (
-        <>
-          <CardDetailsDialog
-            card={bufferedCard}
-            isOpen={isCardDetailsDialogOpen}
-            onClose={onCardDetailsDialogClose}
-          />
-          <ManageCardDialog
-            editingCard={bufferedCard}
-            deckTags={deckTags}
-            isOpen={isEditCardDialogOpen}
-            onClose={onEditCardDialogClose}
-          />
-          <DeleteCardConfirmationDialog
-            card={bufferedCard}
-            isOpen={isDeleteCardConfirmationDialogOpen}
-            onClose={onDeleteCardConfirmationDialogClose}
-          />
-        </>
+          </Thead>
+          <Tbody>
+            {cards.map((card) => (
+              <Tr key={card.id}>
+                <Td>
+                  <CardItemTypeTag cardType={card.type} />
+                </Td>
+                <Td>
+                  <Text>{shortenCardText(card.obverse)}</Text>
+                </Td>
+                <Td>
+                  <Text>{shortenCardText(card.reverse)}</Text>
+                </Td>
+                <Td>
+                  <ItemTags tags={card.tags} />
+                </Td>
+                <Td textAlign="right">
+                  <CardItemMenu card={card} deckTags={deckTags} />
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      ) : (
+        cards.map((card) => (
+          <Box
+            key={card.id}
+            mt={6}
+            p={3}
+            pb={10}
+            borderTop="4px solid"
+            borderColor={palette.primary}
+            borderRadius="md"
+            minH="130px"
+            position="relative"
+            boxShadow="md"
+          >
+            <SimpleGrid columns={2} spacing={4} width="90%">
+              <Box>
+                <Heading
+                  size="xs"
+                  fontFamily="Poppins"
+                  color={palette.primary}
+                  mb={1}
+                >
+                  {headings.obverse}
+                </Heading>
+                <Text>{shortenCardText(card.obverse)}</Text>
+              </Box>
+              <Box>
+                <Heading
+                  size="xs"
+                  fontFamily="Poppins"
+                  color={palette.primary}
+                  mb={1}
+                >
+                  {headings.reverse}
+                </Heading>
+                <Text>{shortenCardText(card.reverse)}</Text>
+              </Box>
+              {card.tags.length > 0 && (
+                <Box gridColumn="1 / 3">
+                  <Heading
+                    size="xs"
+                    fontFamily="Poppins"
+                    color={palette.primary}
+                    mb={2}
+                  >
+                    {headings.tags}
+                  </Heading>
+                  <ItemTags tags={card.tags} />
+                </Box>
+              )}
+            </SimpleGrid>
+            <CardItemTypeTag
+              cardType={card.type}
+              borderRadius="none"
+              borderTopLeftRadius="lg"
+              position="absolute"
+              bottom="0"
+              right="0"
+            />
+            <CardItemMenu
+              position="absolute"
+              right="0"
+              top="0"
+              card={card}
+              deckTags={deckTags}
+            />
+          </Box>
+        ))
       )}
     </>
   );

@@ -19,7 +19,6 @@ import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-
 interface EditProfileDialogProps {
   profile: DetailedProfile;
   isOpen: boolean;
@@ -98,7 +97,12 @@ export default function EditProfileDialog({
       isOpen={isOpen}
       onClose={onClose}
       render={({ Body, Footer }) => (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          display="flex"
+          flexDirection="column"
+          flex={1}
+        >
           <Body>
             <Stack direction="column" spacing={4}>
               <FormControl>

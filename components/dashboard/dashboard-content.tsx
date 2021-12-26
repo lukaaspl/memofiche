@@ -72,7 +72,12 @@ export default function DashboardContent(): JSX.Element {
   const { data: decks } = decksQuery;
 
   return (
-    <SimpleGrid mt={6} columns={2} spacingX={12} spacingY={10}>
+    <SimpleGrid
+      mt={{ base: 4, md: 8 }}
+      columns={{ base: 1, lg: 2 }}
+      spacingX={12}
+      spacingY={10}
+    >
       <StudyTimeChart
         data={overview.studyingSummary}
         isRefetching={overviewQuery.isRefetching}

@@ -163,8 +163,17 @@ export default function ManageCardDialog({
       render={({ Body, Footer }) => (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Body>
-            <Flex justify="space-between">
-              <Stack direction="column" spacing={4} flexBasis="50%" mr={8}>
+            <Flex
+              direction={{ base: "column", md: "row" }}
+              justify={{ base: "flex-start", md: "space-between" }}
+            >
+              <Stack
+                direction="column"
+                spacing={4}
+                flexBasis="50%"
+                mr={{ base: 0, md: 8 }}
+                mb={{ base: 4, md: 0 }}
+              >
                 <FormControl isRequired>
                   <FormLabel>{$t({ defaultMessage: "Obverse" })}</FormLabel>
                   <Textarea

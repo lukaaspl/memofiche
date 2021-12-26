@@ -84,7 +84,7 @@ export default function ResetPasswordForm(): JSX.Element {
       >
         {$t({ defaultMessage: "Reset password" })}
       </PrimaryHeading>
-      <Form onSubmit={onSubmit} mt={5} minW="400px" w="50%">
+      <Form onSubmit={onSubmit} mt={5} maxWidth="500px">
         <FormControl mt={4} isRequired>
           <FormLabel>{$t({ defaultMessage: "Current password" })}</FormLabel>
           <Input

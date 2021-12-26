@@ -50,7 +50,12 @@ export default function StudiedCardsChart({
 
   return (
     <Box>
-      <Flex mb={7} justify="space-between" align="center">
+      <Flex
+        mb={7}
+        direction={{ base: "column", sm: "row" }}
+        justify={{ base: "flex-start", sm: "space-between" }}
+        align={{ base: "flex-start", sm: "center" }}
+      >
         <Flex align="center">
           <Heading
             color={chartPalette.primary}
@@ -71,6 +76,7 @@ export default function StudiedCardsChart({
           size="sm"
           isAttached
           variant="outline"
+          mt={{ base: 2, sm: 0 }}
         >
           <CustomButton
             onClick={() => setIsTotalMode(() => true)}

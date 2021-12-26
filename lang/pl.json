@@ -345,7 +345,7 @@
     "defaultMessage": "Głęboki reset oznacza, że wszystkie parametry kart zostaną przywrócone do swojego pierwotnego stanu, tak jakby karty zostały dopiero utworzone. Dotychczasowe statystki systemu odkładania kart w czasie zostaną zapomniane."
   },
   "grdxdO": {
-    "defaultMessage": "Zacznij naukę"
+    "defaultMessage": "Rozpocznij naukę"
   },
   "h4sNB+": {
     "defaultMessage": "Klonuj kartę"
@@ -561,7 +561,7 @@
     "defaultMessage": "Resetuj karty"
   },
   "ytuF3Q": {
-    "defaultMessage": "Ucz się dalej"
+    "defaultMessage": "Kontynuuj naukę"
   },
   "zO+fCo": {
     "defaultMessage": "Ilość kart"
