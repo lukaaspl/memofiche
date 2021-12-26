@@ -17,7 +17,7 @@ export default function StudyingProgressBar({
   return (
     <Progress
       borderRadius="md"
-      mb={14}
+      mb={{ base: 7, md: 14 }}
       colorScheme="purple"
       height="35px"
       min={0}

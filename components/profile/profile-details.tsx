@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import useCommonPalette from "hooks/use-common-palette";
 import useMe from "hooks/use-me";
 import useProfileQuery from "hooks/use-profile-query";
@@ -57,18 +57,24 @@ export default function ProfileDetails(): JSX.Element {
     <Flex
       position="relative"
       boxShadow={palette.containerShadow}
-      mt={16}
+      flexDirection={{ base: "column", md: "row" }}
+      alignItems={{ base: "center", md: "flex-start" }}
+      mt={{ base: 5, md: 8 }}
       px={5}
       py={10}
     >
       <ProfileDetailsAvatar avatar={profile.avatar} />
-      <Box pl={8}>
+      <Box
+        pl={{ base: 0, md: 8 }}
+        pt={{ base: 5, md: 0 }}
+        textAlign={{ base: "center", md: "left" }}
+      >
         {fullName.length > 0 && (
           <Heading fontFamily="Poppins" size="2xl" letterSpacing="1px">
             {fullName}
           </Heading>
         )}
-        <List spacing={2} mt={4}>
+        <List spacing={2} mt={{ base: 6, md: 4 }}>
           {availableDetailsListItems.map((item, index) => (
             <ListItem key={index}>
               <Heading

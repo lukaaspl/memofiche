@@ -6,9 +6,9 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Form from "components/ui/form";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
+import Form from "components/shared/form";
 import { PROFILE_QUERY_KEY } from "consts/query-keys";
 import { Nullable } from "domains";
 import { UpdateProfileRequestData } from "domains/profile";
@@ -19,7 +19,6 @@ import { authApiClient } from "lib/axios";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-
 interface EditProfileDialogProps {
   profile: DetailedProfile;
   isOpen: boolean;
@@ -98,7 +97,12 @@ export default function EditProfileDialog({
       isOpen={isOpen}
       onClose={onClose}
       render={({ Body, Footer }) => (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          display="flex"
+          flexDirection="column"
+          flex={1}
+        >
           <Body>
             <Stack direction="column" spacing={4}>
               <FormControl>

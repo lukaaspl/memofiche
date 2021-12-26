@@ -5,9 +5,9 @@ import {
   Input,
 } from "@chakra-ui/react";
 import axios from "axios";
-import CustomButton from "components/ui/custom-button";
-import Form from "components/ui/form";
-import PrimaryHeading from "components/ui/primary-heading";
+import CustomButton from "components/shared/custom-button";
+import Form from "components/shared/form";
+import PrimaryHeading from "components/shared/primary-heading";
 import { ResetPasswordData } from "domains/config";
 import useCommonPalette from "hooks/use-common-palette";
 import useErrorToast from "hooks/use-error-toast";
@@ -84,7 +84,7 @@ export default function ResetPasswordForm(): JSX.Element {
       >
         {$t({ defaultMessage: "Reset password" })}
       </PrimaryHeading>
-      <Form onSubmit={onSubmit} mt={5} minW="400px" w="50%">
+      <Form onSubmit={onSubmit} mt={5} maxWidth="500px">
         <FormControl mt={4} isRequired>
           <FormLabel>{$t({ defaultMessage: "Current password" })}</FormLabel>
           <Input

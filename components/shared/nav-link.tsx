@@ -17,7 +17,7 @@ export default function NavLink({
   const isActive = exact ? pathname === href : pathname.startsWith(href);
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <a className={clsx({ active: isActive })}>{render(isActive)}</a>
     </Link>
   );

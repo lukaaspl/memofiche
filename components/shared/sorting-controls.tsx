@@ -37,10 +37,9 @@ export default function SortingControls<TFields extends string>({
   return (
     <Flex {...flexProps}>
       <FormControl
-        w="280px"
         display="flex"
         alignItems="center"
-        justifyContent="flex-end"
+        justifyContent={{ base: "flex-start", md: "flex-end" }}
         mr={1}
       >
         <FormLabel mb={0}>{$t({ defaultMessage: "Sort by" })}</FormLabel>

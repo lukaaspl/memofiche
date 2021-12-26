@@ -11,8 +11,8 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import MotionTr from "components/ui/motion-tr";
-import SyncSpinner from "components/ui/sync-spinner";
+import MotionTr from "components/shared/motion-tr";
+import SyncSpinner from "components/shared/sync-spinner";
 import dayjs from "dayjs";
 import { EnhancedDeckWithCards } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";

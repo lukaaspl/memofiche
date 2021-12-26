@@ -3,8 +3,9 @@ import Flashcard from "components/study/flashcard";
 import RatingControls from "components/study/rating-controls";
 import StudyingProgressBar from "components/study/studying-progress-bar";
 import StudyingTopBar from "components/study/studying-top-bar";
-import KeyAccessedButton from "components/ui/key-accessed-button";
+import KeyAccessedButton from "components/shared/key-accessed-button";
 import { AnimatePresence, useIsPresent } from "framer-motion";
+import useScreenWidth from "hooks/use-screen-width";
 import { StudyingOperations, StudyingState } from "hooks/use-studying";
 import React, { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
@@ -22,6 +23,7 @@ export default function StudyingSessionProcess({
 }: StudyingSessionProcessProps): JSX.Element {
   assert(state.isStarted);
 
+  const { isLargerThanMD } = useScreenWidth();
   const isPresent = useIsPresent();
 
   const studyingCardsCount = state.studyingCards.length;
@@ -51,7 +53,12 @@ export default function StudyingSessionProcess({
         isFlipped={state.isCardFlipped}
         isPaused={state.isPaused}
       />
-      <Stack direction="column" alignItems="center" spacing={14} mt={6}>
+      <Stack
+        direction="column"
+        alignItems="center"
+        spacing={{ base: 7, md: 14 }}
+        mt={6}
+      >
         <KeyAccessedButton
           keyCode="KeyF"
           animationTime={0.1}
@@ -61,14 +68,16 @@ export default function StudyingSessionProcess({
           isDisabled={state.isPaused || !isPresent}
           colorScheme="purple"
         >
-          <Kbd
-            marginRight={2}
-            backgroundColor="gray.100"
-            color="blackAlpha.900"
-            fontSize="small"
-          >
-            F
-          </Kbd>
+          {isLargerThanMD && (
+            <Kbd
+              marginRight={2}
+              backgroundColor="gray.100"
+              color="blackAlpha.900"
+              fontSize="small"
+            >
+              F
+            </Kbd>
+          )}
           <FormattedMessage defaultMessage="Flip the card" />
         </KeyAccessedButton>
         <AnimatePresence exitBeforeEnter>

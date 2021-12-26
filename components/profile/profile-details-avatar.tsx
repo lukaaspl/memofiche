@@ -134,7 +134,13 @@ export default function ProfileDetailsAvatar({
   };
 
   return (
-    <Box borderRight="2px solid" borderColor="gray.200" pr={8}>
+    <Box
+      borderColor="gray.200"
+      borderRight={{ base: "none", md: "2px solid" }}
+      borderBottom={{ base: "2px solid", md: "none" }}
+      pr={{ base: 0, md: 8 }}
+      pb={{ base: 5, md: 0 }}
+    >
       <Center
         position="relative"
         width="220px"

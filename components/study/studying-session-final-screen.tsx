@@ -4,7 +4,7 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import { DECKS_QUERY_KEY, STUDYING_OVERVIEW } from "consts/query-keys";
 import {
   PostStudySessionRequestData,
@@ -64,7 +64,6 @@ export default function StudyingSessionFinalScreen({
   return (
     <>
       <Alert
-        mt={8}
         status="success"
         variant="top-accent"
         flexDirection="column"
@@ -73,17 +72,17 @@ export default function StudyingSessionFinalScreen({
         textAlign="center"
         height="200px"
       >
-        <AlertIcon boxSize="45px" mr={0} />
+        <AlertIcon boxSize={{ base: "30px", md: "45px" }} mr={0} />
         <AlertTitle
           mt={4}
           mb={2}
-          fontSize="2xl"
+          fontSize={{ base: "xl", md: "2xl" }}
           fontFamily="Poppins"
           textTransform="uppercase"
         >
           {$t({ defaultMessage: "Session finished" })}
         </AlertTitle>
-        <AlertDescription maxWidth="md">
+        <AlertDescription fontSize={{ base: "sm", md: "md" }} maxWidth="md">
           {$t({
             defaultMessage:
               "You have successfully completed your studying session. Grab a few statistics to find out how you did.",

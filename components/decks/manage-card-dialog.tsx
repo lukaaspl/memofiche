@@ -13,9 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
 import { useLocalStorage } from "beautiful-react-hooks";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
-import Form from "components/ui/form";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
+import Form from "components/shared/form";
 import { cardTypeDetails, cardTypeDetailsByType } from "consts/card-types";
 import { DECK_QUERY_KEY } from "consts/query-keys";
 import { ARE_DECK_TAGS_INCLUDED } from "consts/storage-keys";
@@ -163,8 +163,17 @@ export default function ManageCardDialog({
       render={({ Body, Footer }) => (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Body>
-            <Flex justify="space-between">
-              <Stack direction="column" spacing={4} flexBasis="50%" mr={8}>
+            <Flex
+              direction={{ base: "column", md: "row" }}
+              justify={{ base: "flex-start", md: "space-between" }}
+            >
+              <Stack
+                direction="column"
+                spacing={4}
+                flexBasis="50%"
+                mr={{ base: 0, md: 8 }}
+                mb={{ base: 4, md: 0 }}
+              >
                 <FormControl isRequired>
                   <FormLabel>{$t({ defaultMessage: "Obverse" })}</FormLabel>
                   <Textarea

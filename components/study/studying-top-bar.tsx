@@ -1,7 +1,7 @@
 import { Flex, HStack, Text } from "@chakra-ui/react";
+import CustomAlertDialog from "components/shared/custom-alert-dialog";
+import CustomButton from "components/shared/custom-button";
 import Counter from "components/study/counter";
-import CustomAlertDialog from "components/ui/custom-alert-dialog";
-import CustomButton from "components/ui/custom-button";
 import dayjs from "dayjs";
 import { useIsPresent } from "framer-motion";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";

@@ -1,6 +1,6 @@
 import { Box, Stack, Tag, TagLabel, Text } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import CustomDialog from "components/ui/custom-dialog";
+import CustomButton from "components/shared/custom-button";
+import CustomDialog from "components/shared/custom-dialog";
 import { DetailedCard } from "domains/card";
 import useTranslation from "hooks/use-translation";
 import React, { useMemo } from "react";

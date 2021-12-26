@@ -8,9 +8,9 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 import { useLocalStorage } from "beautiful-react-hooks";
-import CustomButton from "components/ui/custom-button";
-import Span from "components/ui/span";
-import SyncSpinner from "components/ui/sync-spinner";
+import CustomButton from "components/shared/custom-button";
+import Span from "components/shared/span";
+import SyncSpinner from "components/shared/sync-spinner";
 import { STUDIED_CARDS_CHART_TOTAL } from "consts/storage-keys";
 import dayjs from "dayjs";
 import { StudySummarySample } from "domains/study";
@@ -50,7 +50,12 @@ export default function StudiedCardsChart({
 
   return (
     <Box>
-      <Flex mb={7} justify="space-between" align="center">
+      <Flex
+        mb={7}
+        direction={{ base: "column", sm: "row" }}
+        justify={{ base: "flex-start", sm: "space-between" }}
+        align={{ base: "flex-start", sm: "center" }}
+      >
         <Flex align="center">
           <Heading
             color={chartPalette.primary}
@@ -71,6 +76,7 @@ export default function StudiedCardsChart({
           size="sm"
           isAttached
           variant="outline"
+          mt={{ base: 2, sm: 0 }}
         >
           <CustomButton
             onClick={() => setIsTotalMode(() => true)}
@@ -88,7 +94,7 @@ export default function StudiedCardsChart({
         </ButtonGroup>
       </Flex>
       <ResponsiveContainer width="100%" height={250}>
-        <BarChart margin={{ right: 30, left: 5 }} data={data}>
+        <BarChart margin={{ right: 30 }} data={data}>
           <defs>
             <linearGradient id="positiveCardsFill" x1="0" y1="1" x2="0" y2="0">
               <stop

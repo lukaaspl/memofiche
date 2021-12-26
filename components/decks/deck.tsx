@@ -1,23 +1,19 @@
 import {
-  Box,
   Divider,
   Flex,
   Heading,
   HStack,
   IconButton,
-  Tag,
-  TagLabel,
-  Wrap,
-  WrapItem,
+  Stack,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import FavoriteStar from "components/ui/favorite-star";
-import Feedback from "components/ui/feedback";
-import GoBackButton from "components/ui/go-back-button";
-import PrimaryHeading from "components/ui/primary-heading";
-import SortingControls from "components/ui/sorting-controls";
-import Span from "components/ui/span";
-import SyncSpinner from "components/ui/sync-spinner";
+import CustomButton from "components/shared/custom-button";
+import FavoriteStar from "components/shared/favorite-star";
+import Feedback from "components/shared/feedback";
+import GoBackButton from "components/shared/go-back-button";
+import PrimaryHeading from "components/shared/primary-heading";
+import SortingControls from "components/shared/sorting-controls";
+import Span from "components/shared/span";
+import SyncSpinner from "components/shared/sync-spinner";
 import { CARDS_SORT } from "consts/storage-keys";
 import { CardSort } from "domains/card";
 import useCommonPalette from "hooks/use-common-palette";
@@ -28,17 +24,17 @@ import useTranslation from "hooks/use-translation";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { TagsConverter } from "utils/tags";
 import CardsList from "./cards-list";
 import DeleteDeckConfirmationDialog from "./delete-deck-confirmation-dialog";
+import Tags from "./tags";
 import ManageCardDialog from "./manage-card-dialog";
 import ManageDeckDialog from "./manage-deck-dialog";
 
-interface DeckItemProps {
+interface DeckProps {
   id: number;
 }
 
-export default function DeckItem({ id }: DeckItemProps): JSX.Element {
+export default function Deck({ id }: DeckProps): JSX.Element {
   const router = useRouter();
   const { $t } = useTranslation();
 
@@ -95,18 +91,12 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
             )}
           </Span>
         </PrimaryHeading>
-        <Box>
+        <HStack spacing={2}>
           <IconButton
             aria-label={$t({ defaultMessage: "Edit deck" })}
             size="md"
             icon={<MdEdit size={20} />}
-            mr={2}
             onClick={onEditDeckDialogOpen}
-          />
-          <ManageDeckDialog
-            isOpen={isEditDeckDialogOpen}
-            onClose={onEditDeckDialogClose}
-            editingDeck={deck}
           />
           <IconButton
             aria-label={$t({ defaultMessage: "Delete deck" })}
@@ -115,25 +105,28 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
             icon={<MdDelete size={20} />}
             onClick={onDeleteDeckConfirmationDialogOpen}
           />
+          <ManageDeckDialog
+            isOpen={isEditDeckDialogOpen}
+            onClose={onEditDeckDialogClose}
+            editingDeck={deck}
+          />
           <DeleteDeckConfirmationDialog
             deck={deck}
             isOpen={isDeleteDeckConfirmationDialogOpen}
             onClose={onDeleteDeckConfirmationDialogClose}
           />
-        </Box>
+        </HStack>
       </Flex>
-      <Wrap spacing={2} mt={1} mb={3}>
-        {TagsConverter.extractNames(deck.tags).map((tagName, index) => (
-          <WrapItem key={index}>
-            <Tag size="lg" variant="subtle" colorScheme="purple">
-              <TagLabel>{tagName}</TagLabel>
-            </Tag>
-          </WrapItem>
-        ))}
-      </Wrap>
+      <Tags tags={deck.tags} size="lg" spacing={2} mt={1} mb={3} />
       <GoBackButton />
-      <Flex mt={6} mb={3} justify="space-between" align="center">
-        <Heading size="md">
+      <Flex
+        mt={{ base: 5, md: 8 }}
+        mb={3}
+        direction={{ base: "column", md: "row" }}
+        justify={{ base: "flex-start", md: "space-between" }}
+        align={{ base: "flex-start", md: "center" }}
+      >
+        <Heading display="flex" size="md" mb={{ base: 3, md: 0 }}>
           <span>
             {$t(
               { defaultMessage: "Cards ({count})" },
@@ -142,7 +135,11 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
           </span>
           {isRefetching && <SyncSpinner />}
         </Heading>
-        <HStack spacing={2}>
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          align="flex-start"
+          spacing={{ base: 3, md: 2 }}
+        >
           <SortingControls<CardSort["sortBy"]>
             options={[
               {
@@ -165,7 +162,7 @@ export default function DeckItem({ id }: DeckItemProps): JSX.Element {
           <CustomButton colorScheme="purple" onClick={onNewCardDialogOpen}>
             {$t({ defaultMessage: "New card" })}
           </CustomButton>
-        </HStack>
+        </Stack>
         <ManageCardDialog
           deckId={deck.id}
           deckTags={deck.tags}

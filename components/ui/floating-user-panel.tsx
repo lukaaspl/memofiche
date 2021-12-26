@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  BoxProps,
   Flex,
   List,
   ListIcon,
@@ -14,7 +15,7 @@ import {
   Portal,
   VStack,
 } from "@chakra-ui/react";
-import Span from "components/ui/span";
+import Span from "components/shared/span";
 import { Locale } from "consts/locales";
 import useCommonPalette from "hooks/use-common-palette";
 import useIntlConfig from "hooks/use-intl-config";
@@ -35,7 +36,7 @@ type UserPanelMenuItem = {
   onClick?: (event: React.MouseEvent<HTMLLIElement>) => void;
 };
 
-export default function FloatingUserPanel(): JSX.Element {
+export default function FloatingUserPanel(boxProps: BoxProps): JSX.Element {
   const { name, email } = useMe();
   const { locale, onLocaleChange } = useIntlConfig();
   const { $t } = useTranslation();
@@ -81,7 +82,7 @@ export default function FloatingUserPanel(): JSX.Element {
   );
 
   return (
-    <Box position="fixed" right={3} top={4}>
+    <Box {...boxProps}>
       <Popover strategy="fixed" placement="bottom-end">
         <PopoverTrigger>
           <Avatar
@@ -91,6 +92,7 @@ export default function FloatingUserPanel(): JSX.Element {
             backgroundColor="purple.500"
             fontFamily="Poppins"
             fontWeight="bold"
+            boxShadow="base"
             size="sm"
             cursor="pointer"
           />

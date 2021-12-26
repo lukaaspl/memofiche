@@ -1,4 +1,23 @@
-import { Heading, Spacer, Text, VStack } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerOverlay,
+  IconButton,
+  List,
+  Spacer,
+  VStack,
+} from "@chakra-ui/react";
+import FloatingUserPanel from "components/ui/floating-user-panel";
+import Logo from "components/ui/logo";
+import { SIDEBAR_WIDTH } from "consts/dimensions";
+import useScreenWidth from "hooks/use-screen-width";
+import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useTranslation from "hooks/use-translation";
 import React, { useMemo } from "react";
 import {
@@ -9,14 +28,15 @@ import {
   MdSettings,
 } from "react-icons/md";
 import { RiStackFill, RiTodoLine } from "react-icons/ri";
-import MenuTile, { IMenuTile } from "./menu-tile";
-
-const SIDEBAR_WIDTH = "64px";
+import AppVersion from "./app-version";
+import { MenuItem, MenuLink, MenuTile } from "./menu-items";
 
 export default function MenuSidebar(): JSX.Element {
   const { $t } = useTranslation();
+  const { isLargerThanMD } = useScreenWidth();
+  const [isOpen, onOpen, onClose] = useSimpleDisclosure();
 
-  const menuTiles: Record<"features" | "account", IMenuTile[]> = useMemo(
+  const menuItems: Record<"features" | "account", MenuItem[]> = useMemo(
     () => ({
       features: [
         {
@@ -62,36 +82,80 @@ export default function MenuSidebar(): JSX.Element {
     [$t]
   );
 
+  if (isLargerThanMD) {
+    return (
+      <>
+        <VStack
+          position="fixed"
+          spacing="4"
+          backgroundColor="purple.500"
+          h="100%"
+          px="3"
+          py="5"
+          maxWidth={SIDEBAR_WIDTH}
+          zIndex="docked"
+        >
+          <Logo mb={4} variant="abbr" size="2xl" />
+          {menuItems.features.map((item, index) => (
+            <MenuTile key={index} item={item} />
+          ))}
+          <Spacer />
+          {menuItems.account.map((item, index) => (
+            <MenuTile key={index} item={item} />
+          ))}
+          <AppVersion />
+        </VStack>
+        <FloatingUserPanel position="fixed" right={3} top={4} />
+      </>
+    );
+  }
+
   return (
-    <VStack
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
       position="fixed"
-      spacing="4"
+      left={0}
+      top={0}
+      pl={2}
+      pr={4}
+      height={12}
+      zIndex="docked"
+      w="100%"
       backgroundColor="purple.500"
-      h="100%"
-      px="3"
-      py="5"
-      maxWidth={SIDEBAR_WIDTH}
-      zIndex="1"
     >
-      <Heading
+      <IconButton
+        variant="ghost"
+        colorScheme="purple"
         color="white"
-        fontFamily="Poppins"
-        fontSize="2xl"
-        mb="4"
-        textAlign="center"
-      >
-        MF
-      </Heading>
-      {menuTiles.features.map((tile, index) => (
-        <MenuTile key={index} tile={tile} />
-      ))}
-      <Spacer />
-      {menuTiles.account.map((tile, index) => (
-        <MenuTile key={index} tile={tile} />
-      ))}
-      <Text fontSize="x-small" color="white" fontFamily="Poppins">
-        v{process.env.NEXT_PUBLIC_APP_VERSION}
-      </Text>
-    </VStack>
+        aria-label="Toggle menu"
+        icon={<HamburgerIcon fontSize="2xl" />}
+        onClick={onOpen}
+      />
+      <Logo variant="abbr" size="2xl" />
+      <FloatingUserPanel />
+      <Drawer size="xs" isOpen={isOpen} placement="left" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent backgroundColor="purple.500">
+          <DrawerCloseButton fontSize="lg" color="white" />
+          <DrawerBody px={0}>
+            <Logo px={6} mt={10} mb={7} variant="full" size="2xl" />
+            <List px={3}>
+              {menuItems.features.map((item, index) => (
+                <MenuLink key={index} item={item} />
+              ))}
+              <Divider my={4} />
+              {menuItems.account.map((item, index) => (
+                <MenuLink key={index} item={item} />
+              ))}
+            </List>
+          </DrawerBody>
+          <DrawerFooter justifyContent="center">
+            <AppVersion />
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </Box>
   );
 }

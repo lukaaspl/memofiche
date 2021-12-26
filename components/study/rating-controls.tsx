@@ -1,12 +1,13 @@
 import { Kbd, Stack, StackProps } from "@chakra-ui/react";
-import KeyAccessedButton from "components/ui/key-accessed-button";
-import Span from "components/ui/span";
+import KeyAccessedButton from "components/shared/key-accessed-button";
+import Span from "components/shared/span";
 import { DetailedCard, TransformedCard } from "domains/card";
 import { OmitMotionCollidedProps } from "domains/framer-motion";
 import { RatingControlMode } from "domains/study";
 import { motion, useIsPresent } from "framer-motion";
 import useMe from "hooks/use-me";
 import useRatingControls, { RatingControl } from "hooks/use-rating-controls";
+import useScreenWidth from "hooks/use-screen-width";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { getPredictedIntervalInDays } from "utils/cards";
@@ -30,6 +31,7 @@ export default function RatingControls({
 }: RatingControlsProps): JSX.Element {
   const isPresent = useIsPresent();
   const { config } = useMe();
+  const { isLargerThanMD } = useScreenWidth();
 
   const mode = config.advancedRatingControls
     ? RatingControlMode.Advanced
@@ -39,8 +41,10 @@ export default function RatingControls({
 
   return (
     <MotionStack
-      direction="row"
-      spacing={5}
+      width="100%"
+      direction={{ base: "column", md: "row" }}
+      justify="center"
+      spacing={{ base: 3, md: 5 }}
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: isShown ? 1 : 0, y: isShown ? 0 : 15 }}
       exit={{ opacity: 0, y: 15, transition: { delay: 0.1 } }}
@@ -52,19 +56,21 @@ export default function RatingControls({
           keyCode={control.shortcut.code}
           key={index}
           fontFamily="Poppins"
-          size="lg"
+          size={isLargerThanMD ? "lg" : "md"}
           colorScheme={control.colorScheme}
           onClick={() => onRate(control.rate)}
           isDisabled={isDisabled || !isPresent}
         >
-          <Kbd
-            mr={2}
-            backgroundColor="gray.100"
-            color="blackAlpha.900"
-            fontSize="small"
-          >
-            {control.shortcut.label}
-          </Kbd>
+          {isLargerThanMD && (
+            <Kbd
+              mr={2}
+              backgroundColor="gray.100"
+              color="blackAlpha.900"
+              fontSize="small"
+            >
+              {control.shortcut.label}
+            </Kbd>
+          )}
           {control.label}
           <Span ml={1} fontSize="xs">
             <FormattedMessage

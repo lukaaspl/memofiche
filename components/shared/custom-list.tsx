@@ -1,5 +1,4 @@
 import {
-  Box,
   Center,
   chakra,
   List,
@@ -54,6 +53,7 @@ export default function CustomList<TItem>({
         h="103px"
         backgroundColor={isDisabled ? palette.disabled : "purple.500"}
         borderRadius="md"
+        flexShrink={0}
       >
         {isFavorite?.(item) && (
           <FavoriteStar
@@ -66,9 +66,7 @@ export default function CustomList<TItem>({
         )}
         <FolderIcon size={30} color={isDisabled ? "blackAlpha.800" : "white"} />
       </Center>
-      <Box flexGrow={1} p={2}>
-        {renderItem(item)}
-      </Box>
+      {renderItem(item)}
     </Stack>
   );
 

@@ -3,7 +3,7 @@ import LastStudySessionsTable from "components/dashboard/last-study-sessions-tab
 import MostRelevantDecksTable from "components/dashboard/most-relevant-decks-table";
 import StudiedCardsChart from "components/dashboard/studied-cards-chart";
 import StudyTimeChart from "components/dashboard/study-time-chart";
-import Feedback from "components/ui/feedback";
+import Feedback from "components/shared/feedback";
 import { STUDYING_OVERVIEW } from "consts/query-keys";
 import { StudyingOverview } from "domains/study";
 import useDecksQuery from "hooks/use-decks-query";
@@ -72,7 +72,12 @@ export default function DashboardContent(): JSX.Element {
   const { data: decks } = decksQuery;
 
   return (
-    <SimpleGrid mt={6} columns={2} spacingX={12} spacingY={10}>
+    <SimpleGrid
+      mt={{ base: 5, md: 8 }}
+      columns={{ base: 1, lg: 2 }}
+      spacingX={12}
+      spacingY={10}
+    >
       <StudyTimeChart
         data={overview.studyingSummary}
         isRefetching={overviewQuery.isRefetching}

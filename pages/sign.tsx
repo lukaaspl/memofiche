@@ -14,9 +14,9 @@ import {
   InputLeftElement,
   VStack,
 } from "@chakra-ui/react";
-import CustomButton from "components/ui/custom-button";
-import RedirectAlert from "components/ui/redirect-alert";
-import Span from "components/ui/span";
+import CustomButton from "components/shared/custom-button";
+import RedirectAlert from "components/shared/redirect-alert";
+import Span from "components/shared/span";
 import { Nullable } from "domains";
 import useAuth from "hooks/use-auth";
 import useCommonPalette from "hooks/use-common-palette";
@@ -96,10 +96,10 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
   return (
     <Center h="100vh">
       <Box
-        px="10"
+        px={{ base: 5, sm: 7, md: 10 }}
         py="8"
         shadow={palette.containerShadow}
-        minW="lg"
+        minW={{ base: "sm", sm: "md", md: "lg" }}
         rounded="xl"
         textAlign="center"
       >

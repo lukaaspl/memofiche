@@ -1,7 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { Deck } from "@prisma/client";
-import CustomAlertDialog from "components/ui/custom-alert-dialog";
-import Span from "components/ui/span";
+import CustomAlertDialog from "components/shared/custom-alert-dialog";
+import Span from "components/shared/span";
 import { DECKS_QUERY_KEY } from "consts/query-keys";
 import { DetailedDeck } from "domains/deck";
 import useCommonPalette from "hooks/use-common-palette";

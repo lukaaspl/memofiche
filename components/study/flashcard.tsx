@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@chakra-ui/react";
-import MotionBox from "components/ui/motion-box";
+import MotionBox from "components/shared/motion-box";
 import { DetailedCard, TransformedCard } from "domains/card";
 import { AnimatePresence } from "framer-motion";
 import useCommonPalette from "hooks/use-common-palette";
@@ -25,7 +25,7 @@ export default function Flashcard({
   const palette = useCommonPalette();
 
   return (
-    <Box w="600px" h="300px" mx="auto" position="relative">
+    <Box w="100%" maxW="600px" h="300px" mx="auto" position="relative">
       <AnimatePresence initial={false}>
         <MotionBox
           key={card.id}
