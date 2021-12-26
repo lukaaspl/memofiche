@@ -42,7 +42,9 @@ function SessionStudyStatContent({
 
   return (
     <>
-      <StatLabel fontSize={{ base: "xl", md: "sm" }}>{stat.label}</StatLabel>
+      <StatLabel fontFamily="Poppins" fontSize={{ base: "lg", md: "sm" }}>
+        {stat.label}
+      </StatLabel>
       <StatNumber>{stat.value}</StatNumber>
       <Flex mt={1} justify="center" align="center">
         <Tooltip
@@ -240,6 +242,7 @@ export default function StudyingSessionSummary({
         <Stack
           direction={{ base: "column", md: "row" }}
           justify="center"
+          align="center"
           mt={12}
           spacing={3}
         >
