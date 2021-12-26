@@ -93,7 +93,7 @@ export default function StudyTimeChart({
         </ButtonGroup>
       </Flex>
       <ResponsiveContainer width="100%" height={250}>
-        <AreaChart margin={{ right: 30, left: 5 }} data={data}>
+        <AreaChart margin={{ right: 30 }} data={data}>
           <defs>
             <linearGradient id="studyTimeFill" x1="0" y1="0" x2="0" y2="1">
               <stop

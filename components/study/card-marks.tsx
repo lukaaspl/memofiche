@@ -5,7 +5,7 @@ import {
   TagProps,
   Tooltip,
 } from "@chakra-ui/react";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { IconType } from "react-icons";
 
 export interface CardMark {
@@ -16,16 +16,54 @@ export interface CardMark {
   isVisible: boolean;
 }
 
-interface CardMarkProps {
+interface CardMarksProps {
   marks: CardMark[];
 }
 
 const SPACE_BETWEEN_MARKS = 30;
 const OFFSET_FROM_EDGE = 7;
 
-export default function CardMarkComponent({
-  marks,
-}: CardMarkProps): JSX.Element {
+interface CardMarkProps {
+  mark: CardMark;
+  index: number;
+}
+
+function CardMarkComponent({ mark, index }: CardMarkProps): JSX.Element {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const offset = (index * SPACE_BETWEEN_MARKS + OFFSET_FROM_EDGE)
+    .toString()
+    .concat("px");
+
+  return (
+    <Tooltip
+      hasArrow
+      isOpen={isOpen}
+      label={mark.label}
+      fontSize="sm"
+      padding={1.5}
+      placement="top"
+    >
+      <Tag
+        position="absolute"
+        right={offset}
+        top={2}
+        p={1}
+        rounded="full"
+        cursor="help"
+        variant="solid"
+        colorScheme={mark.bgColor}
+        onMouseEnter={() => setIsOpen(true)}
+        onClick={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        <mark.icon color={mark.color} fontSize="md" />
+      </Tag>
+    </Tooltip>
+  );
+}
+
+export default function CardMarks({ marks }: CardMarksProps): JSX.Element {
   const visibleMarks = useMemo(
     () => marks.filter((mark) => mark.isVisible),
     [marks]
@@ -33,35 +71,9 @@ export default function CardMarkComponent({
 
   return (
     <>
-      {visibleMarks.map((mark, index) => {
-        const offset = (index * SPACE_BETWEEN_MARKS + OFFSET_FROM_EDGE)
-          .toString()
-          .concat("px");
-
-        return (
-          <Tooltip
-            key={index}
-            hasArrow
-            label={mark.label}
-            fontSize="sm"
-            padding={1.5}
-            placement="top"
-          >
-            <Tag
-              rounded="full"
-              cursor="help"
-              position="absolute"
-              right={offset}
-              top={2}
-              p={1}
-              variant="solid"
-              colorScheme={mark.bgColor}
-            >
-              <mark.icon color={mark.color} fontSize="md" />
-            </Tag>
-          </Tooltip>
-        );
-      })}
+      {visibleMarks.map((mark, index) => (
+        <CardMarkComponent key={index} mark={mark} index={index} />
+      ))}
     </>
   );
 }

@@ -94,7 +94,7 @@ export default function StudiedCardsChart({
         </ButtonGroup>
       </Flex>
       <ResponsiveContainer width="100%" height={250}>
-        <BarChart margin={{ right: 30, left: 5 }} data={data}>
+        <BarChart margin={{ right: 30 }} data={data}>
           <defs>
             <linearGradient id="positiveCardsFill" x1="0" y1="1" x2="0" y2="0">
               <stop
