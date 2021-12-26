@@ -73,7 +73,7 @@ export default function DashboardContent(): JSX.Element {
 
   return (
     <SimpleGrid
-      mt={{ base: 4, md: 8 }}
+      mt={{ base: 5, md: 8 }}
       columns={{ base: 1, lg: 2 }}
       spacingX={12}
       spacingY={10}

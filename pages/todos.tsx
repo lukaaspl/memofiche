@@ -90,7 +90,7 @@ const TodosPage: NextPage = () => {
           { heading: "Could have", items: TODOS.couldHave },
           { heading: "Won't have", items: TODOS.wontHave },
         ].map(({ heading, items }, index) => (
-          <Box key={index} mt={4}>
+          <Box key={index} mt={5}>
             <Heading color={palette.primary} fontFamily="Poppins" size="sm">
               {heading}
             </Heading>

@@ -120,7 +120,7 @@ export default function Deck({ id }: DeckProps): JSX.Element {
       <Tags tags={deck.tags} size="lg" spacing={2} mt={1} mb={3} />
       <GoBackButton />
       <Flex
-        mt={{ base: 4, md: 8 }}
+        mt={{ base: 5, md: 8 }}
         mb={3}
         direction={{ base: "column", md: "row" }}
         justify={{ base: "flex-start", md: "space-between" }}

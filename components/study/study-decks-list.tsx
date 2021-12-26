@@ -84,7 +84,7 @@ export default function StudyDecksList(): JSX.Element {
         justify={{ base: "flex-start", md: "space-between" }}
         align={{ base: "flex-start", md: "flex-end" }}
         direction={{ base: "column", md: "row" }}
-        mt={{ base: 4, md: 8 }}
+        mt={{ base: 5, md: 8 }}
         mb={3}
       >
         <Heading display="flex" size="md" mb={{ base: 3, md: 0 }}>

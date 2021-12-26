@@ -13,9 +13,17 @@ export default function Logo({
 }: LogoProps): JSX.Element {
   const logo =
     variant === "abbr" ? (
-      <Heading fontSize={size}>MF</Heading>
+      <Heading color="white" fontFamily="Poppins" fontSize={size}>
+        MF
+      </Heading>
     ) : (
-      <Heading fontSize={size} textTransform="uppercase" letterSpacing="2px">
+      <Heading
+        color="white"
+        fontFamily="Poppins"
+        fontSize={size}
+        textTransform="uppercase"
+        letterSpacing="2px"
+      >
         <Span>M</Span>
         <Span opacity={0.8}>emo</Span>
         <Span>f</Span>
@@ -23,9 +31,5 @@ export default function Logo({
       </Heading>
     );
 
-  return (
-    <Box color="white" fontFamily="Poppins" {...boxProps}>
-      {logo}
-    </Box>
-  );
+  return <Box {...boxProps}>{logo}</Box>;
 }

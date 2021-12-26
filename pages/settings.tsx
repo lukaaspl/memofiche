@@ -12,7 +12,7 @@ const SettingsPage: NextPage = () => (
     <PrimaryHeading>
       <FormattedMessage defaultMessage="Settings" />
     </PrimaryHeading>
-    <Box mt={{ base: 4, md: 8 }}>
+    <Box mt={{ base: 5, md: 8 }}>
       <GeneralSettingsForm />
       <ResetPasswordForm />
     </Box>

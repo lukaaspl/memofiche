@@ -1,6 +1,5 @@
 import Deck from "components/decks/deck";
 import Layout from "components/ui/layout";
-import usePrivateView from "hooks/use-private-view";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";

@@ -59,7 +59,7 @@ export default function ProfileDetails(): JSX.Element {
       boxShadow={palette.containerShadow}
       flexDirection={{ base: "column", md: "row" }}
       alignItems={{ base: "center", md: "flex-start" }}
-      mt={{ base: 4, md: 8 }}
+      mt={{ base: 5, md: 8 }}
       px={5}
       py={10}
     >
