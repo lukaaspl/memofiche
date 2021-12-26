@@ -153,6 +153,7 @@ export default function StudyDecksList(): JSX.Element {
               direction={{ base: "column", md: "row" }}
               justify={{ base: "flex-start", md: "space-between" }}
               align={{ base: "flex-start", md: "center" }}
+              pl={1}
             >
               <Box
                 width={{ base: "100%", md: "unset" }}
