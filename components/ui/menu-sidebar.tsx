@@ -95,7 +95,7 @@ export default function MenuSidebar(): JSX.Element {
           maxWidth={SIDEBAR_WIDTH}
           zIndex="docked"
         >
-          <Logo mb={4} />
+          <Logo mb={4} variant="abbr" size="2xl" />
           {menuItems.features.map((item, index) => (
             <MenuTile key={index} item={item} />
           ))}
@@ -133,14 +133,15 @@ export default function MenuSidebar(): JSX.Element {
         icon={<HamburgerIcon fontSize="2xl" />}
         onClick={onOpen}
       />
-      <Logo />
+      <Logo variant="abbr" size="2xl" />
       <FloatingUserPanel />
       <Drawer size="xs" isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent backgroundColor="purple.500">
           <DrawerCloseButton fontSize="lg" color="white" />
           <DrawerBody px={0}>
-            <List my={10} px={3}>
+            <Logo px={6} mt={10} mb={7} variant="full" size="2xl" />
+            <List px={3}>
               {menuItems.features.map((item, index) => (
                 <MenuLink key={index} item={item} />
               ))}
