@@ -36,6 +36,8 @@
     "Advanced card types",
     "Persist not completed studying sessions (LocalStorage/DB)",
     "Public profiles",
-    "Public decks with ability to fork them"
+    "Public decks with ability to fork them",
+    "Partition large decks while studying",
+    "Predefined, thematic flashcard sets"
   ]
 }

@@ -399,6 +399,12 @@
       "value": "There must be at least 1 ready to study card to start studying process"
     }
   ],
+  "HoZOFg": [
+    {
+      "type": 0,
+      "value": "The login details are incorrect"
+    }
+  ],
   "J+Pu4g": [
     {
       "type": 0,
@@ -871,6 +877,12 @@
     {
       "type": 0,
       "value": "Repeat new password"
+    }
+  ],
+  "iKT2Wq": [
+    {
+      "type": 0,
+      "value": "The e-mail address is already taken"
     }
   ],
   "itPgxd": [

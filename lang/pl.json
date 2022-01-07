@@ -609,5 +609,11 @@
   "3G4CA+": {
     "defaultMessage": "Standardowa",
     "description": "Normal card type"
+  },
+  "HoZOFg": {
+    "defaultMessage": "Dane logowania są niepoprawne"
+  },
+  "iKT2Wq": {
+    "defaultMessage": "Podany adres e-mail jest już zajęty"
   }
 }

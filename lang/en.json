@@ -188,6 +188,9 @@
   "HWYd5e": {
     "defaultMessage": "There must be at least 1 ready to study card to start studying process"
   },
+  "HoZOFg": {
+    "defaultMessage": "The login details are incorrect"
+  },
   "J+Pu4g": {
     "defaultMessage": "Visit the dashboard"
   },
@@ -392,6 +395,9 @@
   },
   "hziisK": {
     "defaultMessage": "Repeat new password"
+  },
+  "iKT2Wq": {
+    "defaultMessage": "The e-mail address is already taken"
   },
   "itPgxd": {
     "defaultMessage": "Profile"
