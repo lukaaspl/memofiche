@@ -4,21 +4,23 @@ import Span from "components/shared/span";
 interface LogoProps extends BoxProps {
   variant: "full" | "abbr";
   size: HeadingProps["fontSize"];
+  color?: string;
 }
 
 export default function Logo({
   variant,
   size,
+  color = "white",
   ...boxProps
 }: LogoProps): JSX.Element {
   const logo =
     variant === "abbr" ? (
-      <Heading color="white" fontFamily="Poppins" fontSize={size}>
+      <Heading color={color} fontFamily="Poppins" fontSize={size}>
         MF
       </Heading>
     ) : (
       <Heading
-        color="white"
+        color={color}
         fontFamily="Poppins"
         fontSize={size}
         textTransform="uppercase"

@@ -399,6 +399,12 @@
       "value": "Wymagana jest co najmniej 1 dostępna karta do rozpoczęcia nauki"
     }
   ],
+  "HoZOFg": [
+    {
+      "type": 0,
+      "value": "Dane logowania są niepoprawne"
+    }
+  ],
   "J+Pu4g": [
     {
       "type": 0,
@@ -818,7 +824,7 @@
   "grdxdO": [
     {
       "type": 0,
-      "value": "Zacznij naukę"
+      "value": "Rozpocznij naukę"
     }
   ],
   "h4sNB+": [
@@ -849,6 +855,12 @@
     {
       "type": 0,
       "value": "Potwierdź nowe hasło"
+    }
+  ],
+  "iKT2Wq": [
+    {
+      "type": 0,
+      "value": "Podany adres e-mail jest już zajęty"
     }
   ],
   "itPgxd": [
@@ -1338,7 +1350,7 @@
   "ytuF3Q": [
     {
       "type": 0,
-      "value": "Ucz się dalej"
+      "value": "Kontynuuj naukę"
     }
   ],
   "zO+fCo": [

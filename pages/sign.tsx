@@ -17,6 +17,7 @@ import {
 import CustomButton from "components/shared/custom-button";
 import RedirectAlert from "components/shared/redirect-alert";
 import Span from "components/shared/span";
+import Logo from "components/ui/logo";
 import { Nullable } from "domains";
 import useAuth from "hooks/use-auth";
 import useCommonPalette from "hooks/use-common-palette";
@@ -26,6 +27,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsFillPersonFill } from "react-icons/bs";
+import { hasErrorStatus } from "utils/errors";
 
 interface SignPageProps {
   initialOnRegisterView: boolean;
@@ -36,6 +38,9 @@ type SignFormValues = {
   password: string;
   name: string;
 };
+
+const DEMO_EMAIL = "demo@memofiche.com";
+const DEMO_PASSWORD = "demo";
 
 const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
   const [onRegisterView, setOnRegisterView] = useState(initialOnRegisterView);
@@ -61,17 +66,29 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
     if (onRegisterView) {
       try {
         await signUp(values);
-      } catch {
+      } catch (error) {
         setRequestError(
-          $t({ defaultMessage: "An error occurred while signing up" })
+          hasErrorStatus(error, "conflict")
+            ? $t({
+                defaultMessage: "The e-mail address is already taken",
+              })
+            : $t({
+                defaultMessage: "An error occurred while signing up",
+              })
         );
       }
     } else {
       try {
         await signIn(values);
-      } catch {
+      } catch (error) {
         setRequestError(
-          $t({ defaultMessage: "An error occurred while signing in" })
+          hasErrorStatus(error, "unauthorized")
+            ? $t({
+                defaultMessage: "The login details are incorrect",
+              })
+            : $t({
+                defaultMessage: "An error occurred while signing in",
+              })
         );
       }
     }
@@ -94,7 +111,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
   }
 
   return (
-    <Center h="100vh">
+    <Center h="100vh" flexDirection="column">
       <Box
         px={{ base: 5, sm: 7, md: 10 }}
         py="8"
@@ -102,8 +119,19 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
         minW={{ base: "sm", sm: "md", md: "lg" }}
         rounded="xl"
         textAlign="center"
+        position="relative"
       >
-        <Heading size="xl" mb="8">
+        <Logo
+          textAlign="left"
+          variant="full"
+          size="4xl"
+          top="0"
+          left="50%"
+          transform="translate(-50%, -180%)"
+          position="absolute"
+          color={palette.primary as string}
+        />
+        <Heading size="lg" mb="5">
           {onRegisterView
             ? $t({ defaultMessage: "Sign up" })
             : $t({ defaultMessage: "Sign in" })}
@@ -122,8 +150,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               type="email"
               isInvalid={!!errors.email}
               placeholder={$t({ defaultMessage: "E-mail address" })}
-              // TODO: Remove
-              defaultValue="admin@memofiche.pl"
+              defaultValue={DEMO_EMAIL}
               size="lg"
               focusBorderColor={palette.primary as string}
               {...register("email", { required: true })}
@@ -137,8 +164,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
               type="password"
               isInvalid={!!errors.password}
               placeholder={$t({ defaultMessage: "Password" })}
-              // TODO: Remove
-              defaultValue="admin"
+              defaultValue={DEMO_PASSWORD}
               size="lg"
               focusBorderColor={palette.primary as string}
               {...register("password", { required: true })}
