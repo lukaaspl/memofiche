@@ -23,7 +23,7 @@ import useAuth from "hooks/use-auth";
 import useCommonPalette from "hooks/use-common-palette";
 import useTranslation from "hooks/use-translation";
 import { GetServerSideProps, NextPage } from "next";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsFillPersonFill } from "react-icons/bs";
