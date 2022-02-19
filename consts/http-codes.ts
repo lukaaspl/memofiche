@@ -1,6 +1,7 @@
-import httpErrors from "http-errors";
-
 export const httpCodes = {
-  CONFLICT: new httpErrors["Conflict"]().statusCode,
-  UNAUTHORIZED: new httpErrors["Unauthorized"]().statusCode,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  CONFLICT: 409,
 };
