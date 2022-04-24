@@ -1,5 +1,5 @@
 import { DeckTag } from "domains/tags";
-import { toLower, uniqBy } from "lodash";
+import { toLower, uniq } from "lodash";
 
 export class TagsConverter {
   static toArray(input: string): string[] {
@@ -29,6 +29,6 @@ export class TagsConverter {
   }
 
   static normalize(tags: string[]): string[] {
-    return uniqBy<string>(tags, toLower);
+    return uniq(tags.map(toLower));
   }
 }

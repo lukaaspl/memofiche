@@ -15,10 +15,6 @@ const enhancedIntlContext = createContext<Nullable<EnhancedIntlContext>>(null);
 
 type Messages = IntlConfig["messages"];
 
-interface EnhancedIntlProviderProps {
-  children: JSX.Element;
-}
-
 async function getMessagesByLocale(locale: Locale): Promise<Messages> {
   let messages: Messages;
 
@@ -40,10 +36,16 @@ async function setDayjsLocale(locale: Locale): Promise<void> {
   }
 }
 
+export interface EnhancedIntlProviderProps {
+  children: JSX.Element;
+  fixedMessages?: Messages;
+}
+
 export function EnhancedIntlProvider({
   children,
+  fixedMessages,
 }: EnhancedIntlProviderProps): JSX.Element {
-  const [messages, setMessages] = useState<Messages>();
+  const [messages, setMessages] = useState<Messages>(fixedMessages);
   const [locale, setLocale] = useLocalStorage<Locale>(LOCALE, Locale.EN);
 
   const onLocaleChange = useCallback(
@@ -57,7 +59,7 @@ export function EnhancedIntlProvider({
   const handleIntlError = (): void => void 0;
 
   useEffect(() => {
-    async function updateLocales(): Promise<void> {
+    async function updateData(): Promise<void> {
       const [messages] = await Promise.all([
         getMessagesByLocale(locale),
         setDayjsLocale(locale),
@@ -66,8 +68,12 @@ export function EnhancedIntlProvider({
       setMessages(messages);
     }
 
-    updateLocales();
-  }, [locale]);
+    const shouldUpdateData = Boolean(fixedMessages);
+
+    if (shouldUpdateData) {
+      updateData();
+    }
+  }, [fixedMessages, locale]);
 
   return (
     <enhancedIntlContext.Provider value={{ locale, onLocaleChange }}>

@@ -22,8 +22,9 @@ module.exports = {
     "prettier",
     "plugin:prettier/recommended",
     "plugin:@next/next/recommended",
+    "plugin:cypress/recommended",
   ],
-  plugins: ["formatjs"],
+  plugins: ["formatjs", "cypress"],
   rules: {
     "formatjs/enforce-placeholders": "error",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
