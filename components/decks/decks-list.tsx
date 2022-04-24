@@ -126,7 +126,11 @@ export default function DecksList(): JSX.Element {
         selectId={(deck) => deck.id}
         isFavorite={(deck) => deck.isFavorite}
         renderItem={(deck) => (
-          <Box px={{ base: 1, md: 2 }} py={{ base: 1, md: 2 }}>
+          <Box
+            px={{ base: 1, md: 2 }}
+            py={{ base: 1, md: 2 }}
+            data-testid={`deck-${deck.id}`}
+          >
             <Heading size="sm">{deck.name}</Heading>
             <List my={1}>
               <ListItem fontSize="smaller">

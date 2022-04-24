@@ -1,4 +1,10 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "cSpell.words": ["listitem", "multithreaded", "preconnect", "scrollbars"]
+  "cSpell.words": [
+    "listitem",
+    "multithreaded",
+    "preconnect",
+    "scrollbars",
+    "upsert"
+  ]
 }

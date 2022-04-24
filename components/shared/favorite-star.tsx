@@ -5,5 +5,5 @@ import React from "react";
 
 export default function FavoriteStar(props: IconProps): JSX.Element {
   const color = useTypedColorModeValue("color")("yellow.500", "yellow.400");
-  return <StarIcon color={color} {...props} />;
+  return <StarIcon data-testid="favorite-star" color={color} {...props} />;
 }
