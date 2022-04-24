@@ -68,9 +68,7 @@ export function EnhancedIntlProvider({
       setMessages(messages);
     }
 
-    const shouldUpdateData = Boolean(fixedMessages);
-
-    if (shouldUpdateData) {
+    if (!fixedMessages) {
       updateData();
     }
   }, [fixedMessages, locale]);
