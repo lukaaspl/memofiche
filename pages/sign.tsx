@@ -24,7 +24,7 @@ import useCommonPalette from "hooks/use-common-palette";
 import useTranslation from "hooks/use-translation";
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsFillPersonFill } from "react-icons/bs";
 import { hasErrorStatus } from "utils/errors";
@@ -130,6 +130,7 @@ const SignPage: NextPage<SignPageProps> = ({ initialOnRegisterView }) => {
           transform="translate(-50%, -180%)"
           position="absolute"
           color={palette.primary as string}
+          isVersionShown
         />
         <Heading size="lg" mb="5">
           {onRegisterView

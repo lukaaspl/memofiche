@@ -28,7 +28,7 @@ export default function CardPauseCover({
         <Text
           fontWeight="bold"
           fontSize="md"
-          color={palette.bw}
+          color={palette.blackWhite}
           textTransform="uppercase"
         >
           <FormattedMessage defaultMessage="Studying is paused" />

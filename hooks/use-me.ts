@@ -5,6 +5,7 @@ import { assert } from "utils/validation";
 import useAuth from "./use-auth";
 
 interface UseMe extends MeUser {
+  isAdmin: boolean;
   updateConfig: (config: ManageableConfig) => void;
 }
 
@@ -18,5 +19,7 @@ export default function useMe(): UseMe {
     [updateUser]
   );
 
-  return { ...authState.user, updateConfig };
+  const isAdmin = authState.user.role === "Admin";
+
+  return { ...authState.user, isAdmin, updateConfig };
 }

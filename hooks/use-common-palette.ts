@@ -10,7 +10,8 @@ interface CommonPalette {
   disabled: ColorThemeValue;
   green: ColorThemeValue;
   red: ColorThemeValue;
-  bw: ColorThemeValue;
+  whiteBlack: ColorThemeValue;
+  blackWhite: ColorThemeValue;
   containerShadow: BoxShadowThemeValue;
 }
 
@@ -23,10 +24,15 @@ export default function useCommonPalette(): CommonPalette {
   const disabled = useTypedColorModeValue("color")("gray.200", "gray.500");
   const green = useTypedColorModeValue("color")("green.500", "green.300");
   const red = useTypedColorModeValue("color")("red.500", "red.300");
-  const bw = useTypedColorModeValue("color")(
+  const whiteBlack = useTypedColorModeValue("color")(
     "whiteAlpha.900",
     "blackAlpha.900"
   );
+  const blackWhite = useTypedColorModeValue("color")(
+    "blackAlpha.900",
+    "whiteAlpha.900"
+  );
+
   const containerShadow = useTypedColorModeValue("boxShadow")("lg", "2xl");
 
   return useMemo(
@@ -36,9 +42,19 @@ export default function useCommonPalette(): CommonPalette {
       disabled,
       green,
       red,
-      bw,
+      whiteBlack,
+      blackWhite,
       containerShadow,
     }),
-    [primary, primaryDark, disabled, green, red, bw, containerShadow]
+    [
+      primary,
+      primaryDark,
+      disabled,
+      green,
+      red,
+      whiteBlack,
+      blackWhite,
+      containerShadow,
+    ]
   );
 }

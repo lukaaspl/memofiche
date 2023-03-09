@@ -16,6 +16,7 @@ import {
 import FloatingUserPanel from "components/ui/floating-user-panel";
 import Logo from "components/ui/logo";
 import { SIDEBAR_WIDTH } from "consts/dimensions";
+import useMe from "hooks/use-me";
 import useScreenWidth from "hooks/use-screen-width";
 import useSimpleDisclosure from "hooks/use-simple-disclosure";
 import useTranslation from "hooks/use-translation";
@@ -35,9 +36,10 @@ export default function MenuSidebar(): JSX.Element {
   const { $t } = useTranslation();
   const { isLargerThanMD } = useScreenWidth();
   const [isOpen, onOpen, onClose] = useSimpleDisclosure();
+  const { isAdmin } = useMe();
 
-  const menuItems: Record<"features" | "account", MenuItem[]> = useMemo(
-    () => ({
+  const menuItems = useMemo(() => {
+    const items: Record<"features" | "account", MenuItem[]> = {
       features: [
         {
           label: $t({ defaultMessage: "Dashboard" }),
@@ -54,11 +56,6 @@ export default function MenuSidebar(): JSX.Element {
           label: $t({ defaultMessage: "Study" }),
           icon: MdSchool,
           href: "/study",
-        },
-        {
-          label: $t({ defaultMessage: "Todos" }),
-          icon: RiTodoLine,
-          href: "/todos",
         },
       ],
       account: [
@@ -78,9 +75,18 @@ export default function MenuSidebar(): JSX.Element {
           href: "/logout",
         },
       ],
-    }),
-    [$t]
-  );
+    };
+
+    if (isAdmin) {
+      items.features.push({
+        label: $t({ defaultMessage: "Todos" }),
+        icon: RiTodoLine,
+        href: "/todos",
+      });
+    }
+
+    return items;
+  }, [$t, isAdmin]);
 
   if (isLargerThanMD) {
     return (

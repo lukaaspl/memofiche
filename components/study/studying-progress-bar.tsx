@@ -30,7 +30,10 @@ export default function StudyingProgressBar({
         },
       }}
     >
-      <ProgressLabel fontSize="lg" color={isHalfway ? palette.bw : "undefined"}>
+      <ProgressLabel
+        fontSize="lg"
+        color={isHalfway ? palette.blackWhite : "undefined"}
+      >
         {currentCardIndex + 1}/{totalCardsCount}
       </ProgressLabel>
     </Progress>

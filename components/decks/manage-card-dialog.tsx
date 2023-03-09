@@ -159,7 +159,6 @@ export default function ManageCardDialog({
   return (
     <CustomDialog
       isOpen={isOpen}
-      // size="4xl"
       size="5xl"
       onClose={onClose}
       initialFocusRef={initialRef}

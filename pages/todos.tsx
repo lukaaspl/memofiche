@@ -12,6 +12,7 @@ import {
   Tr,
   UnorderedList,
 } from "@chakra-ui/react";
+import AdminArea from "components/shared/admin-area";
 import PrimaryHeading from "components/shared/primary-heading";
 import Layout from "components/ui/layout";
 import { Nullable } from "domains";
@@ -19,7 +20,6 @@ import useCommonPalette from "hooks/use-common-palette";
 import useScreenWidth from "hooks/use-screen-width";
 import { range } from "lodash";
 import { NextPage } from "next";
-import React from "react";
 import TODOS from "todos.json";
 
 const IS_DONE_MARK = "[x]";
@@ -52,59 +52,61 @@ const TodosPage: NextPage = () => {
 
   return (
     <Layout>
-      <PrimaryHeading>Todos</PrimaryHeading>
-      {isLargerThanMD ? (
-        <Table mt={8} variant="simple" colorScheme="purple">
-          <Thead>
-            <Tr>
-              {["Must have", "Should have", "Could have", "Won't have"].map(
-                (heading, index) => (
-                  <Th
-                    key={index}
-                    textAlign="center"
-                    fontSize="md"
-                    fontFamily="Poppins"
-                    color={palette.primary}
-                  >
-                    {heading}
-                  </Th>
-                )
-              )}
-            </Tr>
-          </Thead>
-          <Tbody fontSize="sm">
-            {range(rowsCount).map((index) => (
-              <Tr key={index}>
-                <Td>{displayTodo(TODOS.mustHave[index])}</Td>
-                <Td>{displayTodo(TODOS.shouldHave[index])}</Td>
-                <Td>{displayTodo(TODOS.couldHave[index])}</Td>
-                <Td>{displayTodo(TODOS.wontHave[index])}</Td>
+      <AdminArea variant="error">
+        <PrimaryHeading>Todos</PrimaryHeading>
+        {isLargerThanMD ? (
+          <Table mt={8} variant="simple" colorScheme="purple">
+            <Thead>
+              <Tr>
+                {["Must have", "Should have", "Could have", "Won't have"].map(
+                  (heading, index) => (
+                    <Th
+                      key={index}
+                      textAlign="center"
+                      fontSize="md"
+                      fontFamily="Poppins"
+                      color={palette.primary}
+                    >
+                      {heading}
+                    </Th>
+                  )
+                )}
               </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      ) : (
-        [
-          { heading: "Must have", items: TODOS.mustHave },
-          { heading: "Should have", items: TODOS.shouldHave },
-          { heading: "Could have", items: TODOS.couldHave },
-          { heading: "Won't have", items: TODOS.wontHave },
-        ].map(({ heading, items }, index) => (
-          <Box key={index} mt={5}>
-            <Heading color={palette.primary} fontFamily="Poppins" size="sm">
-              {heading}
-            </Heading>
-            <Divider my={2} />
-            <UnorderedList>
-              {items.map((todo, index) => (
-                <ListItem key={index} my={1}>
-                  {displayTodo(todo)}
-                </ListItem>
+            </Thead>
+            <Tbody fontSize="sm">
+              {range(rowsCount).map((index) => (
+                <Tr key={index}>
+                  <Td>{displayTodo(TODOS.mustHave[index])}</Td>
+                  <Td>{displayTodo(TODOS.shouldHave[index])}</Td>
+                  <Td>{displayTodo(TODOS.couldHave[index])}</Td>
+                  <Td>{displayTodo(TODOS.wontHave[index])}</Td>
+                </Tr>
               ))}
-            </UnorderedList>
-          </Box>
-        ))
-      )}
+            </Tbody>
+          </Table>
+        ) : (
+          [
+            { heading: "Must have", items: TODOS.mustHave },
+            { heading: "Should have", items: TODOS.shouldHave },
+            { heading: "Could have", items: TODOS.couldHave },
+            { heading: "Won't have", items: TODOS.wontHave },
+          ].map(({ heading, items }, index) => (
+            <Box key={index} mt={5}>
+              <Heading color={palette.primary} fontFamily="Poppins" size="sm">
+                {heading}
+              </Heading>
+              <Divider my={2} />
+              <UnorderedList>
+                {items.map((todo, index) => (
+                  <ListItem key={index} my={1}>
+                    {displayTodo(todo)}
+                  </ListItem>
+                ))}
+              </UnorderedList>
+            </Box>
+          ))
+        )}
+      </AdminArea>
     </Layout>
   );
 };
