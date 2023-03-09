@@ -9,13 +9,13 @@ import {
   Input,
   Select,
   Stack,
-  Textarea,
 } from "@chakra-ui/react";
 import { Card, CardType } from "@prisma/client";
 import { useLocalStorage } from "beautiful-react-hooks";
 import CustomButton from "components/shared/custom-button";
 import CustomDialog from "components/shared/custom-dialog";
 import Form from "components/shared/form";
+import RichEditor from "components/shared/rich-editor";
 import { cardTypeDetails, cardTypeDetailsByType } from "consts/card-types";
 import { DECK_QUERY_KEY } from "consts/query-keys";
 import { ARE_DECK_TAGS_INCLUDED } from "consts/storage-keys";
@@ -26,7 +26,7 @@ import useCreateCardMutation from "hooks/use-create-card-mutation";
 import useSuccessToast from "hooks/use-success-toast";
 import useTranslation from "hooks/use-translation";
 import { authApiClient } from "lib/axios";
-import React, { EffectCallback, useCallback, useEffect, useRef } from "react";
+import { EffectCallback, useCallback, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { TagsConverter } from "utils/tags";
@@ -82,7 +82,11 @@ export default function ManageCardDialog({
   const [areDeckTagsIncluded, setAreDeckTagsIncluded] =
     useLocalStorage<boolean>(ARE_DECK_TAGS_INCLUDED, false);
 
-  const createCardMutation = useCreateCardMutation({ onSuccess: onClose });
+  const createCardMutation = useCreateCardMutation({
+    onSuccess: () => {
+      onClose();
+    },
+  });
 
   const updateCardMutation = useMutation(updateCard, {
     onSuccess: (card) => {
@@ -94,7 +98,10 @@ export default function ManageCardDialog({
 
   const isEditMode = typeof editingCard !== "undefined";
 
-  const { ref, ...rest } = register("obverse", { required: true });
+  const { ref: obverseTextareaRef, ...obverseTextareaProps } = register(
+    "obverse",
+    { required: true }
+  );
 
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
     const { obverse, reverse, type, note, tags } = formValues;
@@ -152,7 +159,8 @@ export default function ManageCardDialog({
   return (
     <CustomDialog
       isOpen={isOpen}
-      size="4xl"
+      // size="4xl"
+      size="5xl"
       onClose={onClose}
       initialFocusRef={initialRef}
       title={
@@ -175,22 +183,26 @@ export default function ManageCardDialog({
                 mb={{ base: 4, md: 0 }}
               >
                 <FormControl isRequired>
-                  <FormLabel>{$t({ defaultMessage: "Obverse" })}</FormLabel>
-                  <Textarea
+                  <RichEditor
+                    label={
+                      <FormLabel>{$t({ defaultMessage: "Obverse" })}</FormLabel>
+                    }
                     height="145px"
                     ref={(el) => {
-                      ref(el);
+                      obverseTextareaRef(el);
                       initialRef.current = el;
                     }}
                     placeholder={$t({
                       defaultMessage: "e.g. What is multithreaded programming?",
                     })}
-                    {...rest}
+                    {...obverseTextareaProps}
                   />
                 </FormControl>
                 <FormControl isRequired>
-                  <FormLabel>{$t({ defaultMessage: "Reverse" })}</FormLabel>
-                  <Textarea
+                  <RichEditor
+                    label={
+                      <FormLabel>{$t({ defaultMessage: "Reverse" })}</FormLabel>
+                    }
                     height="145px"
                     placeholder={$t({
                       defaultMessage:

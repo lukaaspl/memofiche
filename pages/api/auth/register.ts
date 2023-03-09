@@ -6,7 +6,8 @@ import {
 } from "http-errors";
 import createApiHandler from "lib/nc";
 import prisma from "lib/prisma";
-import { hashPassword, signToken } from "utils/auth";
+import { createUser } from "repositories/user";
+import { signToken } from "utils/auth";
 import { httpErrorSender } from "utils/errors";
 import { z } from "zod";
 
@@ -44,22 +45,10 @@ registerHandler.post(async (req, res) => {
   }
 
   try {
-    const createdUser = await prisma.user.create({
-      data: {
-        email: parsedBody.data.email,
-        password: await hashPassword(parsedBody.data.password),
-        name: parsedBody.data.name,
-        profile: {
-          create: {
-            avatar: {
-              create: {},
-            },
-          },
-        },
-        config: {
-          create: {},
-        },
-      },
+    const createdUser = await createUser({
+      email: parsedBody.data.email,
+      password: parsedBody.data.password,
+      name: parsedBody.data.name,
     });
 
     const token = signToken(createdUser.id);

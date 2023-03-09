@@ -1,7 +1,9 @@
 import { Prisma, User } from "@prisma/client";
 import { findUserProfile, findMeUser } from "repositories/user";
 
-export type RegisterUserRequestData = Pick<User, "email" | "password" | "name">;
+export type NewUser = Pick<User, "email" | "password" | "name">;
+
+export type RegisterUserRequestData = NewUser;
 export type RegisterUserResponse = { token: string };
 
 export type LoginUserRequestData = Pick<User, "email" | "password">;
