@@ -6,6 +6,7 @@ import React, { EffectCallback, useCallback } from "react";
 import { useEffect } from "react";
 import { useQueryClient } from "react-query";
 
+// Logout Page
 const LogoutPage: NextPage = () => {
   const { logOut } = useAuth();
   const queryClient = useQueryClient();
