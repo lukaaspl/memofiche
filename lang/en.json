@@ -88,9 +88,6 @@
   "5oL/GD": {
     "defaultMessage": "Max. size: {size}"
   },
-  "5sg7KC": {
-    "defaultMessage": "Password"
-  },
   "6+7UgD": {
     "defaultMessage": "The file is invalid"
   },
@@ -105,9 +102,6 @@
   },
   "68PmLe": {
     "defaultMessage": "Total studied cards"
-  },
-  "6OWS4p": {
-    "defaultMessage": "Processing..."
   },
   "6n4LpX": {
     "defaultMessage": "Easy"
@@ -127,9 +121,6 @@
   "8D4mqd": {
     "defaultMessage": "Use advanced rating cards controls"
   },
-  "8HJxXG": {
-    "defaultMessage": "Sign up"
-  },
   "8Rqn5a": {
     "defaultMessage": "e.g. Doe"
   },
@@ -141,9 +132,6 @@
   },
   "AIGagR": {
     "defaultMessage": "Add a new deck"
-  },
-  "ATZ766": {
-    "defaultMessage": "You don't have an account yet?"
   },
   "BNSmGR": {
     "defaultMessage": "Redirecting..."
@@ -162,6 +150,9 @@
   },
   "DXDNt9": {
     "defaultMessage": "Important! You are going to lose all {count} cards contained in the deck!"
+  },
+  "Dkkmwm": {
+    "defaultMessage": "Bold"
   },
   "DlVFL+": {
     "defaultMessage": "Delete card"
@@ -187,9 +178,6 @@
   },
   "HWYd5e": {
     "defaultMessage": "There must be at least 1 ready to study card to start studying process"
-  },
-  "HoZOFg": {
-    "defaultMessage": "The login details are incorrect"
   },
   "J+Pu4g": {
     "defaultMessage": "Visit the dashboard"
@@ -221,11 +209,11 @@
   "MisSXp": {
     "defaultMessage": "Update avatar"
   },
-  "MthpnL": {
-    "defaultMessage": "Go to app"
-  },
   "NIynnB": {
     "defaultMessage": "Current password"
+  },
+  "NWm89j": {
+    "defaultMessage": "Strike"
   },
   "Ntjkqd": {
     "defaultMessage": "or"
@@ -276,12 +264,6 @@
   "SNP1/u": {
     "defaultMessage": "Deck has been created successfully"
   },
-  "SO8m/b": {
-    "defaultMessage": "An error occurred while signing in"
-  },
-  "SQJto2": {
-    "defaultMessage": "Sign in"
-  },
   "SRipU7": {
     "defaultMessage": "Profile has been updated successfully"
   },
@@ -326,6 +308,9 @@
   },
   "YWUIL7": {
     "defaultMessage": "Manage your profile"
+  },
+  "YWpk13": {
+    "defaultMessage": "You do not have sufficient permissions to view this section"
   },
   "Yy/yDL": {
     "defaultMessage": "Reset password"
@@ -375,11 +360,17 @@
   "fZpZBV": {
     "defaultMessage": "no deviation"
   },
+  "g2V+es": {
+    "defaultMessage": "Italic"
+  },
   "gMKKUl": {
     "defaultMessage": "The deep reset means all cards' parameters will be set to their defaults as if the cards have just been created. The scheduling system will forget about their previous statistics."
   },
   "grdxdO": {
     "defaultMessage": "Start studying"
+  },
+  "h2vipu": {
+    "defaultMessage": "Code"
   },
   "h4sNB+": {
     "defaultMessage": "Clone card"
@@ -387,23 +378,20 @@
   "hDI+JM": {
     "defaultMessage": "Sort by"
   },
-  "huqKGl": {
-    "defaultMessage": "Create account"
-  },
   "hzSNj4": {
     "defaultMessage": "Dashboard"
   },
   "hziisK": {
     "defaultMessage": "Repeat new password"
   },
-  "iKT2Wq": {
-    "defaultMessage": "The e-mail address is already taken"
-  },
   "itPgxd": {
     "defaultMessage": "Profile"
   },
   "j2jrS/": {
     "defaultMessage": "Deck has been updated successfully"
+  },
+  "jT6/da": {
+    "defaultMessage": "Heading"
   },
   "jm/spn": {
     "defaultMessage": "Reset"
@@ -416,9 +404,6 @@
   },
   "k1s/3C": {
     "defaultMessage": "Create deck"
-  },
-  "kIW/Ua": {
-    "defaultMessage": "E-mail address"
   },
   "kVcUTN": {
     "defaultMessage": "Add avatar"
@@ -541,9 +526,6 @@
   "u5kx+4": {
     "defaultMessage": "Cloning card failed"
   },
-  "uCk8r+": {
-    "defaultMessage": "Already have an account?"
-  },
   "uSWYZd": {
     "defaultMessage": "Sort descending"
   },
@@ -568,9 +550,6 @@
   "vRTZ4K": {
     "defaultMessage": "Reverse"
   },
-  "vlKhIl": {
-    "defaultMessage": "Your name"
-  },
   "vlZInC": {
     "defaultMessage": "Avg. rate"
   },
@@ -582,9 +561,6 @@
   },
   "wL7VAE": {
     "defaultMessage": "Actions"
-  },
-  "wZFe08": {
-    "defaultMessage": "An error occurred while signing up"
   },
   "wxDxqW": {
     "defaultMessage": "Config has been updated successfully"
