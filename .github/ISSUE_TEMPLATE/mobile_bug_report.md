@@ -1,8 +1,8 @@
 ---
-name: 🐛 Bug report
-about: Create a report to help us improve
-title: ""
-labels: ""
+name: 🐛 [MOBILE] Bug report
+about: Create a MOBILE bug report to help us improve
+title: "[MOBILE BUG REPORT]"
+labels: "bug"
 assignees: ""
 ---
 
